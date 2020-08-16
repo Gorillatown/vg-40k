@@ -1,0 +1,33 @@
+"a" = (/obj/machinery/light/he{dir = 1},/turf/simulated/floor,/area/vault/warhammergen/ork_loot_area)
+"e" = (/obj/effect/decal/loot_pointer,/turf/simulated/floor,/area/vault/warhammergen/ork_loot_area)
+"n" = (/turf/simulated/floor,/area/vault/warhammergen/ork_loot_area)
+"w" = (/obj/machinery/light/he{dir = 1},/turf/simulated/floor,/area/vault/warhammergen/orkspawn)
+"A" = (/obj/effect/landmark/start/basicOrk,/turf/simulated/floor,/area/vault/warhammergen/orkspawn)
+"B" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/orkspawn)
+"E" = (/turf/unsimulated/outside/sand,/area/warhammer/desert)
+"R" = (/turf/simulated/floor,/area/vault/warhammergen/orkspawn)
+"V" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/ork_loot_area)
+"W" = (/obj/machinery/light/he,/turf/simulated/floor,/area/vault/warhammergen/orkspawn)
+
+(1,1,1) = {"
+EEEEEEEEEEEEEEEEEEEE
+EEEEEEEEEEEEEEEEEEEE
+EEEEEEEEEEEEEEEEEEEE
+EEEEEEEEEEEEEEEEEEEE
+EEEEEEEEEEEEEEEEEEEE
+EEEEEEEEEEEEEEEEEEEE
+EBBBBBBRRRVVVVVEEEEE
+EBRwRRRRRRVnanVEEEEE
+EBRRRRRRRRVnnnVEEEEE
+EBRRRRRRRRVVeVVEEEEE
+EwRRARRARRwRRwREEEEE
+ERRRRRRRRRRRRRREEEEE
+ERRRRRRRRRRRRRREEEEE
+ERRRARRARRRRRRREEEEE
+EBRRRRRRRRRRRRREEEEE
+EBRRRARARRRRRRBEEEEE
+EBRRRRRARRRRRRBEEEEE
+EBRWRRRRRRRRWRBEEEEE
+EBBBBBRRRRBBBBBEEEEE
+EEEEEEEEEEEEEEEEEEEE
+"}

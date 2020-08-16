@@ -1,0 +1,37 @@
+"a" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/neutral_town)
+"d" = (/obj/structure/rack,/obj/item/weapon/gun/projectile/flare/syndicate,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"g" = (/obj/structure/table/reinforced,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"h" = (/obj/structure/rack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"i" = (/obj/structure/rack,/obj/item/weapon/gun/projectile/nagant,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"j" = (/obj/structure/rack,/obj/item/weapon/gun/projectile/mosin,/obj/item/weapon/gun/projectile/mosin,/obj/item/weapon/gun/projectile/mosin,/obj/item/weapon/gun/projectile/mosin,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"k" = (/obj/machinery/r_n_d/fabricator/mechanic_fab/autolathe,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"r" = (/obj/structure/rack,/obj/item/weapon/gun/energy/lasgun,/obj/item/weapon/gun/energy/lasgun,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"s" = (/obj/machinery/door/airlock,/obj/road_node,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"w" = (/obj/structure/rack,/obj/item/weapon/gun/projectile/automatic/c20r,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"A" = (/obj/structure/table/reinforced,/obj/machinery/light/he{dir = 4},/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"B" = (/obj/structure/rack,/obj/item/weapon/storage/box/buckshotshells,/obj/item/weapon/storage/box/buckshotshells,/obj/item/weapon/storage/box/buckshotshells,/obj/item/weapon/storage/box/buckshotshells,/obj/item/weapon/storage/box/buckshotshells,/obj/item/weapon/storage/box/buckshotshells,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"C" = (/obj/machinery/r_n_d/fabricator/mechanic_fab/autolathe/ammolathe,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"D" = (/obj/machinery/light/he{dir = 8},/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"F" = (/obj/structure/rack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/plasteel/bigstack,/obj/item/stack/sheet/plasteel/bigstack,/obj/item/stack/sheet/plasteel/bigstack,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"H" = (/obj/item/ammo_storage/box/piles/buckshotpile/max_pile,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"K" = (/obj/structure/closet/crate/secure/weapon/experimental/osipr,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"N" = (/obj/structure/rack,/obj/item/weapon/gun/projectile/shotgun/pump/combat,/obj/item/weapon/gun/projectile/shotgun/pump/combat,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"R" = (/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"W" = (/obj/structure/closet/crate/secure/weapon/experimental/gatling,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"X" = (/obj/structure/rack,/obj/item/weapon/gun/projectile/automatic/l6_saw,/obj/item/ammo_storage/magazine/a762,/turf/simulated/floor/engine/concrete,/area/vault/warhammergen/neutral_town)
+"Y" = (/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+
+(1,1,1) = {"
+aaaaaaY
+ahRkCaY
+aFRRRsY
+aNHRRaD
+aBRRAaY
+awRRgaY
+aXRRgaY
+arRRgaY
+aiRRgaY
+ajRRAaY
+adRKWaY
+aaaaaaY
+"}

@@ -1,0 +1,57 @@
+"a" = (/turf/unsimulated/outside/sand,/area/warhammer/desert)
+"b" = (/obj/machinery/door/mineral/wood,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"c" = (/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"d" = (/obj/mecha/working/clarke,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"e" = (/obj/item/stack/sheet/mineral/diamond,/obj/item/stack/sheet/mineral/diamond,/obj/item/stack/sheet/mineral/diamond,/obj/item/stack/sheet/mineral/diamond,/obj/item/stack/sheet/mineral/diamond,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"f" = (/obj/item/weapon/hammer,/turf/unsimulated/outside/sand,/area/warhammer/desert)
+"g" = (/obj/machinery/door/mineral/wood,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"h" = (/obj/structure/bed/chair/comfy/couch/right/lime,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"k" = (/obj/item/binoculars,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"n" = (/obj/machinery/vending/building,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"p" = (/obj/structure/bed/chair/comfy/couch/left/lime,/obj/machinery/light/he{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"q" = (/obj/item/stack/sheet/mineral/adamantine,/obj/item/stack/sheet/mineral/adamantine,/obj/item/stack/sheet/mineral/adamantine,/obj/item/stack/sheet/mineral/adamantine,/obj/item/stack/sheet/mineral/adamantine,/obj/item/stack/sheet/mineral/gold,/obj/item/stack/sheet/mineral/gold,/obj/item/stack/sheet/mineral/gold,/obj/item/stack/sheet/mineral/gold,/obj/item/stack/sheet/mineral/gold,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"r" = (/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/obj/item/stack/sheet/metal/bigstack,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"s" = (/obj/item/stack/sheet/mineral/phazon,/obj/item/stack/sheet/mineral/phazon,/obj/item/stack/sheet/mineral/phazon,/obj/item/stack/sheet/mineral/phazon,/obj/item/stack/sheet/mineral/phazon,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"t" = (/obj/structure/bed,/obj/item/weapon/bedsheet/blue,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"u" = (/obj/machinery/light/he{dir = 4},/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"w" = (/obj/item/stack/sheet/mineral/adamantine,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"x" = (/obj/structure/bed/guillotine,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"y" = (/obj/item/stack/sheet/mineral/uqill,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"z" = (/obj/item/stack/sheet/mineral/diamond,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"B" = (/obj/item/stack/sheet/mineral/silver,/obj/item/stack/sheet/mineral/silver,/obj/item/stack/sheet/mineral/silver,/obj/item/stack/sheet/mineral/silver,/obj/item/stack/sheet/mineral/silver,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"C" = (/obj/road_node,/turf/unsimulated/outside/sand,/area/warhammer/desert)
+"D" = (/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"F" = (/obj/structure/reagent_dispensers/fueltank,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"G" = (/obj/effect/landmark/start/assistant,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"H" = (/obj/item/anvil,/obj/machinery/light/he{dir = 1},/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"I" = (/obj/structure/reagent_dispensers/fueltank,/obj/machinery/light/he{dir = 4},/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"J" = (/obj/structure/bed/chair/wood/throne,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"K" = (/obj/item/stack/sheet/mineral/silver,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"L" = (/obj/structure/closet/toolcloset,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"M" = (/obj/structure/bed/chair/comfy/couch/mid/lime,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"N" = (/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"O" = (/obj/item/stack/sheet/mineral/mythril,/obj/item/stack/sheet/mineral/mythril,/obj/item/stack/sheet/mineral/mythril,/obj/item/stack/sheet/mineral/mythril,/obj/item/stack/sheet/mineral/mythril,/obj/item/stack/sheet/mineral/mythril,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"P" = (/obj/effect/landmark/start/janitor,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"S" = (/obj/item/weapon/spear/wooden,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"T" = (/obj/machinery/light/he{dir = 8},/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"U" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/neutral_town)
+"V" = (/obj/structure/bed/chair/comfy/teal,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"W" = (/obj/structure/bedsheetbin,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"X" = (/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"Y" = (/obj/machinery/vending/makeup,/turf/simulated/floor/carpet/floor_tile,/area/vault/warhammergen/neutral_town)
+"Z" = (/obj/structure/forge,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+
+(1,1,1) = {"
+UUUUUUUUUUUU
+UnhMpOUYXJXU
+UBXXXsUXXXXU
+UGXXXNgXXSuU
+UeXXXwUyXXXU
+UzzNNqUKXXxU
+UUUgUUUUbUUU
+LHZDrcUWXXVU
+afaaaDUTPXXU
+aafaadUkXXXU
+aaCaaIUXXtXU
+aaaaaFUUUUUU
+"}

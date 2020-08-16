@@ -1,0 +1,67 @@
+"a" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/neutral_town)
+"b" = (/obj/item/weapon/stool/piano,/obj/machinery/light/he{dir = 8},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"c" = (/obj/structure/table/woodentable,/obj/machinery/chem_dispenser/booze_dispenser/mapping{pixel_y = 10},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"d" = (/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"e" = (/obj/structure/fence,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"f" = (/obj/machinery/cooking/candy,/obj/machinery/light/he{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"g" = (/obj/structure/fence,/obj/structure/fence/corner{dir = 8},/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"h" = (/obj/structure/table/reinforced,/obj/machinery/microwave{pixel_y = 10},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"i" = (/obj/machinery/cooking/still,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"j" = (/obj/structure/table/woodentable,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"k" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/obj/structure/grille,/obj/structure/sign/double/barsign,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"l" = (/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"m" = (/obj/structure/fence/door,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"n" = (/obj/machinery/door/mineral/wood,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"o" = (/obj/machinery/door/mineral/wood,/obj/road_node,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"p" = (/obj/machinery/cooking/deepfryer,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"q" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/grille,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"r" = (/obj/structure/table/woodentable,/obj/structure/table/woodentable,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"s" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/grille,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"t" = (/obj/structure/table/woodentable,/obj/item/weapon/storage/box/drinkingglasses,/obj/item/weapon/storage/box/drinkingglasses,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"u" = (/obj/structure/fence{dir = 4},/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"v" = (/obj/structure/table/reinforced,/obj/item/weapon/kitchen/rollingpin,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"w" = (/obj/machinery/light/he{dir = 4},/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"x" = (/obj/structure/table/reinforced,/obj/item/weapon/reagent_containers/food/snacks/sliceable/bread,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"y" = (/obj/item/weapon/reagent_containers/spray/cleaner,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"z" = (/obj/structure/closet/secure_closet/freezer/kitchen,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"A" = (/obj/item/weapon/stool/bar,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"B" = (/obj/item/weapon/reagent_containers/glass/beaker/large,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"C" = (/obj/structure/closet/secure_closet/freezer/meat,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"D" = (/obj/effect/landmark/start/chef,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"E" = (/obj/structure/table/reinforced,/obj/machinery/reagentgrinder{pixel_y = 10},/obj/machinery/light/he{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"F" = (/obj/structure/table/woodentable,/obj/machinery/chem_dispenser/soda_dispenser/mapping{pixel_y = 10},/obj/machinery/light/he{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"H" = (/obj/machinery/cooking/cerealmaker,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"I" = (/obj/machinery/door/mineral/wood,/turf/unsimulated/outside/sand,/area/vault/warhammergen/neutral_town)
+"J" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/grille,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"K" = (/obj/effect/landmark/start/assistant,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"L" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/grille,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"M" = (/obj/item/weapon/storage/box/condimentbottles,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"N" = (/obj/structure/table/woodentable,/obj/machinery/chem_dispenser/brewer/mapping,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"O" = (/obj/structure/sink/kitchen{pixel_y = 25},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"P" = (/obj/machinery/processor,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"Q" = (/obj/structure/clock,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"R" = (/obj/machinery/vending/boozeomat,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"S" = (/obj/item/weapon/kitchen/utensil/fork,/obj/machinery/vending/dinnerware,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"T" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/reagent_containers/food/drinks/flour,/obj/item/weapon/storage/fancy/egg_box,/obj/item/weapon/storage/fancy/egg_box,/obj/item/weapon/reagent_containers/food/condiment/enzyme,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"U" = (/obj/effect/landmark/start/bartender,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"V" = (/obj/structure/table/reinforced,/obj/item/weapon/kitchen/utensil/knife/large/butch,/obj/item/weapon/reagent_containers/food/condiment/enzyme,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"W" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"X" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/fancy/egg_box,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"Y" = (/obj/structure/piano,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"Z" = (/obj/structure/table/woodentable,/obj/item/weapon/reagent_containers/food/condiment/ketchup,/obj/item/weapon/reagent_containers/food/condiment/hotsauce,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+
+(1,1,1) = {"
+gmuaaaaaaaaaa
+eddaXOEvVhfTa
+edwaiMylDllla
+eddIllDllBlza
+eddapPlSzlHCa
+aaaaaanaaxaaa
+allQlllFclRNa
+ajlKlrlllUlla
+alllljZjjjtaa
+abKllAAAAAAlW
+aYlllllllllls
+alllllllllllL
+aaoakJJJJJJqa
+"}

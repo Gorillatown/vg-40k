@@ -1,0 +1,58 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/unsimulated/beach/water,/area/vault/beach_party)
+"c" = (/obj/jectie_time,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"d" = (/obj/effect/overlay/palmtree_r,/turf/simulated/floor/beach/coastline/north,/area/vault/beach_party)
+"e" = (/turf/simulated/floor/beach/coastline/west,/area/vault/beach_party)
+"f" = (/turf/simulated/floor/beach/sand{icon_state = ""},/area/vault/beach_party)
+"i" = (/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"j" = (/turf/simulated/floor/beach/sand{light_power = 10; light_range = 4},/area/vault/beach_party)
+"l" = (/turf/simulated/floor/beach/coastline/north,/area/vault/beach_party)
+"m" = (/turf/unsimulated/mineral/air,/area/vault/beach_party)
+"n" = (/turf/unsimulated/beach/water{icon_state = ""},/area/vault/beach_party)
+"o" = (/obj/item/clothing/under/swimsuit/blue,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"p" = (/obj/effect/overlay/palmtree_r,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"q" = (/mob/living/simple_animal/crab,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"r" = (/obj/item/weapon/beach_ball,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"s" = (/obj/item/weapon/stool,/obj/machinery/media/receiver/boombox,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"t" = (/obj/item/clothing/glasses/sunglasses,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"u" = (/obj/effect/overlay/palmtree_l,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"v" = (/turf/simulated/floor/beach/sand{light_power = 10; light_range = 12},/area/vault/beach_party)
+"w" = (/obj/item/weapon/gun/siren/supersoaker,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"x" = (/turf/simulated/floor/beach/coastline/east,/area/vault/beach_party)
+"z" = (/obj/item/weapon/gun/siren/supersoaker/pistol,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+"A" = (/turf/simulated/floor/beach/coastline,/area/vault/beach_party)
+"M" = (/turf/simulated/floor/beach/sand{light_power = 10; light_range = 6},/area/vault/beach_party)
+"W" = (/obj/item/clothing/under/shorts/red,/turf/simulated/floor/beach/sand,/area/vault/beach_party)
+
+(1,1,1) = {"
+aaaaaaaaaaabbbbbbbbaaaaaaaaaaa
+aaaaaaaabbbbbbbbbbbbbbaaaaaaaa
+aaaaaaabbbbbbbbbbbbbbbbaaaaaaa
+aaaaabbbbbbbbbbbbbbbbbbbbaaaaa
+aaaabbbbbbbbbbbbbbbbbbbbbbaaaa
+aaabbbbbbbbbbbbbbbbbbbbbbbbaaa
+aaabbbmmnnnnnnnnnnnnnnmmbbbaaa
+aabbbbmmldllllllllllllmmbbbbaa
+abbbbbefiiiiiiiiiiiiiixnbbbbba
+abbbbbefiijiiiiioiipiixnbbbbba
+abbbbbefiqiimmiiiiiiqixnbbbbba
+bbbbbbefiiimmsiiiiriiixnbbbbbb
+bbbbbbefiiiiiiiiiiiiiixnbbbbbb
+bbbbbbefiiiictiuiiiiiixnbbbbbb
+bbbbbbefiipiiiiviwiiiixnbbbbbb
+bbbbbbefiiiiiiiiiiiiiuxnbbbbbb
+bbbbbbefiiiiiiqiciiiiixnbbbbbb
+bbbbbbefiizimiiWiiiiiixnbbbbbb
+bbbbbbefiiiimmiiiipiiixnbbbbbb
+abbbbbefiiiiimmiiiiiiixnbbbbba
+abbbbbefiiiiiMmmiiiiiixnbbbbba
+abbbbbefiuiiiiiiiiiiiixnbbbbba
+aabbbbmmffffffffffffffmmbbbbaa
+aaabbbmmAAAAAAAAAAAAAAmmbbbaaa
+aaabbbbbbbbbbbbbbbbbbbbbbbbaaa
+aaaabbbbbbbbbbbbbbbbbbbbbbaaaa
+aaaaabbbbbbbbbbbbbbbbbbbbaaaaa
+aaaaaaabbbbbbbbbbbbbbbbaaaaaaa
+aaaaaaaabbbbbbbbbbbbbbaaaaaaaa
+aaaaaaaaaaabbbbbbbbaaaaaaaaaaa
+"}

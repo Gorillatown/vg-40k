@@ -1,0 +1,68 @@
+*.log
+*.int
+*.rsc
+*.dmb
+*.lk
+info.json
+
+# WinMerge backups
+*.bak
+
+# String dumps
+*.str
+
+# Compiled Python doohickies
+*.pyc
+
+# Vim
+*.swp
+
+# OpenBYOND-generated crap
+/dmis
+/interface-indented
+/code-indented
+*.new.dmi
+
+.metadata
+/bot/config.yml
+/bot/data
+/analysis
+/code-fixed
+
+# New CMC Minimap images.
+/data/minimaps/*
+
+# Map rendering
+/maprendering/renderoutput/*
+
+# Backup maps created by maptools
+*.dmm.backup
+
+# Changelog dry runs
+/html/changelog.dry.html
+/html/changelogs/.dry_changelog.yml
+
+# Map player count config
+/maps/voting/*/playercount.txt
+
+# Runtime condenser I/O files.
+/tools/Runtime\ Condenser/*.txt
+
+# Investigate logs that have an annoying tendency to generate during testing
+/data/investigate/*
+
+# Round-end statistics
+/data/statfiles/*
+
+# Persistence files
+/data/persistence/*
+
+cfg
+
+.vscode
+*.code-workspace
+/byond
+
+# Thumbs.db (windows image caching)
+Thumbs.db
+

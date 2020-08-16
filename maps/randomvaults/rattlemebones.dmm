@@ -1,0 +1,65 @@
+"a" = (/turf/space,/area)
+"b" = (/turf/simulated/wall/invulnerable,/area/vault/rattlemebones)
+"d" = (/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"e" = (/obj/abstract/mover/redirector/south,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"f" = (/mob/living/simple_animal/hostile/rattlemebones,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"g" = (/obj/abstract/mover/redirector/west,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"h" = (/obj/abstract/mover/redirector/east,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"i" = (/obj/abstract/mover/transporter{dir = 1},/mob/living/simple_animal/hostile/rattlemebones,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"j" = (/obj/abstract/mover/redirector/north,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"l" = (/obj/abstract/mover/transporter{dir = 8},/mob/living/simple_animal/hostile/rattlemebones,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"m" = (/obj/abstract/mover/transporter,/mob/living/simple_animal/hostile/rattlemebones,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"n" = (/mob/living/simple_animal/hostile/humanoid/skellington{wander = 0},/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"o" = (/obj/machinery/door/mineral/wood,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"p" = (/obj/abstract/mover/redirector/southwest,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"q" = (/obj/abstract/mover/redirector/northwest,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"r" = (/obj/item/weapon/melee/energy/sword/pirate,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"s" = (/obj/item/weapon/coin/gold,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"t" = (/obj/abstract/mover/redirector/southeast,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"u" = (/obj/abstract/mover/redirector/northeast,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"v" = (/obj/item/weapon/dnainjector/nofail/melt,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"w" = (/obj/structure/disposalpipe/trunk/no_deconstruct{dir = 4},/obj/structure/disposaloutlet/no_deconstruct{dir = 8},/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"x" = (/obj/structure/disposalpipe/segment/no_deconstruct{dir = 4},/turf/simulated/wall/invulnerable,/area/vault/rattlemebones)
+"y" = (/obj/jectie_time,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"C" = (/obj/structure/disposalpipe/trunk/no_deconstruct{dir = 8},/obj/machinery/disposal/deliveryChute/no_deconstruct{dir = 4},/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"L" = (/obj/item/weapon/storage/bag/money/treasure,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+"Z" = (/obj/effect/decal/remains/human,/obj/item/clothing/under/pirate,/obj/item/clothing/accessory/medal/gold,/obj/item/clothing/suit/armor/vest/piratelord,/obj/item/clothing/glasses/thermal/eyepatch,/obj/item/clothing/head/helmet/piratelord,/turf/simulated/floor/wood,/area/vault/rattlemebones)
+
+(1,1,1) = {"
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+bhdddeddhdddebhdedddffffffffffb
+bddddddddddddbdddddddeddgddedgb
+bidhddddddeddbdhddedddddddddddb
+bddddddddddddbdddddddddddddmddb
+bjdddgddjdldgbddddddddddddddndb
+bdddddddddmddodimdddddddddddddb
+bhdddeddhdddebddddddddddjddgddb
+bddddddddddddbdddddddhdddddddjb
+bddjdyddidgddbdjddgddfffffddddb
+bddddddddddddbddddddffddpfddddb
+bjdldgddjdddgbjdgddffdddddddddb
+bboobbbbbbbbbbddddffedddddqdddb
+bnddnbbbheehebfffffdddddddjdddb
+bddddbbbdddddbffffdddddddddqddb
+bddddbdoddddmbfffdddddyddddjddb
+bddddbdbdddddbffddddddddddfdddb
+bddddbdbdydddbfddddddddddqfddqb
+bddddbdbddiddbdddddftdddddfdddb
+bddddbdbddjddbdddndffdddddfuddb
+bddddodbddeddbtdddddddddddddddb
+bbbbbbbbddmddbiddddddddddddddqb
+bfffdddbdddddbddddddddndddddddb
+bfffdfdbdddddbidddddddddddddddb
+bfdddfdoiddddbddddudddddddudddb
+bfyffffbdddddbifffffffffffffffb
+bfddddfbjgjjgbjldldldlffffffffb
+bffffdfbbbbbbbbbbbbbbobbbbbbbbb
+bffdddfbddfddbddbbbddddddddyddb
+bfddfffbdddddbddbbbddddvsrvdddb
+bfdffddodddddoddwxCddvyrLZddddb
+bfdffdfbdddddbddbbbdddsvddddddb
+bfddddfbdddddbddbbbddddddvdsddb
+bbbbbbbbbbobbbbbbbbbbbbbbbbbbbb
+aaaaaaaaabdbaaaaaaaaaaaaaaaaaaa
+aaaaaaaaabobaaaaaaaaaaaaaaaaaaa
+"}

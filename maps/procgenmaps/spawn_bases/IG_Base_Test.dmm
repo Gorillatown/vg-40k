@@ -1,0 +1,39 @@
+"a" = (/turf/unsimulated/outside/sand,/area/vault/warhammergen/cadianspawn)
+"f" = (/obj/effect/decal/loot_pointer,/turf/simulated/floor,/area/vault/warhammergen/ig_loot_area)
+"n" = (/obj/machinery/light/he{dir = 1},/turf/simulated/floor,/area/vault/warhammergen/ig_loot_area)
+"s" = (/obj/effect/landmark/start/inquisitor,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"v" = (/obj/effect/landmark/start/commissar,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"y" = (/obj/effect/landmark/start/primaris_psyker,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"z" = (/obj/effect/landmark/start/preacher,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"M" = (/turf/simulated/floor,/area/vault/warhammergen/ig_loot_area)
+"R" = (/obj/machinery/light/he,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"T" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/cadianspawn)
+"U" = (/obj/effect/landmark/start/IG_Cadian_Trooper,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"V" = (/obj/effect/landmark/start/IG_Cadian_Sergeant,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"W" = (/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"X" = (/obj/machinery/light/he{dir = 1},/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+"Y" = (/turf/simulated/wall/r_wall,/area/vault/warhammergen/ig_loot_area)
+"Z" = (/obj/effect/landmark/start/general,/turf/simulated/floor,/area/vault/warhammergen/cadianspawn)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaa
+aTTTTTTWWWWWWYYYYYYa
+aTWWXWXWWWWWWYMnMMYa
+aTWWWWWWWWWWWYMMMMYa
+aTWWWWWWWWWWWYMMMMYa
+aTWWVWWWUWWWWYYfYYYa
+aXWWWWWWWWWWWWXWWWXa
+aWWWWWWWWWWRTWWWWWWa
+aWWWWWWWWWUTTTWWWWWa
+aWWWvWWWZWWXTWWWWWWa
+aWWWWWTRWWWWWWWWWWWa
+aWWWWTTTWWWUWWWWWWWa
+aWWWsWTXzWWWWWWWWWWa
+aRWWWWWWWWWWWWWWWWRa
+aTWWWWWWWWWWWWWWWWTa
+aTWWWWWWyWWWWWWWWWTa
+aTWWWWWWWWWWWWWWWWTa
+aTWRWWWWWWWWWWWWRWTa
+aTTTTTWWWWWWWWTTTTTa
+aaaaaaaaaaaaaaaaaaaa
+"}

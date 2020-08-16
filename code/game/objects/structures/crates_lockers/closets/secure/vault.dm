@@ -1,0 +1,52 @@
+/obj/structure/closet/secure_closet/vault
+	name = "vault locker"
+	desc = "For when you absolutely need to keep something safe."
+	icon_state = "vault1"
+	anchored = 1 //immovable
+	icon_closed = "vault"
+	icon_locked = "vault1"
+	icon_opened = "vaultopen"
+	icon_broken = "vaultbroken"
+	icon_off = "vaultoff"
+	health = 20000
+
+/obj/structure/closet/secure_closet/vault/ex_act(var/severity) //bomb-proof
+	switch(severity)
+		if(1.0)
+			health -= 500
+		if(2.0)
+			health -= 100
+		if(3.0)
+			health -= 20
+	var/list/bombs = search_contents_for(/obj/item/device/transfer_valve)
+	if(!isemptylist(bombs)) //If there's a bomb inside the locker when it's hit with an explosion, the things inside lose their protection
+		for(var/obj/O in src)
+			O.ex_act(severity)
+
+/obj/structure/closet/secure_closet/vault/emp_act(severity) //EMP-proof
+	return
+
+/obj/structure/closet/secure_closet/vault/armory
+	name = "\improper Armory vault locker"
+	
+/obj/structure/closet/secure_closet/vault/armory/atoms_to_spawn()
+	if(Holiday == APRIL_FOOLS_DAY)
+		return list(
+			/obj/item/weapon/gun/projectile/rocketlauncher = 1,
+			/obj/item/ammo_casing/rocket_rpg = 3,
+		)
+
+/obj/structure/closet/secure_closet/vault/armory/lawgiver/New()
+	..()
+	new /obj/item/weapon/storage/lockbox/lawgiver(src)
+
+/obj/structure/closet/secure_closet/vault/vault
+
+/obj/structure/closet/secure_closet/vault/centcomm
+	name = "\improper Centcomm vault locker"
+
+/obj/structure/closet/secure_closet/vault/syndicate
+	name = "\improper Syndicate vault locker"
+
+/obj/structure/closet/secure_closet/vault/ert
+	name = "\improper ERT vault locker"

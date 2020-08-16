@@ -1,0 +1,43 @@
+"a" = (/turf/simulated/wall/mineral/wood,/area/vault/warhammergen/neutral_town)
+"b" = (/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"e" = (/obj/machinery/door/mineral/wood,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"f" = (/obj/effect/landmark/start/mime,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"h" = (/obj/machinery/vending/games,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"i" = (/obj/machinery/door/mineral/wood,/obj/road_node,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"k" = (/obj/structure/bed/chair/comfy/black,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"o" = (/obj/machinery/vending/hatdispenser,/obj/machinery/light/he{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"r" = (/obj/machinery/fishtank/tank,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"t" = (/obj/item/weapon/chainsword,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"u" = (/obj/machinery/vending/chapel,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"v" = (/obj/structure/bed/chair/comfy/couch/left/red{dir = 4},/obj/machinery/light/he{dir = 8},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"x" = (/obj/structure/table/woodentable,/obj/item/binoculars,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"y" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/grille,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"z" = (/obj/machinery/light/he{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"A" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/grille,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"B" = (/obj/structure/bed,/obj/item/weapon/bedsheet/clown,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"C" = (/obj/machinery/washing_machine,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"D" = (/obj/structure/bed/chair/comfy/couch/right/red{dir = 4},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"F" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"G" = (/obj/machinery/vending/shoedispenser,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"J" = (/obj/structure/bed,/obj/item/weapon/bedsheet/mime,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"K" = (/obj/structure/table/woodentable,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"M" = (/obj/structure/clock,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"R" = (/obj/machinery/vending/suitdispenser,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"T" = (/obj/machinery/vending/circus,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"U" = (/obj/effect/landmark/start/clown,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"W" = (/obj/machinery/vending/barber,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"X" = (/obj/machinery/vending/autodrobe,/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+"Z" = (/obj/structure/bed/chair/comfy/couch/mid/red{dir = 4},/turf/simulated/floor/wood/floor_tile,/area/vault/warhammergen/neutral_town)
+
+(1,1,1) = {"
+aaaaaaaaaa
+aBzkaCrRoF
+abUbabbbby
+aXbbebbbbA
+abbtavKbba
+aaaaaZKbbi
+aXzuaDxbba
+abfbebbbMa
+atJbaWhGTa
+aaaaaaaaaa
+"}

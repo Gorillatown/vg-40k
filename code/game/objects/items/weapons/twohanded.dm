@@ -1,0 +1,309 @@
+/* Two-handed Weapons
+ * Contains:
+ * 		Twohanded
+ *		Fireaxe
+ *		Double-Bladed Energy Swords
+ *		Spears
+ *		High Energy Frequency Blade
+ */
+
+///////////OFFHAND///////////////
+//what the mob gets when wielding something
+/obj/item/offhand
+	w_class = W_CLASS_HUGE
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "offhand"
+	name = "offhand"
+	abstract = 1
+	var/obj/item/wielding = null
+
+/obj/item/offhand/dropped(user)
+	if(!wielding)
+		qdel(src)
+		return null
+	return wielding.unwield(user)
+
+
+/obj/item/offhand/unwield(user)
+	if(!wielding)
+		qdel(src)
+		return null
+	return wielding.unwield(user)
+
+/obj/item/offhand/preattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return
+	if(istype(target, /obj/item/weapon/storage)) //we place automatically
+		return
+	if(wielding)
+		if(!target.attackby(wielding, user))
+			wielding.afterattack(target, user, proximity_flag, click_parameters)
+		return 1
+
+/obj/item/offhand/attack_self(mob/user)
+	if(!wielding)
+		qdel(src)
+		return null
+	return wielding.unwield(user)
+
+/obj/item/offhand/proc/attach_to(var/obj/item/I)
+	I.wielded = src
+	wielding = I
+	name = wielding.name + " offhand"
+	desc = "Your second grip on the [I.name]"
+
+/obj/item/offhand/IsShield()//if the actual twohanded weapon is a shield, we count as a shield too!
+	return wielding.IsShield()
+/*
+ * Fireaxe
+ */
+/obj/item/weapon/fireaxe  // DEM AXES MAN, marker -Agouri
+	icon_state = "fireaxe0"
+	hitsound = "sound/weapons/bloodyslice.ogg"
+	name = "fire axe"
+	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
+	w_class = W_CLASS_LARGE
+	sharpness = 1.2
+	sharpness_flags = SHARP_BLADE | CHOPWOOD
+	force = 10
+	slot_flags = SLOT_BACK
+	attack_verb = list("attacks", "chops", "cleaves", "tears", "cuts")
+	flags = TWOHANDABLE | SLOWDOWN_WHEN_CARRIED
+	slowdown = FIREAXE_SLOWDOWN
+
+/obj/item/weapon/fireaxe/update_wield(mob/user)
+	..()
+	item_state = "fireaxe[wielded ? 1 : 0]"
+	force = wielded ? 40 : initial(force)
+	if(user)
+		user.update_inv_hands()
+
+/obj/item/weapon/fireaxe/suicide_act(mob/user)
+		to_chat(viewers(user), "<span class='danger'>[user] is smashing \himself in the head with the [src.name]! It looks like \he's commit suicide!</span>")
+		return (SUICIDE_ACT_BRUTELOSS)
+
+/obj/item/weapon/fireaxe/afterattack(atom/A, mob/user, proximity)
+	if(!proximity)
+		return
+	..()
+	if(A && wielded && (istype(A,/obj/structure/window))) //destroys windows and grilles in one hit
+		user.delayNextAttack(8)
+		if(istype(A,/obj/structure/window))
+			var/pdiff=performWallPressureCheck(A.loc)
+			if(pdiff>0)
+				message_admins("[A] with pdiff [pdiff] fire-axed by [user.real_name] ([formatPlayerPanel(user,user.ckey)]) at [formatJumpTo(A.loc)]!")
+				log_admin("[A] with pdiff [pdiff] fire-axed by [user.real_name] ([user.ckey]) at [A.loc]!")
+			var/obj/structure/window/W = A
+			W.shatter()
+		else
+			qdel(A)
+			A = null
+
+/*
+ * High-Frequency Blade
+ */
+/obj/item/weapon/katana/hfrequency
+	icon_state = "hfrequency0"
+	item_state = "hfrequency0"
+	name = "high-frequency blade"
+	desc = "Keep hands off blade at all times."
+	slot_flags = SLOT_BACK
+	throwforce = 35
+	throw_speed = 5
+	throw_range = 10
+	sharpness = 2
+	sharpness_flags = SHARP_TIP | SHARP_BLADE | CHOPWOOD | CUT_WALL | CUT_AIRLOCK //it's a really sharp blade m'kay
+	w_class = W_CLASS_LARGE
+	flags = TWOHANDABLE
+	mech_flags = MECH_SCAN_FAIL
+	origin_tech = Tc_MAGNETS + "=4;" + Tc_COMBAT + "=5"
+
+/obj/item/weapon/katana/hfrequency/update_wield(mob/user)
+	..()
+	item_state = "hfrequency[wielded ? 1 : 0]"
+	force = wielded ? 200 : 50
+	sharpness = wielded ? 100 : 2
+	armor_penetration = wielded ? 100 : 50
+	if(user)
+		user.update_inv_hands()
+	return
+
+/obj/item/weapon/katana/hfrequency/IsShield()
+	if(wielded)
+		return 1
+	else
+		return 0
+
+
+//spears
+/obj/item/weapon/spear
+	icon_state = "spearglass0"
+	var/base_state = "spearglass"
+
+	name = "spear"
+	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
+	force = 10
+	sharpness = 0.8
+	sharpness_flags = SHARP_TIP | INSULATED_EDGE
+	w_class = W_CLASS_LARGE
+	slot_flags = SLOT_BACK
+	throwforce = 15
+	flags = TWOHANDABLE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacks", "pokes", "jabs", "tears", "gores")
+
+	var/base_force = 10
+
+/obj/item/weapon/spear/update_wield(mob/user)
+	icon_state = "[base_state][wielded ? 1 : 0]"
+	item_state = "[base_state][wielded ? 1 : 0]"
+
+	force = base_force
+	if(wielded)
+		force += 8
+
+	if(user)
+		user.update_inv_hands()
+	return
+
+/obj/item/weapon/spear/attackby(obj/item/weapon/W, mob/user)
+	..()
+	if(istype(W, /obj/item/organ/external/head))
+		if(isork(user))
+			var/mob/living/carbon/human/the_ork = user
+			var/obj/item/organ/external/head/the_head = W
+			if(!the_head.used)
+				the_ork.grow_nigga(50)
+				the_head.used = TRUE
+		if(loc == user)
+			user.drop_item(src, force_drop = 1)
+		var/obj/structure/headpole/H = new (get_turf(src), W, src)
+		user.drop_item(W, H, force_drop = 1)
+
+/obj/item/weapon/spear/wooden
+	name = "steel spear"
+	desc = "An ancient weapon of an ancient design, with a smooth wooden handle and a sharp steel blade."
+	icon_state = "spear0"
+	base_state = "spear"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/swords_axes.dmi', "right_hand" = 'icons/mob/in-hand/right/swords_axes.dmi')
+
+	force = 16
+	throwforce = 25
+
+/obj/item/binoculars
+	name = "binoculars"
+	desc = "Used for long-distance surveillance."
+	icon_state = "binoculars"
+	item_state = "binoculars"
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/newsprites_lefthand.dmi', "right_hand" = 'icons/mob/in-hand/right/newsprites_righthand.dmi')
+	gender = PLURAL
+	flags = TWOHANDABLE
+	slot_flags = SLOT_BELT
+	w_class = W_CLASS_SMALL
+
+/obj/item/binoculars/proc/mob_moved(var/list/event_args, var/mob/holder)
+	if(wielded)
+		unwield(holder)
+
+/obj/item/binoculars/update_wield(mob/user)
+	if(wielded)
+		user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		user.visible_message("\The [user] holds \the [src] up to \his eyes.","You hold \the [src] up to your eyes.")
+		item_state = "binoculars_wielded"
+		user.regenerate_icons()
+		if(user && user.client)
+			user.regenerate_icons()
+			var/client/C = user.client
+			C.changeView(C.view + 7)
+	else
+		user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		user.visible_message("\The [user] lowers \the [src].","You lower \the [src].")
+		item_state = "binoculars"
+		user.regenerate_icons()
+		if(user && user.client)
+			user.regenerate_icons()
+			var/client/C = user.client
+			C.changeView(C.view - 7)
+
+/obj/item/weapon/bloodlust
+	icon_state = "bloodlust0"
+	name = "high-frequency pincer blade \"bloodlust\""
+	desc = "A scissor-like weapon made using two high-frequency machetes. Don't run with it in your hands."
+	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/swords_axes.dmi', "right_hand" = 'icons/mob/in-hand/right/swords_axes.dmi')
+	force = 17
+	throwforce = 3
+	throw_speed = 1
+	throw_range = 5
+	attack_delay = 15 // Heavy.//Come on man that makes it useless (reduced it)
+	w_class = W_CLASS_LARGE
+	flags = TWOHANDABLE
+	mech_flags = MECH_SCAN_ILLEGAL
+	sharpness_flags = SHARP_BLADE | SERRATED_BLADE
+	origin_tech = Tc_COMBAT + "=6" + Tc_SYNDICATE + "=6"
+	attack_verb = list("attacks", "slashes", "stabs", "slices", "tears", "rips", "dices", "cuts")
+
+/obj/item/weapon/bloodlust/update_wield(mob/user)
+	..()
+	icon_state = "bloodlust[wielded ? 1 : 0]"
+	item_state = icon_state
+	force = wielded ? 34 : initial(force)
+	sharpness_flags = wielded ? SHARP_BLADE | SERRATED_BLADE | HOT_EDGE | CUT_WALL | CUT_AIRLOCK : initial(sharpness_flags)
+	sharpness = wielded ? 2 : initial(sharpness)
+	armor_penetration = wielded ? 100 : 50
+	to_chat(user, wielded ? "<span class='warning'> [src] starts vibrating.</span>" : "<span class='notice'> [src] stops vibrating.</span>")
+	playsound(user, wielded ? 'sound/weapons/hfmachete1.ogg' : 'sound/weapons/hfmachete0.ogg', 40, 0 )
+	if(user)
+		user.update_inv_hands()
+	if(wielded)
+		user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	else
+		user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+
+/obj/item/weapon/bloodlust/attack(target, mob/living/user)
+	if(isliving(target))
+		playsound(target, get_sfx("machete_hit"),50, 0)
+	if(clumsy_check(user) && prob(50))
+		to_chat(user, "<span class='warning'>Son of a bitch... You... got yourself.</span>")
+		playsound(target, get_sfx("machete_hit"),50, 0)
+		user.take_organ_damage(wielded ? 34 : 17)
+		return
+	..()
+
+/obj/item/weapon/bloodlust/proc/mob_moved(atom/movable/mover)
+	if(iscarbon(mover) && wielded)
+		for(var/obj/effect/plantsegment/P in range(mover,0))
+			qdel(P)
+
+/obj/item/weapon/bloodlust/IsShield()
+	if(wielded)
+		return 1
+	else
+		return 0
+
+/obj/item/weapon/bloodlust/pickup(mob/user)
+	playsound(src.loc, 'sound/weapons/Genhit.ogg', 50, 1)
+	to_chat(user, "<span class='notice'>You attach [src] to your arm.</span>")
+	cant_drop = 1
+
+/obj/item/weapon/bloodlust/attackby(obj/item/weapon/W, mob/living/user)
+	..()
+	if(W.is_screwdriver(user) && user.is_holding_item(src))
+		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+		to_chat(user, "<span class='notice'>You detach [src] from your arm.</span>")
+		new /obj/item/weapon/melee/energy/hfmachete(user.loc)
+		new /obj/item/weapon/melee/energy/hfmachete(user.loc)
+		qdel(src)
+
+/obj/item/weapon/bloodlust/suicide_act(mob/user)
+	. = (SUICIDE_ACT_OXYLOSS)
+	user.visible_message("<span class='danger'>[user] is putting \his neck between \the [src]s blades! It looks like \he's trying to commit suicide.</span>")
+	spawn(2 SECONDS) //Adds drama.
+	if(ishuman(user))
+		var/mob/living/carbon/human/U = user
+		if(U.organs_by_name)
+			var/datum/organ/external/head/H = U.get_organ(LIMB_HEAD)
+			if(istype(H) && ~H.status & ORGAN_DESTROYED)
+				H.droplimb(1)
+				playsound(U, get_sfx("machete_hit"),50, 0)
+				blood_splatter(get_turf(user),U,1)
+	return .

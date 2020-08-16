@@ -1,0 +1,5 @@
+<h1>/vg/station: 40k</h1>
+<h3>This is a testing session.</h3>
+<i>Report Bugs, Feedback, and suggestions in the discord.
+<b>Respawns are currently on.
+<b>Discord:</b> https://discord.gg/QK9XgqN

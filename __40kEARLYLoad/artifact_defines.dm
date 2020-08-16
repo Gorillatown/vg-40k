@@ -1,0 +1,6 @@
+#define IE_ATK_SELF "attack_self"
+#define IE_EQP "equip"
+#define IE_FOUND "found"
+#define IE_ATK "attack"
+#define IE_ATK_OTHER "attack_other"
+#define IE_ATK_HAND "attack_hand"

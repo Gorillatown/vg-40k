@@ -1,0 +1,183 @@
+// Remember to update the LOWEST_DENOMINATION define if you add a smaller denomination
+// WARNING: Update cash.dm's dispense_cash proc to permit denominations below $1, else it'll runtime. - CW
+var/global/list/moneytypes = list(
+	/obj/item/weapon/spacecash/c1000 = 1000,
+	/obj/item/weapon/spacecash/c100  = 100,
+	/obj/item/weapon/spacecash/c10   = 10,
+	/obj/item/weapon/spacecash       = 1,
+	// /obj/item/weapon/coin/plasma       = 0.1,
+	// /obj/item/weapon/coin/iron       = 0.01,
+)
+
+/obj/item/weapon/spacecash
+	name = "credit chip"
+	desc = "Money money money."
+	gender = PLURAL
+	icon = 'icons/obj/money.dmi'
+	icon_state = "cash1"
+	opacity = 0
+	density = 0
+	anchored = 0.0
+	force = 1.0
+	throwforce = 1.0
+	throw_speed = 1
+	throw_range = 2
+	w_class = W_CLASS_TINY
+	var/access = list()
+	var/worth = 1 //Per chip
+	var/amount = 1 //Number of chips
+	var/stack_color = "#4E054F"
+	autoignition_temperature=AUTOIGNITION_PAPER
+
+/obj/item/weapon/spacecash/New(var/new_loc,var/new_amount=1)
+	. = ..(new_loc)
+	name = "[worth] credit chip"
+	amount = new_amount
+	update_icon()
+
+/obj/item/weapon/spacecash/attack_hand(mob/user )
+	if (user.get_inactive_hand() == src)
+		var/obj/item/weapon/spacecash/C = new src.type(user, new_amount=1)
+		C.copy_evidences(src)
+		user.put_in_hands(C)
+		
+		amount--
+		if(amount<=0)
+			qdel(src)
+		else
+			update_icon()
+	else
+		return ..()
+
+/obj/item/weapon/spacecash/proc/copy_evidences(obj/item/stack/from )
+	src.blood_DNA = from.blood_DNA
+
+/obj/item/weapon/spacecash/proc/can_stack_with(obj/item/other_stack)
+	return src.type == other_stack.type
+
+/obj/item/weapon/spacecash/preattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if (!proximity_flag)
+		return 0
+
+	if (can_stack_with(target))
+		var/obj/item/weapon/spacecash/S = target
+		if (amount >= 10)
+			to_chat(user, "\The [src] cannot hold anymore chips.")
+			return 1
+		var/to_transfer = 1
+		if (user.get_inactive_hand()!=S)
+			to_transfer = min(S.amount, 10-amount)
+		amount+=to_transfer
+		to_chat(user, "You add [to_transfer] chip\s to the stack. It now contains [amount] chips, worth [amount*worth] credits.")
+		S.amount-=to_transfer
+		if(S.amount<=0)
+			qdel(S)
+		else
+			S.update_icon()
+		update_icon()
+		return 1
+	return ..()
+
+/obj/item/weapon/spacecash/examine(mob/user)
+	if(amount > 1)
+		setGender(PLURAL)
+	else
+		setGender(NEUTER)
+	..()
+	if(amount > 1)
+		to_chat(user, "It's a stack holding [amount] chips.")
+	to_chat(user, "<span class='info'>It's worth [worth*amount] credits.</span>")
+
+/obj/item/weapon/spacecash/update_icon()
+	icon_state = "cash[worth]"
+	//Up to 100 items per stack.
+	overlays = 0
+	var/stacksize=round(amount/2.5)
+	pixel_x = rand(-7, 7) * PIXEL_MULTIPLIER
+	pixel_y = rand(-14, 14) * PIXEL_MULTIPLIER
+	if(stacksize)
+		// 0 = single
+		// 1 = 1/4 stack
+		// 2 = 1/2 stack
+		// 3 = 3/4 stack
+		// 4 = full stack
+		var/image/stack = image(icon,icon_state="cashstack[stacksize]")
+		stack.color=stack_color
+		overlays += stack
+
+/obj/item/weapon/spacecash/proc/collect_from(var/obj/item/weapon/spacecash/cash)
+	if(cash.worth == src.worth)
+		var/taking = min(10-src.amount,cash.amount)
+		cash.amount -= taking
+		src.amount += taking
+		if(cash.amount <= 0)
+			qdel(cash)
+		return taking
+	return 0
+
+/obj/item/weapon/spacecash/afterattack(atom/A, mob/user )
+	if(istype(A, /obj/item/weapon/spacecash))
+		var/obj/item/weapon/spacecash/cash = A
+		var/collected = src.collect_from(cash)
+		if(collected)
+			update_icon()
+			to_chat(user, "<span class='notice'>You add [collected] [src.name][amount > 1 ? "s":""] to your stack of cash.</span>")
+
+/obj/item/weapon/spacecash/proc/get_total()//I can't believe this didn't exist here already.
+	return worth * amount
+
+/obj/item/weapon/spacecash/c10
+	icon_state = "cash10"
+	worth = 10
+	stack_color = "#663200"
+
+/obj/item/weapon/spacecash/c100
+	icon_state = "cash100"
+	worth = 100
+	stack_color = "#084407"
+
+/obj/item/weapon/spacecash/c1000
+	icon_state = "cash1000"
+	worth = 1000
+	stack_color = "#333333"
+
+/obj/structure/closet/cash_closet/spawn_contents()
+	var/list/types = typesof(/obj/item/weapon/spacecash)-/obj/item/weapon/spacecash/cN
+	for(var/i = 1 to rand(3,10))
+		var/typepath = pick(types)
+		new typepath(src)
+	..()
+
+/obj/item/weapon/spacecash/cN
+	icon_state = "cashN"
+	worth = 1
+	stack_color = "#FFD700"
+
+/obj/item/weapon/spacecash/cN/update_icon()
+	return //There's no going higher or lower
+
+// TODO: Allow denominations below $1
+/proc/dispense_cash(var/amount, var/loc)
+	var/list/cash_spawned = list()
+	if(amount > 100000)
+		var/obj/item/weapon/spacecash/SC = new /obj/item/weapon/spacecash/cN(loc, 1)
+		SC.worth = amount
+		SC.name = "[SC.worth] credit chip"
+		cash_spawned.Add(SC)
+		return cash_spawned
+	for(var/cashtype in moneytypes)
+		var/slice = moneytypes[cashtype]
+		var/dispense_count = Floor(amount/slice)
+		amount = amount % slice
+		while(dispense_count>0)
+			var/dispense_this_time = min(dispense_count,10)
+			if(dispense_this_time > 0)
+				cash_spawned.Add(new cashtype(loc,dispense_this_time))
+				dispense_count -= dispense_this_time
+
+	return cash_spawned
+
+/proc/count_cash(var/list/cash)
+	. = 0
+	for(var/obj/item/weapon/spacecash/C in cash)
+		. += C.get_total()

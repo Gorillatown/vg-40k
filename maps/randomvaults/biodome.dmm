@@ -1,0 +1,126 @@
+"aa" = (/turf/space,/area)
+"ab" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"ad" = (/obj/machinery/door/airlock/external,/obj/docking_port/destination/vault/biodome,/turf/simulated/floor/plating,/area/vault/biodome)
+"ae" = (/turf/simulated/floor/airless,/area/vault/biodome)
+"af" = (/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating,/area/vault/biodome)
+"ag" = (/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/vault/biodome)
+"ah" = (/obj/structure/window/full/reinforced,/turf/simulated/floor/plating,/area/vault/biodome)
+"ai" = (/turf/simulated/wall,/area/vault/biodome)
+"aj" = (/obj/machinery/door/airlock/external,/turf/simulated/floor/plating,/area/vault/biodome)
+"ak" = (/turf/simulated/floor/grass,/area/vault/biodome)
+"am" = (/turf/simulated/floor,/area/vault/biodome)
+"an" = (/turf/simulated/floor/plating,/area/vault/biodome)
+"ao" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"ap" = (/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"aq" = (/obj/machinery/power/solar/panel/tracker,/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"ar" = (/obj/machinery/power/solar/panel,/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"as" = (/obj/machinery/power/solar/panel,/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"at" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/airless,/area/vault/biodome)
+"au" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"av" = (/obj/structure/flora/ausbushes/reedbush,/turf/simulated/floor/grass,/area/vault/biodome)
+"aw" = (/obj/machinery/power/solar/panel,/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"ay" = (/obj/structure/flora/ausbushes/ppflowers,/turf/simulated/floor/grass,/area/vault/biodome)
+"az" = (/obj/structure/flora/ausbushes/stalkybush,/turf/simulated/floor/grass,/area/vault/biodome)
+"aA" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"aB" = (/obj/machinery/portable_atmospherics/hydroponics/soil,/turf/simulated/floor/grass,/area/vault/biodome)
+"aD" = (/obj/machinery/power/solar/panel,/obj/structure/cable,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"aE" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/airless,/area/vault/biodome)
+"aF" = (/obj/machinery/chem_dispenser,/turf/simulated/floor/wood,/area/vault/biodome)
+"aG" = (/obj/structure/flora/ausbushes/ywflowers,/turf/simulated/floor/grass,/area/vault/biodome)
+"aH" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"aI" = (/obj/structure/flora/ausbushes/leafybush,/turf/simulated/floor/grass,/area/vault/biodome)
+"aJ" = (/obj/structure/flora/ausbushes/genericbush,/turf/simulated/floor/grass,/area/vault/biodome)
+"aK" = (/obj/structure/flora/ausbushes/sparsegrass,/turf/simulated/floor/grass,/area/vault/biodome)
+"aL" = (/obj/structure/flora/ausbushes/sparsegrass,/obj/structure/window/reinforced,/turf/simulated/floor/grass,/area/vault/biodome)
+"aM" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/airless,/area/vault/biodome)
+"aN" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/grass,/area/vault/biodome)
+"aO" = (/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/grass,/area/vault/biodome)
+"aP" = (/obj/structure/flora/ausbushes/stalkybush,/obj/structure/window/reinforced,/turf/simulated/floor/grass,/area/vault/biodome)
+"aS" = (/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/grass,/area/vault/biodome)
+"aT" = (/turf/simulated/floor/wood,/area/vault/biodome)
+"aU" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor,/area/vault/biodome)
+"aY" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/wood,/area/vault/biodome)
+"aZ" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/wood,/area/vault/biodome)
+"ba" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/wood,/area/vault/biodome)
+"bb" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor,/area/vault/biodome)
+"bc" = (/obj/structure/flora/ausbushes/ppflowers,/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/grass,/area/vault/biodome)
+"bd" = (/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/grass,/area/vault/biodome)
+"be" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/wood,/area/vault/biodome)
+"bf" = (/obj/structure/closet/crate/hydroponics,/obj/item/weapon/pickaxe/shovel/spade,/obj/item/weapon/hatchet,/turf/simulated/floor/wood,/area/vault/biodome)
+"bg" = (/obj/structure/table/woodentable,/obj/item/weapon/fossil/plant,/obj/item/weapon/disk/shuttle_coords/vault/biodome,/turf/simulated/floor/grass,/area/vault/biodome)
+"bh" = (/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/grass,/area/vault/biodome)
+"bi" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor,/area/vault/biodome)
+"bj" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/vault/biodome)
+"bk" = (/obj/machinery/power/battery/smes,/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/simulated/floor/wood,/area/vault/biodome)
+"bl" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/vault/biodome)
+"bm" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/simulated/floor,/area/vault/biodome)
+"bo" = (/obj/machinery/power/terminal{dir = 8},/obj/structure/cable,/turf/simulated/floor/wood,/area/vault/biodome)
+"bp" = (/obj/machinery/floodlight/on,/turf/simulated/floor/wood,/area/vault/biodome)
+"bq" = (/obj/machinery/power/solar/control,/obj/structure/cable,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/wood,/area/vault/biodome)
+"br" = (/obj/structure/table/woodentable,/obj/item/weapon/fossil/plant,/turf/simulated/floor/grass,/area/vault/biodome)
+"bs" = (/obj/structure/flora/ausbushes/sparsegrass,/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/grass,/area/vault/biodome)
+"bt" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/simulated/floor/grass,/area/vault/biodome)
+"bu" = (/obj/structure/window/reinforced,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/simulated/floor/plating,/area/vault/biodome)
+"bv" = (/obj/machinery/door/airlock/external,/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/plating,/area/vault/biodome)
+"bw" = (/obj/machinery/seed_extractor,/turf/simulated/floor,/area/vault/biodome)
+"bx" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/vault/biodome)
+"by" = (/obj/machinery/door/airlock/external,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/simulated/floor/plating,/area/vault/biodome)
+"bz" = (/obj/jectie_time,/turf/simulated/floor,/area/vault/biodome)
+"bA" = (/obj/machinery/vending/hydroseeds,/turf/simulated/floor,/area/vault/biodome)
+"bB" = (/obj/machinery/biogenerator,/turf/simulated/floor,/area/vault/biodome)
+"bD" = (/obj/structure/window/reinforced{dir = 2},/turf/simulated/floor/grass,/area/vault/biodome)
+"bE" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/bot/farmbot/duey,/turf/simulated/floor,/area/vault/biodome)
+"bF" = (/obj/structure/flora/ausbushes/ywflowers,/obj/structure/window/reinforced,/turf/simulated/floor/grass,/area/vault/biodome)
+"bG" = (/obj/structure/window/reinforced,/turf/simulated/floor/grass,/area/vault/biodome)
+"bH" = (/obj/structure/closet/crate/hydroponics,/obj/item/weapon/reagent_containers/glass/bucket,/obj/item/weapon/minihoe,/turf/simulated/floor/wood,/area/vault/biodome)
+"bJ" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor,/area/vault/biodome)
+"bK" = (/obj/machinery/floodlight/on,/turf/simulated/floor/grass,/area/vault/biodome)
+"bL" = (/obj/machinery/door/airlock/external,/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/plating,/area/vault/biodome)
+"bN" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/simulated/floor/airless,/area/vault/biodome)
+"bO" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/simulated/floor/airless,/area/vault/biodome)
+"cr" = (/obj/machinery/vending/hydronutrients,/turf/simulated/floor,/area/vault/biodome)
+"gV" = (/obj/structure/closet/crate/hydroponics,/obj/item/weapon/wirecutters/clippers,/obj/item/weapon/storage/bag/plants,/turf/simulated/floor/wood,/area/vault/biodome)
+"pi" = (/obj/machinery/power/solar/panel,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable,/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"qE" = (/obj/structure/flora/ausbushes/palebush,/turf/simulated/floor/grass,/area/vault/biodome)
+"zH" = (/obj/structure/flora/ausbushes/grassybush,/turf/simulated/floor/grass,/area/vault/biodome)
+"zU" = (/obj/structure/flora/ausbushes/pointybush,/turf/simulated/floor/grass,/area/vault/biodome)
+"Cr" = (/obj/structure/table/woodentable,/obj/item/weapon/reagent_containers/glass/mortar,/turf/simulated/floor/wood,/area/vault/biodome)
+"EA" = (/obj/structure/cable{icon_state = "0-4"; d2 = 4},/obj/machinery/power/apc{dir = 1; pixel_y = 24; pixel_x = 0},/turf/simulated/floor,/area/vault/biodome)
+"Hc" = (/obj/machinery/floodlight/on,/turf/simulated/floor,/area/vault/biodome)
+"Hl" = (/obj/structure/reagent_dispensers/watertank,/turf/simulated/floor/wood,/area/vault/biodome)
+"Hp" = (/obj/machinery/power/solar/panel,/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"LJ" = (/obj/machinery/power/solar/panel,/obj/structure/cable,/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"Uj" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/simulated/floor/plating/airless,/area/vault/biodome)
+"ZA" = (/obj/structure/flora/ausbushes/ywflowers,/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/grass,/area/vault/biodome)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaapaeaeaeaeanafadaganaeaeaeaeapaaaaaaaaaaaaaa
+aaaaaaaaaaaaapaeahahahahahaianaiahahahahahaeapaaaaaaapaqaa
+aaaaaaaaaaapaeahahakaJakamaiajaiamakakakahahaeapaaauabaoaa
+aaaaaaaaawaeahahakakakakamamamamamakakazakahahaearaAapaaaa
+aaaaaaasatahahakakaGavakamamamamamavakaNakakahahaeaDaaaaaa
+aaaaauatahahakaBaBaBaBakamamamamamakakayakaGakahahaEaHaaaa
+aaauatahahakbKaIakakaKakamamamamamakakakakaJakakahahaEaHaa
+auatahahakaBaBaBaBaBakaGamamamamamaPbGbFbGbGaLbGakahahaEaH
+aMahahakakakazakayaIakakamambbbibiaZaZaZaYaZaZbaaSakahahaM
+aMahakaBaBaBaBaBaBakaTaSamamaUamambcbdbkboaTbpbqaSakakahaM
+aMahakakaKakbKakakaTbfaSamamaUamambgbhbeaTaTaTbeaSakakahaM
+aMahakakakaIaGaNakaOaObKamamaUamambrbsbebtaObdbeaSakakahaM
+blahamamamamambbbibibibibibibmamamamamaUamamamaUamamamahbl
+buaiaiamamamamaUamamamamamaibwaiamamamaUamamamaUamamaiaibu
+bvbxbybibibibibmamambzamambAaibBbbbibibEamamambJbibibybxbL
+bjaiaiamamamamamamamamamamaicraiaUamamamamamamamamamaiaibj
+blahamamamamamamamamamamHcamamEAbmamamamamamamamamamamahbl
+aMahakakzHakakqEakbGbDaIamamamamamakbFbGakakaIakakakakahaM
+aMahakakakaBaGakakHlbHaSamamamamamZAgVaFakaKakaBakavakahaM
+aMahakzHaKaBakaBaGakCraSamamambzambhaTbKayaBakaBakaNakahaM
+aMahahakakaBbKaBayaBakakamamamamamakakaBaGaBaIaBayakahahaM
+UjbOahahakaBzUaBakaBakakamamamamamakakaBakaBakaBakahahbNao
+aaUjbOahahakaGaBakaBaKakamamamamamaGakaBaKaBbKakahahbNaoaa
+aaaaUjbOahahakaBakaBakaGamamamamamakqEaBakaBakahahbNaoaaaa
+aaaaaapibOahahakaKaBbKaIamamamamamakakaBakayahahbNHpaaaaaa
+aaaaaaaaLJaeahahakaBakakamamamamamakakaBakahahaeLJaaaaaaaa
+aaaaaaaaaaapaeahahakakakamaiajaiamakakakahahaeapaaaaaaaaaa
+aaaaaaaaaaaaapaeahahahahahaianaiahahahahahaeapaaaaaaaaaaaa
+aaaaaaaaaaaaaaapaeaeaeaeanafajaganaeaeaeaeapaaaaaaaaaaaaaa
+"}

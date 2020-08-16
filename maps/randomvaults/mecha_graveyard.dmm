@@ -1,0 +1,103 @@
+"aa" = (/obj/effect/decal/cleanable/dirt,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"ac" = (/obj/effect/decal/cleanable/blood/gibs/robot,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"ad" = (/obj/structure/hanging_lantern{dir = 1},/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"ae" = (/turf/space,/area)
+"af" = (/obj/item/stack/rods,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"ag" = (/obj/effect/decal/cleanable/blood/gibs/robot/limb,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"ai" = (/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aj" = (/obj/jectie_time,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"an" = (/obj/effect/decal/cleanable/soot,/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"ao" = (/obj/structure/hanging_lantern,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"ap" = (/obj/effect/decal/mecha_wreckage/graveyard_ripley,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aq" = (/obj/structure/girder,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"ar" = (/obj/structure/girder,/obj/item/stack/rods,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"as" = (/turf/unsimulated/floor/asteroid/plating{dir = 1; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"at" = (/turf/unsimulated/floor/asteroid/plating{dir = 5; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"au" = (/obj/effect/decal/cleanable/blood/gibs/robot/down,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"av" = (/obj/effect/decal/cleanable/ash,/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"aw" = (/obj/effect/decal/cleanable/blood/gibs/robot,/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"ay" = (/obj/machinery/status_display{pixel_y = 32},/obj/effect/decal/mecha_wreckage/durand,/obj/effect/decal/cleanable/soot,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"az" = (/obj/jectie_time,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"aA" = (/turf/unsimulated/floor/asteroid/plating{dir = 4; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"aB" = (/obj/item/stack/sheet/plasteel,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aC" = (/obj/effect/decal/mecha_wreckage/marauder,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aD" = (/obj/item/mecha_parts/mecha_equipment/repair_droid,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"aH" = (/obj/effect/decal/cleanable/blood/gibs/robot,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"aI" = (/obj/item/stack/ore/slag,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aK" = (/obj/effect/decal/cleanable/soot,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aL" = (/obj/effect/decal/mecha_wreckage/durand,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"aM" = (/turf/unsimulated/floor/asteroid/plating{dir = 10; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"aN" = (/obj/effect/decal/cleanable/dirt,/turf/unsimulated/floor/asteroid/plating{dir = 0; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"aQ" = (/obj/effect/decal/mecha_wreckage/gygax,/obj/effect/decal/cleanable/soot,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"aW" = (/turf/unsimulated/mineral/random,/area/vault/mecha_graveyard)
+"aX" = (/obj/effect/decal/cleanable/ash,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aY" = (/obj/structure/grille/broken,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"aZ" = (/obj/effect/decal/mecha_wreckage/graveyard_ripley,/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"ba" = (/obj/structure/hanging_lantern{dir = 8},/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"bb" = (/obj/effect/decal/cleanable/blood/oil,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"bc" = (/obj/structure/disposalpipe/segment{dir = 4},/obj/item/weapon/broken_pipe_tomahawk,/turf/unsimulated/floor/asteroid/plating{dir = 4; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"bd" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/unsimulated/floor/asteroid/plating,/area/vault/mecha_graveyard)
+"be" = (/obj/item/stack/ore/iron,/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"bf" = (/obj/effect/decal/cleanable/blood/gibs/robot/up,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"bg" = (/obj/item/broken_device,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"bh" = (/obj/structure/hanging_lantern{dir = 4},/turf/unsimulated/floor/asteroid/plating{dir = 9; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"bi" = (/obj/structure/reagent_dispensers/fueltank,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"bm" = (/obj/structure/ore_box,/turf/unsimulated/floor/asteroid/plating{dir = 8; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"bn" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/obj/structure/window/full/reinforced,/turf/simulated/floor/plating,/area/vault/mecha_graveyard)
+"bp" = (/obj/effect/decal/remains/human,/obj/effect/decal/cleanable/soot,/turf/unsimulated/floor/asteroid/plating,/area/vault/mecha_graveyard)
+"bq" = (/obj/effect/decal/mecha_wreckage/graveyard_clarke,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"br" = (/turf/unsimulated/floor/asteroid/plating,/area/vault/mecha_graveyard)
+"bs" = (/obj/effect/decal/cleanable/blood/gibs/robot/limb,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"bt" = (/obj/item/weapon/broken_bottle,/turf/unsimulated/floor/asteroid/plating{dir = 8; icon_state = "asteroidwarning"},/area/vault/mecha_graveyard)
+"bu" = (/obj/item/stack/ore/glass,/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"bv" = (/turf/unsimulated/floor/asteroid{icon_state = "asteroid_dug"},/area/vault/mecha_graveyard)
+"bw" = (/obj/machinery/door/airlock/external,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"bx" = (/obj/machinery/mech_bay_recharge_port,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"by" = (/obj/item/weapon/screwdriver,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"bz" = (/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"bA" = (/turf/simulated/wall,/area/vault/mecha_graveyard)
+"cd" = (/obj/item/clothing/shoes/galoshes/broken,/turf/unsimulated/floor/asteroid/plating,/area/vault/mecha_graveyard)
+"hS" = (/obj/machinery/computer/mech_bay_power_console,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"je" = (/obj/machinery/conveyor{dir = 4; id_tag = "mining_west"},/obj/item/stack/sheet/plasteel,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"oz" = (/obj/item/weapon/shard{icon_state = "medium"},/obj/item/weapon/shard,/turf/space,/area)
+"tr" = (/obj/item/weapon/shard,/turf/unsimulated/floor/asteroid/plating,/area/vault/mecha_graveyard)
+"ue" = (/obj/structure/girder/displaced,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"yj" = (/obj/structure/lattice,/obj/structure/girder,/turf/space,/area)
+"yS" = (/obj/machinery/mineral/unloading_machine,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"zR" = (/obj/docking_port/destination/vault/mecha_graveyard{dir = 2},/obj/machinery/door/airlock/external,/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"Ao" = (/obj/machinery/conveyor{dir = 4; id_tag = "mining_west"},/turf/unsimulated/floor/asteroid/plating{icon_state = "asteroidfloor"},/area/vault/mecha_graveyard)
+"EP" = (/obj/item/weapon/shard{icon_state = "small"},/turf/space,/area)
+"EY" = (/obj/item/weapon/shard{icon_state = "medium"},/turf/space,/area)
+"QA" = (/obj/item/clothing/glasses/scanner/meson,/turf/unsimulated/floor/asteroid,/area/vault/mecha_graveyard)
+"SC" = (/obj/structure/lattice,/turf/space,/area)
+"Wj" = (/obj/machinery/mech_bay_recharge_floor{icon_state = "recharge_floor_asteroid"},/turf/simulated/floor,/area/vault/mecha_graveyard)
+
+(1,1,1) = {"
+aeaeaeaeaeaeaebAbAbAaiaiaiaiaWaWaWaWaeaeaeaeaeaeae
+aeaeaeaeaeaeaebzbzbAaiaiaiaiaWaWaWaWaeaeaeaeaeaeae
+aeaeaeaeaeaeafaiaabAaiaiaibvaWaWaWaWaWaWaWaWaeaeae
+aeaeaeaeaeaiaiaiacadaiaibvbvbvbvaWaWaWaWaWaWaeaeae
+aeaeaeaiaiaiagaiaiaiaiajbububvbvbvaZaWaWaWaWaWaWaW
+aeaeaiaiaiaiaiaiaiafaiaibvbubvanbvbebvbvbvbvbvaiai
+aeaeaiaibzaiaiaiaiaiaiaWbvbebebvbububvbvbvbebvaiai
+aeaiaiaibzaoaiaiaiaiaWaWaWaWapbebububvbebvbuacaiai
+aeaqaiarbAbAbAasatauaiaWaWaWaWbebvavbvawbvbvbvbvbv
+aiaiasaiaybzbzazaAaiaiaBaWaWaWbvaibvbubvbvbvbvbvbv
+aCaiaaaDbzbzaHaaaAafaibzaWaWaIaiaiaiaKaiaiaibvaWae
+aiaLaMaNbzbzaQbzaAaiaiaiaiaXaiaiaiaiaiaiaiaiaWaWae
+aeaiaiaYbAbAbabbbcbdaibfbzbgaibhbAbAbAaiaiaiaeaeae
+aeaeaqaiafaBaqbiaiaiafaibzaibzbmbnbpbqaiaeaeaeaeae
+aeaeaeaiaiaibAbrbrbrbraibzajbsbtbwbbbyaeaeaeaeaeae
+aeaeaeaeaeaeaebrbxWjhSaibzaiQAaMueafacaeaeaeaeaeae
+aeaeaeaeaeaeaebrcdbrbrbzbfaiySjeAoueaiaeaeaeaeaeae
+aeaeaeaeaeaeaeaeaeafaibzaiaiaibrtraeEPaeaeaeaeaeae
+aeaeaeaeaeaeaeaeSCaibAbAzRbAaqSCSCEYaeozaeaeaeaeae
+aeaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeSCaeEPaeaeaeaeaeae
+aeaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeae
+aeaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeyjaeaeaeaeaeaeaeae
+aeaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeae
+aeaeaeaeaeaeaeaeyjaeaeaeaeaeaeaeSCaeaeaeaeaeaeaeae
+aeaeaeaeaeaeaeaeSCSCaeaeaeaeaeSCSCaeaeaeaeaeaeaeae
+aeaeaeaeaeaeaeaeaeSCaeaeaeaeaeSCaeaeaeaeaeaeaeaeae
+aeaeaeaeaeaeaeaeaeSCSCyjSCSCSCSCaeaeaeaeaeaeaeaeae
+"}
