@@ -27,16 +27,6 @@
 		for(var/M in mind.heard_before)
 			if(mind.heard_before[M] == src)
 				mind.heard_before[M] = null
-	if(on_spellcast)
-		on_spellcast.holder = null
-	if(on_uattack)
-		on_uattack.holder = null
-	if(on_ruattack)
-		on_ruattack.holder = null
-	if(on_damaged)
-		on_damaged.holder = null
-	if(on_death)
-		on_death.holder = null
 	unset_machine()
 	if(mind && mind.current == src)
 		mind.current = null
@@ -71,21 +61,6 @@
 	hud_used = null
 	for(var/atom/movable/leftovers in src)
 		qdel(leftovers)
-	qdel(on_logout)
-	on_logout = null
-	qdel(on_spellcast)
-	qdel(on_uattack)
-	qdel(on_ruattack)
-	qdel(on_damaged)
-	qdel(on_clickon)
-	qdel(on_death)
-
-	on_spellcast = null
-	on_uattack = null
-	on_ruattack = null
-	on_damaged = null
-	on_clickon = null
-	on_death = null
 
 	if(transmogged_from)
 		qdel(transmogged_from)
@@ -102,7 +77,7 @@
 			qdel(A)
 		orient_object = null
 
-	if (ticker && ticker.mode)
+	if(ticker && ticker.mode)
 		ticker.mode.mob_destroyed(src)
 	..()
 
@@ -277,14 +252,6 @@
 		living_mob_list += src
 
 	store_position()
-	on_spellcast = new(owner = src)
-	on_uattack = new(owner = src)
-	on_ruattack = new(owner = src)
-	on_logout = new(owner = src)
-	on_damaged = new(owner = src)
-	on_clickon = new(owner = src)
-	on_death = new(owner = src)
-
 	forceMove(loc) //Without this, area.Entered() isn't called when a mob is spawned inside area
 
 	if(flags & HEAR_ALWAYS)
@@ -1910,8 +1877,7 @@ Use this proc preferably at the end of an equipment loadout
 //High order proc to remove a mobs spell channeling, removes channeling fully
 /mob/proc/remove_spell_channeling()
 	if(spell_channeling)
-		var/spell/thespell = on_uattack.handlers[spell_channeling][EVENT_OBJECT_INDEX]
-		thespell.channel_spell(force_remove = 1)
+		spell_channeling.channel_spell(force_remove = 1)
 		return 1
 	return 0
 
