@@ -885,15 +885,12 @@
 	flick("rune_convert_start",conversion)
 	playsound(R, 'sound/effects/convert_start.ogg', 75, 0, -4)
 
-	for(var/obj/item/device/gps/secure/SPS in get_contents_in_object(victim))
-		SPS.OnMobDeath(victim)//Think carefully before converting a sec officer
-
-	if (victim.mind)
-		if (victim.mind.assigned_role in impede_medium)
+	if(victim.mind)
+		if(victim.mind.assigned_role in impede_medium)
 			to_chat(victim, "<span class='warning'>Your sense of duty impedes down the ritual.</span>")
 			to_chat(activator, "<span class='warning'>Their will is strong, the ritual will take longer.</span>")
 
-		if (victim.mind.assigned_role in impede_hard)
+		if(victim.mind.assigned_role in impede_hard)
 			to_chat(victim, "<span class='warning'>Your devotion to higher causes impedes the ritual.</span>")
 			to_chat(activator, "<span class='warning'>Their willpower is amazing, the ritual will be exhausting.</span>")
 

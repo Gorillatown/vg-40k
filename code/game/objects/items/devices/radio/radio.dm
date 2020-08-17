@@ -524,54 +524,11 @@
 	else if(illegalradio_construction == 2)
 		to_chat(user, "You need wirecutters to remove the wiring!")
 
-/obj/item/device/radio/attackby(obj/item/weapon/W, mob/user )
+/obj/item/device/radio/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
 	user.set_machine(src)
-	if(W.is_screwdriver(user))
-		if(illegalradio_construction == 0)
-			W.playtoolsound(src, 50)
-			b_stat = !( b_stat )
-			if (b_stat)
-				user.show_message("<span class = 'notice'>\The [src] can now be attached and modified!</span>")
-			else
-				user.show_message("<span class = 'notice'>\The [src] can no longer be modified or attached!</span>")
-		else if(illegalradio_construction == 2)
-			to_chat(user, "You forcefully tighten the radio's back cover.")
-			W.playtoolsound(src, 50)
-			if(src.loc == user)
-				user.drop_item(src, force_drop = 1)
-				var/obj/item/device/illegalradio/I = new (get_turf(user))
-				user.put_in_hands(I)
-				message_admins("[key_name(user)] just built a ghetto radio. ([formatJumpTo(get_turf(user))])")
-				var/text = "[key_name(user)] just built a ghetto radio."
-				log_game(text)
-				log_admin(text)
-			else
-				new /obj/item/device/illegalradio(get_turf(src.loc))
-			qdel(src)
-		else
-			to_chat(user, "You can't close the cover with the ansible inside!")
-	else if(istype(W, /obj/item/weapon/ghetto_ansible) && illegalradio_construction == 0 && b_stat)
-		to_chat(user, "You wedge \the [W] in the back of \the [src].")
-		illegalradio_construction = 1
-		qdel(W)
-	else if(istype(W, /obj/item/stack/cable_coil) && illegalradio_construction == 1 && b_stat)
-		var/obj/item/stack/cable_coil/C = W
-		if(C.amount < 3)
-			to_chat(user, "You don't have enough cables to wire the radio!")
-			return
-		to_chat(user, "You add high-voltage wires to the radio.")
-		illegalradio_construction = 2
-		C.use(3)
-	else if(iswirecutter(W) && illegalradio_construction == 2 && b_stat)
-		to_chat(user, "You cut the extra wires out of the radio.")
-		W.playtoolsound(user, 50)
-		illegalradio_construction = 1
-		var/obj/item/stack/cable_coil/C = new (get_turf(user))
-		C.amount = 3
 	updateDialog()
 	update_icon()
-	
 
 /obj/item/device/radio/update_icon()
 	..()

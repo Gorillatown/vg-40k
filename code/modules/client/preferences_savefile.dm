@@ -108,6 +108,7 @@
 	max_chat_length 	 =  text2num(preference_list_client["max_chat_length"])
 	obj_chat_on_map 	 =  text2num(preference_list_client["obj_chat_on_map"])
 	no_goonchat_for_obj  =  text2num(preference_list_client["no_goonchat_for_obj"])
+	tgui_fancy           =  text2num(preference_list_client["tgui_fancy"])
 	
 	lastchangelog	= 	sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style		= 	sanitize_inlist(UI_style, list("White", "Midnight","Orange","old"), initial(UI_style))
@@ -140,6 +141,7 @@
 	max_chat_length 	 =  sanitize_integer(max_chat_length, 0, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
 	obj_chat_on_map 	 =  sanitize_integer(obj_chat_on_map, 0, 1, initial(obj_chat_on_map))
 	no_goonchat_for_obj  =  sanitize_integer(no_goonchat_for_obj, 0, 1, initial(no_goonchat_for_obj))
+	tgui_fancy           =  sanitize_integer(tgui_fancy, 0, 1, initial(tgui_fancy))
 	initialize_preferences()
 	return 1
 
@@ -214,15 +216,15 @@
 	check.Add("SELECT ckey FROM client WHERE ckey = ?", ckey)
 	if(check.Execute(db))
 		if(!check.NextRow())
-			q.Add("INSERT into client (ckey, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, credits, jingle, hear_voicesound, hear_instruments, ambience_volume, credits_volume, window_flashing, antag_objectives,mob_chat_on_map, max_chat_length, obj_chat_on_map, no_goonchat_for_obj) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",\
-										ckey, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, credits, jingle, hear_voicesound, hear_instruments, ambience_volume, credits_volume, window_flashing, antag_objectives, mob_chat_on_map, max_chat_length, obj_chat_on_map, no_goonchat_for_obj)
+			q.Add("INSERT into client (ckey, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, credits, jingle, hear_voicesound, hear_instruments, ambience_volume, credits_volume, window_flashing, antag_objectives,mob_chat_on_map, max_chat_length, obj_chat_on_map, no_goonchat_for_obj, tgui_fancy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",\
+										ckey, lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, credits, jingle, hear_voicesound, hear_instruments, ambience_volume, credits_volume, window_flashing, antag_objectives, mob_chat_on_map, max_chat_length, obj_chat_on_map, no_goonchat_for_obj, tgui_fancy)
 			if(!q.Execute(db))
 				message_admins("Error in save_preferences_sqlite [__FILE__] ln:[__LINE__] #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error in save_preferences_sqlite [__FILE__] ln:[__LINE__] #:[q.Error()] - [q.ErrorMsg()]")
 				return 0
 		else
-			q.Add("UPDATE client SET lastchangelog=?,UI_style=?,default_slot=?,toggles=?,UI_style_color=?,UI_style_alpha=?,warns=?,warnbans=?,randomslot=?,volume=?,usewmp=?,special=?,usenanoui=?,tooltips=?,progress_bars=?,space_parallax=?,space_dust=?,parallax_speed=?, stumble=?, attack_animation=?, pulltoggle=?, credits=?, jingle=?, hear_voicesound=?, hear_instruments=?, ambience_volume=?, credits_volume=?, window_flashing=?, antag_objectives=?, mob_chat_on_map=?, max_chat_length=?, obj_chat_on_map=?, no_goonchat_for_obj=? WHERE ckey = ?",\
-									lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, credits, jingle, hear_voicesound, hear_instruments, ambience_volume, credits_volume, window_flashing, antag_objectives, mob_chat_on_map, max_chat_length, obj_chat_on_map,no_goonchat_for_obj, ckey)
+			q.Add("UPDATE client SET lastchangelog=?,UI_style=?,default_slot=?,toggles=?,UI_style_color=?,UI_style_alpha=?,warns=?,warnbans=?,randomslot=?,volume=?,usewmp=?,special=?,usenanoui=?,tooltips=?,progress_bars=?,space_parallax=?,space_dust=?,parallax_speed=?, stumble=?, attack_animation=?, pulltoggle=?, credits=?, jingle=?, hear_voicesound=?, hear_instruments=?, ambience_volume=?, credits_volume=?, window_flashing=?, antag_objectives=?, mob_chat_on_map=?, max_chat_length=?, obj_chat_on_map=?, no_goonchat_for_obj=?, tgui_fancy=? WHERE ckey = ?",\
+									lastchangelog, UI_style, default_slot, toggles, UI_style_color, UI_style_alpha, warns, warnbans, randomslot, volume, usewmp, special_popup, usenanoui, tooltips, progress_bars, space_parallax, space_dust, parallax_speed, stumble, attack_animation, pulltoggle, credits, jingle, hear_voicesound, hear_instruments, ambience_volume, credits_volume, window_flashing, antag_objectives, mob_chat_on_map, max_chat_length, obj_chat_on_map,no_goonchat_for_obj, tgui_fancy, ckey)
 			if(!q.Execute(db))
 				message_admins("Error in save_preferences_sqlite [__FILE__] ln:[__LINE__] #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error in save_preferences_sqlite [__FILE__] ln:[__LINE__] #:[q.Error()] - [q.ErrorMsg()]")
