@@ -68,12 +68,10 @@ checks if usr is an admin with at least ONE of the flags in rights_required. (No
 if rights_required == 0, then it simply checks if they are an admin.
 if it doesn't return 1 and show_msg=1 it will prints a message explaining why the check has failed
 generally it would be used like so:
-
 proc/admin_proc()
 	if(!check_rights(R_ADMIN))
 		return
 	to_chat(world, "you have enough rights!")
-
 NOTE: it checks usr! not src! So if you're checking somebody's rank in a proc which they did not call
 you will have to do something like if(client.rights & R_ADMIN) yourself.
 */
@@ -131,19 +129,38 @@ you will have to do something like if(client.rights & R_ADMIN) yourself.
 	if(recurse==5)
 		return "\[BROKEN\]";
 	recurse++
-	var/DBQuery/query = dbcon.NewQuery("DELETE FROM admin_sessions WHERE expires < Now()")
-	query.Execute()
-
-	query = dbcon.NewQuery("SELECT sessID FROM admin_sessions WHERE ckey = '[owner.ckey]' AND expires > Now()")
-	query.Execute()
+	var/datum/DBQuery/query = SSdbcore.NewQuery("DELETE FROM admin_sessions WHERE expires < Now()")
+	if(!query.Execute())
+		message_admins("Error: [query.ErrorMsg()]")
+		log_sql("Error: [query.ErrorMsg()]")
+		qdel(query)
+		return
+	var/datum/DBQuery/sel_query = SSdbcore.NewQuery("SELECT sessID FROM admin_sessions WHERE ckey = '[owner.ckey]' AND expires > Now()")
+	if(!sel_query.Execute())
+		message_admins("Error: [sel_query.ErrorMsg()]")
+		log_sql("Error: [sel_query.ErrorMsg()]")
+		qdel(sel_query)
+		return
+	qdel(sel_query)
 
 	sessKey=0
 	while(query.NextRow())
 		sessKey = query.item[1]
-		query=dbcon.NewQuery("UPDATE admin_sessions SET expires=DATE_ADD(NOW(), INTERVAL 24 HOUR), IP='[owner.address]' WHERE ckey = '[owner.ckey]")
-		query.Execute()
+		var/datum/DBQuery/up_query=SSdbcore.NewQuery("UPDATE admin_sessions SET expires=DATE_ADD(NOW(), INTERVAL 24 HOUR), IP='[owner.address]' WHERE ckey = '[owner.ckey]")
+		if(!up_query.Execute())
+			message_admins("Error: [up_query.ErrorMsg()]")
+			log_sql("Error: [up_query.ErrorMsg()]")
+			qdel(up_query)
+			return
+		qdel(up_query)
 		return sessKey
+	qdel(query)
 
-	query=dbcon.NewQuery("INSERT INTO admin_sessions (sessID,ckey,expires, IP) VALUES (UUID(), '[owner.ckey]', DATE_ADD(NOW(), INTERVAL 24 HOUR), '[owner.address]')")
-	query.Execute()
+	var/datum/DBQuery/insert_query=SSdbcore.NewQuery("INSERT INTO admin_sessions (sessID,ckey,expires, IP) VALUES (UUID(), '[owner.ckey]', DATE_ADD(NOW(), INTERVAL 24 HOUR), '[owner.address]')")
+	if(!insert_query.Execute())
+		message_admins("Error: [insert_query.ErrorMsg()]")
+		log_sql("Error: [insert_query.ErrorMsg()]")
+		qdel(insert_query)
+		return
+	qdel(insert_query)
 	return checkSessionKey(recurse)
