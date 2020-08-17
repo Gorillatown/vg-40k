@@ -39,11 +39,6 @@ var/datum/early_init/early_init_datum = new
 		WORLD_X_OFFSET += rand(-50,50)
 		WORLD_Y_OFFSET += rand(-50,50)
 
-	// Initialize world events as early as possible.
-	on_login = new ()
-	on_ban   = new ()
-	on_unban = new ()
-
 	// logs
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
 

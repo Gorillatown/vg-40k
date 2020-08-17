@@ -314,12 +314,6 @@ var/list/extracted_gna = list()
 var/list/trash_items = list()
 var/list/decals = list()
 
-// Mostly used for ban systems.
-// Initialized on world/New()
-var/global/event/on_login
-var/global/event/on_ban
-var/global/event/on_unban
-
 // Space get this to return for things i guess?
 var/global/datum/gas_mixture/space_gas = new
 
@@ -496,7 +490,7 @@ var/global/list/radial_menus = list()
 // Copying atoms is stupid and this is a stupid solution
 var/list/variables_not_to_be_copied = list(
 	"type","loc","locs","vars","parent","parent_type","verbs","ckey","key",
-	"group","on_login","on_ban","on_unban","registered_events",
+	"group","registered_events",
 	"on_explode","on_projectile","in_chamber","power_supply","contents",
 	"x","y","z"
 )
