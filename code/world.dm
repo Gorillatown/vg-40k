@@ -81,8 +81,7 @@ var/datum/early_init/early_init_datum = new
 	make_datum_references_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 
 	load_configuration()
-
-	SSdbcore.Initialize() // Get a database running, first thing
+	SSdbcore.Initialize(world.timeofday) // Get a database running, first thing
 
 	load_mode()
 	load_motd()
