@@ -5,6 +5,7 @@ Forked from /vg/station.
 
 Discord: https://discord.gg/5F9sQDF
 
+Coding Standards: Nil. 
 
 
 ---
