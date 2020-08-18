@@ -84,7 +84,7 @@ var/global/list/rnd_machines = list()
 	if (prob(50))
 		qdel(src)
 
-/obj/machinery/r_n_d/attack_hand(mob/user )
+/obj/machinery/r_n_d/attack_hand(mob/user)
 	if (shocked)
 		shock(user,50)
 	if(panel_open)

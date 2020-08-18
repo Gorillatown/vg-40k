@@ -1,0 +1,20 @@
+<!--
+Used In File(s): z40k_shit\structure\patrol_checkpointmastr.dm
+-->
+<h1>Checkpoint Monitor</h1>
+
+<div class='item'>
+	<div class='statusDisplay'>
+		{{for data.checkpoints}}
+			<div class="line">
+				<div class="statusValue">Location:
+					<span class="average">{{:value.name}}</span>
+				</div>
+				<div class="statusValue">Time:
+					<span class="average">{{:value.time}}</span>
+				</div>
+			</div>
+		{{/for}}
+	</div>
+</div>
+

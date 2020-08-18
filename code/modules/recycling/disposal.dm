@@ -197,7 +197,7 @@
 
 
 // monkeys can only pull the flush lever
-/obj/machinery/disposal/attack_paw(mob/user )
+/obj/machinery/disposal/attack_paw(mob/user)
 	if(stat & BROKEN)
 		return
 
@@ -206,11 +206,11 @@
 	return
 
 // ai as human but can't flush
-/obj/machinery/disposal/attack_ai(mob/user )
+/obj/machinery/disposal/attack_ai(mob/user)
 	ui_interact(user)
 
 // human interact with machine
-/obj/machinery/disposal/attack_hand(mob/user )
+/obj/machinery/disposal/attack_hand(mob/user)
 	if(user && user.loc == src)
 		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside.</span>")
 		return

@@ -103,7 +103,7 @@
 		var/client/C = client
 		C.persist.potential -= 1
 		C.persist.save_persistence_sqlite(C.ckey,C,FALSE)
-		to_chat(src, "<span class='bad'> You feel the possibilities fade from you.</span>.")
+		to_chat(src, "<span class='bad'> You feel the possibilities fade from you, along with everything else. </span>.")
 
 	//If we have brain worms, dump 'em.
 	var/mob/living/simple_animal/borer/B=has_brain_worms()
@@ -124,7 +124,7 @@
 				if(!suiciding)
 					for(var/role in H.mind.antag_roles)
 						var/datum/role/R = H.mind.antag_roles[role]
-						R.point_handler()
+						R.point_handler(src)
 
 	if(!gibbed)
 		update_canmove()

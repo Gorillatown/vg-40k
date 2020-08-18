@@ -20,14 +20,19 @@
 	var/score_results = ""
 	var/total_times_patrolled = 0
 	var/total_life_exterminated = 0
+	var/total_orks_exterminated = 0
 
 	score_results += "<span class='danger'>The round has come to a close.</span><br><br>"
 	for(var/datum/role/R in members)
-		if(istype(R,/datum/role/planetary_defense_force))
+		if(istype(R,/datum/role/planetary_defense_force)) //lmao this is so lazy but idc if it crashes at the end of a round.
 			total_times_patrolled += R:times_patrolled
 			total_life_exterminated += R:exterminated
+			total_orks_exterminated += R:orks_exterminated
 
-	score_results += "Total living beings Exterminated: <b>[total_life_exterminated]</b>.<br>"
+	score_results += "Total sentient beings Exterminated: <b>[total_life_exterminated]</b>.<br>"
+	score_results += "Total Orks Exterminated: <b>[total_orks_exterminated]</b><br>"
+	var/warcrime_total = clamp((total_life_exterminated-total_orks_exterminated),0,500)
+	score_results += "Warcrime total: <font color='#ff0000'><b>[warcrime_total]</b></font>"
 	score_results += "The total checkpoints checked in: <b>[total_times_patrolled]</b> times.<br>"
 	score_results += "<b>Notable Members:</b><br>"
 	for(var/datum/role/R in members)
@@ -41,8 +46,9 @@
 				score_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
 				score_results += "<b>[PDEFF.antag.key]</b> as <b>[PDEFF.antag.name]</b><br>"
 				score_results += "<b>Times Patrolled:</b> [PDEFF.times_patrolled]<br>"
-				score_results += "<b>Exterminated:</b> [PDEFF.exterminated]<br>"
-				var/personal_score = round(PDEFF.times_patrolled+PDEFF.exterminated)
+				score_results += "<b>Orks Exterminated:</b> [PDEFF.orks_exterminated]<br>"
+				score_results += "<b>Total Beings Exterminated:</b> [PDEFF.exterminated]<br>"
+				var/personal_score = round(PDEFF.times_patrolled+PDEFF.orks_exterminated)
 				score_results += "<b><font size='5'>Total Reward:</font></b> <font color='#07fa0c'>[personal_score]</font> Points gained."
 				if(PDEFF.antag.current.client)
 					var/client/C = PDEFF.antag.current.client

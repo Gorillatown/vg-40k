@@ -2811,6 +2811,7 @@
 #include "z40k_shit\structure\mekanicalshouta.dm"
 #include "z40k_shit\structure\nuke_computer.dm"
 #include "z40k_shit\structure\patrol_checkpoint.dm"
+#include "z40k_shit\structure\patrol_checkpointmastr.dm"
 #include "z40k_shit\structure\shipcontainers.dm"
 #include "z40k_shit\structure\orktrophies\headbanner.dm"
 #include "z40k_shit\structure\orktrophies\headpole.dm"

@@ -168,7 +168,7 @@ For vending packs, see vending_packs.dm*/
 		return TRUE
 	return FALSE
 
-/obj/machinery/computer/supplycomp/attack_hand(var/mob/user )
+/obj/machinery/computer/supplycomp/attack_hand(var/mob/user)
 	/*if(!check_restriction(user)) Let's allow anyone to READ the computer, but you need access to... (1) approve orders (2) send/call shuttle (3) delete requests (4) change permissions
 		to_chat(user, "<span class='warning'>Access Denied.</span>")
 		return*/
@@ -185,7 +185,7 @@ For vending packs, see vending_packs.dm*/
 
 	onclose(user, "computer")
 
-/obj/machinery/computer/supplycomp/attackby(obj/item/I, user )
+/obj/machinery/computer/supplycomp/attackby(obj/item/I, user)
 	if(istype(I,/obj/item/weapon/card/emag) && !hacked)
 		to_chat(user, "<span class='notice'>Special supplies unlocked.</span>")
 		hacked = 1
@@ -193,12 +193,12 @@ For vending packs, see vending_packs.dm*/
 	if(I.is_screwdriver(user))
 		playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, src, 20))
-			if (stat & BROKEN)
+			if(stat & BROKEN)
 				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
-				var/obj/structure/computerframe/A = new /obj/structure/computerframe( loc )
+				var/obj/structure/computerframe/A = new /obj/structure/computerframe(loc)
 				new /obj/item/weapon/shard(loc)
-				var/obj/item/weapon/circuitboard/supplycomp/M = new /obj/item/weapon/circuitboard/supplycomp( A )
-				for (var/obj/C in src)
+				var/obj/item/weapon/circuitboard/supplycomp/M = new /obj/item/weapon/circuitboard/supplycomp(A)
+				for(var/obj/C in src)
 					C.forceMove(loc)
 				A.circuit = M
 				A.state = 3
@@ -226,7 +226,7 @@ For vending packs, see vending_packs.dm*/
 	if(!current_acct)
 		return
 	// data to send to ui
-	var/data[0]
+	var/data[0] 
 	// make assoc list for supply groups because either I'm retarded or nanoui is retarded
 	var/supply_group_data[0]
 	for(var/i = 1; i <= all_supply_groups.len; i++)

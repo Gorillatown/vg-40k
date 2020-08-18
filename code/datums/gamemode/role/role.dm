@@ -504,7 +504,7 @@
 /*
 	40k Append, this basically is just a place to dump point handlers. If its a points saved mode.
 */
-/datum/role/proc/point_handler()
+/datum/role/proc/point_handler(var/mob/living/carbon/human/H)
 	return
 
 

@@ -8,8 +8,9 @@
 	id = PDF
 	special_role = PDF
 	logo_state = "ig-standard-logo"
-	var/times_patrolled = 0
-	var/exterminated = 0
+	var/times_patrolled = 0 //Total times patrolled
+	var/exterminated = 0 //Total things we have killed
+	var/orks_exterminated = 0 //Total orks we have killed
 
 /datum/role/planetary_defense_force/New(var/datum/mind/M, var/datum/faction/fac=null, var/new_id)
 	..()
@@ -26,5 +27,7 @@
 /datum/role/planetary_defense_force/GetScoreboard()
 	return // We handle it on the faction proc, since its a score list.
 
-/datum/role/planetary_defense_force/point_handler()
+/datum/role/planetary_defense_force/point_handler(var/mob/living/carbon/human/H)
 	exterminated++ //Simple enough
+	if(isork(H))
+		orks_exterminated++
