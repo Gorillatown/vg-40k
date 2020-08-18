@@ -79,7 +79,6 @@ var/list/tzeentchpads = list()
 	else
 		active_dungeon = FALSE
 		
-
 	if(ticker >= 2)
 		ticker = 0
 	

@@ -338,7 +338,7 @@
 
 		return
 
-	if (locking_categories_name.Find(category))
+	if(locking_categories_name.Find(category))
 		var/datum/locking_category/C = locking_categories_name[category]
 		return C.locked
 

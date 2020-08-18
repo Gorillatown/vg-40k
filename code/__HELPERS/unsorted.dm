@@ -1597,7 +1597,7 @@ Game Mode config tags:
 "raginmages""
 */
 
-/proc/find_active_faction_by_type(var/faction_type)
+/proc/find_active_faction_by_type(var/datum/faction/faction_type)
 	if(!ticker || !ticker.mode)
 		return null
 	return locate(faction_type) in ticker.mode.factions

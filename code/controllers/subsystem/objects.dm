@@ -19,7 +19,7 @@ var/list/processing_objects = list()
 
 /datum/subsystem/obj/Initialize()
 	for(var/atom/object in world)
-		if(!(flags & ATOM_INITIALIZED))
+		if (!(flags & ATOM_INITIALIZED))
 			object.initialize()
 		else
 			stack_trace("[object.type] initialized twice")
@@ -36,7 +36,7 @@ var/list/processing_objects = list()
 
 
 /datum/subsystem/obj/fire(resumed = FALSE)
-	if (!resumed)
+	if(!resumed)
 		currentrun = global.processing_objects.Copy()
 
 	while (currentrun.len)

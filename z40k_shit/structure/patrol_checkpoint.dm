@@ -29,12 +29,12 @@ Maybe give the person who actually did it a point of potential for doing so.
 
 /obj/structure/patrol_checkpoint/New()
 	..()
+	processing_objects += src
 
 /obj/structure/patrol_checkpoint/initialize()
-	..()
 	name = "Checkpoint Signal Console ([location])"
 	patrol_checkpoints += src
-	processing_objects += src
+	..()
 
 /obj/structure/patrol_checkpoint/Destroy()
 	patrol_checkpoints -= src
@@ -48,19 +48,21 @@ Maybe give the person who actually did it a point of potential for doing so.
 /obj/structure/patrol_checkpoint/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if(istype(W,/obj/item/weapon/card/id))
-		if(!logged_in_mob)
-			var/obj/item/weapon/card/id/id_card = W	
-			if(access_checkpoints in id_card.access)
-				say("Checkpoint Signal in 20 Seconds. Please Standby")
-				logged_in_mob = user
-				checked_in = TRUE
-				return
+		if(!signal_cooldown)
+			if(!logged_in_mob)
+				var/obj/item/weapon/card/id/id_card = W	
+				if(access_checkpoints in id_card.access)
+					say("Checkpoint Signal in 20 Seconds. Please Standby")
+					logged_in_mob = user
+					checked_in = TRUE
+					return
+			else
+				say("[user.name] already marked. Please Standby until duty has been fulfilled.")
 		else
-			say("[user.name] already marked. Please Standby until duty has been fulfilled.")
+			say("Signal Cooldown, Next iteration in [time_left*2] Seconds.")
 
 /obj/structure/patrol_checkpoint/proc/active_signal()
 	var/msg = "Patrol Checkpoint Signalled at [location]"
-	say("Checkpoint Signalled. Keep fulfilling your duty.")
 	var/datum/speech/speech = create_speech(msg, frequency=COMMON_FREQ, transmitter=src)
 	speech.name = "[location] Checkpoint Console"
 	speech.job = "Automated Announcement"
@@ -68,11 +70,13 @@ Maybe give the person who actually did it a point of potential for doing so.
 	speech.set_language(LANGUAGE_GALACTIC_COMMON)
 	Broadcast_Message(speech, level = list(src.z))
 	qdel(speech)
+	say("Checkpoint Signalled. Keep fulfilling your duty.")
 	for(var/role in logged_in_mob?.mind?.antag_roles)
 		var/datum/role/R = logged_in_mob.mind.antag_roles[role]
 		if(istype(R,/datum/role/planetary_defense_force))
 			R:times_patrolled += 1 //They gain a marker.
 
+	signal_cooldown = TRUE
 	logged_in_mob = null
 
 /obj/structure/patrol_checkpoint/proc/lets_a_go(mob/user)
@@ -82,9 +86,11 @@ Maybe give the person who actually did it a point of potential for doing so.
 			<B>Currently checked in:</B> <I><strong>[checked_in ? "<span style=\"color:green\">TRUE</span>":"<span style=\"color:red\">FALSE</span>"]</strong></I><BR>"}
 
 	if(!checked_in)
-		dat += "<BR><I><B>SIGNAL CHECKPOINT</I></B><BR>"
 		dat += "Please Scan Identification <br>"
 	else
+		dat += "Greetings [logged_in_mob.name]"
+
+	if(signal_cooldown)
 		dat += "<BR><B><span style=\"color:red\">TIME UNTIL NEXT CHECK-IN SIGNAL</span></B><BR>"
 		dat += "[time_left] Seconds"
 
@@ -103,6 +109,8 @@ Maybe give the person who actually did it a point of potential for doing so.
 			switch(checkin_pivot_timer) //Itsa switch
 				if(-5 to 0) //If negative 5 to 0, we have met the goal
 					active_signal()
+					checkin_pivot_timer = 10
+					checked_in = FALSE
 				if(40 to 50) //If we are at this point we need to stop and reset
 					var/msg = "Checkpoint Failed to Signal at [location]. Last identification was [logged_in_mob.name]"
 					var/datum/speech/speech = create_speech(msg, frequency=COMMON_FREQ, transmitter=src)

@@ -237,7 +237,7 @@ var/datum/controller/gameticker/ticker
 
 	//Plus it provides an easy way to make cinematics for other events. Just use this as a template :)
 /datum/controller/gameticker/proc/station_explosion_cinematic(var/station_missed=0, var/override = null)
-	if( cinematic )
+	if(cinematic)
 		return	//already a cinematic in progress!
 
 	for (var/datum/html_interface/hi in html_interfaces)
@@ -254,13 +254,15 @@ var/datum/controller/gameticker/ticker
 	var/obj/structure/bed/temp_buckle = new(src)
 	//Incredibly hackish. It creates a bed within the gameticker (lol) to stop mobs running around
 	if(station_missed)
-		for(var/mob/living/M in living_mob_list)
-			M.locked_to = temp_buckle				//buckles the mob so it can't do anything
+		for(var/mob/M in player_list)
+			if(M.stat != DEAD)
+				M.locked_to = temp_buckle				//buckles the mob so it can't do anything
 			if(M.client)
 				M.client.screen += cinematic	//show every client the cinematic
 	else //nuke kills everyone on the station to prevent "hurr-durr I survived"
-		for(var/mob/living/M in living_mob_list)
-			M.locked_to = temp_buckle
+		for(var/mob/M in player_list)
+			if(M.stat != DEAD)
+				M.locked_to = temp_buckle
 			if(M.client)
 				M.client.screen += cinematic
 
@@ -395,20 +397,25 @@ var/datum/controller/gameticker/ticker
 			declare_completion()
 
 			gameend_time = world.time / 10
+			
+			for(var/client/C in clients)
+				C.persist.save_persistence_sqlite(C.ckey,C,TRUE)
+			
 			if(config.map_voting)
 				//testing("Vote picked [chosen_map]")
 				vote.initiate_vote("map","The Server", popup = 1, weighted_vote = config.weighted_votes)
 				var/options = jointext(vote.choices, " ")
 				feedback_set("map vote choices", options)
 
-			else
+			/*else
 				var/list/maps = get_maps()
 				var/list/choices=list()
 				for(var/key in maps)
 					choices.Add(key)
-				var/mapname=pick(choices)
+				if(choices.len)
+					var/mapname=pick(choices)
 				vote.chosen_map = maps[mapname] // Hack, but at this point I could not give a shit.
-				log_game("Server chose [vote.chosen_map]!")
+				log_game("Server chose [vote.chosen_map]!")*/
 
 
 		spawn(50)
@@ -476,9 +483,7 @@ var/datum/controller/gameticker/ticker
 	if(!ooc_allowed)
 		to_chat(world, "<B>The OOC channel has been automatically re-enabled!</B>")
 		ooc_allowed = TRUE
-	for(var/client/C in clients)
-		C.persist.save_persistence_sqlite(C.ckey,C,TRUE)
-	
+
 	scoreboard()
 	return 1
 
