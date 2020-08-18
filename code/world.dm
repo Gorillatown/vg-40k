@@ -139,7 +139,6 @@ var/datum/early_init/early_init_datum = new
 
 	sleep_offline = 0
 
-	send2mainirc("Server starting up on [config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]")
 	send2maindiscord("**Server starting up** on `[config.server? "byond://[config.server]" : "byond://[world.address]:[world.port]"]`. Map is **[map.nameLong]**")
 
 	Master.Setup()

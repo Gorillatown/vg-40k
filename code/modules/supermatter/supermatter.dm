@@ -196,7 +196,7 @@
 			speech.as_name = "Supermatter [short_name] Monitor"
 			Broadcast_Message(speech, level = list(current_zlevel))
 			qdel(speech)
-
+ 
 			lastwarning = world.timeofday - offset
 
 		if(damage > explosion_point)
@@ -306,7 +306,7 @@
 		damage += Proj.damage * config_bullet_energy
 
 
-/obj/machinery/power/supermatter/attack_paw(mob/user )
+/obj/machinery/power/supermatter/attack_paw(mob/user)
 	return attack_hand(user)
 
 

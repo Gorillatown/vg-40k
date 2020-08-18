@@ -120,24 +120,11 @@
 				var/mob/living/carbon/human/ork/ORK = H
 				ORK.grow_nigga(10)
 	
-	if(mind && (mind.antag_roles.len > 0))
-		if(!suiciding)
-			for(var/role in mind.antag_roles)
-				var/datum/role/R = mind.antag_roles[role]
-				if(istype(R,/datum/role/imperial_guard))
-					if(isgeneral(src))
-						ig_total_points -= 1000
-					if(iscommissar(src))
-						ig_total_points -= 500
-					if(isinquisitor(src))
-						ig_total_points -= 500
-					ig_total_points -= 25
-				if(istype(R,/datum/role/ork_raider))
-					if(iswarboss(src))
-						ork_total_points -= 1000
-					if(isnob(src))
-						ork_total_points -= 250
-					ork_total_points -= 25
+			if(H.mind?.antag_roles.len > 0)
+				if(!suiciding)
+					for(var/role in H.mind.antag_roles)
+						var/datum/role/R = H.mind.antag_roles[role]
+						R.point_handler()
 
 	if(!gibbed)
 		update_canmove()

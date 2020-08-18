@@ -50,10 +50,10 @@ var/list/megaphone_channels = list("DISABLE" = 0) + stationchannels
 	to_chat(speech.speaker, "\The [src] [pick("creaks", "whines", "crackles", "whirrs", 1;"makes an odd static/popping noise that you kind of recognize as similar to a geiger counter", 1;"squeaks")] \
 		as it transmits your voice into the set frequency...") //Since you may not be able to hear your own demands, some feedback that they're getting through
 
-/obj/item/device/megaphone/madscientist/attack_self(mob/living/user )
+/obj/item/device/megaphone/madscientist/attack_self(mob/living/user)
 	show_ui(user)
 
-/obj/item/device/megaphone/madscientist/proc/show_ui(mob/living/user )
+/obj/item/device/megaphone/madscientist/proc/show_ui(mob/living/user)
 	var/dat = "<html><head><title>[src]</title></head><body><TT>"
 	dat += {"
 		Voice Scrambler: <a href="?src=\ref[src];voicescramble=1">[mask_voice ? "On" : "Off"]</a><BR>

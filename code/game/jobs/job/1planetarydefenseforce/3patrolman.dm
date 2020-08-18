@@ -13,8 +13,9 @@
 	minimal_player_age = 7
 	outfit_datum = /datum/outfit/patrolman
 	species_whitelist = list("Human")
-	landmark_job_override = TRUE
+	access = list(access_checkpoints) 
 
+	landmark_job_override = TRUE
 	relationship_chance = HUMAN_COMMON
 
 
@@ -22,7 +23,6 @@
 	outfit_name = "patrolman"
 	associated_job = /datum/job/patrolman
 	no_backpack = TRUE
-	no_id = TRUE
 
 	items_to_spawn = list(
 		"Default" = list(
@@ -40,7 +40,11 @@
 
 	implant_types = list(
 	)
+	
+	id_type = /obj/item/weapon/card/id/imperial_guard_dogtag
 
-/datum/outfit/patrolman/post_equip(var/mob/living/carbon/human/H)
+/datum/outfit/patrolman/handle_faction(var/mob/living/M)
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
 
 	

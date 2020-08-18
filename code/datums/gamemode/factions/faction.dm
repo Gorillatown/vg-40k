@@ -166,7 +166,7 @@ var/list/factions_with_hud_icons = list()
 			if (count <= objective_holder.objectives.len)
 				score_results += "<br>"
 	if (count>1)
-		if (IsSuccessful())
+		if(IsSuccessful())
 			score_results += "<br><font color='green'><B>\The [name] was successful!</B></font>"
 			feedback_add_details("[ID]_success","SUCCESS")
 		else if (minor_victory)
@@ -234,7 +234,7 @@ var/list/factions_with_hud_icons = list()
 	return dat
 
 /datum/faction/proc/process()
-	for (var/datum/role/R in members)
+	for(var/datum/role/R in members)
 		R.process()
 
 /datum/faction/proc/stage(var/value)

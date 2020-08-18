@@ -86,9 +86,4 @@
 					var/client/C = R.antag.current.client
 					C.persist.potential -= 1
 			
-/datum/faction/imperial_guard/proc/generate_string()
-	var/list/our_stars = list()
-	for(var/datum/role/lad in members)
-		our_stars += "[lad.antag.key] as [lad.antag.name]"
-	return english_list(our_stars)
 

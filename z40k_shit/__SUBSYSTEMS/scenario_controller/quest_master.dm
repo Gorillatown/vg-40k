@@ -10,7 +10,7 @@
 	var/datum/mind/tzeentch_champion //Mind of the current tzeentch champion
 	var/datum/mind/slaanesh_champion //mind of the current slaanesh champion
 	var/list/game_end_objects = list() //List of game ending objects
-
+	
 /datum/job_quest/global_tracker/proc/configure_quest(var/mob/living/target = null,var/quest_defininition = null)
 	if(!target)
 		warning("JOB QUEST GLOBAL TRACKER FAILURE: NULL MOB INPUT")

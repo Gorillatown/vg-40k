@@ -299,15 +299,15 @@
 
 /datum/role/proc/Declare()
 	var/win = 1
-	var/text = ""
+	var/text = "" 
 	var/mob/M = antag.current
-	if (!M)
+	if(!M)
 		var/icon/sprotch = icon('icons/effects/blood.dmi', "sprotch")
 		text += "<img src='data:image/png;base64,[icon2base64(sprotch)]' style='position:relative; top:10px;'/>"
 	else
 		var/icon/flat = getFlatIcon(M, SOUTH, 0, 1)
 		if(M.stat == DEAD)
-			if (!istype(M, /mob/living/carbon/brain))
+			if(!istype(M, /mob/living/carbon/brain))
 				flat.Turn(90)
 			var/icon/ded = icon('icons/effects/blood.dmi', "floor1-old")
 			ded.Blend(flat,ICON_OVERLAY)
@@ -500,6 +500,13 @@
 // What do they display on the player StatPanel ?
 /datum/role/proc/StatPanel()
 	return ""
+
+/*
+	40k Append, this basically is just a place to dump point handlers. If its a points saved mode.
+*/
+/datum/role/proc/point_handler()
+	return
+
 
 /////////////////////////////THESE ROLES SHOULD GET MOVED TO THEIR OWN FILES ONCE THEY'RE GETTING ELABORATED/////////////////////////
 

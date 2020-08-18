@@ -216,7 +216,6 @@ var/datum/controller/gameticker/ticker
 	//new random event system is handled from the MC.
 
 	if(0 == admins.len)
-		send2adminirc("Round has started with no admins online.")
 		send2admindiscord("**Round has started with no admins online.**", TRUE)
 
 	Master.RoundStart()

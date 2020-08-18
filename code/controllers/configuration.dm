@@ -147,10 +147,6 @@
 	var/comms_password = ""
 	var/paperwork_library = 0 //use the library DLL.
 
-	var/use_irc_bot = 0
-	var/irc_bot_host = "localhost"
-	var/irc_bot_port = 45678
-	var/irc_bot_server_id = 45678
 	var/python_path = "" //Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix
 
 	var/emag_energy = -1
@@ -449,9 +445,6 @@
 				if("allow_holidays")
 					Holiday = 1
 
-				if("use_irc_bot")
-					use_irc_bot = 1
-
 				if("ticklag")
 					Ticklag = text2num(value)
 
@@ -496,15 +489,6 @@
 
 				if("paperwork_library")
 					config.paperwork_library = 1
-
-				if("irc_bot_host")
-					config.irc_bot_host = value
-
-				if("irc_bot_port")
-					config.irc_bot_port = text2num(value)
-
-				if("irc_bot_server_id")
-					config.irc_bot_server_id = value
 
 				if("python_path")
 					if(value)

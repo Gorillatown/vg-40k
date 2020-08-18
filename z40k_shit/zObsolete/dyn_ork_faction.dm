@@ -1,3 +1,7 @@
+/*
+	Ironically, we aren't using this one.
+*/
+
 /datum/faction/dyn_ork
 	name = "Ork Mob"
 	desc = "For orks who want friends."

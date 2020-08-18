@@ -224,7 +224,6 @@ datum/emergency_shuttle/proc/setdirection(var/dirn)
 
 			if (!casual)
 				settimeleft(SHUTTLELEAVETIME)
-				send2mainirc("The Emergency Shuttle has docked with the station.")
 				send2maindiscord("The **Emergency Shuttle** has docked with the station.")
 				captain_announce("The Emergency Shuttle has docked with the station. You have [round(timeleft()/60,1)] minutes to board the Emergency Shuttle.")
 				world << sound('sound/AI/shuttledock.ogg')

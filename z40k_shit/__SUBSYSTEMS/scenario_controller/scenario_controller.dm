@@ -16,12 +16,19 @@
 	Perhaps we can allow multiplication etc.
 	We will use this subsystem to keep timing on all of them, and also hold them
 	When that day comes at least.
-
+ 
 */
 var/datum/subsystem/scenario_controller/SS_Scenario //The subsystem
 var/datum/job_quest/global_tracker/quest_master //Datum storage for job_quest shit
 var/list/scenario_order_one = list() // A list of objects that fire on one tick
 var/list/scenario_order_two = list() //A list of objects that fire on the next they alternate
+var/list/patrol_checkpoints = list() //A list of patrol checkpoints on the map.
+
+//These are basically point totals
+var/ig_total_points = 0
+var/ork_total_points = 0
+
+//One must ask, is it worthwhile having lists? Probably not until theres more than one faction.
 
 //var/list/scenario_order_three = list()
 var/list/tzeentchpads = list()

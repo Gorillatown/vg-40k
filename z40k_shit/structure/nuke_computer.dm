@@ -41,6 +41,7 @@
 	..()
 
 /obj/structure/nuke_computer/initialize()
+	..()
 	quest_master.game_end_objects += src
 
 /obj/structure/nuke_computer/Destroy()

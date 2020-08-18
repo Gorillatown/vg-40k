@@ -2,6 +2,9 @@
 //Fugmode shit
 #define ORKRAIDER "Ork Raider"
 #define IMPERIALGUARDSMEN "Imperial Guardsman"
+#define PDF "Planetary Defense Force"
+//Ere we go again
+
 
 //Storymode Shit
 #define FREELOADA "Freeloada"
@@ -28,6 +31,7 @@
 //Faction IDs: See: role_datums_defines.dm
 #define ORKS "Orks"
 #define IMPERIALGUARD "Imperial Guard"
+#define PLANETARYDEFFORCE "PlanetaryDefForce"
 
 #define isgeneral(H) (H.mind && H.mind.GetRole(IMPERIALGUARDGENERAL))
 

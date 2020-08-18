@@ -10,7 +10,7 @@
 	selection_color = "#f8cb69"
 	req_admin_notify = 1
 	wage_payout = 80
-	access = list(access_knight,access_enginseer,access_seneschal) 
+	access = list(access_knight,access_enginseer,access_seneschal,access_checkpoints) 
 	minimal_player_age = 30
 	landmark_job_override = TRUE
 
@@ -64,3 +64,7 @@
 	H.attribute_agility = 10
 	H.attribute_dexterity = 10
 	return 1
+
+/datum/outfit/knight_officer/handle_faction(var/mob/living/M)
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
