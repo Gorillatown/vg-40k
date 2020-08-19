@@ -2,19 +2,27 @@
 Used In File(s): z40k_shit\structure\patrol_checkpointmastr.dm
 -->
 <h1>Checkpoint Monitor</h1>
-
-<div class='item'>
-	<div class='statusDisplay'>
-		{{for data.checkpoints}}
+{{for data.checkpoints}}
+	<div class='item'>
+		<div class='statusDisplay'>
 			<div class="line">
-				<div class="statusValue">Location:
-					<span class="average">{{:value.name}}</span>
-				</div>
-				<div class="statusValue">Time:
-					<span class="average">{{:value.time}}</span>
-				</div>
+				<div class="statusLabel">Location:</div>
+				<div class="statusValue"><span class="good">{{:value.name}}</span></div>
 			</div>
-		{{/for}}
+			<div class="line">
+				<div class="statusLabel">Time:</div>
+				<div class="statusValue">
+					{{if value.time == 150}}
+						<b><span class="bad">POINT UNCHECKED</span></b><br>
+						<div class='statusLabel'>{{:helper.displayBar(value.time, 0, 150, 'bad')}}</div>
+					{{else}}
+						<b><span class="good">{{:value.time}}</span></b><br>
+						<div class='statusLabel'>{{:helper.displayBar(value.time, 0, 150, 'good')}}</div>
+					{{/if}}
+				</div><br>
+			</div>
+		</div>
 	</div>
-</div>
+{{/for}}
+
 

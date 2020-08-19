@@ -2,10 +2,12 @@
 Todo: So I don't forget.
 Tie it into the point system and the factions.
 Maybe give the person who actually did it a point of potential for doing so.
+The above is done, but this still needs me to make it a NanoUI template when Im feelin it
+Also we need to add a signal strength that garbles the radio signal, and that can be outputted to the monitor console's UI
 */
 /obj/structure/patrol_checkpoint
 	name = "Checkpoint Signaller"
-	icon = 'z40k_shit/icons/obj/orbital.dmi'
+	icon = 'z40k_shit/icons/obj/64xstructures.dmi'
 	icon_state = "ob1"
 	desc = "One of many consoles made to signal that the patrol has reached its destination, and stayed there long enough to do its job."
 	var/location = "Southwest Factory" //A easy way to var-edit locations.
@@ -30,6 +32,7 @@ Maybe give the person who actually did it a point of potential for doing so.
 /obj/structure/patrol_checkpoint/New()
 	..()
 	processing_objects += src
+	set_light(3, 3, "#0afd01")
 
 /obj/structure/patrol_checkpoint/initialize()
 	name = "Checkpoint Signal Console ([location])"
