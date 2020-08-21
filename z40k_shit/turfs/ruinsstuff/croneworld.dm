@@ -1,7 +1,7 @@
 /turf/unsimulated/croneworldfloors/crone
 	name = "Croneworld Ground"
 	desc = "Normally you could trust the ground beneath your feet, but what you see here would make anyone reconsider."
-	icon = 'z40k_shit/icons/turfs/cronefloors.dmi'
+//	icon = 'z40k_shit/icons/turfs/cronefloors.dmi'
 	icon_state = "s1"
 	plane = PLATING_PLANE
 

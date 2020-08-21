@@ -13,7 +13,7 @@ R - Right
 /turf/unsimulated/underground/imperial_road
 	name = "Road"
 	desc = "At some point long ago, someone who cared laid very standardized precise roads set to a template."
-	icon = 'z40k_shit/icons/turfs/imperial_roads.dmi'
+//	icon = 'z40k_shit/icons/turfs/imperial_roads.dmi'
 
 /*Road side 1*/
 /turf/unsimulated/underground/imperial_road/road_side_one
@@ -44,7 +44,7 @@ R - Right
 /turf/unsimulated/underground/imperial_platewalk
 	name = "Metal Plates and a Gutter"
 	desc = "Metal seems to be in abundance unlike many other things."
-	icon = 'z40k_shit/icons/turfs/imperial_roads.dmi'
+//	icon = 'z40k_shit/icons/turfs/imperial_roads.dmi'
 
 /turf/unsimulated/underground/imperial_platewalk/sides
 	icon_state = "imp_metal_platewalk"
@@ -73,7 +73,7 @@ R - Right
 /turf/unsimulated/underground/imperial_rockcrete
 	name = "Rockcrete Slab"
 	desc = "A mixture made of stone and rock types native to this world, and binding agents. You can't remember seeing anyone lay any of this in your lifetime."
-	icon = 'z40k_shit/icons/turfs/rockcrete_floors.dmi'
+//	icon = 'z40k_shit/icons/turfs/rockcrete_floors.dmi'
 	icon_state = "rockcrete_slab"
 
 /turf/unsimulated/underground/imperial_rockcrete/alt

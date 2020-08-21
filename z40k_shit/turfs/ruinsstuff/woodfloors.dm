@@ -2,7 +2,7 @@
 
 /turf/simulated/floor/woodruin
 	name = "Ruined Wood floor"
-	icon = 'z40k_shit/icons/turfs/ruinfloors.dmi'
+//	icon = 'z40k_shit/icons/turfs/ruinfloors.dmi'
 
 
 /*

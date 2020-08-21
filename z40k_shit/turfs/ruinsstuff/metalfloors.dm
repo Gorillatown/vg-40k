@@ -1,7 +1,7 @@
 /turf/simulated/floor/metalplating
 	name = "Metal Plate Floor"
 	desc = "Its metal, and on the floor. What more could you ask for?"
-	icon = 'z40k_shit/icons/turfs/metalfloors.dmi'
+//	icon = 'z40k_shit/icons/turfs/metalfloors.dmi'
 	thermal_conductivity = 0.025
 	heat_capacity = 325000
 	soot_type = null

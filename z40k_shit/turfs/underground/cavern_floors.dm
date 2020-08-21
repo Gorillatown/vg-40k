@@ -1,6 +1,6 @@
 /turf/unsimulated/floor/asteroid/air/deepcave
 	name = "cave floor"
-	icon = 'z40k_shit/icons/turfs/cavernfloors.dmi'
+//	icon = 'z40k_shit/icons/turfs/cavernfloors.dmi'
 	icon_state = "deepcave_1"
 	sand_type = /obj/item/stack/ore/glass/cave
 
@@ -14,7 +14,7 @@
 	nitrogen = MOLES_N2STANDARD
 	temperature = T20C
 	icon_state = "regcave_1"
-	icon = 'z40k_shit/icons/turfs/cavernfloors.dmi'
+//	icon = 'z40k_shit/icons/turfs/cavernfloors.dmi'
 
 /turf/unsimulated/floor/asteroid/air/New()
 	..()

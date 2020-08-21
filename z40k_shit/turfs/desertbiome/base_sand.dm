@@ -1,6 +1,6 @@
 /turf/unsimulated/outside/sand
 	name = "Sand"
-	icon = 'z40k_shit/icons/turfs/desertsand.dmi'
+//	icon = 'z40k_shit/icons/turfs/desertsand.dmi'
 	icon_state = "sand1"
 	plane = PLATING_PLANE
 
