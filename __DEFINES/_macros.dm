@@ -171,8 +171,6 @@
 
 #define issocketwrench(A) istype(A, /obj/item/weapon/wrench/socket)
 
-#define iswrench(A) istype(A, /obj/item/weapon/wrench)
-
 #define isswitchtool(A) istype(A, /obj/item/weapon/switchtool)
 
 #define isglasssheet(A) istype(A, /obj/item/stack/sheet/glass)

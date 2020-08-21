@@ -1,4 +1,4 @@
-/obj/item/weapon/ork/burnapack
+/obj/item/weapon/ork/burnapack 
 	name = "Burna Pack"
 	desc = "Let forth your burning spirit in a gout of flames."
 	icon = 'z40k_shit/icons/obj/orks/orkarmorandclothesOBJ.dmi'

@@ -162,7 +162,7 @@
 		if (istype(loc, /mob/living/carbon/human))
 			H.update_inv_hands()
 
-/obj/item/weapon/sword/venom/attack_self(mob/user )
+/obj/item/weapon/sword/venom/attack_self(mob/user)
 	if(!beaker)
 		return
 	else
@@ -208,7 +208,7 @@
 		new /obj/item/weapon/aluminum_cylinder(get_turf(src))
 		qdel(src)
 
-/obj/item/weapon/sword/venom/attack(mob/M, mob/user )
+/obj/item/weapon/sword/venom/attack(mob/M, mob/user)
 	if(!..())	//If the attack missed.
 		return
 	if(!beaker)

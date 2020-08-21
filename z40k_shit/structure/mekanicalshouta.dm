@@ -58,7 +58,7 @@
 		else
 			busy = 0
 
-	if(iswrench(W))
+	if(W.is_wrench())
 		if(anchored)
 			W.playtoolsound(src, 50)
 			to_chat(user, "You unanchor the [src].")

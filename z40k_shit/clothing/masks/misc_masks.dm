@@ -36,6 +36,7 @@
 	can_flip = 0
 	canstage = 0
 
+/*
 /obj/item/clothing/mask/gas/enginseer_mask
 	name = "intimidating visor mask"
 	desc = "A mask that fits perfectly in your helmet."
@@ -48,4 +49,5 @@
 	can_flip = 0
 	canstage = 0
 	species_restricted = list("Human")
-	canremove = 0
+	canremove = 0 
+*/

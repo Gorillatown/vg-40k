@@ -44,7 +44,7 @@
 	desc = "It makes someone look quite mysterious."
 	icon = 'z40k_shit/icons/obj/clothing/hats.dmi'
 	icon_state = "mech_hat" //Check: its there
-	body_parts_covered = HEAD|EARS|EYES|HIDEFACE|HIDEHAIR
+	body_parts_covered = HEAD|EARS|EYES|HIDEHAIR
 	species_restricted = list("Human")
 
 //-----enginseer hat

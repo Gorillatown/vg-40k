@@ -30,7 +30,7 @@
 	can_only_hold = list(/obj/item/weapon)
 
 //mech belt
-/obj/item/weapon/storage/belt/basicbelt
+/obj/item/weapon/storage/belt/enginseer_belt
 	name = "Flashy belt"
 	desc = "A belt that can hold things, with a bit of rice to it in the form of a dirty red cloth."
 	icon = 'z40k_shit/icons/obj/clothing/belts.dmi'

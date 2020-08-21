@@ -34,7 +34,8 @@
 			slot_head_str = /obj/item/clothing/head/enginseer_hood,
 			slot_shoes_str = /obj/item/clothing/shoes/enginseer_boots,
 			slot_back_str = /obj/item/enginseer_powerpack,
-			slot_belt_str = /obj/item/weapon/storage/belt/basicbelt
+			slot_belt_str = /obj/item/weapon/storage/belt/enginseer_belt,
+			slot_wear_mask_str = /obj/item/clothing/mask/gas/enginseer_mask
 		),
 	)
 
