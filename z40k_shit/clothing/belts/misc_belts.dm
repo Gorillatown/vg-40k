@@ -27,4 +27,16 @@
 	item_state = "imperialbelt" //Check: Its there
 	w_class = W_CLASS_LARGE
 	storage_slots = 14
-	can_only_hold = list()
+	can_only_hold = list(/obj/item/weapon)
+
+//mech belt
+/obj/item/weapon/storage/belt/basicbelt
+	name = "Flashy belt"
+	desc = "A belt that can hold things, with a bit of rice to it in the form of a dirty red cloth."
+	icon = 'z40k_shit/icons/obj/clothing/belts.dmi'
+	icon_state = "mech_belt" //Check: Its there
+	item_state = "mech_belt" //Check: Its there
+	w_class = W_CLASS_LARGE
+	storage_slots = 14
+	can_only_hold = list(/obj/item/weapon)
+	canremove = 0

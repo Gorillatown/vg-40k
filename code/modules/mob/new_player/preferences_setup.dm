@@ -372,7 +372,14 @@
 					clothes_s = new /icon(uniform_dmi, "commissar_s")
 					clothes_s.Blend(new /icon(feet_dmi, "noble-boots"), ICON_UNDERLAY)
 					clothes_s.Blend(new /icon('icons/mob/head.dmi', "commissarcap"), ICON_OVERLAY)
-					clothes_s.Blend(new /icon(suit_dmi, "commissarcoat"), ICON_OVERLAY) 
+					clothes_s.Blend(new /icon(suit_dmi, "commissarcoat"), ICON_OVERLAY)
+				if(ENGINSEER)
+					clothes_s = new /icon(uniform_dmi, "mech_uniform_s")
+					clothes_s.Blend(new /icon(feet_dmi, "mech_boots"), ICON_UNDERLAY)
+					clothes_s.Blend(new /icon('icons/mob/mask.dmi', "mech_mask"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/head.dmi', "mech_hat"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/back.dmi', "enginseerpack-axe"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/belt.dmi', "mech_boots"), ICON_OVERLAY)
 
 	// Observers get tourist outfit.
 	else

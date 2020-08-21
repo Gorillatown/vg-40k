@@ -8,7 +8,7 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 /obj/structure/patrol_checkpoint
 	name = "Checkpoint Signaller"
 	icon = 'z40k_shit/icons/obj/64xstructures.dmi'
-	icon_state = "ob1"
+	icon_state = "patrolcomp"
 	desc = "One of many consoles made to signal that the patrol has reached its destination, and stayed there long enough to do its job."
 	var/location = "Southwest Factory" //A easy way to var-edit locations.
 	density = 1

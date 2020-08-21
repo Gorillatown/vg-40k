@@ -46,4 +46,7 @@
 	var/datum/role/planetary_defense_force/new_trooper = new
 	new_trooper.AssignToRole(M.mind,TRUE)
 
+/datum/outfit/patrolman/post_equip(var/mob/living/carbon/human/H)
+	spawn(2 SECONDS)
+		to_chat(H,"<span class='good'>You are a patrolman, you gain points for extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console and across the land.</span>")
 	

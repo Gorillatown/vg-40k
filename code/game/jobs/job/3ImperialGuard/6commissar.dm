@@ -6,11 +6,11 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Regiment General"
+	supervisors = "the imperium"
 	selection_color = "#E0D68B"
 	req_admin_notify = 1
 	wage_payout = 80
-	access = list() 
+	access = list(access_checkpoints) 
 	minimal_player_age = 30
 	landmark_job_override = TRUE
 
@@ -49,9 +49,8 @@
 	
 
 /datum/outfit/commissar/handle_faction(var/mob/living/M)
-	var/datum/role/imperial_guard/commissar/commissar = new
-	commissar.AssignToRole(M.mind,TRUE)
-	commissar.mind_storage(M.mind)
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
 
 /datum/outfit/commissar/handle_special_abilities(var/mob/living/carbon/human/H)
 	H.attribute_strength = 9

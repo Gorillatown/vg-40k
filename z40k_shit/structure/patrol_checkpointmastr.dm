@@ -7,7 +7,7 @@ Along with like showing the last person to actually use the checkpoint.
 /obj/structure/patrol_checkpoint_master
 	name = "Checkpoint Console"
 	icon = 'z40k_shit/icons/obj/64xstructures.dmi'
-	icon_state = "ob1"
+	icon_state = "patrolcomp"
 	desc = "Unlike the other consoles which it looks identical to, this one just shows you which checkpoints haven't been visited."
 	density = 1
 	anchored = 1
