@@ -30,6 +30,7 @@
 			slot_w_uniform_str = /obj/item/clothing/under/seneschal,
 			slot_shoes_str = /obj/item/clothing/shoes/seneschal_boots,
 			slot_head_str = /obj/item/clothing/head/seneschal_hat,
+			slot_belt_str = /obj/item/weapon/dksword/hopblade
 		),
 	)
 

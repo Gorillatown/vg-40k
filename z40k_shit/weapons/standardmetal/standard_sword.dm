@@ -48,3 +48,9 @@
 			T.attackby(src,user)
 			H.word_combo_chain = ""
 			H.update_powerwords_hud(clear = TRUE)
+
+/obj/item/weapon/dksword/hopblade
+	name = "Seneschal's Blade"
+	desc = "Its a sword, except with some flash to it."
+	icon_state = "hopblade"
+	force = 25
