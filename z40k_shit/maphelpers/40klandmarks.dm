@@ -49,6 +49,14 @@
 	name = "Patrolman"
 	icon_state = "pdf_patrolman"
 
+/obj/effect/landmark/start/enginseer
+	name = "Enginseer"
+	icon_state = "mech_enginseer"
+
+/obj/effect/landmark/start/seneschal
+	name = "Seneschal"
+	icon_state = "pdf_seneschal"
+
 //Imperial Guard
 /obj/effect/landmark/start/general
 	name = "General"

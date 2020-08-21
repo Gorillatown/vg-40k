@@ -16,3 +16,12 @@
 	_color = "mech_uniform"
 	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 	canremove = 0
+
+/obj/item/clothing/under/seneschal
+	name = "Seneschal Clothing"
+	desc = "You couldn't call it a uniform, its more like casual ware for someone with a lot of freedom."
+	icon = 'z40k_shit/icons/obj/clothing/uniforms.dmi'
+	icon_state = "seneschal_coat" //Check: Its there
+	item_state = "seneschal_coat" //Check Its there:
+	_color = "seneschal_coat"
+	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.

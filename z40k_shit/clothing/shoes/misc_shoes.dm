@@ -19,3 +19,10 @@
 	icon_state = "mech_boots"
 	species_restricted = list("Human")
 	canremove = 0
+
+/obj/item/clothing/shoes/seneschal_boots
+	name = "Seneschal Boots"
+	desc = "Fancy Boots, for a fancy man"
+	icon = 'z40k_shit/icons/obj/clothing/shoes.dmi'
+	icon_state = "seneschal_boots"
+	species_restricted = list("Human")

@@ -380,6 +380,10 @@
 					clothes_s.Blend(new /icon('icons/mob/head.dmi', "mech_hat"), ICON_OVERLAY)
 					clothes_s.Blend(new /icon('icons/mob/back.dmi', "enginseerpack-axe"), ICON_OVERLAY)
 					clothes_s.Blend(new /icon('icons/mob/belt.dmi', "mech_boots"), ICON_OVERLAY)
+				if(SENESCHAL)
+					clothes_s = new /icon(uniform_dmi, "seneschal_coat_s")
+					clothes_s.Blend(new /icon('icons/mob/head.dmi', "seneschal_hat"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/belt.dmi', "seneschal_boots"), ICON_OVERLAY)
 
 	// Observers get tourist outfit.
 	else

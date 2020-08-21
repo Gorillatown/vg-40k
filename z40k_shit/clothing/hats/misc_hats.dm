@@ -46,3 +46,11 @@
 	icon_state = "mech_hat" //Check: its there
 	body_parts_covered = HEAD|EARS|EYES|HIDEFACE|HIDEHAIR
 	species_restricted = list("Human")
+
+//-----enginseer hat
+/obj/item/clothing/head/seneschal_hat
+	name = "Seneschal Hat"
+	desc = "Fancy and daring."
+	icon = 'z40k_shit/icons/obj/clothing/hats.dmi'
+	icon_state = "seneschal_hat" //Check: its there
+	body_parts_covered = HEAD|EARS|EYES|HIDEFACE
