@@ -15,3 +15,5 @@ Gogeto25 - Game Master
 JTGSZserver - Server Instance
 DogeTaco - Game Master
 OnePlusOne - Game Master
+Doner Meat - Game Master
+Yclat - Game Master
