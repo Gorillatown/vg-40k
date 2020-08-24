@@ -12,7 +12,6 @@
 		/turf/simulated/floor/engine/cult,
 		/turf/simulated/floor/engine,
 		/turf/simulated/floor/wood,
-		/turf/simulated/floor/dark,
 		/turf/simulated/floor/mineral/plastic,
 		/turf/simulated/floor/mineral/phazon,
 		/turf/simulated/floor/mineral/clockwork,
