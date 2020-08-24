@@ -50,6 +50,12 @@
 	var/projectile_color = null
 	var/pai_safety = TRUE	//To allow the pAI to activate or deactivate firing capability
 
+/obj/item/weapon/gun/Destroy()
+	if(in_chamber)
+		qdel(in_chamber)
+		in_chamber = null
+	..()
+
 /obj/item/weapon/gun/dropped(mob/user)
 	..()
 	if(currently_zoomed)
@@ -59,7 +65,6 @@
 				user.regenerate_icons()
 				var/client/C = user.client
 				C.changeView(C.view - ATCH.scope_zoom_amount)
-
 
 /obj/item/weapon/gun/throw_impact(atom/hit_atom, mob/user)
 	..()

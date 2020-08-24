@@ -150,6 +150,7 @@ var/list/impact_master = list()
 	in_chamber.firer = user
 	var/output = in_chamber.process() //Test it!
 	qdel(in_chamber)
+	in_chamber = null
 	return output //Send it back to the gun!
 
 /obj/item/projectile/proc/admin_warn(mob/living/M)
