@@ -13,6 +13,8 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 	var/location = "Southwest Factory" //A easy way to var-edit locations.
 	density = 1
 	anchored = 1
+	pixel_x = -12
+	pixel_y = -12
 
 	//Have we checked in?
 	var/checked_in = FALSE
@@ -31,6 +33,7 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 
 /obj/structure/patrol_checkpoint/New()
 	..()
+
 	processing_objects += src
 	set_light(3, 3, "#0afd01")
 

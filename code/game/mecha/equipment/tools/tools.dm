@@ -221,7 +221,7 @@
 	chassis.use_power(energy_drain)
 	return 1
 
-/obj/item/mecha_parts/mecha_equipment/tool/drill/can_attach(obj/mecha/M )
+/obj/item/mecha_parts/mecha_equipment/tool/drill/can_attach(obj/mecha/M)
 	if(..())
 		if((istype(M, /obj/mecha/working) || istype(M, /obj/mecha/combat)) && !istype(M, /obj/mecha/working/clarke))
 			return 1

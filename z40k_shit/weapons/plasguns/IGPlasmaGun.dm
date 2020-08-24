@@ -71,6 +71,7 @@
 	var/obj/item/hydrogen_fuel_cell/my_cell //Our cell if we got one.
 	overcharged = FALSE //Are we overcharged or not?
 	throw_range = 0
+	slot_flags = null
 	throw_speed = 1
 	fire_sound = null
 	flags = TWOHANDABLE | MUSTTWOHAND

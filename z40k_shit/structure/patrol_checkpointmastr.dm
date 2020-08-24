@@ -11,6 +11,8 @@ Along with like showing the last person to actually use the checkpoint.
 	desc = "Unlike the other consoles which it looks identical to, this one just shows you which checkpoints haven't been visited."
 	density = 1
 	anchored = 1
+	pixel_x = -12
+	pixel_y = -12
 
 /obj/structure/patrol_checkpoint_master/ex_act(severity)
 	return

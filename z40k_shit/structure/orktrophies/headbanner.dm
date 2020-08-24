@@ -26,7 +26,7 @@
 	right_hook = null
 	top_spike = null
 	..()
-
+///obj/item/deer_head
 /obj/structure/orktrophybanner/examine(mob/user)
 	..()
 	if(contents.len)
