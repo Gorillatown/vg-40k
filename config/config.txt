@@ -71,7 +71,7 @@ LOG_RC
 ##LOG_ADMINWARN  ## Also duplicates a bunch of other messages.
 
 ## log world.log and runtime errors to a file
-# LOG_RUNTIMES
+LOG_RUNTIMES
 
 ## sql switching
 # SQL_ENABLED
@@ -177,6 +177,7 @@ GUEST_JOBBAN
 
 ## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
 ALLOW_HOLIDAYS
+
 ##Defines the ticklag for the world.  0.9 is the normal one, 0.5 is smoother.
 TICKLAG 0.33
 

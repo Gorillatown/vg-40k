@@ -87,7 +87,6 @@
 			break //We break
 		playsound(src, pick(fire_sound), 50, 1, 12)
 		var/obj/item/projectile/A = new projectile_type(changedloc_variant)
-		A.vehicle = my_atom
 		A.firer = usr
 		A.original = target
 		A.current = changedloc_variant
