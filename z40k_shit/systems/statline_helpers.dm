@@ -231,3 +231,14 @@
 	attribute_sensitivity = species.base_sensitivity
 	attribute_sensitivity_natural_limit = species.base_sensitivity_natural_limit
 
+/mob/living/carbon/verb/check_attributes()
+	set name = "Check Attributes"
+	set category = "IC"
+	set desc = "See what attributes you currently have."
+
+	to_chat(src, "<span class='good'>Strength: [attribute_strength].</span>")
+	to_chat(src, "<span class='good'>Agility: [attribute_agility].</span>")
+	to_chat(src, "<span class='good'>Dexterity: [attribute_dexterity].</span>")
+	to_chat(src, "<span class='good'>Constitution: [attribute_constitution].</span>")
+	to_chat(src, "<span class='good'>Willpower: [attribute_willpower].</span>")
+	to_chat(src, "<span class='bad'>Warp Sensitivity: [attribute_sensitivity].</span>")

@@ -118,7 +118,7 @@
 
 /datum/sprite_accessory/hair/sonicboom
 	name = "Sonicboom"
-	icon_state = "hair_sonicboom_s"
+	icon_state = "hair_sonicboom"
 
 /datum/sprite_accessory/hair/sideswept
 	name = "Sideswept"

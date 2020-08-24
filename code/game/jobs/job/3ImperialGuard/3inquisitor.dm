@@ -33,7 +33,8 @@
 			slot_gloves_str = /obj/item/clothing/gloves/black,
 			slot_wear_suit_str = /obj/item/clothing/suit/armor/inq,
 			slot_back_str = /obj/item/weapon/inq_katana,
-			slot_r_store_str = /obj/item/weapon/shield/energy
+			slot_r_store_str = /obj/item/weapon/shield/energy,
+			slot_belt_str = /obj/item/weapon/psychic_spellbook,
 		),
 	)
 
@@ -46,16 +47,16 @@
 
 	id_type = /obj/item/weapon/card/id/imperial_guard_dogtag
 
-/datum/outfit/inquisitor/post_equip(var/mob/living/carbon/human/H)
-	H.mind.store_memory("Frequencies list: <b>Security:</b> [SEC_FREQ]<br/>")
-
 /datum/outfit/inquisitor/handle_faction(var/mob/living/M)
 /*	var/datum/role/imperial_guard/inquisitor/inquisitor = new
 	inquisitor.AssignToRole(M.mind,TRUE)
 	inquisitor.mind_storage(M.mind)*/
-
+ 
 /datum/outfit/inquisitor/handle_special_abilities(var/mob/living/carbon/human/H)
 	H.attribute_strength = 10
 	H.attribute_agility = 12
 	H.attribute_dexterity = 13
+	H.attribute_willpower = 11
+	H.attribute_sensitivity = 500
+	H.psyker_points = 2
 	return 1

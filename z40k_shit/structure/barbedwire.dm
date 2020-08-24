@@ -141,8 +141,8 @@
 		switch(user.attribute_dexterity)
 			if(1 to 6)
 				user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
-				user.Knockdown(5)
-				user.Stun(5)
+				user.Knockdown(3)
+				user.Stun(3)
 				user.visible_message("<span class='warning'>[user] gets caught in [src] and collapses!</span>")
 				user.stat_increase(ATTR_DEXTERITY,50)
 				return 0
@@ -151,11 +151,11 @@
 					user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] but pushes through. DAMN!</span>")
 					user.stat_increase(ATTR_DEXTERITY,50)
-					return !density
+					return 1
 				else
 					user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
-					user.Knockdown(5)
-					user.Stun(5)
+					user.Knockdown(3)
+					user.Stun(3)
 					user.visible_message("<span class='warning'>[user] gets caught in [src] and collapses!</span>")
 					user.stat_increase(ATTR_CONSTITUTION, 25)
 					return 0
@@ -163,7 +163,7 @@
 				if(prob(25))
 					user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] but pushes through. DAMN!</span>")
-					return !density
+					return 1
 					user.stat_increase(ATTR_CONSTITUTION, 25)
 				else if(prob(10))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] and trips!</span>")
@@ -171,10 +171,10 @@
 					return 0
 				else
 					user.visible_message("<span class='warning'>[user] carefully passes over [src]!</span>")
-					return !density
+					return 1
 			if(16 to 30)
 				user.visible_message("<span class='warning'>[user] gracefully dances through [src] with ease!</span>")
-				return !density
+				return 1
 
 /obj/structure/barbed_wire/attackby(var/obj/item/weapon/W, var/mob/living/user)
 	if(W)

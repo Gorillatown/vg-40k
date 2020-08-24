@@ -7,6 +7,7 @@
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE
 	w_class = W_CLASS_SMALL
+	eyeprot = 3
 
 	can_flip = 0
 	canstage = 0
@@ -16,7 +17,7 @@
 								0 , 0, 0.8) //equivalent to #CCFFCC
 	species_restricted = list("Human")
 	canremove = 0 
-
+ 
 /obj/item/clothing/mask/gas/enginseer_mask/attack_hand(mob/user)
 	if(alert("Toggle Nightvision or Remove Mask?",,"Nightvision","Remove") == "Nightvision")
 		togglemask()
