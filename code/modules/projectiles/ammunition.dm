@@ -58,7 +58,7 @@
 	var/caliber = POINT357 //lets us define what magazines can go into guns
 	var/max_ammo = 7
 	var/starting_ammo = -1 //-1 makes it spawn the max ammo, 0 and above makes it spawn that number
-	var/multiple_sprites = 0 //if it has multiple sprites. Please sprite more than 2 sprites if you set this to true, you fricks
+	var/multiple_sprites = FALSE //if it has multiple sprites. Please sprite more than 2 sprites if you set this to true, you fricks
 	var/sprite_modulo = 1 //the spacing of the ammo sprites. Setting this to 1 means there's a sprite for every state, 10 for every 10 states, etc.
 
 /obj/item/ammo_storage/New()

@@ -96,7 +96,7 @@
 		return 0
 	return ..()
 
-
+ 
 
 /obj/item/weapon/gun/energy/crossbow
 	name = "mini energy-crossbow"

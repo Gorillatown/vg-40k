@@ -35,6 +35,7 @@
 			slot_belt_str = /obj/item/weapon/dksword,
 			slot_r_store_str = /obj/item/weapon/shield/energy,
 			slot_s_store_str = /obj/item/weapon/gun/projectile/automatic/boltpistol,
+			slot_l_store_str = /obj/item/weapon/gun/projectile/needler
 		)
 	)
 	 

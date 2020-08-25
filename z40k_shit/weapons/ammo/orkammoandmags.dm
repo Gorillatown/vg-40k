@@ -127,8 +127,7 @@
 										*/
 
 /obj/item/ammo_storage/magazine/sluggamag
-	name = "Magazine"
-	desc = "Fits more than you"
+	name = "Slugga Magazine"
 	icon = 'z40k_shit/icons/obj/orks/orkbulletpilesandmags.dmi'
 	icon_state = "sluggamag"
 	desc = "A magazine for a slugga"

@@ -92,7 +92,6 @@
 	origin_tech = Tc_COMBAT + "=2;" + Tc_MATERIALS + "=2"
 	recoil = 3
 
-
 /obj/item/weapon/gun/projectile/nagant //revolver that simple mob russians use
 	name = "nagant revolver"
 	desc = "Just like in those neo-russian spy movies! Uses 7.62x38R ammo."
