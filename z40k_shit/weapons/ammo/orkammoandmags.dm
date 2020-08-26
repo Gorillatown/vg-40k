@@ -11,7 +11,7 @@
 	caliber = ORKSCRAPBULLET
 	projectile_type = /obj/item/projectile/bullet/orkscrapbullet
 	w_type = RECYK_METAL
-
+ 
 /obj/item/ammo_casing/orkbullet/attackby(var/atom/A, var/mob/user) //now with loading
 	..()
 	var/obj/item/ammo_casing/AC = A
@@ -43,9 +43,12 @@
 	max_ammo = 0
 	var/good2go = FALSE //I don't feel like digging through the shit ass ammo_storage code to implement this properly.
 
+/obj/item/ammo_storage/box/piles/New()
+	..()
+
 /obj/item/ammo_storage/box/piles/update_icon()
 	..()
-	if(good2go && !stored_ammo.len)
+	if(good2go && stored_ammo.len == 0)
 		qdel(src)
 
 

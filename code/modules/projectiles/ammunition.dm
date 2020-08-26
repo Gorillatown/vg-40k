@@ -66,9 +66,9 @@
 	var/ammo_to_load = 0
 	if(starting_ammo > -1 && starting_ammo < max_ammo)
 		ammo_to_load = starting_ammo
-		update_icon()
 	else
 		ammo_to_load = max_ammo
+	update_icon()
 	for(var/i = 1, i <= ammo_to_load, i++)
 		stored_ammo += new ammo_type(src)
 

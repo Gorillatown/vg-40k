@@ -291,7 +291,7 @@
 				. += "It has [ammo_left] [mode.firing_mode] round[ammo_left != 1 ? "s" : ""] remaining.\n"
 	. += "</span>"
 	return jointext(., null)
-
+ 
 /obj/item/ammo_storage/magazine/lawgiver/examine(mob/user)
 	..()
 	to_chat(user, generate_description())
