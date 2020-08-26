@@ -14,8 +14,8 @@
  
 /obj/item/ammo_casing/orkbullet/attackby(var/atom/A, var/mob/user) //now with loading
 	..()
-	var/obj/item/ammo_casing/AC = A
 	if(istype(A,/obj/item/ammo_casing/orkbullet))
+		var/obj/item/ammo_casing/AC = A
 		if(!AC.BB)
 			to_chat(user, "<span class='notice'>The bullet appears to be already spent.</span>")
 			return
@@ -27,7 +27,7 @@
 		user.put_in_any_hand_if_possible(PP) //pp hands lol
 		PP.update_icon()
 	
-		PP.good2go = TRUE
+	//	PP.good2go = TRUE
 
 	if(istype(A,/obj/item/ammo_storage/box/piles/sluggabulletpile))
 		var/obj/item/ammo_storage/box/piles/sluggabulletpile/PP = A
@@ -41,14 +41,14 @@
 	icon = 'z40k_shit/icons/obj/orks/orkbulletpilesandmags.dmi'
 	icon_state = "sluggapile"
 	max_ammo = 0
-	var/good2go = FALSE //I don't feel like digging through the shit ass ammo_storage code to implement this properly.
+//	var/good2go = FALSE //I don't feel like digging through the shit ass ammo_storage code to implement this properly.
 
 /obj/item/ammo_storage/box/piles/New()
 	..()
 
 /obj/item/ammo_storage/box/piles/update_icon()
 	..()
-	if(good2go && stored_ammo.len == 0)
+	if(stored_ammo.len == 0)
 		qdel(src)
 
 
@@ -75,7 +75,6 @@
 	max_ammo = 30
 	starting_ammo = 30
 	multiple_sprites = 1
-	good2go = TRUE
 
 
 /*
@@ -100,12 +99,11 @@
 	max_ammo = 12
 	starting_ammo = 12
 	multiple_sprites = 1
-	good2go = TRUE
 
 /obj/item/ammo_casing/shotgun/buckshot/attackby(var/atom/A, var/mob/user) //now with loading
 	..()
-	var/obj/item/ammo_casing/AC = A
-	if(istype(A,/obj/item/ammo_storage/box/piles/buckshotpile))
+	if(istype(A,/obj/item/ammo_casing/shotgun/buckshot))
+		var/obj/item/ammo_casing/AC = A
 		if(!AC.BB)
 			to_chat(user, "<span class='notice'>The bullet appears to be already spent.</span>")
 			return
@@ -116,8 +114,6 @@
 		PP.stored_ammo += src
 		user.put_in_any_hand_if_possible(PP) //pp hands lol
 		PP.update_icon()
-	
-		PP.good2go = TRUE
 	
 	if(istype(A,/obj/item/ammo_storage/box/piles/buckshotpile))
 		var/obj/item/ammo_storage/box/piles/buckshotpile/PP = A

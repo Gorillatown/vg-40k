@@ -22,7 +22,7 @@
 /obj/structure/orktrophybanner/examine(mob/user)
 	..()
 	if(mounted_list.len)
-		for(/obj/item/I in mounted_list)
+		for(var/obj/item/I in mounted_list)
 			if(istype(I,/obj/item/organ/external/head))
 				var/obj/item/organ/external/head/H = I
 				to_chat(user, "<span class='info'>You recognize the head of [H.origin_body.real_name] on this banner.</span>")
