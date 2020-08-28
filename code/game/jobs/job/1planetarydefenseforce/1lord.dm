@@ -48,10 +48,10 @@
 /datum/outfit/lord/post_equip(var/mob/living/carbon/human/H)
 	var/changed_name
 	if(H.gender == MALE)
-		changed_name = "Lord" + " " + "[H.real_name]"
+		changed_name = "Lord" + " " + "[H.first_name]" + " " + "Mannheim"
 		H.real_name = changed_name
 	else
-		changed_name = "Lady" + " " + "[H.real_name]"
+		changed_name = "Lady" + " " + "[H.first_name]" + " " + "Mannheim"
 		H.real_name = changed_name
 	H.check_dna(H)
 
