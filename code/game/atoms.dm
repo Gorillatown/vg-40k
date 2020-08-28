@@ -165,8 +165,11 @@ var/global/list/ghdel_profiling = list()
 /atom/proc/on_reagent_change()
 	return
 
-/atom/proc/Bumped(AM)
+// This proc is intended to be called by `to_bump` whenever a movable
+// object bumps into this atom.
+/atom/proc/Bumped(atom/movable/AM)
 	return
+
 
 /atom/proc/setDensity(var/density)
 	if (density == src.density)
@@ -711,9 +714,6 @@ its easier to just keep the beam vertical.
 		return FALSE
 	else
 		return TRUE
-
-/atom/proc/to_bump()
-	return
 
 /atom/proc/initialize()
 	flags |= ATOM_INITIALIZED

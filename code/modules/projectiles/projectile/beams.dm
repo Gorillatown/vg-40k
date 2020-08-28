@@ -854,7 +854,7 @@ var/list/beam_master = list()
 	damage = 0
 	fire_sound = 'sound/weapons/railgun_highpower.ogg'
 
-/obj/item/projectile/beam/combustion/Bump(atom/A)
+/obj/item/projectile/beam/combustion/to_bump(atom/A)
 	if(!A)
 		return
 	..()
