@@ -4,7 +4,8 @@
 	cooldown_max = 10
 
 /datum/roguelike_effects/heal/re_effect_act(mob/living/M, obj/item/I)
-	..()
+	if(..())
+		return
 	to_chat(M,"<span class='warning'>You feel much better.</span>")
 	M.adjustOxyLoss(-25)
 	M.heal_organ_damage(25,25)

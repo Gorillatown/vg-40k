@@ -228,12 +228,6 @@
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
 			if(RE.trigger_flags & (RE_ATTACK_HAND))
 				RE.re_effect_act(user, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
 
 	throwing = FALSE
 	if(loc == user)
@@ -339,12 +333,6 @@
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
 			if(RE.trigger_flags & (RE_FOUND))
 				RE.re_effect_act(finder, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
 
 	return
 
@@ -371,12 +359,6 @@
 			
 			if(RE.trigger_flags & (RE_EQUIPPED))
 				RE.re_effect_act(user, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
 
 	return
 

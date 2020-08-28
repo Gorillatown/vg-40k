@@ -29,12 +29,13 @@ effects flags - How the effects interact with the mob
 *----Effects Flags-----*
 
 /------------Procedures------------------------/
-re_process() - Its called on process from a subsystem, occurs every 2 seconds.
-roguelike_effect() - Its called for effects and curses
+re_process() - Its called on process from a subsystem, occurs every 2 seconds. handles cooldowns, and passives
+re_effect_act()  - Its called for effects and curses
+NOTES: Remember to call if(..()) to check if we are good to go on the children.
 
 /-----------Children--------------------------/
 /datum/roguelike_effects/passives - Basically a passive effect that runs every process tick
-Notes - Holds a ref to obj and mob gained on equipped, and lost on dropped.
+Notes - Holds a ref to obj and mob gained on equipped, and lost on dropped/unequipped
 
 */
 /obj/item
@@ -61,43 +62,21 @@ Notes - Holds a ref to obj and mob gained on equipped, and lost on dropped.
 		roguelike_process += src
 	
 /datum/roguelike_effects/proc/re_process()
-	if(cooldown > 0)
-		cooldown--
-
-	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
-		for(var/datum/roguelike_effects/RE in roguelike_effects)
-			if(RE.trigger_flags & (RE_ATTACK_SELF))
-				RE.re_effect_act(user, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
-
+	cooldown--
+	if(cooldown <= 0)
+		roguelike_process -= src
 
 /datum/roguelike_effects/proc/re_effect_act(mob/living/carbon/C, obj/item/I)
 	if(max_charges > 0)
 		charges -= 1
 		if(charges <= 0)
 			I.roguelike_effects -= src
+			return 1
 	
-	if(cooldown_max > 0)
-		cooldown = cooldown_max
+	if(cooldown_max)
+		if(cooldown > 0)
+			return 1
+		else
+			cooldown = cooldown_max
+			roguelike_process += src
 
-var/global/list/roguelike_item_effects = list(
-		/datum/roguelike_effects/blind,
-		/datum/roguelike_effects/fake,
-		/datum/roguelike_effects/eating,
-		/datum/roguelike_effects/harm,
-		/datum/roguelike_effects/heal,
-		/datum/roguelike_effects/hulk,
-		/datum/roguelike_effects/ignite,
-		/datum/roguelike_effects/radiate,
-		/datum/roguelike_effects/mindswap,
-		/datum/roguelike_effects/ominous,
-		/datum/roguelike_effects/petrify,
-		/datum/roguelike_effects/possess,
-		/datum/roguelike_effects/raise,
-		/datum/roguelike_effects/telekinesis
-		)

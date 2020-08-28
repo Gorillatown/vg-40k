@@ -3,7 +3,8 @@
 	desc = "Makes you switch minds with someone else, but temporarily."
 
 /datum/roguelike_effects/possess/re_effect_act(mob/living/M, obj/item/I)
-	..()
+	if(..())
+		return
 	var/list/targets = list()
 	for(var/mob/C in range(9,M))
 		targets += C

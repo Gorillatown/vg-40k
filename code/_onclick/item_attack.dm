@@ -5,12 +5,6 @@
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
 			if(RE.trigger_flags & (RE_ATTACK_SELF))
 				RE.re_effect_act(user, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
 
 	if(flags & TWOHANDABLE)
 		if(!(flags & MUSTTWOHAND))
@@ -72,21 +66,9 @@
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
 			if(RE.trigger_flags & (RE_ATTACK_USER))
 				RE.re_effect_act(user, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
 
 			if(RE.trigger_flags & (RE_ATTACK_TARGET))
 				RE.re_effect_act(M, src)
-				if(RE.max_charges > 0)
-					RE.charges -= 1
-					if(RE.charges <= 0)
-						roguelike_effects -= RE
-				if(RE.cooldown_max > 0)
-					RE.cooldown = RE.cooldown_max
 
 	if(originator)
 		return handle_attack(src, M, user, def_zone, originator)

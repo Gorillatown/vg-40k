@@ -3,7 +3,8 @@
 	desc = "Makes you switch minds with someone else."
 
 /datum/roguelike_effects/mindswap/re_effect_act(mob/living/M, obj/item/I)
-	..()
+	if(..())
+		return
 	var/list/targets = list()
 	for(var/mob/living/C in range(9,M)) //Can include ghosts. Because that is basically possession
 		targets += C

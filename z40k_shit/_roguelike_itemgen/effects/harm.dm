@@ -4,7 +4,8 @@
 	cooldown_max = 10
 
 /datum/roguelike_effects/harm/re_effect_act(mob/living/M, obj/item/I)
-	..()
+	if(..())
+		return
 	to_chat(M, "<span class='warning'>You feel an intense pain throughout all of your body!</span>")
 	M.adjustOxyLoss(10)
 	M.take_organ_damage(10,0)

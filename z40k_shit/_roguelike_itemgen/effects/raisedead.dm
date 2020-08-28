@@ -3,7 +3,8 @@
 	desc = "Makes you call the dead."
 
 /datum/roguelike_effects/raise/re_effect_act(mob/living/M, obj/item/I)
-	..()
+	if(..())
+		return
 	for(var/mob/dead/G in player_list)
 		if(G.mind && G.key)
 			G.loc = get_turf(M)

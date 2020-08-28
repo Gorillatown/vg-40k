@@ -3,6 +3,8 @@
 	desc = "Eats you."
 
 /datum/roguelike_effects/eating/re_effect_act(mob/living/M, obj/item/I)
+	if(..())
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		to_chat(H, "<span class='warning'>A scream enters your mind and fades away!</span>")

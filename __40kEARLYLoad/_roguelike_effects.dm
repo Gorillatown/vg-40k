@@ -19,3 +19,27 @@ var/list/roguelike_effects_triggers = list(
 										RE_ATTACK_HAND
 										)
 
+
+var/list/roguelike_item_effects = list(
+		/datum/roguelike_effects/blind,
+		/datum/roguelike_effects/fake,
+		/datum/roguelike_effects/eating,
+		/datum/roguelike_effects/harm,
+		/datum/roguelike_effects/heal,
+		/datum/roguelike_effects/hulk,
+		/datum/roguelike_effects/ignite,
+		/datum/roguelike_effects/radiate,
+		/datum/roguelike_effects/mindswap,
+		/datum/roguelike_effects/ominous,
+		/datum/roguelike_effects/petrify,
+		/datum/roguelike_effects/possess,
+		/datum/roguelike_effects/raise,
+		/datum/roguelike_effects/telekinesis,
+		/datum/roguelike_effects/teleportation
+		)
+
+var/list/roguelike_item_passives = list(
+	/datum/roguelike_effects/passives/regen,
+	/datum/roguelike_effects/passives/unstunabble
+	)
+	

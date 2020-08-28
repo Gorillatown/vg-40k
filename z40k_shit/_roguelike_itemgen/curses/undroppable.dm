@@ -4,4 +4,6 @@
 	cooldown_max = 10
 
 /datum/roguelike_effects/undroppable/re_effect_act(mob/living/M, obj/item/I)
+	if(..())
+		return
 	I.canremove = FALSE

@@ -3,7 +3,8 @@
 	desc = "Makes you big and strong."
 
 /datum/roguelike_effects/hulk/re_effect_act(mob/living/M, obj/item/I)
-	..()
+	if(..())
+		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.hulk_time = world.time + 10

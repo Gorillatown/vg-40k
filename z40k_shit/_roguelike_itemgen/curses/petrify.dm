@@ -4,6 +4,8 @@
 	cooldown_max = 20
 
 /datum/roguelike_effects/petrify/re_effect_act(mob/living/L, obj/item/I)
+	if(..())
+		return
 	var/instant = FALSE
 	//Turn the mob into a statue forever
 	//Return 1 on success
