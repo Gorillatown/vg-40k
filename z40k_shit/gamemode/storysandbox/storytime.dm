@@ -8,6 +8,6 @@
 //TODO: Make a better system.
 /datum/gamemode/points_of_interest/PostSetup()
 	..()
-	spawn(1 MINUTES)
+/*	spawn(1 MINUTES)
 		var/datum/relationships/fuckyou = new /datum/relationships()
-		fuckyou.make_relationships() //bitch
+		fuckyou.make_relationships() //bitch */
