@@ -1,17 +1,3 @@
-var/list/item_artifact_paths = list(/datum/item_artifact/undroppable,
-									/datum/item_artifact/ignite,
-									/datum/item_artifact/blind,
-									/datum/item_artifact/heal,
-									/datum/item_artifact/harm,
-									/datum/item_artifact/stone,
-									/datum/item_artifact/tele,
-									/datum/item_artifact/eating,
-									/datum/item_artifact/ominous,
-									/datum/item_artifact/fake,
-									/datum/item_artifact/hulk,
-									/datum/item_artifact/tk,
-									/datum/item_artifact/radiate,
-									/datum/item_artifact/raise)
 
 /obj/item/xenoitem
 	name = "Generic item (ERROR)"
@@ -27,7 +13,7 @@ var/list/item_artifact_paths = list(/datum/item_artifact/undroppable,
 
 /obj/item/xenoitem/New()
 	..()
-	var/art_effect = pick(item_artifact_paths)
+	var/art_effect = pick(item_artifact_effects)
 	var/datum/item_artifact/E = new art_effect
 	E.item_init(src)
 	var/item_trigger = pick(IE_ATK_SELF,IE_ATK_SELF,IE_EQP,IE_EQP,IE_FOUND,IE_ATK,IE_ATK_OTHER,IE_ATK_OTHER)

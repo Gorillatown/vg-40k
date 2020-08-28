@@ -213,9 +213,9 @@
 		var/obj/item/weapon/storage/S = loc
 		if(!S.remove_from_storage(src, user))
 			return
-
+ 
 	//40k MARKED - ITEM_ARTIFACT
-	if(item_effects)
+	if(item_effects.len)
 		for(var/datum/item_artifact/C in item_effects)
 			if(C.trigger == IE_ATK_HAND)
 				if(!(C in user.item_effects))
@@ -320,7 +320,7 @@
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/wearer, mob/finder)
-	if(item_effects) //40k MARKED - ITEM_ARTIFACT
+	if(item_effects.len) //40k MARKED - ITEM_ARTIFACT
 		for(var/datum/item_artifact/C in item_effects)
 			if(C.trigger == IE_FOUND)
 				if(!(C in wearer.item_effects))
@@ -345,7 +345,7 @@
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user) //Marked
 
-	if(item_effects)
+	if(item_effects.len)
 		for(var/datum/item_artifact/C in item_effects)
 			if(C.trigger == IE_EQP)
 				if(!(C in user.item_effects))

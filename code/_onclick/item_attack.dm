@@ -1,7 +1,7 @@
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
-	if(item_effects) //40k MARKED - ITEM_ARTIFACT
+	if(item_effects.len) //40k MARKED - ITEM_ARTIFACT
 		for(var/datum/item_artifact/C in item_effects)
 			if(C.trigger == IE_ATK_SELF)
 				if(!(C in user.item_effects))
@@ -66,7 +66,7 @@
 		if(restraint_apply_check(M, user))
 			return attempt_apply_restraints(M, user)
 
-	if(item_effects) //40k MARKED - ITEM_ARTIFACT
+	if(item_effects.len) //40k MARKED - ITEM_ARTIFACT
 		for(var/datum/item_artifact/C in item_effects)
 			if(C.trigger == IE_ATK)
 				if(!(C in user.item_effects))

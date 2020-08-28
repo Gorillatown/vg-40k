@@ -23,24 +23,25 @@ A loop runs in the relevant proc checking the item_artifact shit, and it all cal
 
 /obj/item
 	var/list/item_effects = list()
+
 /mob
 	var/list/item_effects = list()
 
 //Literally how you init a effect on a object I guess, It adds it to the item effects list. 
 //Can ..() and do other shit.
 /datum/item_artifact/proc/item_init(var/obj/item/O)    
-	O.item_effects.Add(src)
+	O.item_effects += src
 
 //This is what occurs when the trigger is activated.
 /datum/item_artifact/proc/item_act(var/mob/living/M) 
-	M.item_effects.Add(src)
+	M.item_effects += src
 
 //These called when you remove the shits, I guess. Generally the shit jus disappears when you hit 0 uses.
 /datum/item_artifact/proc/neutralize_obj(var/obj/item/O)
-	O.item_effects.Remove(src)
+	O.item_effects -= src
 
 /datum/item_artifact/proc/neutralize_mob(var/mob/living/M)
-	M.item_effects.Remove(src)
+	M.item_effects -= src
 	
 /*
 	Basically these just hand out abilities, they don't normally appear on stuff.
