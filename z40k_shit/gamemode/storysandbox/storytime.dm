@@ -10,4 +10,4 @@
 	..()
 /*	spawn(1 MINUTES)
 		var/datum/relationships/fuckyou = new /datum/relationships()
-		fuckyou.make_relationships() //bitch */
+		fuckyou.make_relationships() */ //bitch 

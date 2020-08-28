@@ -32,7 +32,7 @@
 	score_results += "Total sentient beings Exterminated: <b>[total_life_exterminated]</b>.<br>"
 	score_results += "Total Orks Exterminated: <b>[total_orks_exterminated]</b><br>"
 	var/warcrime_total = clamp((total_life_exterminated-total_orks_exterminated),0,500)
-	score_results += "Warcrime total: <font color='#ff0000'><b>[warcrime_total]</b></font>"
+	score_results += "Warcrime total: <font color='#ff0000'><b>[warcrime_total]</b></font><br>"
 	score_results += "The total checkpoints checked in: <b>[total_times_patrolled]</b> times.<br>"
 	score_results += "<b>Notable Members:</b><br>"
 	for(var/datum/role/R in members)
