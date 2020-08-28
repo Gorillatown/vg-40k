@@ -17,6 +17,8 @@
 	p = min(p, 100)
 	icon_state = "anobattery[round(p,25)]"
 
+var/list/anomaly_power_utilizers = list()
+
 /obj/item/weapon/anodevice
 	name = "Anomaly power utilizer"
 	icon = 'icons/obj/xenoarchaeology.dmi'
@@ -31,9 +33,10 @@
 
 /obj/item/weapon/anodevice/New()
 	. = ..()
+	anomaly_power_utilizers += src
 	processing_objects.Add(src)
 
-/obj/item/weapon/anodevice/attackby(var/obj/I, var/mob/user )
+/obj/item/weapon/anodevice/attackby(var/obj/I, var/mob/user)
 	if(istype(I, /obj/item/weapon/anobattery))
 		if(!inserted_battery)
 			if(user.drop_item(I, src))
@@ -45,7 +48,7 @@
 	else
 		return ..()
 
-/obj/item/weapon/anodevice/attack_self(var/mob/user )
+/obj/item/weapon/anodevice/attack_self(var/mob/user)
 	if(in_range(src, user))
 		return src.interact(user)
 
@@ -207,4 +210,5 @@
 
 /obj/item/weapon/anodevice/Destroy()
 	processing_objects.Remove(src)
+	anomaly_power_utilizers -= src
 	..()

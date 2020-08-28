@@ -6,8 +6,8 @@
 /obj/item/device/depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
-	icon = 'icons/obj/pda.dmi'
-	icon_state = "crap"
+	icon = 'icons/obj/xenoarchaeology.dmi'
+	icon_state = "depthscanner"
 	item_state = "analyzer"
 	w_class = W_CLASS_TINY
 	slot_flags = SLOT_BELT
@@ -66,10 +66,10 @@
 			for(var/mob/L in range(src, 1))
 				to_chat(L, "<span class='notice'>[bicon(src)] [src] pings [pick("madly","wildly","excitedly","crazily")]!</span>")
 
-/obj/item/device/depth_scanner/attack_self(var/mob/user )
+/obj/item/device/depth_scanner/attack_self(var/mob/user as mob)
 	return src.interact(user)
 
-/obj/item/device/depth_scanner/interact(var/mob/user )
+/obj/item/device/depth_scanner/interact(var/mob/user as mob)
 	var/dat = "<b>Co-ordinates with positive matches</b><br>"
 	dat += "<A href='?src=\ref[src];clear=0'>== Clear all ==</a><br>"
 	if(current)

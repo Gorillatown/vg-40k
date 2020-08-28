@@ -1,8 +1,8 @@
 /obj/item/projectile/bullet/needler
 	name = "\improper Needler Round"
-	icon = 'z40k_shit/icons/obj/ammo.dmi'
+	icon = 'z40k_shit/icons/obj/projectiles.dmi'
 	icon_state = "needle"
-	damage = 10
+	damage = 15
 	damage_type = TOX
 	bounce_type = PROJREACT_WALLS //Yeah I want it to bounce off walls.
 

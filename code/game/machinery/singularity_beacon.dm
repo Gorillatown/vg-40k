@@ -1,10 +1,9 @@
 
-//Not the best place for it but it's a hack job anyway -- Urist
 /obj/machinery/singularity_beacon
 	name = "singularity beacon"
 	desc = "A suspicious-looking beacon. It looks like one of those snazzy state-of-the-art bluespace devices."
 	icon = 'icons/obj/singularity.dmi'
-	icon_state = "beacon"
+	icon_state = "beacon0"
 	anchored = 0
 	density = 1
 	machine_flags = WRENCHMOVE | FIXED2WORK
@@ -76,11 +75,11 @@
 	else
 		visible_message("<span class='warning'>\The [src] suddenly shuts down.</span>")
 
-/obj/machinery/singularity_beacon/attack_ai(mob/user )
+/obj/machinery/singularity_beacon/attack_ai(mob/user as mob)
 	to_chat(user, "<span class='warning'>You try to interface with \the [src], but it throws a strange encrypted error message.</span>")
 	return
 
-/obj/machinery/singularity_beacon/attack_hand(var/mob/user )
+/obj/machinery/singularity_beacon/attack_hand(var/mob/user as mob)
 	user.delayNextAttack(10) //Prevent spam toggling, otherwise you can brick the cell very quickly
 	if(anchored)
 		if(!attached)
