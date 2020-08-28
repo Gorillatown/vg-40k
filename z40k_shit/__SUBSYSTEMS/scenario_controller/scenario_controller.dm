@@ -32,6 +32,7 @@ var/ork_total_points = 0
 
 //var/list/scenario_order_three = list()
 var/list/tzeentchpads = list()
+var/list/roguelike_process = list()
 
 //Basically this keeps timing, we dump it onto a datum really.
 /datum/subsystem/scenario_controller
@@ -78,6 +79,9 @@ var/list/tzeentchpads = list()
 				scenario_one_participants -= H
 	else
 		active_dungeon = FALSE
+
+	for(var/datum/roguelike_effects/RE in roguelike_process)
+		RE.re_process()
 		
 	if(ticker >= 2)
 		ticker = 0

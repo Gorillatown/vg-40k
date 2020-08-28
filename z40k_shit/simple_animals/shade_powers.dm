@@ -285,10 +285,10 @@
 
 /spell/soulblade/blade_mend/choose_targets(var/mob/user = usr)
 	var/obj/item/weapon/melee/soulblade/SB = user.loc
-	if (!ismob(SB.loc))
+	if(!ismob(SB.loc))
 		return null
 	var/mob/living/wielder = SB.loc
-	if (wielder.getBruteLoss())
+	if(wielder.getBruteLoss())
 		return list(wielder)
 	else
 		to_chat(user,"<span class='notice'>Your wielder's wounds are already all closed up.</span>")

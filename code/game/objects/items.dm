@@ -82,8 +82,8 @@
 
 /obj/item/Destroy()
 	infected_items -= src
-	if (pathogen)
-		for (var/mob/L in science_goggles_wearers)
+	if(pathogen)
+		for(var/mob/L in science_goggles_wearers)
 			if (L.client)
 				L.client.images -= pathogen
 		pathogen = null
@@ -93,6 +93,16 @@
 		H.drop_from_inventory(src) // items at the very least get unequipped from their mob before being deleted
 	for(var/x in actions)
 		qdel(x)
+	
+	if(roguelike_effects?.len)
+		for(var/datum/roguelike_effects/RE in roguelike_effects)
+			if(istype(RE,/datum/roguelike_effects/passives))
+				var/datum/roguelike_effects/passives/PRE = RE
+				PRE.current_mob = null
+				PRE.attached_object = null
+			roguelike_effects -= RE
+			roguelike_process -= RE
+
 	..()
 
 
@@ -205,28 +215,28 @@
 		R.hud_used.update_robot_modules_display()
  
 /obj/item/attack_hand(var/mob/user)
-	if (!user)
+	if(!user)
 		return
 
-	if (istype(loc, /obj/item/weapon/storage))
+	if(istype(loc, /obj/item/weapon/storage))
 		//If the item is in a storage item, take it out.
 		var/obj/item/weapon/storage/S = loc
 		if(!S.remove_from_storage(src, user))
 			return
  
-	//40k MARKED - ITEM_ARTIFACT
-	if(item_effects.len)
-		for(var/datum/item_artifact/C in item_effects)
-			if(C.trigger == IE_ATK_HAND)
-				if(!(C in user.item_effects))
-					C.item_act(user)
-					if(C.max_uses > 0)
-						C.uses -= 1
-						if(C.uses == 0)
-							item_effects.Remove(C)
+	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
+		for(var/datum/roguelike_effects/RE in roguelike_effects)
+			if(RE.trigger_flags & (RE_ATTACK_HAND))
+				RE.re_effect_act(user, src)
+				if(RE.max_charges > 0)
+					RE.charges -= 1
+					if(RE.charges <= 0)
+						roguelike_effects -= RE
+				if(RE.cooldown_max > 0)
+					RE.cooldown = RE.cooldown_max
 
 	throwing = FALSE
-	if (loc == user)
+	if(loc == user)
 		if(src == user.get_inactive_hand())
 			if(flags & TWOHANDABLE)
 				return wield(user)
@@ -293,6 +303,11 @@
 		var/datum/action/A = X
 		A.Remove(user)
 
+	if(roguelike_effects?.len)
+		for(var/datum/roguelike_effects/passives/RE in roguelike_effects)
+			roguelike_process -= RE
+			RE.current_mob = null
+
 ///called when an item is stripped off by another person, called BEFORE it is dropped. return 1 to prevent it from actually being stripped.
 /obj/item/proc/before_stripped(mob/wearer, mob/stripper, slot)
 	if(slot in list(slot_l_store, slot_r_store)) //is in pockets
@@ -320,15 +335,17 @@
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/wearer, mob/finder)
-	if(item_effects.len) //40k MARKED - ITEM_ARTIFACT
-		for(var/datum/item_artifact/C in item_effects)
-			if(C.trigger == IE_FOUND)
-				if(!(C in wearer.item_effects))
-					C.item_act(wearer)
-					if(C.max_uses > 0)
-						C.uses -= 1
-						if(C.uses == 0)
-							item_effects.Remove(C)
+	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
+		for(var/datum/roguelike_effects/RE in roguelike_effects)
+			if(RE.trigger_flags & (RE_FOUND))
+				RE.re_effect_act(finder, src)
+				if(RE.max_charges > 0)
+					RE.charges -= 1
+					if(RE.charges <= 0)
+						roguelike_effects -= RE
+				if(RE.cooldown_max > 0)
+					RE.cooldown = RE.cooldown_max
+
 	return
 
 // called after an item is placed in an equipment slot
@@ -345,15 +362,22 @@
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user) //Marked
 
-	if(item_effects.len)
-		for(var/datum/item_artifact/C in item_effects)
-			if(C.trigger == IE_EQP)
-				if(!(C in user.item_effects))
-					C.item_act(user)
-					if(C.max_uses > 0)
-						C.uses -= 1
-						if(C.uses == 0)
-							item_effects.Remove(C)
+	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
+		for(var/datum/roguelike_effects/RE in roguelike_effects)
+			if(istype(RE, /datum/roguelike_effects/passives))
+				var/datum/roguelike_effects/passives/PRE = RE
+				roguelike_process += RE
+				PRE.current_mob = user
+			
+			if(RE.trigger_flags & (RE_EQUIPPED))
+				RE.re_effect_act(user, src)
+				if(RE.max_charges > 0)
+					RE.charges -= 1
+					if(RE.charges <= 0)
+						roguelike_effects -= RE
+				if(RE.cooldown_max > 0)
+					RE.cooldown = RE.cooldown_max
+
 	return
 
 /obj/item/proc/item_action_slot_check(slot, mob/user)
@@ -364,6 +388,12 @@
 	for(var/x in actions)
 		var/datum/action/A = x
 		A.Remove(user)
+
+	if(roguelike_effects?.len)
+		for(var/datum/roguelike_effects/passives/RE in roguelike_effects)
+			roguelike_process -= RE
+			RE.current_mob = null
+
 	return
 
 //the mob M is attempting to equip this item into the slot passed through as 'slot'. Return 1 if it can do this and 0 if it can't.

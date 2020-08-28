@@ -123,7 +123,7 @@ Its the process loop for the word combo chain system on the mob.
 		if(user.client)
 			user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
 		
-
+ 
 //What occurs when a object is thrown.
 /obj/item/weapon/throw_impact(atom/hit_atom, mob/user)
 	..()

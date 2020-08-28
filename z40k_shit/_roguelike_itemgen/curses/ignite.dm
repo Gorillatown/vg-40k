@@ -1,9 +1,9 @@
-/datum/item_artifact/ignite
+/datum/roguelike_effects/ignite
 	name = "Fire Curse"
 	desc = "A curse that sets people on fire."
-	charge = 100
+	cooldown_max = 5
 
-/datum/item_artifact/ignite/item_act(var/mob/living/M)
+/datum/roguelike_effects/ignite/re_effect_act(mob/living/M, obj/item/I)
 	to_chat(M, "<span class='warning'> You burst into flames!</span>")
 	M.fire_stacks += 5
 	M.IgniteMob()

@@ -1,16 +1,17 @@
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
-	if(item_effects.len) //40k MARKED - ITEM_ARTIFACT
-		for(var/datum/item_artifact/C in item_effects)
-			if(C.trigger == IE_ATK_SELF)
-				if(!(C in user.item_effects))
-					C.item_act(user)
-					if(C.max_uses > 0)
-						C.uses -= 1
-						if(C.uses == 0)
-							item_effects.Remove(C)
-	
+	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
+		for(var/datum/roguelike_effects/RE in roguelike_effects)
+			if(RE.trigger_flags & (RE_ATTACK_SELF))
+				RE.re_effect_act(user, src)
+				if(RE.max_charges > 0)
+					RE.charges -= 1
+					if(RE.charges <= 0)
+						roguelike_effects -= RE
+				if(RE.cooldown_max > 0)
+					RE.cooldown = RE.cooldown_max
+
 	if(flags & TWOHANDABLE)
 		if(!(flags & MUSTTWOHAND))
 			if(wielded)
@@ -66,23 +67,27 @@
 		if(restraint_apply_check(M, user))
 			return attempt_apply_restraints(M, user)
 
-	if(item_effects.len) //40k MARKED - ITEM_ARTIFACT
-		for(var/datum/item_artifact/C in item_effects)
-			if(C.trigger == IE_ATK)
-				if(!(C in user.item_effects))
-					C.item_act(user)
-					if(C.max_uses > 0)
-						C.uses -= 1
-						if(C.uses == 0)
-							item_effects.Remove(C)
-		
-			if(C.trigger == IE_ATK_OTHER)
-				if(!(C in M.item_effects))
-					C.item_act(M)
-					if(C.max_uses > 0)
-						C.uses -= 1
-						if(C.uses == 0)
-							item_effects.Remove(C)
+
+	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
+		for(var/datum/roguelike_effects/RE in roguelike_effects)
+			if(RE.trigger_flags & (RE_ATTACK_USER))
+				RE.re_effect_act(user, src)
+				if(RE.max_charges > 0)
+					RE.charges -= 1
+					if(RE.charges <= 0)
+						roguelike_effects -= RE
+				if(RE.cooldown_max > 0)
+					RE.cooldown = RE.cooldown_max
+
+			if(RE.trigger_flags & (RE_ATTACK_TARGET))
+				RE.re_effect_act(M, src)
+				if(RE.max_charges > 0)
+					RE.charges -= 1
+					if(RE.charges <= 0)
+						roguelike_effects -= RE
+				if(RE.cooldown_max > 0)
+					RE.cooldown = RE.cooldown_max
+
 	if(originator)
 		return handle_attack(src, M, user, def_zone, originator)
 	else

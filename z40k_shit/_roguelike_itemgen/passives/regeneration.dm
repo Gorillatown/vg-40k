@@ -1,8 +1,8 @@
-/datum/passive_effect/regen
+/datum/roguelike_effects/passives/regen
 	name = "Regeneration"
 	desc = "Heals you rather quickly."
 
-/datum/passive_effect/regen/runmob(var/mob/living/carbon/M)
+/datum/roguelike_effects/passives/regen/re_process()
 	if(M.getOxyLoss()) 
 		M.adjustOxyLoss(-1)
 	if(M.getBruteLoss())
@@ -11,4 +11,3 @@
 		M.heal_organ_damage(0,1)
 	if(M.getToxLoss()) 
 		M.adjustToxLoss(-1)
-		

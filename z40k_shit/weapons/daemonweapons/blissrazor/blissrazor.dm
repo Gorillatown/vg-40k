@@ -177,10 +177,10 @@
 			else
 				C.gib()
 				return
-		else
+/*		else
 			if(prob(item_effects.len*30))
 				to_chat(user, "<span class='warning'> [src] overloads [C]'s senses and casts them into a breif coma.</span>")
-				C.sleeping += 10
+				C.sleeping += 10*/
 	else if(istype(target,/mob/living/simple_animal)) //Still gibs animals, but gets less power from them.
 		var/mob/living/simple_animal/A = target
 		if(A.stat == DEAD)

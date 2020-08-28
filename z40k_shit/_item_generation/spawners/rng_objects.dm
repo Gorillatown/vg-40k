@@ -46,7 +46,8 @@
 		spawned.pixel_y = rand(-32,32)
 
 /obj/abstract/loot_spawners/proc/artifact_creation(obj/our_object)
-	var/effect_path = pick(item_artifact_effects)
+	return 0
+/*	var/effect_path = pick(item_artifact_effects)
 	var/datum/item_artifact/E = new effect_path
 	E.trigger = pick(item_artifact_triggers)
 	E.item_init(our_object)
@@ -57,4 +58,4 @@
 					"It has an odd sigil on it.",
 					"It has a small red stone pressed into it.",
 					"It is covered in tiny cracks.",
-					"It looks unsafe.")
+					"It looks unsafe.")*/

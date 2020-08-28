@@ -1,7 +1,8 @@
-/datum/item_artifact/ominous
+/datum/roguelike_effects/ominous
 	name = "Ominous Effect"
 	desc = "Makes a superstitious person spooked."
 
-/datum/item_artifact/ominous/item_act(var/mob/living/M)
+/datum/roguelike_effects/ominous/re_effect_act(mob/living/M, obj/item/I)
+	..()
 	to_chat(M, "<span class='warning'> A scream enters your mind and fades away!</span>")
 	
