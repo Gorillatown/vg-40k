@@ -35,7 +35,7 @@
 //**************************************************************
 
 // Medical /////////////////////////////////////////////////////
-
+ 
 /obj/abstract/map/spawner/medical/drugs
 	name = "medical drug spawner"
 	icon_state = "med_drugs"

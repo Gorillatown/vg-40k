@@ -2662,6 +2662,7 @@
 #include "z40k_shit\_roguelike_itemgen\passives\regeneration.dm"
 #include "z40k_shit\_roguelike_itemgen\passives\unstunnable.dm"
 #include "z40k_shit\_roguelike_itemgen\spawners\rng_objects.dm"
+#include "z40k_shit\_roguelike_itemgen\spawners\loot_spawners\test_spawner.dm"
 #include "z40k_shit\_species\orkorgans.dm"
 #include "z40k_shit\_species\orkspecies.dm"
 #include "z40k_shit\_species\orks\ork_emotes.dm"

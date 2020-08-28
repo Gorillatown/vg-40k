@@ -1,5 +1,6 @@
 /obj/abstract/loot_spawners
-	icon = 'icons/obj/map/spawners.dmi'
+	icon = 'icons/mob/screen1.dmi'
+	icon_state = "x2"
 	alpha = 255
 	invisibility = 101
 	mouse_opacity = 0
@@ -12,14 +13,6 @@
 	var/chance_of_artifact = 0 //Probability we run a object through the special artifact spawner.
 
 	var/list/loot_table = list() //Loot table
-/*	var/mob_spawn_list = list(
-		/mob/living/simple_animal/hostile/asteroid/goliath  = 5,
-		/mob/living/simple_animal/hostile/asteroid/goldgrub = 1,
-		/mob/living/simple_animal/hostile/asteroid/basilisk = 3,
-		/mob/living/simple_animal/hostile/asteroid/hivelord = 5,
-		/mob/living/simple_animal/hostile/asteroid/magmaw = 4,
-		/mob/living/simple_animal/hostile/asteroid/pillow = 2
-	)*/
 
 /obj/abstract/loot_spawners/New()
 	..()
@@ -40,6 +33,7 @@
 	var/obj/item/spawned = new new_item_type(loc)
 	if(prob(chance_of_artifact))
 		artifact_creation(spawned)
+		spawned.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 
 	if(item_position_jiggle)
 		spawned.pixel_x = rand(-32,32)
