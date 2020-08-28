@@ -47,7 +47,7 @@
 	..()
 
 /obj/item/ammo_storage/box/piles/update_icon()
-	..()
+	..() 
 	if(stored_ammo.len == 0)
 		qdel(src)
 

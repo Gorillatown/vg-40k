@@ -1,9 +1,9 @@
-/datum/roguelike_effects/petrify
+/datum/roguelike_effects/curses/petrify
 	name = "Petrification Curse"
 	desc = "A curse that turns people to stone, though only breifly."
 	cooldown_max = 20
 
-/datum/roguelike_effects/petrify/re_effect_act(mob/living/L, obj/item/I)
+/datum/roguelike_effects/curses/petrify/re_effect_act(mob/living/L, obj/item/I)
 	if(..())
 		return
 	var/instant = FALSE

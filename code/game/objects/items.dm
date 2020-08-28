@@ -226,8 +226,9 @@
  
 	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
-			if(RE.trigger_flags & (RE_ATTACK_HAND))
-				RE.re_effect_act(user, src)
+			for(var/trigger in RE.trigger_effects)
+				if(trigger == RE_ATTACK_HAND)
+					RE.re_effect_act(user, src)
 
 	throwing = FALSE
 	if(loc == user)
@@ -331,8 +332,9 @@
 /obj/item/proc/on_found(mob/wearer, mob/finder)
 	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
-			if(RE.trigger_flags & (RE_FOUND))
-				RE.re_effect_act(finder, src)
+			for(var/trigger in RE.trigger_effects)
+				if(trigger == RE_FOUND)
+					RE.re_effect_act(finder, src)
 
 	return
 
@@ -356,9 +358,11 @@
 				var/datum/roguelike_effects/passives/PRE = RE
 				roguelike_process += RE
 				PRE.current_mob = user
+				continue
 			
-			if(RE.trigger_flags & (RE_EQUIPPED))
-				RE.re_effect_act(user, src)
+			for(var/trigger in RE.trigger_effects)
+				if(trigger == RE_EQUIPPED)
+					RE.re_effect_act(user, src)
 
 	return
 

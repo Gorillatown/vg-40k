@@ -1,6 +1,6 @@
 /datum/roguelike_effects/raise
-	name = "Summon Spectre Effect"
-	desc = "Makes you call the dead."
+	name = "Beckons spirits"
+	desc = "Will summon those who have recently passed in a twisted form."
 
 /datum/roguelike_effects/raise/re_effect_act(mob/living/M, obj/item/I)
 	if(..())

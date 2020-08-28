@@ -3,8 +3,9 @@
 /obj/item/proc/attack_self(mob/user)
 	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
-			if(RE.trigger_flags & (RE_ATTACK_SELF))
-				RE.re_effect_act(user, src)
+			for(var/trigger in RE.trigger_effects)
+				if(trigger == RE_ATTACK_SELF)
+					RE.re_effect_act(user, src)
 
 	if(flags & TWOHANDABLE)
 		if(!(flags & MUSTTWOHAND))
@@ -61,14 +62,14 @@
 		if(restraint_apply_check(M, user))
 			return attempt_apply_restraints(M, user)
 
-
 	if(roguelike_effects?.len) //40k MARKED - ROGUELIKE_EFFECTS
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
-			if(RE.trigger_flags & (RE_ATTACK_USER))
-				RE.re_effect_act(user, src)
-
-			if(RE.trigger_flags & (RE_ATTACK_TARGET))
-				RE.re_effect_act(M, src)
+			for(var/trigger in RE.trigger_effects)
+				switch(trigger)
+					if(RE_ATTACK_USER)
+						RE.re_effect_act(user, src)
+					if(RE_ATTACK_TARGET)
+						RE.re_effect_act(M, src)
 
 	if(originator)
 		return handle_attack(src, M, user, def_zone, originator)

@@ -1,6 +1,6 @@
 /datum/roguelike_effects/radiate
 	name = "Radiation Effect"
-	desc = "Makes you get radiation problems."
+	desc = "Erupts in radiation."
 
 /datum/roguelike_effects/radiate/re_effect_act(mob/living/M, obj/item/I)
 	if(..())

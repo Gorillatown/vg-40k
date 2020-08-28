@@ -15,7 +15,7 @@ effect_duration - this is how long the effect will last
 cooldown_max - the total cooldown peak
 cooldown - active tick amount before we are gucci
 
-*-----Trigger Flags-----* - found in _roguelike_effects.dm. Trigger Bitflags
+*-----Trigger effects-----* - found in _roguelike_effects.dm. Trigger Bitflags
 [Basically how the effect can be triggered from the item]
 *-----------------------*
 	RE_ATTACK_SELF - Calls effects when the item is clicked in the active hand.
@@ -45,7 +45,7 @@ Notes - Holds a ref to obj and mob gained on equipped, and lost on dropped/unequ
 /datum/roguelike_effects
 	var/name = "Roguelike Effects Parent"
 	var/desc = "A data storage for effects to be appended to objects without much fuss."
-	var/trigger_flags = 0 //Basically this will be the trigger flag
+	var/list/trigger_effects = list() //Basically this will be the trigger flag
 	var/max_charges = 0
 	var/charges = 0
 	var/effect_strength = 0

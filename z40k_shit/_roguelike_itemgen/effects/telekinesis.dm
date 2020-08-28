@@ -1,6 +1,6 @@
 /datum/roguelike_effects/telekinesis
-	name = "Telekinesis Effect"
-	desc = "Makes you very clever."
+	name = "Mind Mutation"
+	desc = "Appears to mutate the mind."
 
 /datum/roguelike_effects/telekinesis/re_effect_act(mob/living/M, obj/item/I)
 	if(..())

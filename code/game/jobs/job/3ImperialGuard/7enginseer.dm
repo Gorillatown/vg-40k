@@ -57,4 +57,5 @@
 	H.attribute_strength = 12
 	H.attribute_agility = 12
 	H.attribute_dexterity = 13
+	H.add_spell(new /spell/aoe_turf/identify, "ork_spell_ready")
 	return 1

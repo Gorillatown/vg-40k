@@ -7,7 +7,6 @@
 
 	var/item_position_jiggle = FALSE //Basically moves its pixel x and pixel y for decorative purposes
 	var/amount_to_pick = 0 //Amount of objects to pick from the table
-	var/prob_of_nothing = 0 //Probability nothing spawns
 	var/prob_of_skipped_items = 0 //Probability we skip a item
 	
 	var/chance_of_artifact = 0 //Probability we run a object through the special artifact spawner.
@@ -16,8 +15,7 @@
 
 /obj/abstract/loot_spawners/New()
 	..()
-	if(prob(prob_of_nothing))
-		perform_spawn()
+	perform_spawn()
 
 /obj/abstract/loot_spawners/proc/perform_spawn()
 	for(var/i=0 to amount_to_pick)
@@ -40,51 +38,27 @@
 		spawned.pixel_y = rand(-32,32)
 
 /obj/abstract/loot_spawners/proc/artifact_creation(obj/item/our_object)
-	if(prob(15)) //15% chance for more effects
-		if(prob(10)) //10% chance for a roll of 2 to 4
-			for(var/i=0 to rand(2,4))
-				if(prob(95)) //95% chance of static effects
-					var/effect_path = pick(roguelike_item_effects)
-					var/datum/roguelike_effects/RE = new effect_path
-					RE.add_effect_to_object(our_object)
-					if(prob(25))
-						for(var/ii=0 to 2)
-							RE.trigger_flags |= pick(roguelike_effects_triggers)
-					else
-						RE.trigger_flags |= pick(roguelike_effects_triggers)
-				else
-					var/effect_path = pick(roguelike_item_effects)
-					var/datum/roguelike_effects/passives/RE = new effect_path
-					RE.add_effect_to_object(our_object)
-
-		else //90% chance of 2 to 3
-			for(var/i=0 to rand(2,3))
-				if(prob(95))  //95% chance of static effects
-					var/effect_path = pick(roguelike_item_effects)
-					var/datum/roguelike_effects/RE = new effect_path
-					RE.add_effect_to_object(our_object)
-
-					if(prob(25))
-						for(var/ii=0 to 2)
-							RE.trigger_flags |= pick(roguelike_effects_triggers)
-					else
-						RE.trigger_flags |= pick(roguelike_effects_triggers)
-	
-				else
-					var/effect_path = pick(roguelike_item_effects)
-					var/datum/roguelike_effects/passives/RE = new effect_path
-					RE.add_effect_to_object(our_object)
-	else
+	if(prob(90))
 		var/effect_path = pick(roguelike_item_effects)
 		var/datum/roguelike_effects/RE = new effect_path
+		var/picked_trigger = pick(roguelike_effects_triggers)
+		RE.trigger_effects += picked_trigger
 		RE.add_effect_to_object(our_object)
-	
-		if(prob(25))
-			for(var/i=0 to 2)
-				RE.trigger_flags |= pick(roguelike_effects_triggers)
-		else
-			RE.trigger_flags |= pick(roguelike_effects_triggers)
-
+		if(prob(10))
+			var/effect_path_passive = pick(roguelike_item_passives)
+			var/datum/roguelike_effects/passives/PRE = new effect_path_passive
+			PRE.add_effect_to_object(our_object)
+	else
+		for(var/i=0 to rand(2,3))
+			var/effect_path = pick(roguelike_item_effects)
+			var/datum/roguelike_effects/RE = new effect_path
+			var/picked_trigger = pick(roguelike_effects_triggers)
+			RE.trigger_effects += picked_trigger
+			RE.add_effect_to_object(our_object)
+		if(prob(10))
+			var/effect_path_passive = pick(roguelike_item_passives)
+			var/datum/roguelike_effects/passives/PRE = new effect_path_passive
+			PRE.add_effect_to_object(our_object)
 
 	if(prob(15))
 		our_object.force += rand(5,20)

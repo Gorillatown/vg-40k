@@ -8,7 +8,7 @@
 	hitsound = 'z40k_shit/sounds/chainsword_swing.ogg'
 	siemens_coefficient = 1
 	slot_flags = SLOT_BELT
-	force = 40
+	force = 20
 	throwforce = 5
 	throw_speed = 5
 	throw_range = 7

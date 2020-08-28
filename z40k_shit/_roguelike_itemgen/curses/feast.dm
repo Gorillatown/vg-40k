@@ -1,8 +1,8 @@
-/datum/roguelike_effects/eating
+/datum/roguelike_effects/curses/eating
 	name = "Feast Effect"
-	desc = "Eats you."
+	desc = "Appears to feel quite hungry."
 
-/datum/roguelike_effects/eating/re_effect_act(mob/living/M, obj/item/I)
+/datum/roguelike_effects/curses/eating/re_effect_act(mob/living/M, obj/item/I)
 	if(..())
 		return
 	if(ishuman(M))

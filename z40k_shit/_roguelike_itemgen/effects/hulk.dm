@@ -1,6 +1,6 @@
 /datum/roguelike_effects/hulk
-	name = "Hulk Effect"
-	desc = "Makes you big and strong."
+	name = "Muscle Mutations"
+	desc = "Makes you some kind of mutant."
 
 /datum/roguelike_effects/hulk/re_effect_act(mob/living/M, obj/item/I)
 	if(..())

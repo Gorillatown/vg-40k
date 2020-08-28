@@ -1,6 +1,6 @@
 /datum/roguelike_effects/ominous
 	name = "Ominous Effect"
-	desc = "Makes a superstitious person spooked."
+	desc = "You are unsure of what this does."
 
 /datum/roguelike_effects/ominous/re_effect_act(mob/living/M, obj/item/I)
 	if(..())
