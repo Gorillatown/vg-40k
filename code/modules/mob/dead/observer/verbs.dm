@@ -391,6 +391,7 @@
 	speed = text2num(copytext(speed,1,4))/100
 	movespeed = 1/speed
 
+/*
 /mob/dead/observer/verb/request_bomberman()
 	set name = "Request a bomberman arena"
 	set category = "Ghost"
@@ -412,6 +413,7 @@
 			creating_arena = FALSE
 		return
 	to_chat(src, "<span class='notice'>There were unfortunatly no available arenas.</span>")
+*/
 
 /mob/dead/observer/verb/become_mommi()
 	set name = "Become MoMMI"

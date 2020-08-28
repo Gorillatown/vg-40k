@@ -10,11 +10,12 @@
 	projectile_type = /obj/item/projectile/bullet/stubber
 	w_type = RECYK_METAL
 
+ 
 /obj/item/ammo_storage/magazine/stubbermag
 	name = "Stubber Magazine"
 	desc = "A magazine that holds 10mm Bullets, that fits in most stubbers around these parts"
 	icon = 'z40k_shit/icons/obj/ammo.dmi'
-	icon_state = "sluggamag"
+	icon_state = "10mm"
 	origin_tech = Tc_COMBAT + "=2"
 	ammo_type = "/obj/item/ammo_casing/stubber" //We don't use regular bullets here.
 	max_ammo = 10
