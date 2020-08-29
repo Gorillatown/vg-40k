@@ -19,21 +19,23 @@
 //Clicking gun will still lower aim for guns that don't overwrite this
 /obj/item/weapon/gun/attack_self()
 	if(!lower_aim())
-		return ..()
+		..()
 
 //Removing the lock and the buttons.
-/obj/item/weapon/gun/dropped(mob/user )
+/obj/item/weapon/gun/dropped(mob/user)
+	..()
 	stop_aim()
-	if (user && user.client)
+	if(user && user.client)
 		user.client.remove_gun_icons()
-	return ..()
 
 /obj/item/weapon/gun/equipped(var/mob/user, var/slot, hand_index)
+	..()
 	if(!hand_index)
+		if(wielded)
+			unwield(user)
 		stop_aim()
-		if (user && user.client)
+		if(user && user.client)
 			user.client.remove_gun_icons()
-	return ..()
 
 //Removes lock fro mall targets
 /obj/item/weapon/gun/proc/stop_aim()

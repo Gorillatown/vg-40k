@@ -371,6 +371,9 @@
 
 // called after an item is unequipped or stripped
 /obj/item/proc/unequipped(mob/user, var/from_slot = null)
+	if(wielded)
+		unwield(user)
+	
 	for(var/x in actions)
 		var/datum/action/A = x
 		A.Remove(user)
