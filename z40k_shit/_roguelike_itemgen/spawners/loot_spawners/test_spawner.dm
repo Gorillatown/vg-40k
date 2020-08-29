@@ -10,8 +10,9 @@
 	)
 
 /obj/abstract/loot_spawners/tool_spawner
-	amount_to_pick = 5
-	chance_of_artifact = 15
+	amount_to_pick = 4
+	chance_of_artifact = 5
+	prob_of_skipped_items = 25
 	loot_table = list(
 		/obj/item/weapon/crowbar = 1,
 		/obj/item/weapon/weldingtool = 1,
@@ -25,7 +26,8 @@
 
 /obj/abstract/loot_spawners/instrument_spawner
 	amount_to_pick = 2
-	chance_of_artifact = 75
+	chance_of_artifact = 10
+	prob_of_skipped_items = 25
 	loot_table = list(/obj/item/device/instrument/violin = 1,
 					/obj/item/device/instrument/guitar = 2,
 					/obj/item/device/instrument/glockenspiel = 1,
@@ -40,7 +42,7 @@
 
 /obj/abstract/loot_spawners/surgery_tools
 	amount_to_pick = 1
-	chance_of_artifact = 75
+	chance_of_artifact = 10
 	loot_table = list(
 					/obj/item/weapon/cautery = 1,
 					/obj/item/weapon/surgicaldrill = 1,
@@ -56,17 +58,17 @@
 					)
 
 /obj/abstract/loot_spawners/random_materials
-	amount_to_pick = 3
-	chance_of_artifact = 25
+	amount_to_pick = 1
+	chance_of_artifact = 10
 	loot_table = list(/obj/item/stack/sheet/metal/bigstack = 1,
 						/obj/item/stack/sheet/glass/glass/bigstack = 1,
-						/obj/item/stack/sheet/wood/bigstack = 1
+						/obj/item/stack/sheet/wood/bigstack = 5
 
 	)
 
 /obj/abstract/loot_spawners/random_set_one
-	amount_to_pick = 4
-	chance_of_artifact = 15
+	amount_to_pick = 2
+	chance_of_artifact = 5
 	loot_table = list(/obj/item/weapon/bikehorn = 1,
 					/obj/item/weapon/coin/gold = 1,
 					/obj/item/weapon/shard = 1,

@@ -5,7 +5,7 @@
 	invisibility = 101
 	mouse_opacity = 0
 
-	var/item_position_jiggle = FALSE //Basically moves its pixel x and pixel y for decorative purposes
+	var/item_position_jiggle = TRUE //Basically moves its pixel x and pixel y for decorative purposes
 	var/amount_to_pick = 0 //Amount of objects to pick from the table
 	var/prob_of_skipped_items = 0 //Probability we skip a item
 	

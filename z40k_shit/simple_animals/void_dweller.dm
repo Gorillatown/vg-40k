@@ -3,8 +3,8 @@
 	name = "void dweller"
 	desc = "A twisted, malevolent creature, cloaked in a tattered robe."
 	icon = 'z40k_shit/icons/mob/mobs.dmi'
-	icon_state = "void_dweller"
-	icon_living = "void_dweller"
+	icon_state = "ghost_dark"
+	icon_living = "ghost_dark"
 	speak_chance = 0
 	turns_per_move = 5
 	response_help = "thinks better of touching"

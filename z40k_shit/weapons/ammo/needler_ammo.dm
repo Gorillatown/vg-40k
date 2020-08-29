@@ -19,7 +19,7 @@
 	name = "Needler Magazine"
 	desc = "A magazine that fits into a needler, if you ever find one."
 	icon = 'z40k_shit/icons/obj/ammo.dmi'
-	icon_state = "needlermag"
+	icon_state = "needlermag-20"
 	origin_tech = Tc_COMBAT + "=2"
 	ammo_type = "/obj/item/ammo_casing/needler" //We don't use regular bullets here.
 	max_ammo = 20
