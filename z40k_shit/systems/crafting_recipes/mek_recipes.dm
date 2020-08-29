@@ -6,7 +6,7 @@
 	obj_desc = "A Kustom Shoota allows many guns to be attached to it."
 	other_objects = list(/obj/item/weapon/gun/projectile/automatic/shoota = 3)
 	sheet_types = list(/obj/item/stack/sheet/metal = 30)
-
+ 
 /datum/crafting_recipes/rokkits
 	title = "Rokkits"
 	result_type = /obj/item/ammo_casing/rocket_rpg/rokkit
@@ -48,42 +48,54 @@
 	title = "Shoota"
 	result_type = /obj/item/weapon/gun/projectile/automatic/shoota
 	time = 3 SECONDS
-	build_desc = "20 Metal Sheets"
+	build_desc = "50 Metal Sheets, 30 rods, 30 plasteel tiles, 40 pieces of cable, 1 welding tool"
 	obj_desc = "Its a shoota, it shoots"
-	sheet_types = list(/obj/item/stack/sheet/metal = 20)
+	sheet_types = list(/obj/item/stack/sheet/metal = 50,
+						/obj/item/stack/rods = 30,
+						/obj/item/stack/tile/plasteel = 30,
+						/obj/item/stack/cable_coil = 40)
+	other_objects = list(/obj/item/weapon/weldingtool = 1)
 
 
 /datum/crafting_recipes/choppa
 	title = "Choppa"
 	result_type = /obj/item/weapon/choppa
 	time = 2 SECONDS
-	build_desc = "20 Metal Sheets"
+	build_desc = "15 Metal Sheets"
 	obj_desc = "It chopps real good."
-	sheet_types = list(/obj/item/stack/sheet/metal = 20)
+	sheet_types = list(/obj/item/stack/sheet/metal = 15)
 
 /datum/crafting_recipes/shield
 	title = "Shield"
 	result_type = /obj/item/weapon/shield/orkshield
 	time = 3 SECONDS
-	build_desc = "30 Metal Sheets"
+	build_desc = "20 Metal Sheets"
 	obj_desc = "Its an orkish shield"
-	sheet_types = list(/obj/item/stack/sheet/metal = 30)
+	sheet_types = list(/obj/item/stack/sheet/metal = 20)
 
 /datum/crafting_recipes/slugga
 	title = "Slugga"
 	result_type = /obj/item/weapon/gun/projectile/automatic/slugga
 	time = 3 SECONDS
-	build_desc = "20 Metal Sheets"
+	build_desc = "50 Metal Sheets, 20 metal rods, 30 pieces of cable, 1 welding tool, 1 crowbar"
 	obj_desc = "Its basically a handgun"
-	sheet_types = list(/obj/item/stack/sheet/metal = 20)
+	sheet_types = list(/obj/item/stack/sheet/metal = 50,
+						/obj/item/stack/rods = 20,
+						/obj/item/stack/cable_coil = 30)
+	other_objects = list(/obj/item/weapon/weldingtool = 1,
+						/obj/item/weapon/crowbar = 1)
 
 /datum/crafting_recipes/shotta
 	title = "Shotta"
 	result_type = /obj/item/weapon/gun/projectile/shotgun/shotta
 	time = 3 SECONDS
-	build_desc = "20 Metal Sheets"
+	build_desc = "50 Metal Sheets, 20 metal rods, 30 pieces of cable, 1 Welding tool, 1 crowbar"
 	obj_desc = "Unlike the slugga, its a handheld shotgun"
-	sheet_types = list(/obj/item/stack/sheet/metal = 20)
+	sheet_types = list(/obj/item/stack/sheet/metal = 50,
+						/obj/item/stack/rods = 20,
+						/obj/item/stack/cable_coil = 30)
+	other_objects = list(/obj/item/weapon/weldingtool = 1,
+						/obj/item/weapon/crowbar = 1)
 
 /datum/crafting_recipes/rokkitlauncha
 	title = "Rokkitlauncha"

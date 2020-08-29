@@ -6,10 +6,10 @@
 	desc = "A basic belt for a basic bitch."
 	icon_state = "orkbelt1"
 	item_state = "orkbelt1"
-	max_combined_w_class = 200
+	max_combined_w_class = 14
 	fits_max_w_class = 5
 	w_class = W_CLASS_LARGE
-	storage_slots = 14
+	storage_slots = 8
 	can_only_hold = list(
 	"/obj/item/weapon/grenade/stikkbomb",
 	"/obj/item/ammo_casing/rocket_rpg/rokkit",
@@ -50,7 +50,7 @@
 	desc = "A belt with armored plates attached to it."
 	icon_state = "orkbelt1dev1"
 	item_state = "orkbelt1dev1"
-	max_combined_w_class = 200
+	max_combined_w_class = 14
 	fits_max_w_class = 5
 	body_parts_covered = LOWER_TORSO|LEGS
 	armor = list(melee = 10, bullet = 10, laser = 10,energy = 10, bomb = 10, bio = 10, rad = 0)
@@ -91,7 +91,7 @@
 	item_state = "warboss_belt"
 	w_class = W_CLASS_LARGE
 	storage_slots = 14
-	max_combined_w_class = 200
+	max_combined_w_class = 14
 	fits_max_w_class = 5
 	can_only_hold = list(
 	"/obj/item/weapon/,")

@@ -5,7 +5,7 @@
 	invocation_type = SpI_NONE
 	school = "evocation"
 	panel = "Celebrity"
-	charge_max = 40
+	charge_max = 30
 	range = 1
 
 /spell/slaanesh/celebfall/choose_targets(var/mob/user = usr)

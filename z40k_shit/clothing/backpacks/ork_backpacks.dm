@@ -7,8 +7,7 @@
 	icon = 'z40k_shit/icons/obj/orks/orkarmorandclothesOBJ.dmi'
 	icon_state = "orkbackpack"
 	item_state = "orkbackpack"
-	max_combined_w_class = 200
-	
+
 /obj/item/weapon/storage/backpack/brownbackpack/sluggakit/New()
 	..()
 	new /obj/item/ammo_storage/magazine/sluggamag(src)

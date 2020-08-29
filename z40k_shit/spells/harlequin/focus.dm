@@ -6,7 +6,7 @@
 	override_icon = 'z40k_shit/icons/buttons/warpmagic.dmi' //Basically points us to a different dmi.
 	school = "mime"
 	panel = "Mime"
-	charge_max = 750
+	charge_max = 350
 	spell_flags = INCLUDEUSER
 	range = 0
 	max_targets = 1
@@ -29,9 +29,9 @@
 		if(QST.alignment < -6)
 			to_chat(H, "<span class='notice'>You stretch out with your senses.</span>")
 			for(var/i=0, i<8, i++)
-				sleep(60)
+				sleep(30)
 				if(H)
 					C.changeView(C.view + 1)
-			sleep(120)
+			sleep(100)
 			if(H) 
 				C.changeView(C.view - 7)

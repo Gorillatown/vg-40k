@@ -8,7 +8,7 @@
 	school = "mime"
 	panel = "Mime"
 	invocation_type = SpI_NONE
-	charge_max = 500
+	charge_max = 250
 	spell_flags = INCLUDEUSER
 	range = 0
 	max_targets = 1

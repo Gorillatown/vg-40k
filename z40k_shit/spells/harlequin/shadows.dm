@@ -5,7 +5,7 @@
 	override_icon = 'z40k_shit/icons/buttons/warpmagic.dmi' //Basically points us to a different dmi.
 	school = "mime"
 	panel = "Mime"
-	charge_max = 100
+	charge_max = 80
 	spell_flags = INCLUDEUSER
 	range = 0
 	max_targets = 1

@@ -3,7 +3,7 @@
 	desc = "This is the ability to identify items. It takes a while between uses"
 
 	school = "transmutation"
-	charge_max = 600
+	charge_max = 200
 	spell_flags = 0
 	invocation_type = SpI_NONE
 	range = 0

@@ -10,7 +10,7 @@
 	projectile_speed = 1
 	duration = 20
 
-	charge_max = 500
+	charge_max = 200
 	invocation_type = SpI_NONE
 	spell_flags = WAIT_FOR_CLICK
 //	hud_state = "life_leech"

@@ -27,7 +27,34 @@
 	item_state = "imperialbelt" //Check: Its there
 	w_class = W_CLASS_LARGE
 	storage_slots = 14
-	can_only_hold = list(/obj/item/weapon)
+	max_combined_w_class = 20
+	fits_ignoring_w_class = list(
+		"/obj/item/device/lightreplacer"
+		)
+	can_only_hold = list(
+		"/obj/item/weapon/crowbar",
+		"/obj/item/weapon/screwdriver",
+		"/obj/item/weapon/weldingtool",
+		"/obj/item/weapon/solder",
+		"/obj/item/weapon/wirecutters",
+		"/obj/item/weapon/wrench",
+		"/obj/item/device/multitool",
+		"/obj/item/device/flashlight",
+		"/obj/item/stack/cable_coil",
+		"/obj/item/device/t_scanner",
+		"/obj/item/device/analyzer",
+		"/obj/item/taperoll/engineering",
+		"/obj/item/taperoll/syndie/engineering",
+		"/obj/item/taperoll/atmos",
+		"/obj/item/taperoll/syndie/atmos",
+		"/obj/item/weapon/extinguisher",
+		"/obj/item/stack/rcd_ammo",
+		"/obj/item/weapon/reagent_containers/glass/fuelcan",
+		"/obj/item/device/lightreplacer",
+		"/obj/item/device/device_analyser",
+		"/obj/item/device/silicate_sprayer",
+		"/obj/item/device/geiger_counter"
+		)
 
 //mech belt
 /obj/item/weapon/storage/belt/enginseer_belt
@@ -38,5 +65,33 @@
 	item_state = "mech_belt" //Check: Its there
 	w_class = W_CLASS_LARGE
 	storage_slots = 14
-	can_only_hold = list(/obj/item/weapon)
+	max_combined_w_class = 200
+	fits_ignoring_w_class = list(
+		"/obj/item/device/lightreplacer"
+		)
+	can_only_hold = list(
+		"/obj/item/weapon/crowbar",
+		"/obj/item/weapon/screwdriver",
+		"/obj/item/weapon/weldingtool",
+		"/obj/item/weapon/solder",
+		"/obj/item/weapon/wirecutters",
+		"/obj/item/weapon/wrench",
+		"/obj/item/device/multitool",
+		"/obj/item/device/flashlight",
+		"/obj/item/stack/cable_coil",
+		"/obj/item/device/t_scanner",
+		"/obj/item/device/analyzer",
+		"/obj/item/taperoll/engineering",
+		"/obj/item/taperoll/syndie/engineering",
+		"/obj/item/taperoll/atmos",
+		"/obj/item/taperoll/syndie/atmos",
+		"/obj/item/weapon/extinguisher",
+		"/obj/item/stack/rcd_ammo",
+		"/obj/item/weapon/reagent_containers/glass/fuelcan",
+		"/obj/item/device/lightreplacer",
+		"/obj/item/device/device_analyser",
+		"/obj/item/device/silicate_sprayer",
+		"/obj/item/device/geiger_counter"
+		)
+
 	canremove = 0
