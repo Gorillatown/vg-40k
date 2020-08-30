@@ -49,7 +49,7 @@
 				score_results += "<b>Orks Exterminated:</b> [PDEFF.orks_exterminated]<br>"
 				score_results += "<b>Total Beings Exterminated:</b> [PDEFF.exterminated]<br>"
 				var/personal_score = round(PDEFF.times_patrolled+PDEFF.orks_exterminated)
-				score_results += "<b><font size='5'>Total Reward:</font></b> <font color='#07fa0c'>[personal_score]</font> Points gained."
+				score_results += "<b><font size='4'>Total Reward:</font></b> <font color='#07fa0c'>[personal_score]</font> Points gained."
 				if(PDEFF.antag.current.client)
 					var/client/C = PDEFF.antag.current.client
 					C.persist.potential += personal_score

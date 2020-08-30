@@ -59,7 +59,7 @@
 		var/obj/item/weapon/card/id/id = H.wear_id
 		id.name = "[H.real_name]'s ID Card"
 		id.registered_name = H.real_name
-	quest_master.configure_quest(H,TZEENTCH_PLOT_ONE)
+	quest_master.configure_quest(H,TZEENTCH_CHAMPION)
 	to_chat(world, "<b>[H.real_name] is the Lord of these lands!</b>")
 
 /datum/outfit/lord/handle_special_abilities(var/mob/living/carbon/human/H)

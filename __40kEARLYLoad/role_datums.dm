@@ -3,6 +3,9 @@
 #define ORKRAIDER "Ork Raider"
 #define IMPERIALGUARDSMEN "Imperial Guardsman"
 #define PDF "Planetary Defense Force"
+#define HARLEQUIN "Harlequin"
+#define SLAANESH_CHAMPION "Slaanesh Champion"
+#define TZEENTCH_CHAMPION "Tzeentch Champion"
 //Ere we go again
 
 

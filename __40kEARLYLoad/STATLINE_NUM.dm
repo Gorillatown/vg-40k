@@ -14,9 +14,6 @@
 #define ATTR_WILLPOWER		"willpower"
 #define ATTR_SENSITIVITY	"sensitivity"
 
-/datum/mind
-	var/datum/job_quest/job_quest = null //Basically do we currently have a job quest attached to us?
-
 /mob/living/carbon/human
 	var/list/warp_mutations = list()
 

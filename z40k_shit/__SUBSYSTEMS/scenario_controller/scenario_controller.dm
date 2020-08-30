@@ -95,11 +95,13 @@ var/list/roguelike_process = list()
 	if(activated_pads >= 2)
 		for(var/obj/structure/pressure_plate/pads in tzeentchpads)
 			for(var/mob/living/carbon/human/H in range(0,pads))
-				if(H.species.name == "Human")
-					if(!H.mind.job_quest)
-						H.x = rand(214,218)
-						H.y = 179
-						H.z = 2
-						pads.activated = FALSE
-						scenario_one_participants += H
+				var/valid = FALSE
+				for(var/datum/role/job_quest/tzeentch_one/TZZTCH in H.mind.antag_roles)
+					valid = TRUE
+				if(!valid)
+					H.x = rand(214,218)
+					H.y = 179
+					H.z = 2
+					pads.activated = FALSE
+					scenario_one_participants += H
 

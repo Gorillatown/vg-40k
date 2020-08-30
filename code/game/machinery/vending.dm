@@ -3062,15 +3062,13 @@ var/global/num_vending_terminals = 1
 	pack = /obj/structure/vendomatpack/chapelvend
 
 /obj/machinery/vending/chapel/attackby(obj/item/W, mob/living/user)
-	if(user.mind.job_quest)
-		if(istype(user.mind.job_quest,/datum/job_quest/harlequin))
-			var/datum/job_quest/harlequin/QST = user.mind.job_quest
-			if(!QST.suit_achieved)
-				if(istype(W, /obj/item/weapon/coin/harlequin))
-					visible_message("<span class='info'>[src] dispenses a strange outfit.</span>")
-					new /obj/item/clothing/suit/armor/harlequin(user.loc)
-					QST.suit_achieved = TRUE
-					return
+	for(var/datum/role/job_quest/harlequin/HRL in user.mind.antag_roles)
+		if(!HRL.suit_achieved)
+			if(istype(W, /obj/item/weapon/coin/harlequin))
+				visible_message("<span class='info'>[src] dispenses a strange outfit.</span>")
+				new /obj/item/clothing/suit/armor/harlequin(user.loc)
+				HRL.suit_achieved = TRUE
+				return
 	..()
 
 

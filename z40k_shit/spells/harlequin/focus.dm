@@ -17,21 +17,21 @@
 /spell/targeted/focus/cast(list/targets)
 	for(var/mob/living/carbon/human/H in targets)
 		var/client/C = H.client
-		var/datum/job_quest/QST = H.mind.job_quest
-		if(QST.alignment == -5)
-			to_chat(H, "<span class='notice'>You need to stand still and focus for a moment. This is important.</span>")
-			QST.alignment--
-			return
-		if(QST.alignment == -6)
-			to_chat(H, "<span class='notice'>It's..... almost....</span>")
-			QST.alignment--
-			return
-		if(QST.alignment < -6)
-			to_chat(H, "<span class='notice'>You stretch out with your senses.</span>")
-			for(var/i=0, i<8, i++)
-				sleep(30)
-				if(H)
-					C.changeView(C.view + 1)
-			sleep(100)
-			if(H) 
-				C.changeView(C.view - 7)
+		for(var/datum/role/job_quest/harlequin/HRL in H.mind.antag_roles)
+			if(HRL.alignment == -5)
+				to_chat(H, "<span class='notice'>You need to stand still and focus for a moment. This is important.</span>")
+				HRL.alignment--
+				return
+			if(HRL.alignment == -6)
+				to_chat(H, "<span class='notice'>It's..... almost....</span>")
+				HRL.alignment--
+				return
+			if(HRL.alignment < -6)
+				to_chat(H, "<span class='notice'>You stretch out with your senses.</span>")
+				for(var/i=0, i<8, i++)
+					sleep(30)
+					if(H)
+						C.changeView(C.view + 1)
+				sleep(100)
+				if(H) 
+					C.changeView(C.view - 7)

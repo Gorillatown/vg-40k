@@ -1,9 +1,30 @@
-/datum/job_quest/harlequin
-	title = "Cegorach or Bust - Harlequin Quest"
+/datum/role/job_quest/harlequin
+	name = HARLEQUIN
+	id = HARLEQUIN
+	special_role = HARLEQUIN
 	var/suit_achieved = FALSE //Have we got our suit yet?
+//	logo_state = "ig-standard-logo"
 
-/datum/job_quest/harlequin/main_body()
-	our_protagonist = actual_protagonist.current
+/datum/role/job_quest/harlequin/New(var/datum/mind/M, var/datum/faction/fac=null, var/new_id)
+	..()
+
+/datum/role/job_quest/harlequin/GetScoreboard()
+	var/score_results = ""
+	var/cur_num = abs(alignment)
+	var/percentage = round(((cur_num/35)*100))
+
+	score_results += "<b>[antag.key]</b> as <b>[antag.name]</b><br>"
+	if(percentage <= 100)
+		score_results += "<b>Total Percent Complete:</b> <font color='#07fa0c'>[percentage]</font>%."
+	else
+		score_results += "<b>Total Percent Complete:</b> <font color='#ff0000'>[percentage]</font>%."
+	return score_results
+	
+/datum/role/job_quest/harlequin/point_handler(var/mob/living/carbon/human/H)
+	return
+
+/datum/role/job_quest/harlequin/alignment_handler()
+	var/mob/living/our_protagonist = antag.current
 	switch(alignment)
 		if(1 to INFINITY)
 			to_chat(our_protagonist, "<span class='notice'>There was something you needed to remember. What was it?</span>")

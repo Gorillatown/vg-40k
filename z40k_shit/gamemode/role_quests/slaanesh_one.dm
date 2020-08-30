@@ -1,9 +1,29 @@
-/datum/job_quest/slaanesh_champion
-	title = "Celebrity Woes - Slaanesh Champion Quest"
-	var/suit_achieved = FALSE //Have we got our suit yet?
+/datum/role/job_quest/slaanesh_one
+	name = SLAANESH_CHAMPION
+	id = SLAANESH_CHAMPION
+	special_role = SLAANESH_CHAMPION
+//	logo_state = "ig-standard-logo"
 
-/datum/job_quest/slaanesh_champion/main_body()
-	our_protagonist = actual_protagonist.current
+/datum/role/job_quest/slaanesh_one/New(var/datum/mind/M, var/datum/faction/fac=null, var/new_id)
+	..()
+
+/datum/role/job_quest/slaanesh_one/GetScoreboard()
+	var/score_results = ""
+	var/cur_num = abs(alignment)
+	var/percentage = round(((cur_num/17)*100))
+
+	score_results += "<b>[antag.key]</b> as <b>[antag.name]</b><br>"
+	if(percentage <= 100)
+		score_results += "<b>Total Percent Complete:</b> <font color='#07fa0c'>[percentage]</font>%."
+	else
+		score_results += "<b>Total Percent Complete:</b> <font color='#ff0000'>[percentage]</font>%."
+	return score_results
+
+/datum/role/job_quest/slaanesh_one/point_handler(var/mob/living/carbon/human/H)
+	return
+
+/datum/role/job_quest/slaanesh_one/alignment_handler()
+	var/mob/living/our_protagonist = antag.current
 	switch(alignment)
 		if(1 to INFINITY)
 			to_chat(our_protagonist, "<span class='notice'>You renounce the Emperor and all that nonsense.</span>")

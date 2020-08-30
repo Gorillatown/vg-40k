@@ -27,5 +27,6 @@
 		H.visible_message(text("<span class='alert'>[H] stares blankly.</span>"))
 		H.say("Sing us a song you're the piano man! Sing us a song tonight!!</span>")
 		return
-	H.mind.job_quest.main_body()
-	return
+	for(var/datum/role/job_quest/slaanesh_one/SLNSH in H.mind.antag_roles)
+		SLNSH.alignment_handler()
+		return

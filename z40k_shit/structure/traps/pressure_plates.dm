@@ -22,7 +22,10 @@
 	if(ishuman(mover))
 		var/mob/living/carbon/human/H = mover
 		if(H.species.name == "Human")
-			if(!H.mind.job_quest && H.stat != DEAD)
+			var/valid = FALSE
+			for(var/datum/role/job_quest/tzeentch_one/TZZTCH in H.mind.antag_roles)
+				valid = TRUE
+			if(H.stat != DEAD && !valid)
 				activated = TRUE
 				playsound(src,'sound/misc/click.ogg',30,0,-1)
 				visible_message("<span class='warning'>\The [src] clicks!</span>")

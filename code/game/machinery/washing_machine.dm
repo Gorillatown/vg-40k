@@ -255,12 +255,13 @@
 		wash_state = 4
 	if(usr && ishuman(usr))
 		var/mob/living/carbon/human/H = usr
-		if(H.mind && H.mind.assigned_role == "Mime" && H.mind.job_quest.alignment <= -20)
-			for(var/obj/item/clothing/under/mime/harlequin in contents)
-				for(var/obj/item/weapon/pen/P in contents)
-					if(harlequin)
-						qdel(harlequin)
-						new /obj/item/clothing/under/harlequin(src)
+		for(var/datum/role/job_quest/harlequin/HRL in H.mind.antag_roles)
+			if(HRL.alignment <= -20)
+				for(var/obj/item/clothing/under/mime/harlequin in contents)
+					for(var/obj/item/weapon/pen/P in contents)
+						if(harlequin)
+							qdel(harlequin)
+							new /obj/item/clothing/under/harlequin(src)
 	update_icon()
 
 /obj/machinery/washing_machine/AltClick(mob/user)

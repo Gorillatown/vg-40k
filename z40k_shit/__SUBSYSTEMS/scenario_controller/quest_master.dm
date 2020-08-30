@@ -6,7 +6,7 @@
 	We are also going to make it setup storylines, and allocate shit later so move functionality in.
 */
 /datum/job_quest/global_tracker
-	var/datum/mind/harlequin //The mind of the current harlequin
+	var/datum/role/job_quest/harlequin //The mind of the current harlequin
 	var/datum/mind/tzeentch_champion //Mind of the current tzeentch champion
 	var/datum/mind/slaanesh_champion //mind of the current slaanesh champion
 	var/list/game_end_objects = list() //List of game ending objects
@@ -16,32 +16,24 @@
 		warning("JOB QUEST GLOBAL TRACKER FAILURE: NULL MOB INPUT")
 	if(!quest_defininition)
 		warning("JOB QUEST GLOBAL TRACKER FAILURE: NULL QUEST DEFINITION INPUT")
-
-	var/datum/job_quest/the_quest = null
-
+ 
 	switch(quest_defininition)	
 		if(HARLEQUIN) //Harlequin job quest - currently: tied into the mime	
-			the_quest = new /datum/job_quest/harlequin()
-
-			target.mind.job_quest = the_quest
-			the_quest.actual_protagonist = target.mind
-			
-			harlequin = target.mind
+			var/datum/role/job_quest/harlequin/harlequin_role = new
+			harlequin_role.AssignToRole(target.mind,TRUE)
+		
+			harlequin = harlequin_role
 			target.add_spell(new /spell/targeted/concentrate,"ork_spell_ready",/obj/abstract/screen/movable/spell_master/harlequin)
 		if(SLAANESH_CHAMPION) //Harlequin job quest - currently: tied into the celeb
-			the_quest = new /datum/job_quest/slaanesh_champion()
-	
-			target.mind.job_quest = the_quest
-			the_quest.actual_protagonist = target.mind
-			
-			slaanesh_champion = target.mind
-			target.add_spell(new /spell/slaanesh/celebfall)
-		if(TZEENTCH_PLOT_ONE)
-			the_quest = new /datum/job_quest/tzeentch_plot_one()
-
-			target.mind.job_quest = the_quest
-			the_quest.actual_protagonist = target.mind
+			var/datum/role/job_quest/slaanesh_one/slaanesh_role = new
+			slaanesh_role.AssignToRole(target.mind,TRUE)
 		
-			tzeentch_champion = target.mind
+			slaanesh_champion = slaanesh_role
+			target.add_spell(new /spell/slaanesh/celebfall)
+		if(TZEENTCH_CHAMPION)
+			var/datum/role/job_quest/tzeentch_one/tzeentch_role = new
+			tzeentch_role.AssignToRole(target.mind,TRUE)
+		
+			tzeentch_champion = tzeentch_role
 			target.add_spell(new /spell/targeted/dwell,"ork_spell_ready",/obj/abstract/screen/movable/spell_master/harlequin)
 

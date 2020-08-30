@@ -16,5 +16,6 @@
 
 /spell/targeted/concentrate/cast(list/targets)
 	for(var/mob/living/carbon/human/H in targets)
-		H.mind.job_quest.main_body()
-		return
+		for(var/datum/role/job_quest/harlequin/HRL in H.mind.antag_roles)
+			HRL.alignment_handler()
+

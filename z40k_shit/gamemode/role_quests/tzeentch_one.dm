@@ -1,8 +1,29 @@
-/datum/job_quest/tzeentch_plot_one
-	title = "Retrieving A Heirloom - Crown Quest"
+/datum/role/job_quest/tzeentch_one
+	name = TZEENTCH_CHAMPION
+	id = TZEENTCH_CHAMPION
+	special_role = TZEENTCH_CHAMPION
+//	logo_state = "ig-standard-logo"
 
-/datum/job_quest/tzeentch_plot_one/main_body()
-	our_protagonist = actual_protagonist.current
+/datum/role/job_quest/tzeentch_one/New(var/datum/mind/M, var/datum/faction/fac=null, var/new_id)
+	..()
+
+/datum/role/job_quest/tzeentch_one/GetScoreboard()
+	var/score_results = ""
+	var/cur_num = abs(alignment)
+	var/percentage = round(((cur_num/11)*100))
+
+	score_results += "<b>[antag.key]</b> as <b>[antag.name]</b><br>"
+	if(percentage <= 100)
+		score_results += "<b>Total Percent Complete:</b> <font color='#07fa0c'>[percentage]</font>%."
+	else
+		score_results += "<b>Total Percent Complete:</b> <font color='#ff0000'>[percentage]</font>%."
+	return score_results
+
+/datum/role/job_quest/tzeentch_one/point_handler(var/mob/living/carbon/human/H)
+	return
+
+/datum/role/job_quest/tzeentch_one/alignment_handler()
+	var/mob/living/our_protagonist = antag.current
 	switch(alignment)
 		if(1 to INFINITY)
 			to_chat(our_protagonist, "<span class='notice'> You reminisce for a moment, dwelling upon whatever comes to mind. A lot of the time you are just spent thinking especially since your wealth, and influence has been dwindling.</span>")
