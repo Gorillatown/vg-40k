@@ -61,6 +61,26 @@
 	if (!client && istype(T.loc,/area/maintenance) && prob(20))
 		MaintInfection()
 
+//Growth Mechanics
+/mob/living/simple_animal/mouse/animal_food_act(var/obj/item/weapon/reagent_containers/food/food)
+	delayNextAttack(10)
+	if(istype(food,/obj/item/weapon/reagent_containers/food/snacks))
+		var/obj/item/weapon/reagent_containers/food/snacks/S = food
+		flick(src.icon_eat, src)
+		if(prob(25)) //We are noticed
+			visible_message("[src] nibbles away at \the [S].", "<span class='notice'>You nibble away at \the [S].</span>")
+		else
+			to_chat(src, ("<span class='notice'>You nibble away at \the [S].</span>"))
+		health = min(health + 1, maxHealth)
+		nutrition += 10
+		if(virus2?.len)
+			for(var/ID in virus2)
+				var/datum/disease2/disease/D = virus2[ID]
+				src.infect_disease2(D, 1, notes="(Ate an infected [S])")//eating infected food means 100% chance of infection.
+		S.reagents.trans_to(src, 0.25)
+		S.bitecount+= 0.25
+		S.after_consume(src,S.reagents)
+
 /mob/living/simple_animal/mouse/can_be_infected()
 	return infectable
 

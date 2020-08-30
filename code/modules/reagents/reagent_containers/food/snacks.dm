@@ -365,7 +365,8 @@
 		return FALSE
 	return TRUE
 
-/obj/item/weapon/reagent_containers/food/snacks/attack_animal(mob/M)
+/obj/item/weapon/reagent_containers/food/snacks/attack_animal(mob/M) 
+	..()
 	if(isanimal(M))
 		if(iscorgi(M)) //Feeding food to a corgi
 			M.delayNextAttack(10)

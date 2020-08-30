@@ -58,6 +58,24 @@
 /mob/living/simple_animal/corgi/has_hand_check()
 	return 1 // can pull things with his mouth
 
+//Growth Mechanics
+/mob/living/simple_animal/corgi/animal_food_act(var/obj/item/weapon/reagent_containers/food/food)
+	delayNextAttack(10)
+	if(istype(food,/obj/item/weapon/reagent_containers/food/snacks))
+		var/obj/item/weapon/reagent_containers/food/snacks/S = food
+		if(S.bitecount >= 4) //This really, really shouldn't be hardcoded like this, but sure I guess
+			visible_message("[src] [pick("burps from enjoyment", "yaps for more", "woofs twice", "looks at the area where \the [S] was")].", "<span class='notice'>You swallow up the last of \the [S].")
+			playsound(src.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
+			if(health <= maxHealth + 5)
+				health += 5
+			else
+				health = maxHealth
+			qdel(S)
+		else
+			visible_message("[src] takes a bite of \the [S].", "<span class='notice'>You take a bite of \the [S].</span>")
+			playsound(src.loc,'sound/items/eatfood.ogg', rand(10, 50), 1)
+			S.bitecount++
+
 /mob/living/simple_animal/corgi/Life()
 	if(timestopped)
 		return 0 //under effects of time magick
