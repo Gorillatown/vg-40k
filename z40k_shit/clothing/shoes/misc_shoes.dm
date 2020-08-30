@@ -26,3 +26,10 @@
 	icon = 'z40k_shit/icons/obj/clothing/shoes.dmi'
 	icon_state = "seneschal_boots"
 	species_restricted = list("Human")
+
+/obj/item/clothing/shoes/swat/harlequin
+	name = "harlequin boots"
+	desc = "A pair of shoes that have been artfully reinforced with metal. Not bad, considering the simplicity of their construction."
+	icon = 'z40k_shit/icons/obj/clothing/shoes.dmi'
+	icon_state = "harlequin"
+	item_state = "harlequin"

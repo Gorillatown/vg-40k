@@ -54,3 +54,13 @@
 	icon = 'z40k_shit/icons/obj/clothing/hats.dmi'
 	icon_state = "seneschal_hat" //Check: its there
 	body_parts_covered = HEAD|EARS|EYES|HIDEFACE
+
+/obj/item/clothing/head/helmet/harlequin
+	name = "beret"
+	desc = "A beret with a large plume stuck in the top."
+	icon = 'z40k_shit/icons/obj/clothing/hats.dmi'
+	icon_state = "harlequin"
+	item_state = "harlequin"
+	body_parts_covered = HEAD
+	armor = list(melee = 30, bullet = 25, laser = 25, energy = 100, bomb = 50, bio = 100, rad = 100)
+	

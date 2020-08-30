@@ -25,3 +25,13 @@
 	item_state = "seneschal_coat" //Check Its there:
 	_color = "seneschal_coat"
 	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
+
+/obj/item/clothing/under/harlequin
+	name = "mime's outfit"
+	desc = "Now it's more colorful."
+	icon = 'z40k_shit/icons/obj/clothing/uniforms.dmi'
+	icon_state = "harlequin"
+	item_state = "mime"
+	_color = "mime"
+	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 10, rad = 10)
+	

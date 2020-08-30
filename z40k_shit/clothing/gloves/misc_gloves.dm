@@ -14,3 +14,10 @@
 	damage_added = 8
 	canremove = FALSE
 	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
+
+/obj/item/clothing/gloves/combat/harlequin
+	name = "harlequin gloves"
+	desc = "It's just crayon drawings on a pair of white gloves, but somehow it still looks ornamented and even combat ready."
+	icon = 'z40k_shit/icons/obj/clothing/gloves.dmi'
+	icon_state = "harlequin"
+	item_state = "harlequin"
