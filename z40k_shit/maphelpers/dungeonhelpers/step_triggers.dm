@@ -140,3 +140,33 @@
 	..()
 	teleport_x_offset = world.maxx - 25
 	teleport_y_offset = world.maxy - 25
+
+/*
+	This one basically has a start and end.
+	The start randomly picks one from the list the ends are in.
+	And randomly sends the mob to it.
+*/
+var/list/id_teleporters = list()
+/obj/effect/step_trigger/id_teleporter
+	var/destination_id = "ass"
+
+//This here is the start
+/obj/effect/step_trigger/id_teleporter/start
+	destination_id = "start"
+	
+/obj/effect/step_trigger/id_teleporter/start/Trigger(var/atom/movable/A)
+	for(var/obj/effect/step_trigger/id_teleporter/end/END in id_teleporters)
+		if(destination_id == END.destination_id)
+			A.loc = END.loc
+			
+//This right here is the end
+/obj/effect/step_trigger/id_teleporter/end
+	destination_id = "end"
+
+/obj/effect/step_trigger/id_teleporter/end/New()
+	..()
+	id_teleporters += src
+
+/obj/effect/step_trigger/id_teleporter/end/Destroy()
+	id_teleporters -= src
+	..()
