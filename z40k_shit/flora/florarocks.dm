@@ -29,3 +29,23 @@
 /obj/structure/flora/rock/pile/snow/New()
 	..()
 	icon_state = "srockpile[rand(1,5)]"
+
+//Credits to Ausops (I think) for all of the below
+/obj/structure/flora/rock/swamp
+	name = "rocks and stuff"
+	desc = "A bunch of rocks, covered in greenery"
+	icon = 'z40k_shit/icons/doodads/florarocks32x32.dmi'
+
+/obj/structure/flora/rock/swamp/New()
+	..()
+	icon_state = "rock[rand(1,5)]"
+
+/obj/structure/flora/rock/swamplarge
+	name = "Large Rock Grouping"
+	desc = "A bunch of rocks, covered in greenery. Larger than normal"
+	icon = 'z40k_shit/icons/doodads/flora64x64.dmi'
+
+/obj/structure/flora/rock/swamplarge/New()
+	..()
+	icon_state = "rocks[rand(1,4)]"
+

@@ -201,8 +201,10 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 		var/mob/living/carbon/human/H = user
 		var/mob/living/carbon/human/T = target
 		var/disp_msg = ""
+		
 		if(H.soul_blaze_melee)
 			T.soul_blaze_append()
+
 		if(saw_execution)
 			user.visible_message("<span class='danger'> [user] begins sawing [target] to death!</span>")
 			if(do_after(user,src,40))
@@ -221,19 +223,26 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 				H.client.mouse_pointer_icon = initial(H.client.mouse_pointer_icon)
 				cursor_enabled = FALSE
 				saw_execution = FALSE
+
 		if(piercing_blow)
 			user.visible_message("<span class='danger'> [user] delivers a armor piercing strike into [target]!</span>")
 			armor_penetration = 100 //Ending handled in afterattack
 			H.client.mouse_pointer_icon = initial(H.client.mouse_pointer_icon)
 			piercing_blow = FALSE
-		if(H.inertial_speed != null && H.a_intent == "harm")
-			if(H.inertial_speed >= 5 && H.dir == T.dir && !T.lying)
-				add_logs(user, target, "backstabbed")
-				user.visible_message("<span class='danger'>[H] stabs [T] in the back with the [src.name]!</span>")
-				H.inertial_speed = null
-				T.Paralyse(5)
-				step_away(T,H,10)
-				step_away(T,H,10)
+
+		if(H.dir == T.dir && H.a_intent == "harm" && !T.lying)
+			switch(H.inertial_speed)
+				if(2 to 4)
+					T.Knockdown(1)
+					user.visible_message("<span class='danger'>[H] stabs [T] in the back with the [src.name]!</span>")
+				if(5 to 20)
+					T.Paralyse(5)
+					user.visible_message("<span class='danger'>[H] stabs [T] in the back with the [src.name] AT HIGH INERTIA!</span>")
+					step_away(T,H,10)
+					step_away(T,H,10)
+			add_logs(user, target, "backstabbed")
+			H.inertial_speed = null
+
 		if(H.a_intent == I_GRAB)
 			H.word_combo_chain += "grapple"
 			H.clear_counter = 0
@@ -243,6 +252,7 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 				G = get_step(H,H.dir)
 				user.visible_message("<span class='danger'>[H] moves [T] with their hit.</span>")
 				step_towards(T,G)
+
 		if(H.a_intent == I_DISARM)
 			H.word_combo_chain += "disarm"
 			H.clear_counter = 0
@@ -250,11 +260,13 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			if(prob(2+(H.attribute_dexterity-T.attribute_agility)))
 				user.visible_message("<span class='danger'>[H] knocks the object out of [T]'s hands.</span>")
 				T.drop_item()
+
 		if((H.a_intent == I_HELP) && (!can_operate(T, H)))
 			H.word_combo_chain += "knockback"
 			step_away(T,H,1)
 			H.clear_counter = 0
 			disp_msg += "<font color='#00FF00'> Knockback </font>"
+
 		if(H.a_intent == I_HURT)
 			H.word_combo_chain += "hurt"
 			H.clear_counter = 0

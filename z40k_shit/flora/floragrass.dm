@@ -43,3 +43,19 @@
 /obj/structure/flora/grass/drygrass/New()
 	..()
 	icon_state = "tall_grass_[rand(1,8)]"
+
+//Swamp grass
+//Credits to Ausops (I think) for all of the below
+/obj/structure/flora/grass/swampgrassa
+	icon = 'z40k_shit/icons/doodads/flora32x32.dmi'
+
+/obj/structure/flora/grass/swampgrassa/New()
+	..()
+	icon_state = "grassa[rand(1,5)]"
+
+/obj/structure/flora/grass/swampgrassb
+	icon = 'z40k_shit/icons/doodads/flora32x32.dmi'
+
+/obj/structure/flora/grass/swampgrassb/New()
+	..()
+	icon_state = "grassb[rand(1,5)]"

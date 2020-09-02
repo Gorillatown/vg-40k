@@ -127,3 +127,35 @@
 /obj/structure/flora/ausbushes/fullgrass/New()
 	..()
 	icon_state = "fullgrass_[rand(1, 3)]"
+
+
+//Credits to Ausops (I think) for all of the below
+/obj/structure/flora/swampbusha
+	icon = 'z40k_shit/icons/doodads/flora32x32.dmi'
+
+/obj/structure/flora/swampbusha/New()
+	..()
+	icon_state = "busha[rand(1,3)]"
+
+/obj/structure/flora/swampbushb
+
+	icon = 'z40k_shit/icons/doodads/flora32x32.dmi'
+
+/obj/structure/flora/swampbushb/New()
+	..()
+	icon_state = "bushb[rand(1,3)]"
+
+/obj/structure/flora/swampbushc
+	icon = 'z40k_shit/icons/doodads/flora32x32.dmi'
+
+/obj/structure/flora/swampbushc/New()
+	..()
+	icon_state = "bushc[rand(1,3)]"
+
+/obj/structure/flora/swampbushlarge
+	icon = 'z40k_shit/icons/doodads/flora64x64.dmi'
+
+/obj/structure/flora/swampbushlarge/New()
+	..()
+	icon_state = "bush[rand(1,4)]"
+	

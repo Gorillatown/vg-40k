@@ -50,7 +50,10 @@ Append - We load in some Fauna
 			var/florawatch = start_watch()
 			loada_floragen()
 			log_startup_progress("Finished with floragen in [stop_watch(florawatch)]s.")
-
+		if("flora_generation2")
+			var/florawatch = start_watch()
+			loada_floragen2()
+			log_startup_progress("Finished with floragen in [stop_watch(florawatch)]s.")
 
 /datum/loada_gen/proc/loada_prototype_desert()
 

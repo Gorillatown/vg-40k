@@ -35,6 +35,14 @@
 	transitionLoops = TRUE
 	movementJammed = TRUE
 
+/datum/zLevel/forest
+
+	name = "forest"
+	teleJammed = 1
+	base_turf = /turf/unsimulated/outside/sumdirt
+	transitionLoops = TRUE
+	movementJammed = TRUE
+
 //for snowmap
 /datum/zLevel/snowsurface
 	name = "snowy surface"

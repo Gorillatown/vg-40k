@@ -184,3 +184,22 @@
 /obj/structure/flora/tree/dead/desert/tall/New()
 	..()
 	icon_state = "tree_[rand(1, 3)]"
+
+//Credits to Ausops (I think) for all of the below
+/obj/structure/flora/tree/swamp
+	name = "Tree"
+	icon = 'z40k_shit/icons/doodads/flora96x96.dmi'
+	desc = "Its a tree alright"
+
+/obj/structure/flora/tree/swamp/New()
+	..()
+	icon_state = "tree[rand(1,7)]"
+
+/obj/structure/flora/tree/swamp/tall
+	name = "Tall Tree"
+	icon = 'z40k_shit/icons/doodads/flora128x160.dmi'
+	desc = "Its like a masculine version of a regular tree. Aka, the non-bitch tree"
+
+/obj/structure/flora/tree/swamp/tall/New()
+	..()
+	icon_state = "tree[rand(1,9)]"

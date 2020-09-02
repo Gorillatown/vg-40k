@@ -22,5 +22,9 @@
 		#undef MAP_OVERRIDE
 		#include "desertGulch.dm"
 		#define MAP_OVERRIDE 2
+	#elif MAP_OVERRIDE == 3
+		#undef MAP_OVERRIDE
+		#include "greenGulch.dm"
+		#define MAP_OVERRIDE 3
 	#endif
 #endif
