@@ -71,3 +71,11 @@
 	can_flip = null
 
 //end harlequin
+
+/obj/item/clothing/mask/gas/swampgasmask
+	name = "Detroid Patrolman Gasmask"
+	desc = "Its a gasmask, used by detroid troopers where needed."
+	icon = 'z40k_shit/icons/obj/clothing/masks.dmi'
+	icon_state = "swampgasmask"
+	item_state = "swampgasmask"
+	can_flip = null

@@ -100,7 +100,7 @@
 	icon_state = "harlequin"
 	item_state = "harlequin"
 	blood_overlay_type = "armor"
-	body_parts_covered = ARMS|LEGS|FULL_TORSO
+	body_parts_covered = ARMS|LEGS|UPPER_TORSO
 	armor = list(melee = 65, bullet = 60, laser = 60, energy = 100, bomb = 65, bio = 100, rad = 100)
 	var/speed_modifier = 3
 	allowed = list(/obj/item/weapon)
@@ -116,3 +116,14 @@
 	if(from_slot == slot_shoes && istype(H))
 		if(H.mind.assigned_role == "Mime")
 			H.movement_speed_modifier /= speed_modifier
+
+/obj/item/clothing/suit/armor/red_hoodie
+	name = "Red Hoodie"
+	desc = "Its a red hoodie."
+	icon = 'z40k_shit/icons/obj/clothing/suits.dmi'
+	icon_state = "detroidjacket"
+	item_state = "detroidjacket"
+	blood_overlay_type = "armor"
+	body_parts_covered = ARMS|UPPER_TORSO
+	armor = list(melee = 5, bullet = 5, laser = 5, energy = 5, bomb = 10, bio = 50, rad = 5)
+	allowed = list(/obj/item/weapon)
