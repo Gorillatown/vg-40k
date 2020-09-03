@@ -39,21 +39,60 @@ Append - We load in some Fauna
 	var/s2_y2_coord = 0 //spawn 2 y2 coord
 
 
+/*
+	Plotter Gen Vars
+	- I had to take them off defines because we now have more than 1 set.
+*/
+	var/map_area
+	var/percent_land = 0.20
+	var/max_badplotter_per_seed = 32
+//setting SEED_FACTOR lower will reduce the likelihood of many islands.
+//to define a specific number of seeds, define it as "(n / MAP_AREA)" where n is the desired number of seeds.
+	var/seed_factor
+	var/map_scale = 3
+	var/seeds
+	var/land_turfs
+	var/expansions = 500
+	//#define EXPANSIONS (LAND_TURFS) - SEEDS //This is the default setting - 1/13/2020
+
+
 /datum/loada_gen/New(var/datum/map/active/map_datum,var/gen_cycle) //We pass the map datum, and what cycle to pick.
 	ASS = map_datum
-	
+	map_area = (world.maxx * world.maxy)
+	land_turfs = (map_area * percent_land)
+
 	switch(gen_cycle)
 		if("prototype_desert")
+			percent_land = 0.20
+			seed_factor = (1/map_area)
+			seeds = round(map_area * seed_factor, 1)
 			loada_prototype_desert()
 			log_startup_progress("Prototype Desert Generation Selected")
 		if("flora_generation")
 			var/florawatch = start_watch()
 			loada_floragen()
 			log_startup_progress("Finished with floragen in [stop_watch(florawatch)]s.")
+		if("prototype_swamp")
+//			percent_land = 0.20
+//			seed_factor = (1/map_area)
+//			percent_land = 0.20
+//			seed_factor = 0.002
+//			seeds = round(map_area * seed_factor, 1)
+			loada_prototype_swamp()
+			log_startup_progress("Prototype Swamp Generation Selected")
 		if("flora_generation2")
 			var/florawatch = start_watch()
 			loada_floragen2()
 			log_startup_progress("Finished with floragen in [stop_watch(florawatch)]s.")
+
+/datum/loada_gen/proc/loada_prototype_swamp()
+//	var/waterwatch = start_watch()
+//	loada_swamp1()
+//	log_startup_progress("Finished with placing pools of fluid in [stop_watch(waterwatch)]s")
+
+//	var/florawatch = start_watch()
+//	loada_floragen2()
+//	log_startup_progress("Finished with floragen2 in [stop_watch(florawatch)]s.")
 
 /datum/loada_gen/proc/loada_prototype_desert()
 

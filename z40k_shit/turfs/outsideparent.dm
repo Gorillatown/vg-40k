@@ -21,6 +21,7 @@
 	//var/turfverb = "dig out" //Going to use this for the action of digging a turf out.
 
 /turf/unsimulated/outside/initialize()
+	..()
 
 /turf/unsimulated/outside/ex_act(severity)
 	switch(severity)

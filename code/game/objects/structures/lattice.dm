@@ -48,7 +48,7 @@
 		if(2.0)
 			qdel(src)
 
-/obj/structure/lattice/attackby(obj/item/C, mob/user )
+/obj/structure/lattice/attackby(obj/item/C, mob/user)
 	if(iswelder(C))
 		var/obj/item/weapon/weldingtool/WeldingTool = C
 		if(WeldingTool.remove_fuel(0, user))

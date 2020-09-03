@@ -1,12 +1,5 @@
-//Stolen from some dumb zip i had on my desktop for archipalegos
-//I realized I could just reverse the islands and ocean, and work with it.
-//Ironically pathed objects has better performance/quality than just doing large calculations.
 
-#define MAP_AREA (world.maxx * world.maxy) //Map area
-
-//customization is handled by calculating percentages of map area, so a given set of settings
-//should scale to larger or smaller maps.
-
+/*
 //Sets - Marsh
 //#define PERCENT_LAND 0.20
 //#define MAX_BADPLOTTER_PER_SEED 32
@@ -15,24 +8,16 @@
 #define PERCENT_LAND 0.20
 #define MAX_BADPLOTTER_PER_SEED 32
 #define SEED_FACTOR (1 / MAP_AREA)
+*/
 
-//setting SEED_FACTOR lower will reduce the likelihood of many islands.
-//to define a specific number of seeds, define it as "(n / MAP_AREA)" where n is the desired number of seeds.
 
-#define MAP_SCALE 3
-
-#define SEEDS round(MAP_AREA * SEED_FACTOR, 1)
-#define LAND_TURFS (MAP_AREA * PERCENT_LAND)
-//#define EXPANSIONS (LAND_TURFS) - SEEDS //This is the default setting - 1/13/2020
-//500 kind of acceptable
-#define EXPANSIONS 800
 
 /datum/loada_gen/proc/CreateDeeps()
 	var/list/badplotter = list()
 	var/turf/T
 	var/obj/helper/badplotter/bplot
 
-	for(var/i in 1 to SEEDS)
+	for(var/i in 1 to seeds)
 		//make a new single segment
 		while(1)
 			T = locate(rand(1, world.maxx), rand(1, world.maxy), 1)
@@ -41,13 +26,13 @@
 			else
 				new /turf/unsimulated/outside/water/deep(T)
 				new /area/warhammer/water(T)
-				for(var/botCount in 1 to rand(1, MAX_BADPLOTTER_PER_SEED))
+				for(var/botCount in 1 to rand(1, max_badplotter_per_seed))
 					bplot = new(T)
 					badplotter += bplot
 				break
 
 	//add on to existing segments
-	for(var/j in 1 to EXPANSIONS)
+	for(var/j in 1 to expansions)
 		while(1)
 			bplot = pick(badplotter)
 			if(bplot.roam()) 
@@ -58,8 +43,8 @@
 
 	if(ASS.dd_debug)
 		log_startup_progress("------Loada Lakes(Deeps&Shallows)----")
-		log_startup_progress("Seeds: [SEEDS] A Location: [T]")
-		log_startup_progress("Expansions: [EXPANSIONS]")
+		log_startup_progress("Seeds: [seeds] A Location: [T]")
+		log_startup_progress("Expansions: [expansions]")
 
 /*
 
@@ -108,7 +93,7 @@ W(8)---- *****  ---- E(4)
 	var/obj/helper/nodeliner/node
 	var/obj/helper/badliner/bline
 
-	for(var/i in 1 to SEEDS)
+	for(var/i in 1 to seeds)
 		//make a new single segment
 		while(1)
 			T = locate(rand(1, world.maxx), rand(1, world.maxy), 1)
@@ -118,18 +103,18 @@ W(8)---- *****  ---- E(4)
 				new /turf/unsimulated/outside/water/deep(T)
 				new /area/warhammer/water(T) //Area Change
 				node = new(T)
-				for(var/botCount in 1 to rand(1, MAX_BADPLOTTER_PER_SEED))
+				for(var/botCount in 1 to rand(1, max_badplotter_per_seed))
 					bplot = new(T)
 					badplotter += bplot
 				break
 
-	for(var/i in 1 to SEEDS)
+	for(var/i in 1 to seeds)
 		TT = locate(rand(1,world.maxx), world.maxy, 1) //we flow from top
 		bline = new(TT)
 		break
 
 	//add on to existing segments
-	for(var/j in 1 to EXPANSIONS)
+	for(var/j in 1 to expansions)
 		while(1)
 			bplot = pick(badplotter)
 			if(bplot.roam()) 
@@ -150,4 +135,5 @@ W(8)---- *****  ---- E(4)
 	if(ASS.dd_debug)
 		log_startup_progress("---LOADA RIVER2LAKE(Deeps&Shallows&River)---")
 		log_startup_progress("LAKE NODE: X: [T.x], Y: [T.y] LINEPLOTSTART: X: [TT.x], Y: [TT.y]")
-		log_startup_progress("Seeds: [SEEDS]")
+		log_startup_progress("Seeds: [seeds]")
+

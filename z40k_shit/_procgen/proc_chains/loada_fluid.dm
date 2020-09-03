@@ -22,5 +22,11 @@
 	if(ASS.dd_debug)
 		log_startup_progress("RIVER 2 LAKE LOADA INITIATED")
 
+/datum/loada_gen/proc/loada_swamp1()
+	CreatePools()
+	
+	if(ASS.dd_debug)
+		log_startup_progress("SWAMP LOADA 1 INITIATED")
+
 
 
