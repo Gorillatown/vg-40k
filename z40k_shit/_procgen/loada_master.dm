@@ -90,9 +90,9 @@ Append - We load in some Fauna
 //	loada_swamp1()
 //	log_startup_progress("Finished with placing pools of fluid in [stop_watch(waterwatch)]s")
 
-	var/florawatch = start_watch()
-	loada_floragen2()
-	log_startup_progress("Finished with floragen2 in [stop_watch(florawatch)]s.")
+//	var/florawatch = start_watch()
+//	loada_floragen2()
+//	log_startup_progress("Finished with floragen2 in [stop_watch(florawatch)]s.")
 
 /datum/loada_gen/proc/loada_prototype_desert()
 

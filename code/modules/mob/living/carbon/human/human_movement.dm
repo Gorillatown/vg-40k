@@ -139,9 +139,8 @@
 	var/obj/effect/overlay/viscons/afterimages/ARGH = new(loc, M = src, effect_duration = 11)
 	ARGH.vis_contents += src
 	animate(ARGH, alpha=120)
-	animate(alpha = 0, time = 10)
+	animate(alpha = 0, time = 10) 
 	
-
 /mob/living/carbon/human/Move(NewLoc, Dir = 0, step_x = 0, step_y = 0, glide_size_override = 0)
 	. = ..()
 	

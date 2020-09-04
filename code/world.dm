@@ -355,7 +355,7 @@ var/datum/early_init/early_init_datum = new
 	//	s += "<b>[config.server_name]</b> &#8212; " //SORRY CONFIG-KUN -JTGSZ
 
 
-	s += "<b>>/vg/ 40k(WIP): <i> Overhaul 3.2!</i></b>] - Feel the burn!, Feel the shitcode!.<br>"
+	s += "<b>>/vg/ 40k(WIP): <i> Overhaul 3.3!</i></b>] - Feel the burn!, Feel the shitcode!.<br>"
 	s += "<br>"
 	s += " \[<a href=\"https://discord.gg/5F9sQDF\">Discord</a><br>"
 	

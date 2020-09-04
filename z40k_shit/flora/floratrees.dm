@@ -190,6 +190,7 @@
 	name = "Tree"
 	icon = 'z40k_shit/icons/doodads/flora96x96.dmi'
 	desc = "Its a tree alright"
+	pixel_x = -32
 
 /obj/structure/flora/tree/swamp/New()
 	..()
@@ -199,6 +200,7 @@
 	name = "Tall Tree"
 	icon = 'z40k_shit/icons/doodads/flora128x160.dmi'
 	desc = "Its like a masculine version of a regular tree. Aka, the non-bitch tree"
+	pixel_x = -32
 
 /obj/structure/flora/tree/swamp/tall/New()
 	..()

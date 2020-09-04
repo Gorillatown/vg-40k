@@ -53,7 +53,7 @@
 
 /datum/outfit/desert_trooper/post_equip(var/mob/living/carbon/human/H)
 	spawn(2 SECONDS)
-		to_chat(H,"<span class='good'>You are part of the Detroid Desert Raiders, you gain points for extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console and across the land.</span>")
+		to_chat(H,"<span class='good'>You are part of the 7th Detroid Desert Raiders, you gain points for extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console and across the land.</span>")
 
 /*
 	Patrolman swamp uniform
@@ -72,7 +72,6 @@
 			slot_belt_str = /obj/item/weapon/dksword,
 			slot_s_store_str = /obj/item/weapon/gun/projectile/stubpistol,
 			slot_back_str = /obj/item/weapon/storage/backpack/brownbackpack
-
 		),
 	)
 
@@ -90,5 +89,5 @@
 
 /datum/outfit/swamp_trooper/post_equip(var/mob/living/carbon/human/H)
 	spawn(2 SECONDS)
-		to_chat(H,"<span class='good'>You are trooper of the Detroid 21st Swamp Warfare Division, you gain prestige for the extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console. The dynasty you serve under is the Mannheim Dynasty.</span>")
+		to_chat(H,"<span class='good'>You are trooper of the 4th Detroid Burning Vipers, you gain prestige for the extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console. The dynasty you serve under is the Mannheim Dynasty.</span>")
 	

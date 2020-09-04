@@ -4,6 +4,7 @@
 	
 /datum/visconpooler/New()
 	load_barricades()
+	load_overlays()
 //	load_ghostbodies()
 //	load_ghostbuttons()
 
@@ -14,6 +15,9 @@
 	barricadepool[4] = new /obj/effect/overlay/viscons/aegisline/east_two
 	barricadepool[5] = new /obj/effect/overlay/viscons/aegisline/west_one
 	barricadepool[6] = new /obj/effect/overlay/viscons/aegisline/west_two
+
+/datum/visconpooler/proc/load_overlays()
+	viscon_overlays[1] = new /obj/effect/overlay/viscons/water_overlay
 
 /*/datum/visconpooler/proc/load_ghostbodies()
 	var/p_width = 1

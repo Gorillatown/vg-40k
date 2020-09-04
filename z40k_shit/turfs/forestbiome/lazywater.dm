@@ -35,15 +35,70 @@ W(8)---- *****  ---- E(4)
    SE(6)  S(2)  SW(10)
 
 */
-/turf/unsimulated/outside/swampwater/smooth
 
+/turf/unsimulated/outside/swampwater/smooth
 	icon = 'z40k_shit/icons/turfs/42x42water.dmi'
 	icon_state = "water"
 	plane = BELOW_TURF_PLANE
 	pixel_x = -3
 	pixel_y = -3
-//	icon_state = "water15-30"
-	
+	turf_speed_multiplier = 1.4
+	water_reflections = TRUE
+	var/obj/effect/overlay/viscons/water_reflection/REFL
+
+/obj/effect/overlay/viscons/water_reflection
+	name = "Water Reflection"
+	desc = "A reflection is both real, and not real."
+	vis_flags = VIS_INHERIT_ID
+
+/obj/effect/overlay/viscons/water_reflection/New()
+	..()
+
+/turf/unsimulated/outside/swampwater/smooth/New()
+	..()
+	REFL = new(src.loc)
+	REFL.layer = layer+1
+	vis_contents += REFL
+	REFL.alpha = 20
+	REFL.color = "#383733"
+	var/matrix/M = matrix()
+	REFL.pixel_y = 9
+	REFL.pixel_x = 3 
+	M.Turn(180)
+	REFL.transform = M
+
+/turf/unsimulated/outside/swampwater/smooth/initialize()
+	..()
+
+/turf/unsimulated/outside/swampwater/smooth/Entered(atom/A, atom/OL)
+	..()
+
+	if(istype(A,/mob/living))
+		var/mob/living/L = A
+		if(!L.water_effects)
+			L.vis_contents += viscon_overlays[1]
+			L.water_effects = TRUE
+
+		var/turf/T = get_step(src,SOUTH)
+		if(istype(T,/turf/unsimulated/outside/swampwater/smooth))
+			var/turf/unsimulated/outside/swampwater/smooth/TT = T
+			TT.REFL.vis_contents += L
+
+/turf/unsimulated/outside/swampwater/smooth/Exited(atom/A, atom/newloc)
+	..()
+	if(istype(A,/mob/living))
+		var/mob/living/L = A
+		if(L.water_effects)
+			if(!istype(newloc,/turf/unsimulated/outside/swampwater))
+				for(var/obj/effect/overlay/viscons/water_overlay/augh in L.vis_contents)
+					L.vis_contents -= augh
+				L.water_effects = FALSE
+		
+		var/turf/T = get_step(src,SOUTH)
+		if(istype(T,/turf/unsimulated/outside/swampwater/smooth))
+			var/turf/unsimulated/outside/swampwater/smooth/TT = T
+			TT.REFL.vis_contents -= L
+
 //Having issues iwth smoothing, so ill try my own proc
 //Issue with
 /turf/unsimulated/outside/swampwater/smooth/proc/ghetto_smoothing()
@@ -61,12 +116,4 @@ W(8)---- *****  ---- E(4)
 			diksum += ddir
 		
 	icon_state = "water[cumsum]-[diksum]"
-
-/turf/unsimulated/outside/swampwater/smooth/New()
-	..()
-
-/turf/unsimulated/outside/swampwater/smooth/initialize()
-	..()
-//	ghetto_smoothing()
-
 

@@ -18,6 +18,9 @@
 	//Do we allow the generator to spawn shit on this turf?
 	floragen = FALSE
 
+	//Do we do water reflections?
+	var/water_reflections = FALSE
+
 	//var/turfverb = "dig out" //Going to use this for the action of digging a turf out.
 
 /turf/unsimulated/outside/initialize()
@@ -34,7 +37,7 @@
 			if(prob(20))
 				new/obj/effect/decal/cleanable/soot(src)
 
-/turf/unsimulated/outside/attack_paw(user )
+/turf/unsimulated/outside/attack_paw(mob/user)
 	return src.attack_hand(user)
 
 /turf/unsimulated/outside/add_dust()
@@ -70,8 +73,10 @@
 	if(footprint_parent)
 		footprint_parent.Clearfootprints()
 
+
 /turf/unsimulated/outside/Exited(atom/A, atom/newloc)
 	..()
+
 	if(istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
 		if(footprint_parent && !H.flying && !H.highflying)
@@ -82,6 +87,7 @@
 
 /turf/unsimulated/outside/Entered(atom/A, atom/OL)
 	..()
+
 	if(istype(A,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = A
 		if(footprint_parent && !H.flying && !H.highflying)
@@ -93,7 +99,7 @@
 /turf/unsimulated/outside/cultify()
 	return //It's already pretty red out in nar-sie universe.
 
-/turf/unsimulated/outside/attackby(obj/item/weapon/W, mob/user )
+/turf/unsimulated/outside/attackby(obj/item/weapon/W, mob/user)
 	..()
 
 //In the future, catwalks should be the base to build in the arctic, not lattices

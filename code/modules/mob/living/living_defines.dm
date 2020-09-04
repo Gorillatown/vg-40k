@@ -32,6 +32,10 @@
 
 	var/list/image/static_overlays
 
+	//40k Append - WATER EFFECTS - JTGSZ
+	var/water_effects = FALSE
+	var/water_effects2 = FALSE
+
 	var/t_plasma = null
 	var/t_oxygen = null
 	var/t_sl_gas = null

@@ -9,6 +9,8 @@ var/global/list/barricadepool = list(1 = null,
 									5 = null,
 									6 = null)
 
+//Some overlays
+var/global/list/viscon_overlays = list(1 = null)
 /*
 	DEAD LIST ZONE
 */

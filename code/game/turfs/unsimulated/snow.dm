@@ -96,13 +96,12 @@
 				snowprint_parent.AddSnowprintGoing(H.get_footprint_type(), H.dir)
 			else //Our human is down on his ass or in a vehicle, create tracks
 				snowprint_parent.AddSnowprintGoing(/obj/effect/decal/cleanable/blood/tracks/wheels, H.dir)
-
+ 
 		if(!istype(newloc,/turf/unsimulated/floor/snow))
 			H.clear_fullscreen("snowfall_average",0)
 			H.clear_fullscreen("snowfall_hard",0)
 			H.clear_fullscreen("snowfall_blizzard",0)
 			H << sound(null, 0, 0, channel = CHANNEL_WEATHER)
-
 
 /turf/unsimulated/floor/snow/Entered(atom/A, atom/OL)
 	..()
