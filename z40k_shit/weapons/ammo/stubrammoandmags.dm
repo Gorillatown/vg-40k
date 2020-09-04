@@ -15,7 +15,7 @@
 	name = "Stubber Magazine"
 	desc = "A magazine that holds 10mm Bullets, that fits in most stubbers around these parts"
 	icon = 'z40k_shit/icons/obj/ammo.dmi'
-	icon_state = "10mm-10"
+	icon_state = "10mm"
 	origin_tech = Tc_COMBAT + "=2"
 	ammo_type = "/obj/item/ammo_casing/stubber" //We don't use regular bullets here.
 	max_ammo = 10

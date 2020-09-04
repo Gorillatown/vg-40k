@@ -10,7 +10,7 @@
 	selection_color = "#f8cb69"
 	req_admin_notify = 1
 	wage_payout = 80
-	access = list(access_knight,access_enginseer,access_seneschal,access_checkpoints) 
+	access = list(access_knight,access_seneschal,access_checkpoints) 
 	minimal_player_age = 30
 	landmark_job_override = TRUE
 

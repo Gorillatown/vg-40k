@@ -27,7 +27,7 @@ var/global/obj/abstract/screen/clicker/catcher = new()
 	var/obj/abstract/screen/action_intent
 	var/obj/abstract/screen/move_intent
 	var/obj/abstract/screen/streamer_display // Sponsored
-	var/obj/abstract/screen/powerwords_display // /vg/ 40k - MARKED - JTGSZ
+//	var/obj/abstract/screen/powerwords_display // /vg/ 40k - MARKED - JTGSZ
 
 	var/obj/abstract/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = FALSE
@@ -58,7 +58,7 @@ var/global/obj/abstract/screen/clicker/catcher = new()
 	hand_hud_objects = null
 	action_intent = null
 	move_intent = null
-	powerwords_display = null
+//	powerwords_display = null
 	adding = null
 	other = null
 	hide_actions_toggle = null

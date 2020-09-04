@@ -142,7 +142,7 @@ var/global/list/organ_damage_overlays = list(
 			if(clear_counter >= 6) //Word combo system
 				clear_counter = 0
 				word_combo_chain = ""
-				update_powerwords_hud(clear = TRUE)
+	//			update_powerwords_hud(clear = TRUE)
 			clear_counter += 1
 
 		if(warp_charges >= 0)

@@ -136,7 +136,7 @@
 	other_objects = list(/obj/item/weapon/cell = 1)
 
 /datum/crafting_recipes/kustom_shoota_belt
-	title = "Kustom Shoota Belt"
+	title = "Kustom Shoota Ammo Belt"
 	result_type = /obj/item/ammo_storage/magazine/kustom_shoota_belt
 	time = 10 SECONDS
 	build_desc = "20 Metal Sheets, 20 Floor Tiles"

@@ -114,10 +114,10 @@
 			target.adjustBruteLoss(15)
 			T.attackby(src,user)
 			H.word_combo_chain = ""
-			H.update_powerwords_hud(clear = TRUE)
+//			H.update_powerwords_hud(clear = TRUE)
 		if("pierceparryknockback")
 			user.visible_message("<span class='danger'>[H] retaliates with a piercing thrust with their [name] into [T].")
 			H.adjustBruteLoss(20)
 			step_away(T,H,2)
 			H.word_combo_chain = ""
-			H.update_powerwords_hud(clear = TRUE)
+//			H.update_powerwords_hud(clear = TRUE)

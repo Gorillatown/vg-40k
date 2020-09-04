@@ -273,7 +273,7 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			disp_msg += "<font color='#FF0000'> Hurt </font>"
 		
 		interpret_powerwords(target, user, def_zone, originator) //We interpret the words in the word combo chain var here
-		H.update_powerwords_hud(disp_msg) //We update the humans powerwords hud
+//		H.update_powerwords_hud(disp_msg) //We update the humans powerwords hud
 	..() //We supercall to make sure everythings handled properly.
 
 //We bring all the given stuff into this proc too. 
@@ -289,18 +289,18 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 	switch(H.word_combo_chain)
 		if("chargegrappledisarmgrapple") //Charge Grapple Disarm Grapple
 			T.word_combo_chain = ""
-			T.update_powerwords_hud(clear = TRUE)
+//			T.update_powerwords_hud(clear = TRUE)
 		if("parrydisarm") //Parry Disarm
 			T.word_combo_chain = ""
-			T.update_powerwords_hud(clear = TRUE)
+//			T.update_powerwords_hud(clear = TRUE)
 		if("grappledisarm") //Grapple Disarm
 			T.word_combo_chain = ""
-			T.update_powerwords_hud(clear = TRUE)
+//			T.update_powerwords_hud(clear = TRUE)
 
 	//Lets you self clear buffer anywhere in it.
 	if(findtext(H.word_combo_chain, "disarmgrappleknockback")) //Disarm Grapple Knockback
 		H.word_combo_chain = ""
-		H.update_powerwords_hud(clear = TRUE)
+//		H.update_powerwords_hud(clear = TRUE)
 
 /*
 	AGGRESSIVE STANCE CTRLCLICK PARENT
@@ -318,11 +318,11 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			spawn(3) 
 				step_towards(user,target)
 			if(ishuman(user))
-				var/disp_msg = "<font color='#FF9933'><b> Charge! </b></font>"
+//				var/disp_msg = "<font color='#FF9933'><b> Charge! </b></font>"
 				var/mob/living/carbon/human/H = user
 				H.inertial_speed += 6
 				H.word_combo_chain += "charge"
-				H.update_powerwords_hud(disp_msg)
+//				H.update_powerwords_hud(disp_msg)
 
 /*
 	DEFENSIVE STANCE CTRLCLICK PARENT
@@ -351,7 +351,7 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 		if(10)
 			showndirection = "Southwest"
 	
-	var/disp_msg = ""
+//	var/disp_msg = ""
 	switch(stance)
 		if("defensive")
 			user.visible_message("<span class='danger'> [user] prepares to parry blows from the [showndirection].</span>", "<span class='danger'> You prepare to parry blows from the [showndirection].</span>")
@@ -364,8 +364,8 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.word_combo_chain += "parry"
-				disp_msg += "<font color='#EE82EE'><b> Parry! </b></font>"
-				H.update_powerwords_hud(disp_msg)
+//				disp_msg += "<font color='#EE82EE'><b> Parry! </b></font>"
+//				H.update_powerwords_hud(disp_msg)
 		if("blocking")
 			user.visible_message("<span class='danger'> [user] Holds fast, ready to block blows from the [showndirection].</span>", "<span class='danger'> You prepare to block blows from the [showndirection].</span>")
 			blocking = TRUE
@@ -377,8 +377,8 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.word_combo_chain += "block"
-				disp_msg += "<font color='#00ffd5'><b><i> Block! </i></b></font>"
-				H.update_powerwords_hud(disp_msg)
+//				disp_msg += "<font color='#00ffd5'><b><i> Block! </i></b></font>"
+//				H.update_powerwords_hud(disp_msg)
 		if("deflective")
 			user.visible_message("<span class='danger'> [user] prepares to deflect swings from the [showndirection].</span>", "<span class='danger'> You watch for openings to deflect to the [showndirection].</span>")
 			deflecting = TRUE
@@ -390,8 +390,8 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				H.word_combo_chain += "deflect"
-				disp_msg += "<font color='#b3ff00'><b><i> DEFLECT! </i></b></font>"
-				H.update_powerwords_hud(disp_msg)
+//				disp_msg += "<font color='#b3ff00'><b><i> DEFLECT! </i></b></font>"
+//				H.update_powerwords_hud(disp_msg)
 
 	active_defense_CD = TRUE //We enter cooldown after this.
 
@@ -524,8 +524,8 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 	else
 		overcharged = TRUE
 		user.word_combo_chain += "overcharge"
-		var/disp_msg = "<font color='#8602f1'><b><i> Overcharge! </i></b></font>"
-		user.update_powerwords_hud(disp_msg)
+//		var/disp_msg = "<font color='#8602f1'><b><i> Overcharge! </i></b></font>"
+//		user.update_powerwords_hud(disp_msg)
 		user.visible_message("<span class='notice'> [user] begins supercharging their [src].</span>")
 	return
 
@@ -560,8 +560,8 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 			cursor_enabled = TRUE
 			piercing_blow = TRUE
 			user.word_combo_chain += "pierce"
-			var/disp_msg = "<font color='#00ffea'><b><i> PIERCE! </i></b></font>"
-			user.update_powerwords_hud(disp_msg)
+//			var/disp_msg = "<font color='#00ffea'><b><i> PIERCE! </i></b></font>"
+//			user.update_powerwords_hud(disp_msg)
 
 /*
 	HANDLE CTRL CLICK

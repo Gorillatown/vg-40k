@@ -55,7 +55,7 @@
 			target.adjustBruteLoss(15)
 			T.attackby(src,user)
 			H.word_combo_chain = ""
-			H.update_powerwords_hud(clear = TRUE)
+//			H.update_powerwords_hud(clear = TRUE)
 
 /*
 	LASGUN EXAMINE

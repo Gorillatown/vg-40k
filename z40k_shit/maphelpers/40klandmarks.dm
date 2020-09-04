@@ -46,7 +46,7 @@
 	icon_state = "pdf_knight"
 
 /obj/effect/landmark/start/patrolman
-	name = "Patrolman"
+	name = "PDF Trooper"
 	icon_state = "pdf_patrolman"
 
 /obj/effect/landmark/start/enginseer

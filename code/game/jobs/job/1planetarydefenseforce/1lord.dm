@@ -9,7 +9,7 @@
 	supervisors = "yourself, and maybe the imperium"
 	selection_color = "#f8cb69"
 	req_admin_notify = 1
-	access = list(access_lord,access_enginseer,access_seneschal,access_checkpoints) //See get_access()
+	access = list(access_lord,access_seneschal,access_checkpoints) //See get_access()
 	minimal_player_age = 30
 	wage_payout = 100
 	landmark_job_override = TRUE
@@ -35,7 +35,8 @@
 			slot_belt_str = /obj/item/weapon/dksword,
 			slot_r_store_str = /obj/item/weapon/shield/energy,
 			slot_s_store_str = /obj/item/weapon/gun/projectile/automatic/boltpistol,
-			slot_l_store_str = /obj/item/weapon/gun/projectile/needler
+			slot_l_store_str = /obj/item/weapon/gun/projectile/needler,
+			slot_back_str = /obj/item/weapon/storage/backpack/brownbackpack
 		)
 	)
 	 

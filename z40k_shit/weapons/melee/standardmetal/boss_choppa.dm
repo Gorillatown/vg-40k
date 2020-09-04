@@ -43,4 +43,4 @@
 					H.health += 10
 					MENS.attackby(src,user)
 			H.word_combo_chain = ""
-			H.update_powerwords_hud(clear = TRUE)
+//			H.update_powerwords_hud(clear = TRUE)
