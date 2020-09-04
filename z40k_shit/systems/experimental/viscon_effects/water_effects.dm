@@ -3,3 +3,4 @@
 	icon_state = "water_overlay"
 	plane = ABOVE_HUMAN_PLANE
 	layer = SHADOW_LAYER
+//	vis_flags = VIS_HIDE

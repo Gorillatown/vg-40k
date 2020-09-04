@@ -56,7 +56,7 @@ W(8)---- *****  ---- E(4)
 
 /turf/unsimulated/outside/swampwater/smooth/New()
 	..()
-	REFL = new(src.loc)
+/*	REFL = new(src.loc)
 	REFL.layer = layer+1
 	vis_contents += REFL
 	REFL.alpha = 20
@@ -65,7 +65,7 @@ W(8)---- *****  ---- E(4)
 	REFL.pixel_y = 9
 	REFL.pixel_x = 3 
 	M.Turn(180)
-	REFL.transform = M
+	REFL.transform = M*/
 
 /turf/unsimulated/outside/swampwater/smooth/initialize()
 	..()
@@ -79,10 +79,10 @@ W(8)---- *****  ---- E(4)
 			L.vis_contents += viscon_overlays[1]
 			L.water_effects = TRUE
 
-		var/turf/T = get_step(src,SOUTH)
+	/*	var/turf/T = get_step(src,SOUTH)
 		if(istype(T,/turf/unsimulated/outside/swampwater/smooth))
 			var/turf/unsimulated/outside/swampwater/smooth/TT = T
-			TT.REFL.vis_contents += L
+			TT.REFL.vis_contents += L*/
 
 /turf/unsimulated/outside/swampwater/smooth/Exited(atom/A, atom/newloc)
 	..()
@@ -94,10 +94,10 @@ W(8)---- *****  ---- E(4)
 					L.vis_contents -= augh
 				L.water_effects = FALSE
 		
-		var/turf/T = get_step(src,SOUTH)
+	/*	var/turf/T = get_step(src,SOUTH)
 		if(istype(T,/turf/unsimulated/outside/swampwater/smooth))
 			var/turf/unsimulated/outside/swampwater/smooth/TT = T
-			TT.REFL.vis_contents -= L
+			TT.REFL.vis_contents -= L*/
 
 //Having issues iwth smoothing, so ill try my own proc
 //Issue with
