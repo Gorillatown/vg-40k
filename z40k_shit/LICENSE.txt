@@ -1,0 +1,9 @@
+All applicable code and art assets within these folders is © JTGSZ 2020, all rights reserved.
+
+JTGSZ defined as the holder of the github account JTGSZ.
+Applicable Work defined as original work (code/art/sound assets) done by the holder of the github account JTGSZ.
+Applicable Work is (NOT) code/art done by people who are not the holder of the github account JTGSZ.
+
+All other work is licensed as GPL3 unless their creator states otherwise.
+
+(Feel free to ask for a relicense, but If you haven't stomped on my feet I won't care if you re-use it, I mostly did this because someones being very rude atm.)
