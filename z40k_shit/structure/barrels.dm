@@ -150,5 +150,59 @@
 
 /obj/structure/reagent_dispensers/cauldron/barrel/laserbrain_dust/New() //BARRELS O BLOW
 	. = ..()
-
 	reagents.add_reagent(LASERBRAIN_DUST, 1000)
+
+
+/*
+	FOOD BARRELS
+*/
+//Salt Barrel
+/obj/structure/reagent_dispensers/cauldron/barrel/saltbarrel
+	name = "Saltbarrel"
+	desc = "Its SALT in a BARREL"
+	icon = 'z40k_shit/icons/obj/barrels.dmi'
+	icon_state = "barrel_4"
+	density = 1
+
+/obj/structure/reagent_dispensers/cauldron/barrel/saltbarrel/New()
+	. = ..()
+	icon_state = "barrel_[rand(1,7)]"
+	reagents.add_reagent(SODIUMCHLORIDE, 1000)
+
+//Pepper Barrel
+/obj/structure/reagent_dispensers/cauldron/barrel/pepperbarrel
+	name = "Pepperbarrel"
+	desc = "PEPPER in a barrel"
+	icon = 'z40k_shit/icons/obj/barrels.dmi'
+	icon_state = "barrel_4"
+	density = 1
+
+/obj/structure/reagent_dispensers/cauldron/barrel/pepperbarrel/New()
+	. = ..()
+	icon_state = "barrel_[rand(1,7)]"
+	reagents.add_reagent(BLACKPEPPER, 1000)
+
+//Universal Enzyme Barrel
+/obj/structure/reagent_dispensers/cauldron/barrel/enzymebarrel
+	name = "Enzyme Barrel"
+	desc = "Luckily it has issues with metal."
+	icon = 'z40k_shit/icons/obj/barrels.dmi'
+	icon_state = "barrel_4"
+	density = 1
+
+/obj/structure/reagent_dispensers/cauldron/barrel/enzymebarrel/New()
+	. = ..()
+	icon_state = "barrel_[rand(1,7)]"
+	reagents.add_reagent(ENZYME, 1000)
+
+//Rng Condiment Barrel
+/obj/structure/reagent_dispensers/cauldron/barrel/condiment_barrel
+	icon = 'z40k_shit/icons/obj/barrels.dmi'
+	icon_state = "barrel_4"
+	density = 1
+
+/obj/structure/reagent_dispensers/cauldron/barrel/condiment_barrel/New()
+	. = ..()
+	icon_state = "barrel_[rand(1,7)]"
+	var/rngchem = pick(rngchemlistcondiments)
+	reagents.add_reagent(rngchem, 1000)

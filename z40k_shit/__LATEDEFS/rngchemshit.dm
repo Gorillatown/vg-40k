@@ -40,7 +40,7 @@ var/global/list/rngchemlistcondiments = list(KETCHUP,SOYSAUCE,
 									CINNAMON,CREATINE,
 									SPRINKLES,CORNOIL,
 									FLOUR,RICE,VINEGAR,
-									MAYO,SUGAR
+									MAYO,SUGAR,SODIUMCHLORIDE
 									)
 
 var/global/list/rngchemlistfulls = list(MUTATIONTOXIN,THERMITE,
