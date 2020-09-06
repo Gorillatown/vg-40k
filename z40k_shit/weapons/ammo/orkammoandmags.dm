@@ -19,14 +19,13 @@
 		if(!AC.BB)
 			to_chat(user, "<span class='notice'>The bullet appears to be already spent.</span>")
 			return
-		var/obj/item/ammo_storage/box/piles/sluggabulletpile/PP = new(src.loc)
-		user.drop_item(A, PP)
-		user.drop_item(src,PP)
-		PP.stored_ammo += AC
-		PP.stored_ammo += src
+		var/obj/item/ammo_storage/box/piles/sluggabulletpile/PP = new(loc, 2)
+		user.drop_item(A)
+		user.drop_item(src)
+		qdel(A)
+		qdel(src)
 		user.put_in_any_hand_if_possible(PP) //pp hands lol
-		PP.update_icon()
-	
+
 	//	PP.good2go = TRUE
 
 	if(istype(A,/obj/item/ammo_storage/box/piles/sluggabulletpile))
@@ -107,13 +106,12 @@
 		if(!AC.BB)
 			to_chat(user, "<span class='notice'>The bullet appears to be already spent.</span>")
 			return
-		var/obj/item/ammo_storage/box/piles/buckshotpile/PP = new(src.loc)
-		user.drop_item(A, PP)
-		user.drop_item(src,PP)
-		PP.stored_ammo += AC
-		PP.stored_ammo += src
+		var/obj/item/ammo_storage/box/piles/buckshotpile/PP = new(loc, 2)
+		user.drop_item(A)
+		user.drop_item(src)
+		qdel(A)
+		qdel(src)
 		user.put_in_any_hand_if_possible(PP) //pp hands lol
-		PP.update_icon()
 	
 	if(istype(A,/obj/item/ammo_storage/box/piles/buckshotpile))
 		var/obj/item/ammo_storage/box/piles/buckshotpile/PP = A

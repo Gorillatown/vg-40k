@@ -34,8 +34,8 @@
 		spawned.filters += filter(type="drop_shadow", x=0, y=0, size=1, offset=2, color=rgb(rand(1,255),rand(1,255),rand(1,255)))
 
 	if(item_position_jiggle)
-		spawned.pixel_x = rand(-32,32)
-		spawned.pixel_y = rand(-32,32)
+		spawned.pixel_x = rand(1,5)
+		spawned.pixel_y = rand(1,5)
 
 /obj/abstract/loot_spawners/proc/artifact_creation(obj/item/our_object)
 	if(prob(90))

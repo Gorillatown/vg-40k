@@ -27,12 +27,14 @@
 
 	items_to_spawn = list(
 		"Default" = list(
+			slot_ears_str = /obj/item/device/radio/headset,
 			slot_w_uniform_str = /obj/item/clothing/under/squatter_outfit,
 			slot_head_str = /obj/item/clothing/head/squatter_hat,
 			slot_shoes_str = /obj/item/clothing/shoes/black,
 		),
 		// Same as above, plus some
 		/datum/species/plasmaman/ = list(
+			slot_ears_str = /obj/item/device/radio/headset,
 			slot_w_uniform_str = /obj/item/clothing/under/color/grey,
 			slot_shoes_str = /obj/item/clothing/shoes/black,
 			slot_wear_suit_str = /obj/item/clothing/suit/space/plasmaman/assistant,
@@ -40,6 +42,7 @@
 			slot_head_str = /obj/item/clothing/head/helmet/space/plasmaman/assistant,
 		),
 		/datum/species/vox/ = list(
+			slot_ears_str = /obj/item/device/radio/headset,
 			slot_w_uniform_str = /obj/item/clothing/under/color/grey,
 			slot_shoes_str = /obj/item/clothing/shoes/black,
 			slot_wear_suit_str = /obj/item/clothing/suit/space/vox/civ,

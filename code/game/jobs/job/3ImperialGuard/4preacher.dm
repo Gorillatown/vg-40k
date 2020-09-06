@@ -46,9 +46,8 @@
 	ChooseReligion(H, FALSE) //Our mob, the second var is if we are a follower of Chaos.
 
 /datum/outfit/preacher/handle_faction(var/mob/living/M)
-/*	var/datum/role/imperial_guard/preacher/preacher = new
-	preacher.AssignToRole(M.mind,TRUE)
-	preacher.mind_storage(M.mind)*/
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
  
 /datum/outfit/preacher/handle_special_abilities(var/mob/living/carbon/human/H)
 	H.attribute_strength = 12

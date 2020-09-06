@@ -49,9 +49,8 @@
 	
 
 /datum/outfit/enginseer/handle_faction(var/mob/living/M)
-	/*var/datum/role/imperial_guard/enginseer/enginseer = new
-	enginseer.AssignToRole(M.mind,TRUE)
-	enginseer.mind_storage(M.mind)*/
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
 
 /datum/outfit/enginseer/handle_special_abilities(var/mob/living/carbon/human/H)
 	H.attribute_strength = 12

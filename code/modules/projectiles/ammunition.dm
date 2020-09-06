@@ -60,12 +60,12 @@
 	var/starting_ammo = -1 //-1 makes it spawn the max ammo, 0 and above makes it spawn that number
 	var/multiple_sprites = FALSE //if it has multiple sprites. Please sprite more than 2 sprites if you set this to true, you fricks
 	var/sprite_modulo = 1 //the spacing of the ammo sprites. Setting this to 1 means there's a sprite for every state, 10 for every 10 states, etc.
-
-/obj/item/ammo_storage/New()
+ 
+/obj/item/ammo_storage/New(var/loc, var/ammo_to_create = starting_ammo)
 	..()
 	var/ammo_to_load = 0
-	if(starting_ammo > -1 && starting_ammo < max_ammo)
-		ammo_to_load = starting_ammo
+	if(ammo_to_create > -1 && ammo_to_create < max_ammo)
+		ammo_to_load = ammo_to_create
 	else
 		ammo_to_load = max_ammo
 

@@ -48,9 +48,8 @@
 	id_type = /obj/item/weapon/card/id/imperial_guard_dogtag
 
 /datum/outfit/inquisitor/handle_faction(var/mob/living/M)
-/*	var/datum/role/imperial_guard/inquisitor/inquisitor = new
-	inquisitor.AssignToRole(M.mind,TRUE)
-	inquisitor.mind_storage(M.mind)*/
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
  
 /datum/outfit/inquisitor/handle_special_abilities(var/mob/living/carbon/human/H)
 	H.attribute_strength = 10
