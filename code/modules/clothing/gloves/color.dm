@@ -258,13 +258,13 @@
 /obj/item/clothing/gloves/white/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/toy/crayon))
 		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			for(var/datum/role/job_quest/harlequin/HRL in H.mind.antag_roles)
-				if(HRL.alignment <= -22)
-					usr.visible_message("<span class='notice'>[usr] colors the [src] in shades of black and red.</span>", "<span class='notice'>You color the gloves in blacks and reds. It almost seems like they become something more under your careful work. These will serve you well.</span>", "<span class='warning>HOLY CRAP WHAT?!</span>")
-					user.put_in_hands(new /obj/item/clothing/gloves/combat/harlequin(user))
-					qdel(src)
-					return
+			var/mob/living/carbon/human/H = user 
+			var/datum/role/job_quest/harlequin/HRL = H.mind.GetRole(HARLEQUIN)
+			if((HRL) && (HRL.alignment <= -22))
+				usr.visible_message("<span class='notice'>[usr] colors the [src] in shades of black and red.</span>", "<span class='notice'>You color the gloves in blacks and reds. It almost seems like they become something more under your careful work. These will serve you well.</span>", "<span class='warning>HOLY CRAP WHAT?!</span>")
+				user.put_in_hands(new /obj/item/clothing/gloves/combat/harlequin(user))
+				qdel(src)
+				return
 	..()
 
 // For Clown Planet's mimes. - N3X

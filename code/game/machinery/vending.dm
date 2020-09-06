@@ -3062,7 +3062,8 @@ var/global/num_vending_terminals = 1
 	pack = /obj/structure/vendomatpack/chapelvend
 
 /obj/machinery/vending/chapel/attackby(obj/item/W, mob/living/user)
-	for(var/datum/role/job_quest/harlequin/HRL in user.mind.antag_roles)
+	var/datum/role/job_quest/harlequin/HRL = user.mind?.GetRole(HARLEQUIN)
+	if(HRL)
 		if(!HRL.suit_achieved)
 			if(istype(W, /obj/item/weapon/coin/harlequin))
 				visible_message("<span class='info'>[src] dispenses a strange outfit.</span>")

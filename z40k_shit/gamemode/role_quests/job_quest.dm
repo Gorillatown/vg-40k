@@ -2,7 +2,7 @@
 	name = HARLEQUIN
 	id = HARLEQUIN
 	special_role = HARLEQUIN
-	var/alignment = 0
+	var/alignment = 1
 //	logo_state = "ig-standard-logo"
 
 /datum/role/job_quest/New(var/datum/mind/M, var/datum/faction/fac=null, var/new_id)

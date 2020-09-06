@@ -95,10 +95,8 @@ var/list/roguelike_process = list()
 	if(activated_pads >= 2)
 		for(var/obj/structure/pressure_plate/pads in tzeentchpads)
 			for(var/mob/living/carbon/human/H in range(0,pads))
-				var/valid = TRUE
-				for(var/datum/role/job_quest/tzeentch_one/TZZTCH in H.mind.antag_roles)
-					valid = FALSE
-				if(valid)
+				var/datum/role/job_quest/tzeentch_one/TZZTCH = H.mind.GetRole(TZEENTCH_CHAMPION)
+				if(!TZZTCH)
 					for(var/obj/effect/step_trigger/id_teleporter/end/END in id_teleporters)
 						if(END.destination_id == "dungeon_one_start")
 							H.loc = END.loc

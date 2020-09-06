@@ -16,6 +16,6 @@
 
 /spell/targeted/concentrate/cast(list/targets)
 	for(var/mob/living/carbon/human/H in targets)
-		for(var/datum/role/job_quest/harlequin/HRL in H.mind.antag_roles)
+		var/datum/role/job_quest/harlequin/HRL = H.mind.GetRole(HARLEQUIN)
+		if(HRL)
 			HRL.alignment_handler()
-

@@ -23,10 +23,8 @@
 				if(prob(75))
 					to_chat(H, "<span class='warning'> You sense that wearing the mask for much longer would be a bad idea.</span>")
 			if(weartime >= 60)
-				var/valid = FALSE
-				for(var/datum/role/job_quest/tzeentch_one/TZTCH in H.mind.antag_roles)
-					valid = TRUE
-				if(!valid)
+				var/datum/role/job_quest/tzeentch_one/TZZTCH = H.mind.GetRole(TZEENTCH_CHAMPION)
+				if(!TZZTCH)
 					H.visible_message("<span class='warning'> [H]'s body is consumed in a flash of deep red light!</span>")
 					H.dust()
 			H.heal_organ_damage(8, 8)
@@ -55,7 +53,8 @@
 		H.movement_speed_modifier += speed_modifier
 		H.visible_message("<span class='warning'> <b>[H] puts on the [src]!</b></span>")
 		to_chat(H, "<span class='warning'> You feel a rush of power!</span>")
-		for(var/datum/role/job_quest/tzeentch_one/TZTCH in H.mind.antag_roles)
+		var/datum/role/job_quest/tzeentch_one/TZZTCH = H.mind.GetRole(TZEENTCH_CHAMPION)
+		if(TZZTCH)
 			H.add_spell(new /spell/targeted/devastate, "ork_spell_ready")
 
 /obj/item/clothing/mask/gas/artifact/unequipped(mob/living/carbon/human/H, var/from_slot = null)

@@ -16,6 +16,10 @@
 
 /spell/targeted/dwell/cast(list/targets)
 	for(var/mob/living/carbon/human/H in targets)
-		for(var/datum/role/job_quest/tzeentch_one/TZZTCH in H.mind.antag_roles)
+		var/datum/role/job_quest/tzeentch_one/TZZTCH = H.mind.GetRole(TZEENTCH_CHAMPION)
+		if(TZZTCH)
 			TZZTCH.alignment_handler()
-			return
+
+/*		for(var/datum/role/job_quest/tzeentch_one/TZZTCH in H.mind.antag_roles)
+			TZZTCH.alignment_handler()
+			return*/
