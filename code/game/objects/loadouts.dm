@@ -68,12 +68,6 @@
 						/obj/item/weapon/tank/jetpack/oxygen,
 						/obj/item/clothing/mask/breath)
 
-/obj/abstract/loadout/CE_RIG
-	items_to_spawn = list(/obj/item/clothing/suit/space/rig/elite,
-						/obj/item/clothing/head/helmet/space/rig/elite,
-						/obj/item/weapon/tank/jetpack/oxygen,
-						/obj/item/clothing/mask/breath)
-
 /obj/abstract/loadout/mining_RIG
 	items_to_spawn = list(/obj/item/clothing/suit/space/rig/mining,
 						/obj/item/clothing/head/helmet/space/rig/mining,
