@@ -68,6 +68,21 @@ datum/reagent/chemical_waste
 	volume = 2
 	flags = OPENCONTAINER
 
+/obj/item/weapon/reagent_containers/glass/solution_tray/on_reagent_change()
+	update_icon()
+
+/obj/item/weapon/reagent_containers/glass/solution_tray/pickup(mob/user)
+	..()
+	update_icon()
+
+/obj/item/weapon/reagent_containers/glass/solution_tray/dropped(mob/user)
+	..()
+	update_icon()
+
+/obj/item/weapon/reagent_containers/glass/solution_tray/attack_hand()
+	..()
+	update_icon()
+
 /obj/item/weapon/reagent_containers/glass/solution_tray/update_icon()
 	overlays.len = 0
 
@@ -94,8 +109,8 @@ datum/reagent/chemical_waste
 
 /obj/item/weapon/storage/box/solution_trays/New()
 	..()
-	for(var/i = 1 to 7)
-		new /obj/item/weapon/reagent_containers/glass/solution_tray( src )
+	for(var/i=1 to 7)
+		new /obj/item/weapon/reagent_containers/glass/solution_tray(src)
 
 
 /obj/item/weapon/reagent_containers/glass/beaker/tungsten
