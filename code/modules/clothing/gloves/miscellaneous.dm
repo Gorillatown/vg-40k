@@ -319,6 +319,10 @@
 	hitsound_added = 'sound/weapons/slice.ogg'
 	attack_verb_override = "claws"
 
+/obj/item/clothing/gloves/warping_claws/Destroy()
+	new /datum/artifact_postmortem_data(src)
+	..()
+
 /obj/item/clothing/gloves/warping_claws/on_wearer_threw_item(mob/user, atom/target, atom/movable/thrown)
 	if(target && !thrown)
 		var/obj/effect/portal/tear/P1 = new (get_turf(user),5 SECONDS)

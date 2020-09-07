@@ -10,7 +10,11 @@
 	density = 1
 	layer = ABOVE_OBJ_LAYER
 
-/obj/machinery/giga_drill/attack_hand(mob/user )
+/obj/machinery/giga_drill/Destroy()
+	new /datum/artifact_postmortem_data(src)
+	..()
+
+/obj/machinery/giga_drill/attack_hand(mob/user)
 	if(active)
 		active = 0
 		icon_state = "gigadrill"
