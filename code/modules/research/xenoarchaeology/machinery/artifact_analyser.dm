@@ -231,8 +231,6 @@ var/anomaly_report_num = 0
 			return "Secure Vial - The organic liquid in it appears to move around periodically, it seems to be some sort of lifeform. The vial would have to be openned to get a better analysis."
 		if(/obj/machinery/syndicate_beacon)
 			return "Syndicate Beacon - An old deprecated terminal that the Syndicate used to communicate with their agents, before the advent of uplinks that were easier to hide. Surely the Syndicate doesn't read the frequencies used by those anymore."
-		if(/obj/item/weapon/bloodcult_pamphlet/oneuse)
-			return "Cult Pamphlet - Unable to identify the type of creature whose skin was used to produce this parchment, likewise the ink used appears to be blood but the DNA doesn't match any creature currently known in the galaxy. Potentially huge breakthrough."
 		if(/mob/living/simple_animal/hostile/roboduck)
 			return "Robot Duck - Scans shows an unreal amount of bullets inside it. Presence of an AI chip might indicate that the robot won't attack unless provoked. Also identified what looks like a digestive system, indicating that it might be able to process its preys into some other forms."
 		if(/obj/machinery/artifact)

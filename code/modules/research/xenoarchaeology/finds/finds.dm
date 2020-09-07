@@ -601,8 +601,6 @@
 		/obj/item/projectile/energy/plasma/pistol			= 120,	//25 damage, contaminates
 		//TASERS
 		/obj/item/projectile/energy/electrode				= 180,	//Its a taser electrode
-		/obj/item/projectile/energy/electrode/fast			= 80,	//fast tasers
-		/obj/item/projectile/energy/electrode/scatter		= 80,	//3-way tasers
 		//DUMB SHIT
 		/obj/item/projectile/energy/osipr					= 10,	//oh no
 		/obj/item/projectile/energy/rad						= 50,	//30 damage, irradiates
