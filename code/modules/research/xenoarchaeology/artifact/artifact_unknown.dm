@@ -134,7 +134,7 @@ var/list/excavated_large_artifacts = list()
 		else
 			Bumped(pulledby)
 
-/obj/machinery/artifact/attack_hand(var/mob/user )
+/obj/machinery/artifact/attack_hand(var/mob/user)
 	if(isobserver(user))
 		to_chat(user, "<span class='rose'>Your ghostly hand goes right through!</span>")
 		return
@@ -145,27 +145,32 @@ var/list/excavated_large_artifacts = list()
 		to_chat(user, "<b>You touch [src]</b> with your gloved hands, [pick("but nothing of note happens","but nothing happens","but nothing interesting happens","but you notice nothing different","but nothing seems to have happened")].")
 		return
 
-	
-	lazy_invoke_event(/lazy_event/on_attackhand, list("user" = user, "target" = src))
 	to_chat(user, "<b>You touch [src].</b>")
+	lazy_invoke_event(/lazy_event/on_attackhand, list("user" = user, "target" = src))
 
-/obj/machinery/artifact/attackby(obj/item/weapon/W, mob/living/user )
+/obj/machinery/artifact/attackby(obj/item/weapon/W, mob/living/user)
 
 	..()
 	on_attackby.Invoke(list(user, "MELEE", W))
 
-/obj/machinery/artifact/Bumped(mob/M)
+/obj/machinery/artifact/Bumped(var/atom/A)
+	if (istype(A,/obj))
+		on_attackby.Invoke(list(usr, "THROW", A))
+	else if (isliving(A))
+		var/mob/living/L = A
+		if (!ishuman(L) || !istype(L:gloves,/obj/item/clothing/gloves))
+			if (prob(50))
+				to_chat(L, "<b>You accidentally touch [src].<b>")
+				lazy_invoke_event(/lazy_event/on_bumped, list("user" = L, "target" = src))
 	..()
-	if(istype(M,/obj))
-		on_attackby.Invoke(list(usr, "THROW", M))
-	else if(ishuman(M) && !istype(M:gloves,/obj/item/clothing/gloves))
-		var/warn = 0
 
-		if (prob(50))
-			lazy_invoke_event(/lazy_event/on_bumped, list("user" = M, "target" = src))
-			warn = 1
-		if(warn)
-			to_chat(M, "<b>You accidentally touch [src].<b>")
+/obj/machinery/artifact/to_bump(var/atom/A)
+	if (iscarbon(A))
+		var/mob/living/L = A
+		if (!ishuman(L) || !istype(L:gloves,/obj/item/clothing/gloves))
+			if (prob(50))
+				to_chat(L, "<b>\The [src] bumps into you.<b>")
+				lazy_invoke_event(/lazy_event/on_bumped, list("user" = L, "target" = src))
 	..()
 
 /obj/machinery/artifact/bullet_act(var/obj/item/projectile/P)
