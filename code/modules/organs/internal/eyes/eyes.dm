@@ -41,9 +41,9 @@
 
 /datum/organ/internal/eyes/vox
 	name = "bird eyes"
-//	colourmatrix = list(1,0.0,0.0,0,\
-		 				0,0.5,0.5,0,\
-						0,0.5,0.5,0,\
+	colourmatrix = list(1,0.0,0.0,0,
+		 				0,0.5,0.5,0,
+						0,0.5,0.5,0,
 						0,0.0,0.0,1,)
 	removed_type = /obj/item/organ/internal/eyes/vox
 
