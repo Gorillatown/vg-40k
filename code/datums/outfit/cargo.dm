@@ -4,7 +4,7 @@
 /datum/outfit/hop
 
 	outfit_name = "Head of Personnel"
-	associated_job = /datum/job/hop
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack,
@@ -57,7 +57,7 @@
 /datum/outfit/qm
 
 	outfit_name = "Quartermaster"
-	associated_job = /datum/job/qm
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack,
@@ -107,7 +107,7 @@
 /datum/outfit/cargo_tech
 
 	outfit_name = "Cargo Technician"
-	associated_job = /datum/job/cargo_tech
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack,
@@ -153,7 +153,7 @@
 /datum/outfit/mining
 
 	outfit_name = "Shaft Miner"
-	associated_job = /datum/job/mining
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack,

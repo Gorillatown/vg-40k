@@ -189,10 +189,6 @@ var/global/list/loopModeNames=list(
 	..(loc)
 	allowed_modes = loopModeNames.Copy()
 	wires = new(src)
-	if(department)
-		linked_account = department_accounts[department]
-	else
-		linked_account = station_account
 
 /obj/machinery/media/jukebox/Destroy()
 	if(wires)
@@ -259,10 +255,10 @@ var/global/list/loopModeNames=list(
 	switch(screen)
 		if(JUKEBOX_SCREEN_MAIN)
 			t += ScreenMain(user)
-		if(JUKEBOX_SCREEN_PAYMENT)
-			t += ScreenPayment(user)
-		if(JUKEBOX_SCREEN_SETTINGS)
-			t += ScreenSettings(user)
+//		if(JUKEBOX_SCREEN_PAYMENT)
+//			t += ScreenPayment(user)
+//		if(JUKEBOX_SCREEN_SETTINGS)
+//			t += ScreenSettings(user)
 
 	user.set_machine(src)
 	var/datum/browser/popup = new (user,"jukebox",name,420,700)
@@ -333,6 +329,7 @@ var/global/list/loopModeNames=list(
 	</center>"}
 	return t
 
+/*
 /obj/machinery/media/jukebox/proc/ScreenSettings(var/mob/user)
 	if(!linked_account)
 		linked_account = station_account
@@ -360,42 +357,10 @@ var/global/list/loopModeNames=list(
 		dat += "[playlists[element]] <a href='?src=\ref[src];eject=[element]'>Eject</a><BR>"
 	dat += "<a href='?src=\ref[src];insert=1'>Insert Vinyl</a><BR>"
 	return dat
-
+*/
 /obj/machinery/media/jukebox/proc/generate_name()
 	var/area/this_area = get_area(src)
 	return "[this_area.name] [name]"
-
-/obj/machinery/media/jukebox/scan_card(var/obj/item/weapon/card/C)
-	var/remaining_credits_needed = credits_needed - credits_held
-	var/pos_name = generate_name()
-	var/charge_response = charge_flow(linked_db, C, usr, remaining_credits_needed, linked_account, "Song Selection", pos_name, 0)
-	switch(charge_response)
-		if(CARD_CAPTURE_SUCCESS)
-			visible_message("<span class='notice'>The machine beeps happily.</span>","You hear a beep.")
-			if(credits_held)
-				linked_account.charge(-credits_held, null, "Cash Deposit", pos_name, 0, linked_account.owner_name)
-				credits_held=0
-			credits_needed=0
-			successful_purchase()
-			return
-		if(CARD_CAPTURE_FAILURE_NOT_ENOUGH_FUNDS)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"NOT ENOUGH FUNDS\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_ACCOUNT_DISABLED)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"ACCOUNT DISABLED\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_ACCOUNT_DISABLED_MERCHANT)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"MERCHANT ACCOUNT DISABLED\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_FAILURE_BAD_ACCOUNT_PIN_COMBO)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"BAD ACCOUNT/PIN COMBO\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_FAILURE_SECURITY_LEVEL)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"SECURITY EXCEPTION\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_FAILURE_USER_CANCELED)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"ORDER CANCELED\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_FAILURE_NO_DESTINATION)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"NO LINKED ACCOUNT\" on the screen.</span>","You hear a buzz.")
-		if(CARD_CAPTURE_FAILURE_NO_CONNECTION)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"DATABASE UNAVAILABLE\" on the screen.</span>","You hear a buzz.")
-		else
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"CARD CAPTURE ERROR\" on the screen.</span>","You hear a buzz.")
 
 /obj/machinery/media/jukebox/proc/dispense_change(var/amount = 0)
 	if(!amount)
@@ -420,21 +385,16 @@ var/global/list/loopModeNames=list(
 			visible_message("<span class='notice'>The machine buzzes.</span>","<span class='warning'>You hear a buzz.</span>")
 			return
 		var/obj/item/weapon/card/I = W
-		connect_account(user, I)
 		attack_hand(user)
 	else if(istype(W,/obj/item/weapon/spacecash))
 		if(!selected_song || screen!=JUKEBOX_SCREEN_PAYMENT)
 			visible_message("<span class='notice'>The machine buzzes.</span>","<span class='warning'>You hear a buzz.</span>")
-			return
-		if(!linked_account)
-			visible_message("<span class='warning'>The machine buzzes, and flashes \"NO LINKED ACCOUNT\" on the screen.</span>","You hear a buzz.")
 			return
 		var/obj/item/weapon/spacecash/C=W
 		credits_held += C.get_total()
 		qdel(C)
 		if(credits_held >= credits_needed)
 			visible_message("<span class='notice'>The machine beeps happily.</span>","You hear a beep.")
-			linked_account.charge(-credits_needed, null, "Song selection at [generate_name()].", dest_name = linked_account.owner_name)
 			credits_held -= credits_needed
 			credits_needed=0
 			screen=JUKEBOX_SCREEN_MAIN
@@ -512,22 +472,6 @@ var/global/list/loopModeNames=list(
 			to_chat(usr, "<span class='warning'>You can't do that.</span>")
 			return
 		screen=text2num(href_list["screen"])
-
-	if("act" in href_list)
-		switch(href_list["act"])
-			if("Save Settings")
-				if(isobserver(usr) && !canGhostWrite(usr,src,"saved settings for"))
-					to_chat(usr, "<span class='warning'>You can't do that.</span>")
-					return
-				var/datum/money_account/new_linked_account = get_money_account(text2num(href_list["payableto"]),z)
-				if(!new_linked_account)
-					to_chat(usr, "<span class='warning'>Unable to link new account. Aborting.</span>")
-					return
-
-				change_cost = max(0,text2num(href_list["set_change_cost"]))
-				linked_account = new_linked_account
-
-				screen=POS_SCREEN_SETTINGS
 
 	if(href_list["add_custom"])
 		if(isAdminGhost(usr))

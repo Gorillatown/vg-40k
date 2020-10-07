@@ -34,7 +34,6 @@
 		/obj/item/device/gps/engineering,
 		/obj/item/weapon/storage/belt/utility/chief,
 		/obj/item/clothing/glasses/scanner/material,
-		/obj/item/weapon/card/debit/preferred/department/engineering,
 	)
 
 /obj/structure/closet/secure_closet/engineering_electrical

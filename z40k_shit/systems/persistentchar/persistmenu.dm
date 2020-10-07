@@ -11,6 +11,8 @@
 		dat += "<b>Your Potential: [potential].</b><br>"
 		dat += {"Current OOC Color: <span style='border:1px solid #161616; background-color: [ooc_color];'>&nbsp;&nbsp;&nbsp;</span>
 				<a href='?src=\ref[src];change_ooc_color=1'>Change</a><BR>"}
+		dat += "Your current amount of Mannheims is "
+
 //<a href='?src=\ref[src];unlock=1;unlock_tree=telekinesis'>Unlock Tree</a>
 	//user << browse(dat, "window=preferences;size=560x580")
 	var/datum/browser/popup = new(user, "persistencemenu", "<div align='center'>Persistence Menu</div>", 240, 340)

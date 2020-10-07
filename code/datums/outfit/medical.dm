@@ -4,7 +4,7 @@
 /datum/outfit/cmo
 
 	outfit_name = "Chief Medical Officer"
-	associated_job = /datum/job/cmo
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack/medic,

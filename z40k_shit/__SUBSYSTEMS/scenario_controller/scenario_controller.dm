@@ -55,7 +55,8 @@ var/list/roguelike_process = list()
  
 /datum/subsystem/scenario_controller/New()
 	NEW_SS_GLOBAL(SS_Scenario)
-	quest_master = new /datum/job_quest/global_tracker()
+	if(!quest_master)
+		quest_master = new /datum/job_quest/global_tracker()
 	
 /datum/subsystem/scenario_controller/Initialize()
 	..()

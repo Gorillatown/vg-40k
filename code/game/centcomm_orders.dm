@@ -7,7 +7,7 @@ var/global/current_centcomm_order_id=124901
 
 /datum/centcomm_order
 	var/id = 0 // Some bullshit ID we use for fluff.
-	var/name = "CentComm" // Name of the ordering entity. Fluff.
+	var/name = "The Imperium" // Name of the ordering entity. Fluff.
 	var/datum/money_account/acct // account we pay to
 	var/acct_by_string = "unknown"
 

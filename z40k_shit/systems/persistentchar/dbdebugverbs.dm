@@ -23,4 +23,17 @@
 /mob/verb/clear_values()
 	var/client/C = usr.client
 	C.persist.potential = 0
+
+/mob/verb/give_money()
+	var/client/C = usr.client
+	C.persist.saved_mannheims += 100
+
+/mob/verb/take_money()
+	var/client/C = usr.client
+	C.persist_saved_mannheims -= 100
+
+/mob/verb/show_balance()
+	var/client/C = usr.client
+	to_chat(usr,"Current Mannheim Balance: [C.persist.saved_mannheims]")
+
 */

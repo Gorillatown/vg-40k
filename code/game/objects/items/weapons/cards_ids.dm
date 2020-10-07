@@ -198,18 +198,17 @@
 	var/rank = null			//actual job
 	var/dorm = 0		// determines if this ID has claimed a dorm already
 
-	var/datum/money_account/virtual_wallet = 1	//money! If 0, don't create a wallet. Otherwise create one!
+	var/datum/currency_holder/credstikku
 
 /obj/item/weapon/card/id/New()
 	..()
+	if(!credstikku)
+		credstikku = new()
 
-	if(virtual_wallet)
-		update_virtual_wallet()
-		spawn(30) //AWFULNESS AHOY
-			if(ishuman(loc))
-				var/mob/living/carbon/human/H = loc
-				SetOwnerInfo(H)
-			update_virtual_wallet()
+/obj/item/weapon/card/id/Destroy()
+	qdel(credstikku)
+	credstikku = null
+	..()
 
 /obj/item/weapon/card/id/examine(mob/user)
 	..()
@@ -236,39 +235,6 @@
 /obj/item/weapon/card/id/get_owner_name_from_ID()
 	return registered_name
 
-/obj/item/weapon/card/id/proc/update_virtual_wallet(var/new_funds=0)
-	if(!istype(virtual_wallet))
-		virtual_wallet = new()
-		virtual_wallet.virtual = 1
-
-	virtual_wallet.owner_name = registered_name
-
-	if(new_funds)
-		virtual_wallet.money = new_funds
-
-	//Virtual wallet accounts are tied to an ID card, not an account database, thus they don't need an acount number.
-	//For now using the virtual wallet doesn't require a PIN either.
-
-	if(!virtual_wallet.account_number)
-		virtual_wallet.account_number = next_account_number
-		next_account_number += rand(1,25)
-
-/obj/item/weapon/card/id/proc/add_to_virtual_wallet(var/added_funds=0, var/mob/user, var/atom/source)
-	if(!virtual_wallet)
-		return 0
-	virtual_wallet.money += added_funds
-	var/datum/transaction/T = new()
-	if(user)
-		T.target_name = user.name
-	T.purpose = "Currency deposit"
-	T.amount = added_funds
-	if(source)
-		T.source_terminal = source.name
-	T.date = current_date_string
-	T.time = worldtime2text()
-	virtual_wallet.transaction_log.Add(T)
-	return 1
-
 /obj/item/weapon/card/id/proc/UpdateName()
 	name = "[src.registered_name]'s ID Card ([src.assignment])"
 
@@ -278,15 +244,6 @@
 
 	blood_type = H.dna.b_type
 	dna_hash = H.dna.unique_enzymes
-
-/obj/item/weapon/card/id/proc/GetBalance(var/format=0)
-	var/amt = 0
-	var/datum/money_account/acct = get_card_account(src)
-	if(acct)
-		amt = acct.money
-	if(format)
-		amt = "$[num2septext(amt)]"
-	return amt
 
 /obj/item/weapon/card/id/proc/GetJobName()
 	var/jobName = src.assignment //what the card's job is called
@@ -565,8 +522,6 @@
 	assignment = "General"
 
 /obj/item/weapon/card/id/captains_spare/New()
-	var/datum/job/general/J = new/datum/job/general
-	access = J.get_access()
 	..()
 
 /obj/item/weapon/card/id/salvage_captain

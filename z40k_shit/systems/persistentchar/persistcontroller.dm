@@ -11,9 +11,11 @@ But the preferences menu and other stuff will need cleaned up and such.
 /datum/interactive_persistence
 	var/database/persistdb = ("persistence.sqlite")
 	var/client/client
-	var/potential = 0
-	var/ooc_color = "#002eb8"
+	var/potential = 0 //The potential we currently have
+	var/ooc_color = "#002eb8" //The OOC color we currently have saved
 	var/persistenceloaded = 0
+	var/saved_mannheims = 0 //The amount of mannheims we currently have saved.
+	var/allocated_mannheims = 0 //The amount of mannheims we currently are taking with us into the round.
 
 /*
 	We write a new database file and put our table into it.
@@ -29,16 +31,18 @@ But the preferences menu and other stuff will need cleaned up and such.
 	5. Change filename back to persistence.sqlite.
 
 	If you need debugging information, go visit the dbdebugverb.dm file.
+	If you notice things missing, it means you didn't ask about the codebase at all.
 */
 /*
 /mob/verb/write_new_database()
 	var/database/persistdb = ("persistence.sqlite")
 	var/database/query/Q = new()
 	var/sql={"CREATE TABLE "persistence" (
-	`ID`			INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`ckey`			INTEGER UNIQUE,
-	`potential`		INTEGER,
-	`ooc_color`		TEXT
+	`ID`				INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`ckey`				INTEGER UNIQUE,
+	`potential`			INTEGER,
+	`ooc_color`			TEXT,
+	`saved_mannheims`	INTEGER,
 );"}
 
 	Q.Add(sql)
@@ -71,16 +75,16 @@ But the preferences menu and other stuff will need cleaned up and such.
 	check.Add("SELECT ckey FROM persistence WHERE ckey = ?", ckey)
 	if(check.Execute(persistdb))
 		if(!check.NextRow())
-			q.Add("INSERT into persistence (ckey, potential, ooc_color)\
-									 VALUES (?,		?,			?)",\
-											ckey, potential, ooc_color)
+			q.Add("INSERT into persistence (ckey, potential, ooc_color, saved_mannheims)\
+									 VALUES (?,		?,			?,			?)",\
+											ckey, potential, ooc_color, saved_mannheims)
 			if(!q.Execute(persistdb))
 				message_admins("Error in save_persistence_sqlite [__FILE__] ln:[__LINE__] #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error in save_persistence_sqlite [__FILE__] ln:[__LINE__] #:[q.Error()] - [q.ErrorMsg()]")
 				return 0
 		else
-			q.Add("UPDATE persistence SET potential=? ,ooc_color=? WHERE ckey = ?",\
-										potential  ,ooc_color,	ckey)
+			q.Add("UPDATE persistence SET potential=? ,ooc_color=? ,saved_mannheims=? WHERE ckey = ?",\
+										potential  ,ooc_color, saved_mannheims,	ckey)
 			if(!q.Execute(persistdb))
 				message_admins("Error in save_persistence_sqlite [__FILE__] ln:[__LINE__] #: [q.Error()] - [q.ErrorMsg()]")
 				WARNING("Error in save_persistence_sqlite [__FILE__] ln:[__LINE__] #:[q.Error()] - [q.ErrorMsg()]")
@@ -115,11 +119,15 @@ But the preferences menu and other stuff will need cleaned up and such.
 			for(var/a in row)
 				persistence_one[a] = row[a]
 
-	potential 	= text2num(persistence_one["potential"]) 
-	ooc_color 	= persistence_one["ooc_color"]
+	//Loadan
+	potential 		= text2num(persistence_one["potential"]) 
+	ooc_color 		= persistence_one["ooc_color"]
+	saved_mannheims = text2num(persistence_one["saved_mannheims"])
 
-	potential 	= sanitize_integer(potential, 0, 1000, initial(potential))
-	ooc_color	= sanitize_hexcolor(ooc_color, initial(ooc_color))
+	//Sanitizan
+	potential 		= sanitize_integer(potential, 0, 1000, initial(potential))
+	ooc_color		= sanitize_hexcolor(ooc_color, initial(ooc_color))
+	saved_mannheims = sanitize_integer(potential, 0, 1000, initial(saved_mannheims))
 
 	return 1
 

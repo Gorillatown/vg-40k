@@ -970,73 +970,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					</ul>
 					"}
 
-			if (PDA_APP_BALANCECHECK)
-				var/datum/pda_app/balance_check/app = locate(/datum/pda_app/balance_check) in applications
-				dat += {"<h4><span class='pda_icon [app.icon]'></span> Virtual Wallet and Balance Check Application</h4>"}
-				if(app)
-					if(!id)
-						dat += {"<i>Insert an ID card in the PDA to use this application.</i>"}
-					else
-						if(!id.virtual_wallet)
-							id.update_virtual_wallet()
-						dat += {"<hr>
-							<h5>Virtual Wallet</h5>
-							Owner: <b>[id.virtual_wallet.owner_name]</b><br>
-							Balance: <b>[id.virtual_wallet.money]</b>$  <u><a href='byond://?src=\ref[src];choice=printCurrency'><span class='pda_icon [app.icon]'></span>Print Currency</a></u>
-							<h6>Transaction History</h6>
-							On [MM]/[DD]/[game_year]:
-							<ul>
-							"}
-						var/list/v_log = list()
-						for(var/e in id.virtual_wallet.transaction_log)
-							v_log += e
-						for(var/datum/transaction/T in reverseRange(v_log))
-							dat += {"<li>\[[T.time]\] [T.amount]$, [T.purpose] at [T.source_terminal]</li>"}
-						dat += {"</ul><hr>"}
-						if(!(app.linked_db))
-							app.reconnect_database()
-						if(app.linked_db)
-							if(app.linked_db.activated)
-								var/datum/money_account/D = app.linked_db.attempt_account_access(id.associated_account_number, 0, 2, 0)
-								if(D)
-									dat += {"
-										<h5>Bank Account</h5>
-										Owner: <b>[D.owner_name]</b><br>
-										Balance: <b>[D.money]</b>$
-										<h6>Transaction History</h6>
-										On [MM]/[DD]/[game_year]:
-										<ul>
-										"}
-									var/list/t_log = list()
-									for(var/e in D.transaction_log)
-										t_log += e
-									for(var/datum/transaction/T in reverseRange(t_log))
-										if(T.purpose == "Account creation")//always the last element of the reverse transaction_log
-											dat += {"</ul>
-												On [(DD == 1) ? "[((MM-2)%12)+1]" : "[MM]"]/[((DD-2)%30)+1]/[(DD == MM == 1) ? "[game_year - 1]" : "[game_year]"]:
-												<ul>
-												<li>\[[T.time]\] [T.amount]$, [T.purpose] at [T.source_terminal]</li>
-												</ul>"}
-										else
-											dat += {"<li>\[[T.time]\] [T.amount]$, [T.purpose] at [T.source_terminal]</li>"}
-									if(!D.transaction_log.len)
-										dat += {"</ul>"}
-								else
-									dat += {"
-										<h5>Bank Account</h5>
-										<i>Unable to access bank account. Either its security settings don't allow remote checking or the account is nonexistent.</i>
-										"}
-							else
-								dat += {"
-									<h5>Bank Account</h5>
-									<i>Unfortunately your station's Accounts Database doesn't allow remote access. Negociate with your HoP or Captain to solve this issue.</i>
-									"}
-						else
-							dat += {"
-								<h5>Bank Account</h5>
-								<i>Unable to connect to accounts database. The database is either nonexistent, inoperative, or too far away.</i>
-								"}
-
 			if (PDA_MODE_DELIVERY_BOT)
 				if (!istype(cartridge.radio, /obj/item/radio/integrated/signal/bot/mule))
 					dat += {"<span class='pda_icon pda_mule'></span>Commlink bot error <br/>"}
@@ -1548,33 +1481,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 				app.function = text2num(href_list["filter"])
 		if("103")//PDA_APP_BALANCECHECK
 			mode = PDA_APP_BALANCECHECK
-		if("printCurrency")
-			var/mob/user = usr
-			var/amount = round(input("How much money do you wish to print?", "Currency Printer", 0) as num)
-			if(!amount || (amount < 0) || (id.virtual_wallet.money <= 0))
-				to_chat(user, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Invalid value.'</span>")
-				return
-			if(amount > id.virtual_wallet.money)
-				amount = id.virtual_wallet.money
-			if(amount > 10000) // prevent crashes
-				to_chat(user, "[bicon(src)]<span class='notice'>The PDA's screen flashes, 'Maximum single withdrawl limit reached, defaulting to 10,000.'</span>")
-				amount = 10000
-
-			if(withdraw_arbitrary_sum(user,amount))
-				id.virtual_wallet.money -= amount
-				if(prob(50))
-					playsound(src, 'sound/items/polaroid1.ogg', 50, 1)
-				else
-					playsound(src, 'sound/items/polaroid2.ogg', 50, 1)
-
-				var/datum/transaction/T = new()
-				T.target_name = user.name
-				T.purpose = "Currency printed"
-				T.amount = "-[amount]"
-				T.source_terminal = src.name
-				T.date = current_date_string
-				T.time = worldtime2text()
-				id.virtual_wallet.transaction_log.Add(T)
 
 		if("104")//PDA_APP_STATIONMAP
 			var/datum/pda_app/station_map/app = locate(/datum/pda_app/station_map) in applications
@@ -1914,62 +1820,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					return
 			to_chat(usr, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Error, CAMO server is not responding.'</span>")
 
-		if("transferFunds")
-			if(!id)
-				return
-			var/obj/machinery/message_server/useMS = null
-			if(message_servers)
-				for (var/obj/machinery/message_server/MS in message_servers)
-					if(MS.is_functioning())
-						useMS = MS
-						break
-			if(!useMS)
-				to_chat(usr, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Error, Messaging server is not responding.'</span>")
-				return
-			var/obj/item/device/pda/P = locate(href_list["target"])
-			var/datum/signal/signal = src.telecomms_process()
-
-			var/useTC = 0
-			if(signal)
-				if(signal.data["done"])
-					useTC = 1
-					var/turf/pos = get_turf(P)
-					if(pos.z in signal.data["level"])
-						useTC = 2
-
-			if(!useTC) // only send the message if it's stable
-				to_chat(usr, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Error, Unable to receive signal from local subspace comms. PDA outside of comms range.'</span>")
-				return
-			if(useTC != 2) // Does our recepient have a broadcaster on their level?
-				to_chat(usr, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Error, Unable to receive handshake signal from recipient PDA. Recipient PDA outside of comms range.'</span>")
-				return
-
-			var/amount = round(input("How much money do you wish to transfer to [P.owner]?", "Money Transfer", 0) as num)
-			if(!amount || (amount < 0) || (id.virtual_wallet.money <= 0))
-				to_chat(usr, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Invalid value.'</span>")
-				return
-			if(amount > id.virtual_wallet.money)
-				amount = id.virtual_wallet.money
-
-			switch(P.receive_funds(owner,amount,name))
-				if(1)
-					to_chat(usr, "[bicon(src)]<span class='notice'>The PDA's screen flashes, 'Transaction complete!'</span>")
-				if(2)
-					to_chat(usr, "[bicon(src)]<span class='notice'>The PDA's screen flashes, 'Transaction complete! The recipient will earn the funds once he enters his ID in his PDA.'</span>")
-				else
-					to_chat(usr, "[bicon(src)]<span class='warning'>The PDA's screen flashes, 'Error, transaction canceled'</span>")
-					return
-
-			id.virtual_wallet.money -= amount
-			var/datum/transaction/T = new()
-			T.target_name = P.owner
-			T.purpose = "Money transfer"
-			T.amount = "-[amount]"
-			T.source_terminal = src.name
-			T.date = current_date_string
-			T.time = worldtime2text()
-			id.virtual_wallet.transaction_log.Add(T)
-
 		if("Send Honk")//Honk virus
 			if(istype(cartridge, /obj/item/weapon/cartridge/clown))//Cartridge checks are kind of unnecessary since everything is done through switch.
 				var/obj/item/device/pda/P = locate(href_list["target"])//Leaving it alone in case it may do something useful, I guess.
@@ -2099,91 +1949,6 @@ var/global/list/obj/item/device/pda/PDAs = list()
 		else
 			U.unset_machine()
 			U << browse(null, "window=pda")
-
-//Convert money from the virtual wallet into physical bills
-/obj/item/device/pda/proc/withdraw_arbitrary_sum(var/mob/user,var/arbitrary_sum)
-	var/datum/pda_app/balance_check/app = locate(/datum/pda_app/balance_check) in applications
-	if(!app.linked_db)
-		app.reconnect_database() //Make one attempt to reconnect
-	if(!app.linked_db || !app.linked_db.activated || app.linked_db.stat & (BROKEN|NOPOWER))
-		to_chat(user, "[bicon(src)] <span class='warning'>No connection to account database.</span>")
-		return 0
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		if(istype(H.wear_id,/obj/item/weapon/storage/wallet))
-			dispense_cash(arbitrary_sum,H.wear_id)
-			to_chat(usr, "[bicon(src)]<span class='notice'>Funds were transferred into your physical wallet!</span>")
-			return 1
-	var/list/L = dispense_cash(arbitrary_sum,get_turf(src))
-	for(var/obj/I in L)
-		user.put_in_hands(I)
-	return 1
-
-//Receive money transferred from another PDA
-/obj/item/device/pda/proc/receive_funds(var/creditor_name,var/arbitrary_sum,var/other_pda)
-	var/datum/pda_app/balance_check/app = locate(/datum/pda_app/balance_check) in applications
-	if(!app.linked_db)
-		app.reconnect_database()
-	if(!app.linked_db || !app.linked_db.activated || app.linked_db.stat & (BROKEN|NOPOWER))
-		return 0 //This sends its own error message
-	var/turf/U = get_turf(src)
-	if(!silent)
-		playsound(U, 'sound/machines/twobeep.ogg', 50, 1)
-
-	for (var/mob/O in hearers(3, U))
-		if(!silent)
-			O.show_message(text("[bicon(src)] *[src.ttone]*"))
-
-	var/mob/living/L = null
-	if(src.loc && isliving(src.loc))
-		L = src.loc
-	else
-		L = get_holder_of_type(src, /mob/living/silicon)
-
-	if(L)
-		to_chat(L, "[bicon(src)] <b>Money transfer from [creditor_name] ([arbitrary_sum]$) </b>[id ? "" : "Insert your ID in the PDA to receive the funds."]")
-
-	tnote += "<i><b>&larr; Money transfer from [creditor_name] ([arbitrary_sum]$)<br>"
-
-	if(id)
-		if(!id.virtual_wallet)
-			id.update_virtual_wallet()
-		id.virtual_wallet.money += arbitrary_sum
-		var/datum/transaction/T = new()
-		T.target_name = creditor_name
-		T.purpose = "Money transfer"
-		T.amount = arbitrary_sum
-		T.source_terminal = other_pda
-		T.date = current_date_string
-		T.time = worldtime2text()
-		id.virtual_wallet.transaction_log.Add(T)
-		return 1
-	else
-		incoming_transactions |= list(list(creditor_name,arbitrary_sum,other_pda))
-		return 2
-
-//Receive money transferred from another PDA
-/obj/item/device/pda/proc/receive_incoming_transactions(var/obj/item/weapon/card/id/ID_card)
-	for(var/transac in incoming_transactions)
-		if(!id.virtual_wallet)
-			id.update_virtual_wallet()
-		id.virtual_wallet.money += transac[2]
-		var/datum/transaction/T = new()
-		T.target_name = transac[1]
-		T.purpose = "Money transfer"
-		T.amount = transac[2]
-		T.source_terminal = transac[3]
-		T.date = current_date_string
-		T.time = worldtime2text()
-		id.virtual_wallet.transaction_log.Add(T)
-
-	incoming_transactions = list()
-
-	var/mob/living/L = null
-	if(src.loc && isliving(src.loc))
-		L = src.loc
-	to_chat(L, "[bicon(src)]<span class='notice'> <b>Transactions successfully received! </b></span>")
-
 
 /obj/item/device/pda/proc/remove_id()
 	if (id)
@@ -2347,8 +2112,6 @@ obj/item/device/pda/AltClick()
 			if(user.drop_item(I, src))
 				id = I
 				user.put_in_hands(old_id)
-	if(id && incoming_transactions.len)
-		receive_incoming_transactions(id)
 	return
 
 // access to status display signals
@@ -2379,8 +2142,6 @@ obj/item/device/pda/AltClick()
 				if( can_use(user) )//If they can still act.
 					id_check(user, 2)
 					to_chat(user, "<span class='notice'>You put \the [C] into \the [src]'s slot.</span>")
-					if(incoming_transactions.len)
-						receive_incoming_transactions(id)
 					updateSelfDialog()//Update self dialog on success.
 			return	//Return in case of failed check or when successful.
 		updateSelfDialog()//For the non-input related code.
@@ -2396,26 +2157,6 @@ obj/item/device/pda/AltClick()
 		else
 			if(user.drop_item(C, src))
 				to_chat(user, "<span class='notice'>You slide \the [C] into \the [src].</span>")
-	else if(istype(C,/obj/item/weapon/spacecash))
-		if(!id)
-			to_chat(user, "[bicon(src)]<span class='warning'>There is no ID in the PDA!</span>")
-			return
-		var/obj/item/weapon/spacecash/dosh = C
-		if(add_to_virtual_wallet(dosh.worth * dosh.amount, user))
-			to_chat(user, "<span class='info'>You insert [dosh.worth * dosh.amount] credit\s into the PDA.</span>")
-			qdel(dosh)
-		updateDialog()
-
-/obj/item/device/pda/proc/add_to_virtual_wallet(var/amount, var/mob/user, var/atom/giver)
-	if(!id)
-		return 0
-	if(id.add_to_virtual_wallet(amount, user, giver))
-		if(prob(50))
-			playsound(loc, 'sound/items/polaroid1.ogg', 50, 1)
-		else
-			playsound(loc, 'sound/items/polaroid2.ogg', 50, 1)
-		return 1
-	return 0
 
 /obj/item/device/pda/attack(mob/living/carbon/C, mob/living/user as mob)
 	if(istype(C))

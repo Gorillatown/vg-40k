@@ -219,7 +219,7 @@
 	if(!associated_job)
 		CRASH("Outfit [outfit_name] has no associated job, and the proc to spawn the ID is not overriden.")
 	var/datum/job/concrete_job = new associated_job
-
+ 
 	if(!no_id)
 		var/obj/item/weapon/card/id/C
 		C = new id_type(H)

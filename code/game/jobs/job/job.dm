@@ -51,7 +51,7 @@
 
 	var/no_crew_manifest = 0 //If 1, don't inject players with this job into the crew manifest
 	var/no_starting_money = 0 //If 1, don't start with a bank account or money
-	var/wage_payout = 50 //Default wage payout
+	var/wage_payout = 0 //Default wage payout
 
 	var/spawns_from_edge = 0 //Instead of spawning on the shuttle, spawns in space and gets thrown
 	var/landmark_job_override = FALSE //Instead of spawning on the shuttle, we jus spawn at the start round landmarks again.

@@ -57,7 +57,7 @@ var/global/list/floorbot_targets=list()
 /obj/machinery/bot/floorbot/New()
 	. = ..()
 	botcard = new /obj/item/weapon/card/id(src)
-	var/datum/job/engineer/E = new /datum/job/engineer
+	var/datum/job/enginseer/E = new /datum/job/enginseer
 	botcard.access = E.get_access()
 	update_icon()
 

@@ -315,7 +315,7 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 			cargo_acct.charge(P.cost,null,"Supply Order #[O.ordernum] ([P.name])",src.name,dest_name = "CentComm")
 			shoppinglist += O
 		else
-			to_chat(user, "<span class='warning'>The department account does not have enough funds for this request.</span>")
+			to_chat(user, "<span class='warning'>The outpost does not have enough requisition for this request.</span>")
 	else
 		var/datum/money_account/A = O.account
 		if(A && A.money >= P.cost)
@@ -331,7 +331,7 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 /datum/subsystem/supply_shuttle/proc/add_centcomm_order(var/datum/centcomm_order/C)
 	centcomm_orders.Add(C)
 	var/name = "External order form - [C.name] order number [C.id]"
-	var/info = {"<h3>Central command supply requisition form</h3<><hr>
+	var/info = {"<h3>Planetary supply requisition form</h3<><hr>
 	 			INDEX: #[C.id]<br>
 	 			REQUESTED BY: [C.name]<br>
 	 			MUST BE IN CRATE: [C.must_be_in_crate ? "YES" : "NO"]<br>
@@ -344,4 +344,4 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 		reqform.name = name
 		reqform.info = info
 		reqform.update_icon()
-		S.say("New central command request available")
+		S.say("Planetary command request available")

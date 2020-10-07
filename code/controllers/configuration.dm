@@ -543,8 +543,6 @@
 					no_ambience = 1
 				if("enable_roundstart_away_missions")
 					enable_roundstart_away_missions = 1
-				if("enable_wages")
-					roundstart_enable_wages = 0
 				if("error_cooldown")
 					error_cooldown = text2num(value)
 				if("error_limit")

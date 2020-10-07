@@ -379,8 +379,8 @@ var/adminblob_beat = 'sound/effects/blob_pulse.ogg'
 
 // ECONOMY
 // Account default values
-#define DEPARTMENT_START_FUNDS 500
-#define DEPARTMENT_START_WAGE 50
+#define DEPARTMENT_START_FUNDS 0
+#define DEPARTMENT_START_WAGE 0
 
 //HUD MINIMAPS
 var/list/holoMiniMaps = list()
@@ -444,47 +444,6 @@ var/list/boss_mobs = list(
 	/mob/living/simple_animal/hostile/roboduck,						// The bringer of the end times
 	/mob/living/simple_animal/hostile/bear/spare,					// Captain bear
 	)
-
-// Set by traitor item, affects cargo supplies
-var/station_does_not_tip = FALSE
-
-#define CARD_CAPTURE_SUCCESS 0 // Successful charge
-#define CARD_CAPTURE_FAILURE_GENERAL 1 // General error
-#define CARD_CAPTURE_FAILURE_NOT_ENOUGH_FUNDS 2 // Not enough funds in the account.
-#define CARD_CAPTURE_ACCOUNT_DISABLED 3 // Account locked.
-#define CARD_CAPTURE_ACCOUNT_DISABLED_MERCHANT 4 // Destination account disabled.
-#define CARD_CAPTURE_FAILURE_BAD_ACCOUNT_PIN_COMBO 5 // Bad account/pin combo
-#define CARD_CAPTURE_FAILURE_SECURITY_LEVEL 6 // Security level didn't allow current authorization or another exception occurred
-#define CARD_CAPTURE_FAILURE_USER_CANCELED 7 // The user canceled the transaction
-#define CARD_CAPTURE_FAILURE_NO_DESTINATION 8 // There was no linked account to send funds to.
-#define CARD_CAPTURE_FAILURE_NO_CONNECTION 9 // Account database not available.
-
-#define BANK_SECURITY_EXPLANATION {"Choose your bank account security level.
-Vendors will try to subtract from your virtual wallet if possible.
-If you're too broke, they'll try to access your bank account directly.
-This setting decides how much info you have to enter to allow for that.
-Zero; Only your account number is required to deduct funds.
-One; Your account number and PIN are required.
-Two; Your ID card, account number and PIN are required.
-You can change this mid-game at an ATM."}
-
-proc/bank_security_num2text(var/num)
-	switch(num)
-		if(0)
-			return "Zero"
-		if(1)
-			return "One"
-		if(2)
-			return "Two"
-		else
-			return "OUT OF RANGE"
-
-var/list/bank_security_text2num_associative = list(
-	"Zero" = 0,
-	"One" = 1,
-	"Two" = 2
-) // Can't use a zero. Throws a fit about out of bounds indices if you do.
-// Also if you add more security levels, please also update the above BANK_SECURITY_EXPLANATION
 
 //Radial menus currently existing in the world.
 var/global/list/radial_menus = list()

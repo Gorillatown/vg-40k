@@ -47,18 +47,6 @@ var/global/list/assembly_short_name_to_type = list() //Please, I beg you, don't 
 
 	var/list/accessible_values = list()
 
-	// List of variables that can be READ / WRITTEN TO by other assemblies.
-		// Format of the list:
-		//
-		// accessible_values = list("Time" = "time;number",\
-		//	"Frequency" = "freq;number",\
-		//	"Code" = "code;number")
-		//
-		// "Time" - name of this value. Can be anything
-		// "time;number" - parameters. Convert this to a list using params2list, and access them by doing either list[VALUE_VARIABLE_NAME] or list[VALUE_VARIABLE_TYPE]
-
-		//The example above allows any assembly (connected to an assembly frame) to access this assembly's time, frequency and code, e.g. a math circuit can READ this assembly's time, multiply it by 90 and SET this assembly's time to the result
-
 /obj/item/device/assembly/New()
 	..()
 

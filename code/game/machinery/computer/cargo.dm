@@ -5,86 +5,17 @@ For the shuttle controller, see supplyshuttle.dm
 For cargo crates, see supplypacks.dm
 For vending packs, see vending_packs.dm*/
 
-// returns an associate list of information needed for cargo consoles.  returns 0 if ID or account is missing
 
-#define ACCOUNT_DB_OFFLINE (!linked_db.activated || linked_db.stat & (BROKEN|NOPOWER))
-#define MENTION_DB_OFFLINE to_chat(user, "<span class='warning'>Account database connection lost. Please retry.</span>")
-#define USE_ACCOUNT_ON_ID acc_info["account"] = user.get_worn_id_account(0, user)
-#define USE_CARGO_ACCOUNT acc_info["account"] = department_accounts["Cargo"]
-#define REQUISITION SSsupply_shuttle.requisition
 
-/proc/get_account_info(mob/user, var/obj/machinery/account_database/linked_db)
-	var/list/acc_info = new
+
+/proc/get_currency_info(mob/user)
 	var/obj/item/weapon/card/id/usr_id = user.get_id_card()
-	acc_info["authorized_name"] = ""
 	if(ishuman(user))
 		if(usr_id == null)
-			to_chat(user, "<span class='warning'>Please wear an ID for authentication.</span>")
+			to_chat(user, "<span class='warning'>User does not have a money account on their person.</span>")
 			return 0
-		if(ACCOUNT_DB_OFFLINE)
-			MENTION_DB_OFFLINE
-			return
-
-		var/datum/money_account/bank_account
-		if(REQUISITION)
-			bank_account = department_accounts["Cargo"]
-			acc_info["check"] = FALSE
 		else
-			// Humans, or really physical people at the terminal, can present a debit card. Let's find one or just find the same ID.
-			var/obj/item/weapon/card/debit/debit_card = user.get_card()
-			var/using_debit = FALSE
-			var/account_number = null
-			if(istype(debit_card))
-				account_number = debit_card.associated_account_number
-				acc_info["authorized_name"] = debit_card.authorized_name
-				using_debit = TRUE
-			else
-				account_number = usr_id.associated_account_number
-			bank_account = linked_db.get_account(account_number)
-			if(!bank_account)
-				to_chat(user, "<span class='warning'>A valid bank account does not exist for \the [using_debit ? "[bicon(debit_card)] [debit_card]" : "[bicon(usr_id)] [usr_id]"]. Please try a different card.</span>")
-				return
-			acc_info["card"] = using_debit ? debit_card : usr_id
-			acc_info["check"] = TRUE
-		acc_info["idname"] = usr_id.registered_name
-		acc_info["idrank"] = usr_id.GetJobName()
-		acc_info["account"] = bank_account
-	else if(isAdminGhost(user))
-		acc_info["idname"] = "Commander Green"
-		acc_info["idrank"] = "Central Commander"
-		acc_info["check"] = FALSE
-		if(REQUISITION)
-			USE_CARGO_ACCOUNT
-		else
-			USE_ACCOUNT_ON_ID
-	else if(isAI(user))
-		acc_info["idname"] = user.real_name
-		acc_info["idrank"] = "AI"
-		acc_info["check"] = FALSE
-		if(ACCOUNT_DB_OFFLINE)
-			MENTION_DB_OFFLINE
-			return
-		if(REQUISITION)
-			USE_CARGO_ACCOUNT
-		else
-			USE_ACCOUNT_ON_ID
-	else if(issilicon(user))
-		acc_info["idname"] = user.real_name
-		acc_info["idrank"] = "Cyborg"
-		acc_info["check"] = FALSE
-		if(ACCOUNT_DB_OFFLINE)
-			MENTION_DB_OFFLINE
-			return
-		if(REQUISITION)
-			USE_CARGO_ACCOUNT
-		else
-			USE_ACCOUNT_ON_ID
-
-	return acc_info
-
-#undef ACCOUNT_DB_OFFLINE
-#undef MENTION_DB_OFFLINE
-#undef USE_ACCOUNT_ON_ID
+			return usr_id.credstikku.mannheim_marks
 
 /obj/item/weapon/paper/request_form/New(var/loc, var/list/account_information, var/datum/supply_packs/pack, var/number_of_crates, var/reason = "No reason provided.")
 	. = ..(loc)
@@ -126,15 +57,12 @@ For vending packs, see vending_packs.dm*/
 /obj/machinery/computer/supplycomp/New()
 	..()
 	SSsupply_shuttle.supply_consoles.Add(src)
-	reconnect_database()
 
 /obj/machinery/computer/supplycomp/initialize()
-	reconnect_database()
 
 /obj/machinery/computer/supplycomp/Destroy()
 	SSsupply_shuttle.supply_consoles.Remove(src)
 	..()
-
 
 /obj/machinery/computer/supplycomp/attack_ai(var/mob/user)
 	return attack_hand(user)
@@ -162,8 +90,8 @@ For vending packs, see vending_packs.dm*/
 /obj/machinery/computer/supplycomp/proc/pin_query(mob/user)
 	if(!user)
 		return FALSE
-	var/datum/money_account/D = department_accounts["Cargo"]
-	var/attemptedpin = input(user, "Please input the Cargo departmental pin.","Department Head Access Required", null) as num|null
+	var/datum/money_account/D = department_accounts["Outpost"]
+	var/attemptedpin = input(user, "Please input the Outpost Pin.","Seneschal Access Required", null) as num|null
 	if(attemptedpin == D.remote_access_pin)
 		return TRUE
 	return FALSE
@@ -176,7 +104,7 @@ For vending packs, see vending_packs.dm*/
 	if(..())
 		return
 
-	current_acct = get_account_info(user, linked_db)
+	current_acct = get_account_info(user)
 
 	user.set_machine(src)
 	post_signal("supply")
@@ -291,7 +219,7 @@ For vending packs, see vending_packs.dm*/
 	if(..())
 		return 1
 	
-	current_acct = get_account_info(usr, linked_db)
+	current_acct = get_account_info(usr)
 	var/idname
 	var/datum/money_account/account
 	if(!current_acct && !href_list["close"])
@@ -309,9 +237,9 @@ For vending packs, see vending_packs.dm*/
 	//Calling the shuttle
 	else if(href_list["send"])
 		if(!map.linked_to_centcomm)
-			to_chat(usr, "<span class='warning'>You aren't able to establish contact with central command, so the shuttle won't move.</span>")
+			to_chat(usr, "<span class='warning'>You aren't able to establish contact with command, so the shuttle won't move.</span>")
 		else if(!SSsupply_shuttle.can_move())
-			to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, classified nuclear weaponry or homing beacons.</span>")
+			to_chat(usr, "<span class='warning'>For safety reasons the automated supply shuttle cannot transport live organisms, nuclear weaponry or homing beacons.</span>")
 		else if(!check_restriction(usr))
 			to_chat(usr, "<span class='warning'>Your credentials were rejected by the current permissions protocol.</span>")
 
@@ -423,7 +351,7 @@ For vending packs, see vending_packs.dm*/
 		if(!check_restriction(usr))
 			return
 		SSsupply_shuttle.requisition = text2num(href_list["requisition_status"])
-		current_acct = get_account_info(usr, linked_db)
+		current_acct = get_account_info(usr)
 		return 1
 	else if (href_list["screen"])
 		if(!check_restriction(usr))
@@ -476,7 +404,7 @@ For vending packs, see vending_packs.dm*/
 /obj/machinery/computer/ordercomp/attack_hand(var/mob/user)
 	if(..())
 		return
-	current_acct = get_account_info(user, linked_db)
+	current_acct = get_account_info(user)
 
 	user.set_machine(src)
 	ui_interact(user)
@@ -539,7 +467,7 @@ For vending packs, see vending_packs.dm*/
 	if(..())
 		return 1
 	
-	current_acct = get_account_info(usr, linked_db)
+	current_acct = get_account_info(usr)
 	var/idname
 	var/datum/money_account/account
 	if(!current_acct && !href_list["close"])

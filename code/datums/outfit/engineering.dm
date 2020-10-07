@@ -5,7 +5,7 @@
 /datum/outfit/chief_engineer
 
 	outfit_name = "Chief Engineer"
-	associated_job = /datum/job/chief_engineer
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack/industrial,
@@ -60,7 +60,7 @@
 /datum/outfit/engineer
 
 	outfit_name = "Engineer"
-	associated_job = /datum/job/engineer
+	associated_job = null
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack/industrial,

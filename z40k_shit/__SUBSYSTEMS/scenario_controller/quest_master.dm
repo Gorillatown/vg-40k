@@ -10,6 +10,16 @@
 	var/datum/mind/tzeentch_champion //Mind of the current tzeentch champion
 	var/datum/mind/slaanesh_champion //mind of the current slaanesh champion
 	var/list/game_end_objects = list() //List of game ending objects
+	var/list/requisition_accts = list() //List of global requisition accounts
+ 
+/datum/job_quest/global_tracker/New()
+	..()
+	load_currency_accts()
+
+/datum/job_quest/global_tracker/proc/load_currency_accts()
+	var/datum/currency_holder/BIGBOY = new()
+	BIGBOY.name = PDF_OUTPOST
+	requisition_accts[PDF_OUTPOST] = BIGBOY
 	
 /datum/job_quest/global_tracker/proc/configure_quest(var/mob/living/target = null,var/quest_defininition = null)
 	if(!target)

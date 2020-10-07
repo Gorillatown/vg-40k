@@ -29,7 +29,6 @@
 		/obj/item/clothing/suit/armor/captain,
 		/obj/item/weapon/melee/telebaton,
 		/obj/item/clothing/under/dress/dress_cap,
-		/obj/item/weapon/card/debit/preferred/department/elite/command,
 	)
 
 
@@ -52,7 +51,6 @@
 		/obj/item/weapon/storage/box/ids = 2,
 		/obj/item/weapon/gun/energy/gun,
 		/obj/item/device/flash,
-		/obj/item/weapon/card/debit/preferred/department/civilian,
 	)
 
 /obj/structure/closet/secure_closet/hop2

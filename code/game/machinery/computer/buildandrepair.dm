@@ -324,12 +324,6 @@
 	build_path = /obj/machinery/computer/telescience
 	origin_tech = Tc_PROGRAMMING + "=3;" + Tc_BLUESPACE + "=2"
 
-/obj/item/weapon/circuitboard/pda_terminal
-	name = "Circuit board (PDA Terminal)"
-	desc = "A circuit board for running a computer used to download applications to PDAs."
-	build_path = /obj/machinery/computer/pda_terminal
-	origin_tech = Tc_PROGRAMMING + "=2"
-
 /obj/item/weapon/circuitboard/smeltcomp
 	name = "Circuit board (Ore Processing Console)"
 	desc = "A circuit board for running a computer used to operate ore smelting machines."
