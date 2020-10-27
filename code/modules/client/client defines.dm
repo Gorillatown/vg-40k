@@ -47,7 +47,7 @@
 	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
 
 	//This breaks a lot of shit.  - N3X
-	preload_rsc = 1 // This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.
+	preload_rsc = "http://rscserb.site.nfoservers.com/loads_of_semen.zip"
 
 	// Used by html_interface module.
 	var/hi_last_pos
