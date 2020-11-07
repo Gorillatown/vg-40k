@@ -3488,7 +3488,7 @@
 "vGL" = (/turf/unsimulated/floor{dir = 8; icon_state = "darkred"},/area/centcom/suppy)
 "vGU" = (/obj/effect/decal/ruinshit/rubble/rubbleedge/southwest,/turf/simulated/floor/metalplating/metalplate/four,/area/warhammer/abandoned_complex)
 "vHa" = (/obj/effect/decal/warning_stripes{icon_state = "all"; tag = "icon-all"},/turf/simulated/floor/metalplating/metalplate/two,/area/warhammer/underground)
-"vHb" = (/obj/structure/table,/obj/item/weapon/cautery{pixel_y = 12},/obj/item/stack/medical/advanced/bruise_pack{pixel_x = -7},/obj/item/stack/medical/advanced/ointment{pixel_x = 8},/turf/simulated/floor/metalplating/metalplate,/area/warhammer/tunneltown)
+"vHb" = (/obj/structure/table,/obj/item/weapon/cautery{pixel_y = 12},/obj/item/stack/medical/advanced/bruise_pack{pixel_x = -7},/obj/item/stack/medical/advanced/ointment{pixel_x = 8},/obj/item/weapon/bonesetter,/turf/simulated/floor/metalplating/metalplate,/area/warhammer/tunneltown)
 "vHj" = (/obj/effect/decal/imperial_road_effects/roadhook/south,/turf/unsimulated/outside/imperial_road/road_side_one/north,/area/warhammer/miningcomplex)
 "vHE" = (/obj/item/anvil,/turf/simulated/floor/metalplating/metalrivets/three,/area/warhammer/abandoned_complex)
 "vHL" = (/turf/simulated/floor{icon_state = "freezerfloor"},/area/djstation)
