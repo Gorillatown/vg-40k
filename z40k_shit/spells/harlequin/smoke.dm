@@ -12,8 +12,10 @@
 	include_user = 1
 
 /obj/effect/proc_holder/spell/targeted/mime/smoke/cast()
-	if(!usr) return
-	if(!ishuman(usr)) return
+	if(!usr)
+		return
+	if(!ishuman(usr))
+		return
 	var/mob/living/carbon/human/H = usr
 	var/datum/effect/effect/system/bad_smoke_spread/smoke = new /datum/effect/effect/system/bad_smoke_spread()
 	smoke.set_up(10, 0, H.loc)

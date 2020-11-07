@@ -329,6 +329,7 @@ var/global/list/animal_butchering_products = list(
 	/mob/living/simple_animal/hostile/retaliate/cluwne	= list(TEETH_BUNCH), //honk
 	/mob/living/simple_animal/hostile/creature			= list(TEETH_LOTS),
 	/mob/living/simple_animal/hostile/frog				= list(/datum/butchering_product/frog_leg),
+	/mob/living/simple_animal/hostile/growing_deer		= list(/datum/butchering_product/skin/deer, /datum/butchering_product/deer_head),
 	/mob/living/simple_animal/hostile/deer				= list(/datum/butchering_product/skin/deer, /datum/butchering_product/deer_head),
 	/mob/living/simple_animal/hostile/deer/flesh		= list(/datum/butchering_product/skin/deer, /datum/butchering_product/deer_head),
 	/mob/living/carbon/monkey							= list(/datum/butchering_product/skin/monkey, TEETH_FEW),

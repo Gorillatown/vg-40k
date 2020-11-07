@@ -6,6 +6,7 @@
 #define HARLEQUIN "Harlequin"
 #define SLAANESH_CHAMPION "Slaanesh Champion"
 #define TZEENTCH_CHAMPION "Tzeentch Champion"
+#define NATIVEANIMAL "Native Animal"
 //Ere we go again
 
 
@@ -35,6 +36,7 @@
 #define ORKS "Orks"
 #define IMPERIALGUARD "Imperial Guard"
 #define PLANETARYDEFFORCE "PlanetaryDefForce"
+#define NATIVEANIMALS "NativeAnimals"
 
 #define isgeneral(H) (H.mind && H.mind.GetRole(IMPERIALGUARDGENERAL))
 

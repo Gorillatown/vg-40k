@@ -15,9 +15,9 @@
 
 	score_results += "<b>[antag.key]</b> as <b>[antag.name]</b><br>"
 	if(percentage <= 100)
-		score_results += "<b>Total Percent Complete:</b> <font color='#07fa0c'>[percentage]</font>%."
+		score_results += "<b>Total Percent Complete:</b> <font color='#07fa0c'>[percentage]</font>%.<br>"
 	else
-		score_results += "<b>Total Percent Complete:</b> <font color='#ff0000'>[percentage]</font>%."
+		score_results += "<b>Total Percent Complete:</b> <font color='#ff0000'>[percentage]</font>%.<br>"
 	return score_results
 	
 /datum/role/job_quest/harlequin/point_handler(var/mob/living/carbon/human/H)

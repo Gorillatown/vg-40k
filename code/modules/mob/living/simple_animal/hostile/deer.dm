@@ -85,8 +85,6 @@
 	minimum_distance = 0
 	LoseTarget()
 
-
-
 /mob/living/simple_animal/hostile/deer/attackby(obj/W, mob/user)
 	if(!isDead() && (istype(W, /obj/item/weapon/reagent_containers/food/snacks/grown/apple) || (istype (W, /obj/item/weapon/reagent_containers/food/snacks/grown/goldapple))))
 		var/obj/item/weapon/reagent_containers/food/snacks/grown/apple/A = W
