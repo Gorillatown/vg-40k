@@ -53,6 +53,10 @@
 				spawn(5)
 					qdel(H)
 					to_chat(oursimplemob,"<span class='good'>You are one of the many native animals of the Detroid System, you can speak and find yourself capable of concise thought.</span>")
+				
+				spawn(1 SECONDS)
+					var/datum/role/native_animal/new_animal = new
+					new_animal.AssignToRole(oursimplemob.mind,TRUE)
 		if(11)
 			spawn(1 SECONDS)
 				H.make_zombie(retain_mind = TRUE)
