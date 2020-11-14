@@ -1456,6 +1456,10 @@ Thanks.
 		if(isgrue(H))
 			tool_name = "grue"
 			speed_mod += 0.5
+
+	else if(isanimal(user)) //animal butchering
+		speed_mod += 2
+	
 	else
 		speed_mod = 0.5
 

@@ -22,21 +22,20 @@
 	var/datum/role/native_animal/biggest_animal = null //Its null until we put someone in as a ref
 	var/list/scoreboard_boys = list() //A list of roles
 
-	score_results += "<span class='danger'>The round has come to a close.</span><br><br>"
+	//First we sort through the list
+	for(var/datum/role/native_animal/NTR in members) //Go thru membas
+		if(!biggest_animal) //No biggest animal
+			biggest_animal = NTR //We make guy in first position it
+		else if(NTR.total_growth >= biggest_animal.total_growth) //Keep going, if someone has more growth
+			biggest_animal = NTR //They are now the biggest animal
 
-	for(var/datum/role/native_animal/NTR in members)
-		if(!biggest_animal)
-			biggest_animal = NTR
+	if(biggest_animal) //We actually have a animal player who is the biggest
 
-	if(biggest_animal)
-		for(var/datum/role/native_animal/NTR in members)
-			if(NTR.total_growth > biggest_animal.total_growth)
-				biggest_animal = NTR
-
-		scoreboard_boys += biggest_animal
-		for(var/datum/role/native_animal/NTR in members) //ITS 4am OKAY
-			if(NTR.total_growth == biggest_animal.total_growth)
-				scoreboard_boys += NTR
+//		scoreboard_boys += biggest_animal //We add the big boy to the list
+	
+		for(var/datum/role/native_animal/NTR in members) //We go through the list again
+			if(NTR.total_growth == biggest_animal.total_growth) //find ties, we tie with the big boy and he gets added too
+				scoreboard_boys += NTR //So we add anyone who is tied to a list
 
 		for(var/datum/role/native_animal/NTR in scoreboard_boys)
 			var/mob/M = NTR.antag.current
@@ -45,7 +44,7 @@
 			var/tempstate = end_icons.len
 			score_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
 			score_results += "<b>[NTR.antag.key]</b> as <b>[NTR.antag.name]</b><br>"
-			score_results += "<b><font size='4'>Total Growth:</font></b> <font color='#07fa0c'>[NTR.total_growth]</font> total times grown.<br>"
+			score_results += "<b>Total Growth:</font></b> <font color='#07fa0c'>[NTR.total_growth]</font> total times grown.<br>"
 			if(NTR.antag.current.client)
 				var/client/C = NTR.antag.current.client
 				C.persist.potential += NTR.total_growth

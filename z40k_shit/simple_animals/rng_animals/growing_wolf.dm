@@ -46,10 +46,8 @@
 /mob/living/simple_animal/hostile/retaliate/growing_wolf/proc/wolf_growth(var/nutrition) //nutrition is a number
 	total_nutrition += nutrition
 	series_of_fifteens += nutrition
-	if(series_of_fifteens >= 15)
-		var/matrix/M = matrix()
-		M.Scale(1.1,1.1)
-		src.transform = M
+	if(series_of_fifteens >= 8)
+		src.transform = src.transform.Scale(1.1)
 		health += 25
 		maxHealth += 25
 		melee_damage_lower += 5
