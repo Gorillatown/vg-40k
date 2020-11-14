@@ -22,8 +22,16 @@
 
 	outfit_name = "Peasant"
 	associated_job = /datum/job/peasant
-	no_backpack = TRUE
+	no_backpack = FALSE
 	no_id = TRUE
+	RNG_modifier = TRUE
+
+	backpack_types = list(
+		BACKPACK_STRING = /obj/item/weapon/storage/backpack,
+		SATCHEL_NORM_STRING = /obj/item/weapon/storage/backpack/satchel_norm,
+		SATCHEL_ALT_STRING = /obj/item/weapon/storage/backpack/satchel,
+		MESSENGER_BAG_STRING = /obj/item/weapon/storage/backpack/messenger,
+	)
 
 	items_to_spawn = list(
 		"Default" = list(

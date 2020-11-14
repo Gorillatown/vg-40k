@@ -9,6 +9,7 @@
 	  "Default" is the list of items for humans.
 	- use_pref_bag: if we use the backpack he has in prefs, or if we give him a standard backpack.
 	- no_backpack: If we don't give them a backpack + survival gear.
+	- rng_modifier: If we are going to roll on a RNG Modifier. EX: Rogue Psyker
 	- no_id: If we don't give them a ID
 	- equip_survival_gear: if we give him the basic survival gear.
 	- items_to_collect: items to put in the backbag
@@ -53,6 +54,7 @@
 	var/use_pref_bag = TRUE
 	var/no_backpack = FALSE
 	var/no_id = FALSE
+	var/RNG_modifier = FALSE
 	var/give_disabilities_equipment = TRUE
 	var/gender_gear = FALSE
 	
@@ -135,6 +137,9 @@
 	
 	if(!no_backpack)
 		equip_backbag(H, species)
+
+	if(RNG_modifier)
+		handle_rng_modifiers(H)
 
 	for(var/imp_type in implant_types)
 		var/obj/item/weapon/implant/I = new imp_type(H)
@@ -237,6 +242,13 @@
 			H.equip_or_collect(pda, pda_slot)
 		if(H.mind && H.mind.initial_account) //40K REVISIT - This just silences the runtime.
 			C.associated_account_number = H.mind.initial_account.account_number
+
+/datum/outfit/proc/handle_rng_modifiers(var/mob/living/carbon/human/H)
+	if(quest_master.configure_quest(H,ROGUE_PSYKER))
+		H.equip_or_collect(new /obj/item/weapon/psychic_spellbook, slot_in_backpack)
+		H.attribute_willpower = 11
+		H.attribute_sensitivity = 500
+		H.psyker_points = 8
 
 /datum/outfit/proc/post_equip(var/mob/living/carbon/human/H)
 	return // Empty

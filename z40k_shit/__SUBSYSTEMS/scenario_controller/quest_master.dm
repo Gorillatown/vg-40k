@@ -46,4 +46,6 @@
 			if(prob(psyker_prob))
 				var/datum/role/rogue_psyker/psyker_role = new
 				psyker_role.AssignToRole(target.mind,TRUE)
+				return TRUE
 
+	return FALSE

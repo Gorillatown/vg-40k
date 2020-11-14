@@ -24,6 +24,7 @@
 	outfit_name = "patrolman"
 	associated_job = /datum/job/patrolman
 	no_backpack = TRUE
+	RNG_modifier = TRUE
 
 	items_to_spawn = list(
 		"Default" = list(
@@ -62,6 +63,7 @@
 	outfit_name = "swamp trooper"
 	associated_job = /datum/job/patrolman
 	no_backpack = TRUE
+	RNG_modifier = TRUE
 
 	items_to_spawn = list(
 		"Default" = list(

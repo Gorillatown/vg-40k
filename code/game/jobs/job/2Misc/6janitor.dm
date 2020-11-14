@@ -19,6 +19,7 @@
 	outfit_name = "Janitor"
 	associated_job = /datum/job/janitor
 	no_id = TRUE
+	RNG_modifier = TRUE
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage,

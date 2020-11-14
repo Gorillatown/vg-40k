@@ -21,6 +21,7 @@
 	outfit_name = "Chef"
 	associated_job = /datum/job/chef
 	no_id = TRUE
+	RNG_modifier = TRUE
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack,

@@ -20,6 +20,7 @@
 	outfit_name = "Medical Doctor"
 	associated_job = /datum/job/doctor
 	no_id = TRUE
+	RNG_modifier = TRUE
 
 	backpack_types = list(
 		BACKPACK_STRING = /obj/item/weapon/storage/backpack/medic,

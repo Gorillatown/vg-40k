@@ -21,6 +21,7 @@
 	var/total_times_patrolled = 0
 	var/total_life_exterminated = 0
 	var/total_orks_exterminated = 0
+	var/total_rogue_psykers = 0
 
 	score_results += "<span class='danger'>The round has come to a close.</span><br><br>"
 	for(var/datum/role/R in members)
@@ -29,8 +30,13 @@
 			total_life_exterminated += R:exterminated
 			total_orks_exterminated += R:orks_exterminated
 
+		if(istype(R,/datum/role/rogue_psyker))
+			total_rogue_psykers++
+
+
 	score_results += "Total sentient beings Exterminated: <b>[total_life_exterminated]</b>.<br>"
 	score_results += "Total Orks Exterminated: <b>[total_orks_exterminated]</b><br>"
+	score_results += "Total Unsanctioned Psykers: <font color='#ff0000'><b>[total_rogue_psykers]</b></font><br>"
 	var/warcrime_total = clamp((total_life_exterminated-total_orks_exterminated),0,500)
 	score_results += "Warcrime total: <font color='#ff0000'><b>[warcrime_total]</b></font><br>"
 	score_results += "The total checkpoints checked in: <b>[total_times_patrolled]</b> times.<br>"
