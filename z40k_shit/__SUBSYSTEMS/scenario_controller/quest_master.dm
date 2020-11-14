@@ -10,7 +10,9 @@
 	var/datum/mind/tzeentch_champion //Mind of the current tzeentch champion
 	var/datum/mind/slaanesh_champion //mind of the current slaanesh champion
 	var/list/game_end_objects = list() //List of game ending objects
+	var/psyker_amount = 0 //Amount of psykers, percentage lowers as time goes on.
 	
+//gamble_time is exactly what it sounds like.
 /datum/job_quest/global_tracker/proc/configure_quest(var/mob/living/target = null,var/quest_defininition = null)
 	if(!target)
 		warning("JOB QUEST GLOBAL TRACKER FAILURE: NULL MOB INPUT")
@@ -36,4 +38,12 @@
 		
 			tzeentch_champion = tzeentch_role
 			target.add_spell(new /spell/targeted/dwell,"ork_spell_ready",/obj/abstract/screen/movable/spell_master/harlequin)
+		if(ROGUE_PSYKER)
+			var/prob_reduction = psyker_amount*20
+			var/psyker_prob = 40-prob_reduction
+			if(psyker_prob < 5)
+				psyker_prob = 5
+			if(prob(psyker_prob))
+				var/datum/role/rogue_psyker/psyker_role = new
+				psyker_role.AssignToRole(target.mind,TRUE)
 

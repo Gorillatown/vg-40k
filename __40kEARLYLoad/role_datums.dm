@@ -7,6 +7,7 @@
 #define SLAANESH_CHAMPION "Slaanesh Champion"
 #define TZEENTCH_CHAMPION "Tzeentch Champion"
 #define NATIVEANIMAL "Native Animal"
+#define ROGUE_PSYKER "Rogue Psyker"
 //Ere we go again
 
 

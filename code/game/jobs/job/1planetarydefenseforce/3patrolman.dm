@@ -12,7 +12,7 @@
 	minimal_player_age = 7
 	outfit_datum = /datum/outfit/swamp_trooper
 	species_whitelist = list("Human")
-	access = list(access_checkpoints) 
+	access = list(access_checkpoints)
 
 	landmark_job_override = TRUE
 	relationship_chance = HUMAN_COMMON

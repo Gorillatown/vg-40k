@@ -2755,6 +2755,7 @@
 #include "z40k_shit\gamemode\role_quests\job_quest.dm"
 #include "z40k_shit\gamemode\role_quests\slaanesh_one.dm"
 #include "z40k_shit\gamemode\role_quests\tzeentch_one.dm"
+#include "z40k_shit\gamemode\storysandbox\rogue_psyker.dm"
 #include "z40k_shit\gamemode\storysandbox\storytime.dm"
 #include "z40k_shit\gamemode\storysandbox\Pdefenseforce\Pdefenseforce.dm"
 #include "z40k_shit\gamemode\storysandbox\Pdefenseforce\PDF_role.dm"
