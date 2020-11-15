@@ -43,6 +43,8 @@ var/datum/subsystem/more_init/SSmore_init
 	for (var/obj/machinery/computer/security/S in tv_monitors)
 		S.init_cams()
 
+	create_global_diseases()
+	
 	init_wizard_apprentice_setups()
 
 /proc/init_wizard_apprentice_setups()
