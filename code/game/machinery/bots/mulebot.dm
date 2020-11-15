@@ -107,6 +107,9 @@ var/global/mulebot_count = 0
 	if(wires)
 		qdel(wires)
 		wires = null
+	if(cell)
+		qdel(cell)
+		cell = null
 
 	..()
 

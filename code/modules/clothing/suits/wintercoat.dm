@@ -25,6 +25,12 @@
 
 	..()
 
+/obj/item/clothing/suit/storage/wintercoat/Destroy()
+	if(hood)
+		qdel(hood)
+		hood = null
+	..()
+
 /obj/item/clothing/head/winterhood
 	name = "winter hood"
 	desc = "A hood attached to a heavy winter jacket."
