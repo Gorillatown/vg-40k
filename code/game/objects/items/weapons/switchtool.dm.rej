@@ -1,0 +1,43 @@
+diff a/code/game/objects/items/weapons/switchtool.dm b/code/game/objects/items/weapons/switchtool.dm	(rejected hunks)
+@@ -2,6 +2,7 @@
+ 	name = "switchtool"
+ 	icon = 'icons/obj/switchtool.dmi'
+ 	icon_state = "switchtool"
++	inhand_states = list("left_hand" = 'icons/mob/in-hand/left/switchtool.dmi', "right_hand" = 'icons/mob/in-hand/right/switchtool.dmi')
+ 	desc = "A multi-deployable, multi-instrument, finely crafted multi-purpose tool. The envy of engineers everywhere."
+ 	flags = FPRINT
+ 	siemens_coefficient = 1
+@@ -40,7 +41,7 @@
+ 			for(var/module in stored_modules)
+ 				if(stored_modules[module] == deployed)
+ 					stored_modules[module] = null
+-			undeploy()
++			undeploy(user)
+ 		return TRUE
+ 
+ /obj/item/weapon/switchtool/New()
+@@ -116,18 +117,21 @@
+ 			break
+ 	to_chat(user, "You successfully remove \the [deployed] from \the [src].")
+ 	playsound(src, "sound/items/screwdriver.ogg", 10, 1)
+-	undeploy()
++	undeploy(user)
+ 	return TRUE
+ 
+-/obj/item/weapon/switchtool/proc/undeploy()
++/obj/item/weapon/switchtool/proc/undeploy(mob/user)
+ 	playsound(src, undeploy_sound, 10, 1)
+ 	edit_deploy(0)
+ 	deployed = null
+ 	overlays.len = 0
+ 	w_class = initial(w_class)
+ 	update_icon()
++	dynamic_overlay.len = 0
++	user.update_inv_hands()
++
++/obj/item/weapon/switchtool/proc/deploy(var/module, mob/user)
+ 
+-/obj/item/weapon/switchtool/proc/deploy(var/module)
+ 	if(!(module in stored_modules))
+ 		return FALSE
+ 	if(!stored_modules[module])
