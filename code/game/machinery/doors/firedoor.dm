@@ -287,8 +287,6 @@ var/global/list/alert_overlays_global = list()
 			return
 		playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
 		visible_message("<span class='warning'>[user] breaks down \the [src]!</span>", "<span class='warning'>You broke \the [src]!</span>")
-		var/obj/item/firedoor_frame/frame = new(get_turf(src))
-		frame.add_fingerprint(user)
 		qdel(src)
 		return
 
@@ -336,8 +334,6 @@ var/global/list/alert_overlays_global = list()
 			user.visible_message("<span class='attack'>\The [user] starts to deconstruct \the [src] with \a [C].</span>",\
 			"You begin to deconstruct \the [src] with \the [C].")
 			if(do_after(user, src, 5 SECONDS))
-				var/obj/item/firedoor_frame/frame = new(get_turf(src))
-				frame.add_fingerprint(user)
 				qdel(src)
 			return
 		else
