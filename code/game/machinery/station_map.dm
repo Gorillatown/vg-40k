@@ -400,6 +400,9 @@ var/list/station_holomaps = list()
 
 /obj/machinery/station_map/strategic/attack_hand(var/mob/user)
 	if(isliving(user) && anchored && !(stat & (NOPOWER|BROKEN)))
+		if( (holoMiniMaps.len < user.loc.z) || (holoMiniMaps[user.loc.z] == null ))
+			to_chat(user, "<span class='notice'>It doesn't seem to be working.</span>")
+			return
 		if(user in watching_mobs)
 			stopWatching(user)
 		else
@@ -413,7 +416,7 @@ var/list/station_holomaps = list()
 				watching_mobs |= user
 				user.client.images |= watcher_maps["\ref[user]"]
 				user.callOnFace["\ref[src]"] = "checkPosition"
-				to_chat(user, "<span class='notice'>An hologram of the station appears before your eyes.</span>")
+				to_chat(user, "<span class='notice'>A hologram of the station appears before your eyes.</span>")
 
 
 /obj/machinery/station_map/strategic/checkPosition()
