@@ -5927,21 +5927,25 @@
 		to_chat(M, "<span class='notice'>You feel hungry like the diona.</span>")
 		M.add_spell(spell)
 
-/datum/reagent/ethanol/deadrum
-	name = "Deadrum"
-	id = RUM
-	description = "Popular with the sailors. Not very popular with anyone else."
-	color = "#664300" //rgb: 102, 67, 0
-	pass_out = 325
+/datum/reagent/ethanol/drink
+	id = EXPLICITLY_INVALID_REAGENT_ID
+	pass_out = 250
 
-/datum/reagent/ethanol/deadrum/on_mob_life(var/mob/living/M)
-
+/datum/reagent/ethanol/drink/on_mob_life(var/mob/living/M)
 	if(..())
 		return 1
 
 	M.dizziness += 5
 
-/datum/reagent/ethanol/deadrum/vodka
+/datum/reagent/ethanol/drink/rum
+	name = "Rum"
+	id = RUM
+	description = "Popular with the sailors. Not very popular with anyone else."
+	color = "#664300" //rgb: 102, 67, 0
+	glass_icon_state = "rumglass"
+	glass_desc = "Now you want to pray for a pirate suit, don't you?"
+
+/datum/reagent/ethanol/drink/vodka
 	name = "Vodka"
 	id = VODKA
 	description = "The drink and fuel of choice of Russians galaxywide."
@@ -5949,7 +5953,7 @@
 	glass_icon_state = "ginvodkaglass"
 	glass_desc = "The glass contain wodka. Xynta."
 
-/datum/reagent/ethanol/deadrum/sake
+/datum/reagent/ethanol/drink/sake
 	name = "Sake"
 	id = SAKE
 	description = "Anime's favorite drink."
@@ -5957,7 +5961,7 @@
 	glass_icon_state = "sakeglass"
 	glass_desc = "A glass of sake."
 
-/datum/reagent/ethanol/deadrum/sake/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/sake/on_mob_life(var/mob/living/M)
 	if(..())
 		return 1
 
@@ -5978,7 +5982,7 @@
 			if(M.confused != 0)
 				M.remove_confused(5)
 
-/datum/reagent/ethanol/deadrum/glasgow
+/datum/reagent/ethanol/drink/glasgow
 	name = "Glasgow Deadrum"
 	id = GLASGOW
 	description = "Makes you feel like you had one hell of a party."
@@ -5986,7 +5990,7 @@
 	slur_start = 1
 	confused_start = 1
 
-/datum/reagent/ethanol/deadrum/tequila
+/datum/reagent/ethanol/drink/tequila
 	name = "Tequila"
 	id = TEQUILA
 	description = "A strong and mildly flavoured, mexican produced spirit. Feeling thirsty, hombre?"
@@ -5994,7 +5998,7 @@
 	glass_icon_state = "tequilaglass"
 	glass_desc = "Now all that's missing is the weird colored shades!"
 
-/datum/reagent/ethanol/deadrum/vermouth
+/datum/reagent/ethanol/drink/vermouth
 	name = "Vermouth"
 	id = VERMOUTH
 	description = "You suddenly feel a craving for a martini..."
@@ -6002,7 +6006,7 @@
 	glass_icon_state = "vermouthglass"
 	glass_desc = "You wonder why you're even drinking this straight."
 
-/datum/reagent/ethanol/deadrum/wine
+/datum/reagent/ethanol/drink/wine
 	name = "Wine"
 	id = WINE
 	description = "A premium alcoholic beverage made from fermented grape juice."
@@ -6013,7 +6017,7 @@
 	glass_icon_state = "wineglass"
 	glass_desc = "A drink enjoyed by intellectuals and middle-aged female alcoholics alike."
 
-/datum/reagent/ethanol/deadrum/cognac
+/datum/reagent/ethanol/drink/cognac
 	name = "Cognac"
 	id = COGNAC
 	description = "A sweet and strongly alcoholic drink, twice distilled and left to mature for several years. Classy as fornication."
@@ -6023,7 +6027,7 @@
 	glass_icon_state = "cognacglass"
 	glass_desc = "You feel aristocratic just holding this."
 
-/datum/reagent/ethanol/deadrum/hooch
+/datum/reagent/ethanol/drink/hooch
 	name = "Hooch"
 	id = HOOCH
 	description = "A suspiciously viscous off-brown liquid that reeks of fuel. Do you really want to drink that?"
@@ -6034,7 +6038,7 @@
 	confused_start = 90
 	pass_out = 250
 
-/datum/reagent/ethanol/deadrum/triplesec
+/datum/reagent/ethanol/drink/triplesec
 	name = "Triple Sec"
 	id = TRIPLESEC
 	description = "Clear, dry, tastes like oranges. A necessity in any bartender's shelves."
@@ -6042,7 +6046,7 @@
 	glass_icon_state = "triplesecglass"
 	glass_desc = "Triple Sec, a clear orange liquor with a syrupy texture. Maybe mix it with something, you weirdo."
 
-/datum/reagent/ethanol/deadrum/schnapps
+/datum/reagent/ethanol/drink/schnapps
 	name = "Schnapps"
 	id = SCHNAPPS
 	description = "Tastes like all the fruits in the galaxy."
@@ -6050,7 +6054,7 @@
 	glass_icon_state = "schnappsglass"
 	glass_desc = "A glass of indescernibly fruity schnapps."
 
-/datum/reagent/ethanol/deadrum/bitters
+/datum/reagent/ethanol/drink/bitters
 	name = "Bitters"
 	id = BITTERS
 	description = "Dark, bitter alcohol. Who in their right mind drinks this straight?"
@@ -6058,7 +6062,7 @@
 	glass_icon_state = "bittersglass"
 	glass_desc = "A glass of dark and, well, bitter, bitters."
 
-/datum/reagent/ethanol/deadrum/champagne
+/datum/reagent/ethanol/drink/champagne
 	name = "Champagne"
 	id = CHAMPAGNE
 	description = "Often found sprayed all over sports victors or at New Years parties."
@@ -6066,7 +6070,7 @@
 	glass_icon_state = "champagneglass"
 	glass_desc = "A fancy, bubbly glass of sparkling yellow champagne!"
 
-/datum/reagent/ethanol/deadrum/bluecuracao
+/datum/reagent/ethanol/drink/bluecuracao
 	name = "Blue Curacao"
 	id = BLUECURACAO
 	description = "Essentially a sweeter, bluer form of Triple Sec."
@@ -6074,7 +6078,7 @@
 	glass_icon_state = "curacaoglass"
 	glass_desc = "Why's it blue if it tastes like an orange?"
 
-/datum/reagent/ethanol/deadrum/ale
+/datum/reagent/ethanol/drink/ale
 	name = "Ale"
 	id = ALE
 	description = "A dark alcoholic beverage made from malted barley and yeast."
@@ -6082,7 +6086,7 @@
 	glass_icon_state = "aleglass"
 	glass_desc = "A cold pint of delicious ale."
 
-/datum/reagent/ethanol/deadrum/thirteenloko
+/datum/reagent/ethanol/drink/thirteenloko
 	name = "Thirteen Loko"
 	id = THIRTEENLOKO
 	description = "A potent mixture of caffeine and alcohol."
@@ -6091,7 +6095,7 @@
 	glass_icon_state = "thirteen_loko_glass"
 	glass_desc = "This is a glass of Thirteen Loko. It appears to be of the highest quality. The drink, not the glass."
 
-/datum/reagent/ethanol/deadrum/thirteenloko/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/thirteenloko/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
@@ -6102,7 +6106,7 @@
 
 /////////////////////////////////////////////////////////////////Cocktail Entities//////////////////////////////////////////////
 
-/datum/reagent/ethanol/deadrum/bilk
+/datum/reagent/ethanol/drink/bilk
 	name = "Bilk"
 	id = BILK
 	description = "This appears to be beer mixed with milk. Disgusting."
@@ -6112,7 +6116,7 @@
 	specheatcap = 2.46
 	glass_desc = "A brew of milk and beer. For alcoholics who fear osteoporosis."
 
-/datum/reagent/ethanol/deadrum/atomicbomb
+/datum/reagent/ethanol/drink/atomicbomb
 	name = "Atomic Bomb"
 	id = ATOMICBOMB
 	description = "Nuclear proliferation never tasted so good."
@@ -6122,7 +6126,7 @@
 	glass_name = "\improper Atomic Bomb"
 	glass_desc = "NanoTrasen does not take legal responsibility for your actions after imbibing."
 
-/datum/reagent/ethanol/deadrum/threemileisland
+/datum/reagent/ethanol/drink/threemileisland
 	name = "Three Mile Island Iced Tea"
 	id = THREEMILEISLAND
 	description = "Made for a woman. Strong enough for a man."
@@ -6132,7 +6136,7 @@
 	glass_name = "\improper Three Mile Island Iced Tea"
 	glass_desc = "A glass of this is sure to prevent a meltdown. Or cause one."
 
-/datum/reagent/ethanol/deadrum/goldschlager
+/datum/reagent/ethanol/drink/goldschlager
 	name = "Goldschlager"
 	id = GOLDSCHLAGER
 	description = "100 proof cinnamon schnapps with small gold flakes mixed in."
@@ -6143,7 +6147,7 @@
 	glass_icon_state = "goldschlagerglass"
 	glass_desc = "A schnapps with tiny flakes of gold floating in it."
 
-/datum/reagent/ethanol/deadrum/patron
+/datum/reagent/ethanol/drink/patron
 	name = "Patron"
 	id = PATRON
 	description = "Tequila with small flakes of silver in it."
@@ -6154,7 +6158,7 @@
 	glass_icon_state = "patronglass"
 	glass_desc = "Drinking Patron in the bar, with all the subpar ladies."
 
-/datum/reagent/ethanol/deadrum/gintonic
+/datum/reagent/ethanol/drink/gintonic
 	name = "Gin and Tonic"
 	id = GINTONIC
 	description = "An all time classic, mild cocktail."
@@ -6163,7 +6167,7 @@
 	glass_icon_state = "gintonicglass"
 	glass_desc = "A mild but still great cocktail. Drink up, like a true Englishman."
 
-/datum/reagent/ethanol/deadrum/cuba_libre
+/datum/reagent/ethanol/drink/cuba_libre
 	name = "Cuba Libre"
 	id = CUBALIBRE
 	description = "Rum, mixed with cola. Viva la revolution."
@@ -6173,7 +6177,7 @@
 	glass_name = "\improper Cuba Libre"
 	glass_desc = "A classic mix of rum and cola. Viva la revolution."
 
-/datum/reagent/ethanol/deadrum/whiskey_cola
+/datum/reagent/ethanol/drink/whiskey_cola
 	name = "Whiskey Cola"
 	id = WHISKEYCOLA
 	description = "Whiskey, mixed with cola. Surprisingly refreshing."
@@ -6182,7 +6186,7 @@
 	glass_icon_state = "whiskeycolaglass"
 	glass_desc = "An innocent-looking mixture of cola and whiskey. Delicious."
 
-/datum/reagent/ethanol/deadrum/martini
+/datum/reagent/ethanol/drink/martini
 	name = "Classic Martini"
 	id = MARTINI
 	description = "Vermouth with gin. Not quite how 007 enjoyed it, but still delicious."
@@ -6191,7 +6195,7 @@
 	glass_icon_state = "martiniglass"
 	glass_desc = "Shaken, not stirred."
 
-/datum/reagent/ethanol/deadrum/vodkamartini
+/datum/reagent/ethanol/drink/vodkamartini
 	name = "Vodka Martini"
 	id = VODKAMARTINI
 	description = "Vodka with gin. Not quite how 007 enjoyed it, but still delicious."
@@ -6200,7 +6204,7 @@
 	glass_icon_state = "martiniglass"
 	glass_desc = "A bastardisation of the classic martini. Still great."
 
-/datum/reagent/ethanol/deadrum/sakemartini
+/datum/reagent/ethanol/drink/sakemartini
 	name = "Sake Martini"
 	id = SAKEMARTINI
 	description = "A martini mixed with sake instead of vermouth. Has a fruity, oriental flavor."
@@ -6209,7 +6213,7 @@
 	glass_icon_state = "martiniglass"
 	glass_desc = "An oriental spin on the martini, mixed with sake instead of vermouth."
 
-/datum/reagent/ethanol/deadrum/white_russian
+/datum/reagent/ethanol/drink/white_russian
 	name = "White Russian"
 	id = WHITERUSSIAN
 	description = "That's just, like, your opinion, man..."
@@ -6219,7 +6223,7 @@
 	glass_name = "\improper White Russian"
 	glass_desc = "A very nice looking drink. But that's just, like, your opinion, man."
 
-/datum/reagent/ethanol/deadrum/screwdrivercocktail
+/datum/reagent/ethanol/drink/screwdrivercocktail
 	name = "Screwdriver"
 	id = SCREWDRIVERCOCKTAIL
 	description = "Vodka, mixed with plain ol' orange juice. The result is surprisingly delicious."
@@ -6229,7 +6233,7 @@
 	glass_name = "\improper Screwdriver"
 	glass_desc = "A simple, yet superb mixture of vodka and orange juice. Just the thing for the tired engineer."
 
-/datum/reagent/ethanol/deadrum/booger
+/datum/reagent/ethanol/drink/booger
 	name = "Booger"
 	id = BOOGER
 	description = "Ewww..."
@@ -6239,7 +6243,7 @@
 	glass_name = "\improper Booger"
 	glass_desc = "The color reminds you of something that came out of the clown's nose."
 
-/datum/reagent/ethanol/deadrum/bloody_mary
+/datum/reagent/ethanol/drink/bloody_mary
 	name = "Bloody Mary"
 	id = BLOODYMARY
 	description = "A strange yet pleasant mixture made of vodka, tomato and lime juice. Or at least you think the red stuff is tomato juice."
@@ -6249,7 +6253,7 @@
 	glass_name = "\improper Bloody Mary"
 	glass_desc = "Tomato juice, mixed with vodka and a lil' bit of lime. Tastes like liquid murder."
 
-/datum/reagent/ethanol/deadrum/gargle_blaster
+/datum/reagent/ethanol/drink/gargle_blaster
 	name = "Pan-Galactic Gargle Blaster"
 	id = GARGLEBLASTER
 	description = "Whoah, this stuff looks volatile!"
@@ -6259,7 +6263,7 @@
 	glass_name = "\improper Pan-Galactic Gargle Blaster"
 	glass_desc = "Does... does this mean that Arthur and Ford are on the station? Oh joy."
 
-/datum/reagent/ethanol/deadrum/brave_bull
+/datum/reagent/ethanol/drink/brave_bull
 	name = "Brave Bull"
 	id = BRAVEBULL
 	description = "A mixture of tequila and coffee liqueur."
@@ -6269,7 +6273,7 @@
 	glass_name = "\improper Brave Bull"
 	glass_desc = "Tequila and coffee liqueur. Kicks like a bull."
 
-/datum/reagent/ethanol/deadrum/tequila_sunrise
+/datum/reagent/ethanol/drink/tequila_sunrise
 	name = "Tequila Sunrise"
 	id = TEQUILASUNRISE
 	description = "Tequila and orange juice. Much like a Screwdriver, only Mexican."
@@ -6279,7 +6283,7 @@
 	glass_name = "\improper Tequila Sunrise"
 	glass_desc = "Oh great, now you feel nostalgic about sunrises back on Terra..."
 
-/datum/reagent/ethanol/deadrum/toxins_special
+/datum/reagent/ethanol/drink/toxins_special
 	name = "Toxins Special"
 	id = TOXINSSPECIAL
 	description = "This thing is FLAMING! CALL THE DAMN SHUTTLE!"
@@ -6289,7 +6293,7 @@
 	glass_name = "\improper Toxins Special"
 	glass_desc = "Whoah, this thing is on FIRE!"
 
-/datum/reagent/ethanol/deadrum/beepsky_smash
+/datum/reagent/ethanol/drink/beepsky_smash
 	name = "Beepsky Smash"
 	id = BEEPSKYSMASH
 	description = "This drink is the law."
@@ -6329,14 +6333,14 @@
 	if(M.confused != 0)
 		M.remove_confused(5)
 
-/datum/reagent/ethanol/deadrum/changelingsting
+/datum/reagent/ethanol/drink/changelingsting
 	name = "Changeling Sting"
 	id = CHANGELINGSTING
 	description = "Milder than the name suggests. Not that you've ever been stung."
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#2E6671" //rgb: 46, 102, 113
 
-/datum/reagent/ethanol/deadrum/irish_cream
+/datum/reagent/ethanol/drink/irish_cream
 	name = "Irish Cream"
 	id = IRISHCREAM
 	description = "Whiskey-imbued cream. What else could you expect from the Irish."
@@ -6345,7 +6349,7 @@
 	glass_icon_state = "irishcreamglass"
 	glass_desc = "It's cream, mixed with whiskey. What else would you expect from the Irish?"
 
-/datum/reagent/ethanol/deadrum/manly_dorf
+/datum/reagent/ethanol/drink/manly_dorf
 	name = "The Manly Dorf"
 	id = MANLYDORF
 	description = "A dwarfy concoction made from ale and beer. Intended for stout dwarves only."
@@ -6355,7 +6359,7 @@
 	glass_name = "The Manly Dorf"
 	glass_desc = "A dwarfy concoction made from ale and beer. Intended for stout dwarves only."
 
-/datum/reagent/ethanol/deadrum/longislandicedtea
+/datum/reagent/ethanol/drink/longislandicedtea
 	name = "Long Island Iced Tea"
 	id = LONGISLANDICEDTEA
 	description = "The liquor cabinet, brought together in a delicious mix. Intended for middle-aged alcoholic women only."
@@ -6364,14 +6368,14 @@
 	glass_icon_state = "longislandicedteaglass"
 	glass_name = "\improper Long Island Iced Tea"
 
-/datum/reagent/ethanol/deadrum/moonshine
+/datum/reagent/ethanol/drink/moonshine
 	name = "Moonshine"
 	id = MOONSHINE
 	description = "You've really hit rock bottom now... your liver packed its bags and left last night."
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#664300" //rgb: 102, 67, 0
 
-/datum/reagent/ethanol/deadrum/midnightkiss
+/datum/reagent/ethanol/drink/midnightkiss
 	name = "Midnight Kiss"
 	id = MIDNIGHTKISS
 	description = "Vodka mixed with Blue Curacao and topped with champagne. Bubbly!"
@@ -6380,7 +6384,7 @@
 	glass_icon_state = "midnightkiss"
 	glass_name = "\improper Midnight Kiss"
 
-/datum/reagent/ethanol/deadrum/cosmopolitan
+/datum/reagent/ethanol/drink/cosmopolitan
 	name = "Cosmopolitan"
 	id = COSMOPOLITAN
 	description = "A Cosmopolitan, the poster child of fruity cocktails."
@@ -6389,7 +6393,7 @@
 	glass_icon_state = "cosmopolitan"
 	glass_name = "cosmopolitan"
 
-/datum/reagent/ethanol/deadrum/corpsereviver
+/datum/reagent/ethanol/drink/corpsereviver
 	name = "Corpse Reviver No. 2"
 	id = CORPSEREVIVER
 	description = "Hair of the dog taken to one of its most logical extremes."
@@ -6398,7 +6402,7 @@
 	glass_icon_state = "corpsereviver"
 	glass_name = "\improper Corpse Reviver No. 2"
 
-/datum/reagent/ethanol/deadrum/bluelagoon
+/datum/reagent/ethanol/drink/bluelagoon
 	name = "Blue Lagoon"
 	id = BLUELAGOON
 	description = "Goes best with swim trunks, a sea breeze, and a nice big beach."
@@ -6407,7 +6411,7 @@
 	glass_icon_state = "bluelagoon"
 	glass_name = "\improper Blue Lagoon"
 
-/datum/reagent/ethanol/deadrum/sexonthebeach
+/datum/reagent/ethanol/drink/sexonthebeach
 	name = "Sex On The Beach"
 	id = SEXONTHEBEACH
 	description = "Did you hear a bear just now?"
@@ -6416,7 +6420,7 @@
 	glass_icon_state = "sexonthebeach"
 	glass_desc = "\improper Sex On The Beach"
 
-/datum/reagent/ethanol/deadrum/americano
+/datum/reagent/ethanol/drink/americano
 	name = "Americano"
 	id = AMERICANO
 	description = "Expensive soda water - the best way to improve a poor drink."
@@ -6425,7 +6429,7 @@
 	glass_icon_state = "americano"
 	glass_name = "americano"
 
-/datum/reagent/ethanol/deadrum/betweenthesheets
+/datum/reagent/ethanol/drink/betweenthesheets
 	name = "Between The Sheets"
 	id = BETWEENTHESHEETS
 	description = "This is basically just a sidecar with rum in it."
@@ -6434,7 +6438,7 @@
 	glass_icon_state = "betweenthesheets"
 	glass_name = "\improper Between The Sheets"
 
-/datum/reagent/ethanol/deadrum/sidecar
+/datum/reagent/ethanol/drink/sidecar
 	name = "Sidecar"
 	id = SIDECAR
 	description = "For those who still want a fruity cocktail, without the effeminate connotations of a Cosmo."
@@ -6443,7 +6447,7 @@
 	glass_icon_state = "sidecar"
 	glass_name = "sidecar"
 
-/datum/reagent/ethanol/deadrum/champagnecocktail
+/datum/reagent/ethanol/drink/champagnecocktail
 	name = "Champagne Cocktail"
 	id = CHAMPAGNECOCKTAIL
 	description = "Champagne, bitters, and cognac, garnished with a cherry. Very classy."
@@ -6452,7 +6456,7 @@
 	glass_icon_state = "champagnecocktail"
 	glass_name = "Champagne cocktail"
 
-/datum/reagent/ethanol/deadrum/espressomartini
+/datum/reagent/ethanol/drink/espressomartini
 	name = "Espresso Martini"
 	id = ESPRESSOMARTINI
 	description = "Two of any self respecting substance abuser's fixes in one drink!"
@@ -6461,7 +6465,7 @@
 	glass_icon_state = "espressomartini"
 	glass_name = "espresso martini"
 
-/datum/reagent/ethanol/deadrum/kamikaze
+/datum/reagent/ethanol/drink/kamikaze
 	name = "Kamikaze"
 	id = KAMIKAZE
 	description = "Banzai!"
@@ -6470,7 +6474,7 @@
 	glass_icon_state = "kamikaze"
 	glass_name = "kamikaze"
 
-/datum/reagent/ethanol/deadrum/mojito
+/datum/reagent/ethanol/drink/mojito
 	name = "Mojito"
 	id = MOJITO
 	description = "A giant pain in the ass to make on the best of days."
@@ -6479,7 +6483,7 @@
 	glass_icon_state = "mojito"
 	glass_name = "mojito"
 
-/datum/reagent/ethanol/deadrum/whiskeytonic
+/datum/reagent/ethanol/drink/whiskeytonic
 	name = "Whiskey Tonic"
 	id = WHISKEYTONIC
 	description = "Quinine makes everything taste better."
@@ -6488,7 +6492,7 @@
 	glass_icon_state = "whiskeytonic"
 	glass_name = "\improper Whiskey Tonic"
 
-/datum/reagent/ethanol/deadrum/moscowmule
+/datum/reagent/ethanol/drink/moscowmule
 	name = "Moscow Mule"
 	id = MOSCOWMULE
 	description = "Wait a minute, this isn't ginger beer..."
@@ -6497,7 +6501,7 @@
 	glass_icon_state = "moscowmule"
 	glass_name = "\improper Moscow Mule"
 
-/datum/reagent/ethanol/deadrum/cinnamonwhisky
+/datum/reagent/ethanol/drink/cinnamonwhisky
 	name = "Cinnamon Whisky"
 	id = CINNAMONWHISKY
 	description = "Cinnamon whisky. Feel the burn."
@@ -6506,7 +6510,7 @@
 	glass_icon_state = "fireballglass"
 	glass_desc = "Red-hot cinnamon whisky in a shot glass."
 
-/datum/reagent/ethanol/deadrum/c4cocktail
+/datum/reagent/ethanol/drink/c4cocktail
 	name = "C-4 Cocktail"
 	id = C4COCKTAIL
 	description = "Kahlua and Cinnamon Whisky, a burning explosion of flavor - tastes like pain. And cinnamon."
@@ -6516,7 +6520,7 @@
 	glass_name = "\improper C-4 Cocktail"
 	glass_desc = "Kahlua and Cinnamon Whisky, a burning explosion of cinnamon flavor."
 
-/datum/reagent/ethanol/deadrum/dragonsblood
+/datum/reagent/ethanol/drink/dragonsblood
 	name = "Dragon's Blood"
 	id = DRAGONSBLOOD
 	description = "Burning hot and bright red, just like the mythical namesake."
@@ -6527,7 +6531,7 @@
 	flammable = 1
 	light_color = "#540303"
 
-/datum/reagent/ethanol/deadrum/dragonspit
+/datum/reagent/ethanol/drink/dragonspit
 	name = "Dragon's Spit"
 	id = DRAGONSSPIT
 	description = "The simplest idea possible; take something hot, and make it hotter."
@@ -6538,7 +6542,7 @@
 	light_color = "#ff7003"
 	flammable = 1
 
-/datum/reagent/ethanol/deadrum/firecider
+/datum/reagent/ethanol/drink/firecider
 	name = "Fire Cider"
 	id = FIREBALLCIDER
 	description = "Apples, alcohol, and cinnamon, a match made in heaven."
@@ -6548,7 +6552,7 @@
 	glass_name = "\improper Fireball Cider"
 	glass_desc = "A toasty hot glass of apple cider and cinnamon whisky - makes you feel warm and fuzzy inside."
 
-/datum/reagent/ethanol/deadrum/cinnamontoastcocktail
+/datum/reagent/ethanol/drink/cinnamontoastcocktail
 	name = "Cinnamon Toast"
 	id = CINNAMONTOASTCOCKTAIL
 	description = "Rum, cream, and cinnamon whisky. Tastes a little like the milk you get out of a sugary cereal."
@@ -6558,7 +6562,7 @@
 	glass_name = "\improper Cinnamon Toast Cocktail"
 	glass_desc = "Kind of like drinking left-over cereal milk, but for people with a drinking problem."
 
-/datum/reagent/ethanol/deadrum/manhattanfireball
+/datum/reagent/ethanol/drink/manhattanfireball
 	name = "Manhattan Fireball"
 	id = MANHATTANFIREBALL
 	description = "A timeless classic made with a burning hot twist."
@@ -6569,7 +6573,7 @@
 	light_color = "#540303"
 	flammable = 1
 
-/datum/reagent/ethanol/deadrum/fireballcola
+/datum/reagent/ethanol/drink/fireballcola
 	name = "Fireball Cola"
 	id = FIREBALLCOLA
 	description = "Like a Whiskey Cola, but with added painful burning sensation."
@@ -6579,14 +6583,14 @@
 	glass_name = "\improper Fireball Cola"
 	glass_desc = "Cinnamon whisky and cola - like a regular whiskey cola, but with more burning."
 
-/datum/reagent/ethanol/deadrum/firerita
+/datum/reagent/ethanol/drink/firerita
 	name = "Fire-rita"
 	id = FIRERITA
 	description = "Triple sec, Cinnamon Whisky, and Tequila, eugh. Less a cocktail more than throwing whatever's on the shelf in a glass."
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#f0133c" //rgb: 240, 19, 60
 
-/datum/reagent/ethanol/deadrum/b52
+/datum/reagent/ethanol/drink/b52
 	name = "B-52"
 	id = B52
 	description = "Coffee, irish cream, and cognac. You will get bombed."
@@ -6597,7 +6601,7 @@
 	light_color = "#000080"
 	flammable = 1
 
-/datum/reagent/ethanol/deadrum/irishcoffee
+/datum/reagent/ethanol/drink/irishcoffee
 	name = "Irish Coffee"
 	id = IRISHCOFFEE
 	description = "Coffee served with irish cream. Regular cream just isn't the same."
@@ -6605,7 +6609,7 @@
 	color = "#664300" //rgb: 102, 67, 0
 	glass_icon_state = "irishcoffeeglass"
 
-/datum/reagent/ethanol/deadrum/margarita
+/datum/reagent/ethanol/drink/margarita
 	name = "Margarita"
 	id = MARGARITA
 	description = "On the rocks with salt on the rim. Arriba!"
@@ -6613,7 +6617,7 @@
 	color = "#664300" //rgb: 102, 67, 0
 	glass_icon_state = "margaritaglass"
 
-/datum/reagent/ethanol/deadrum/black_russian
+/datum/reagent/ethanol/drink/black_russian
 	name = "Black Russian"
 	id = BLACKRUSSIAN
 	description = "For the lactose-intolerant. Still as classy as a White Russian."
@@ -6623,7 +6627,7 @@
 	glass_name = "\improper Black Russian"
 	glass_desc = "For the lactose-intolerant. Still as classy as a White Russian."
 
-/datum/reagent/ethanol/deadrum/manhattan
+/datum/reagent/ethanol/drink/manhattan
 	name = "Manhattan"
 	id = MANHATTAN
 	description = "The Detective's undercover drink of choice. He never could stomach gin..."
@@ -6632,7 +6636,7 @@
 	glass_icon_state = "manhattanglass"
 	glass_name = "\improper Manhattan"
 
-/datum/reagent/ethanol/deadrum/manhattan_proj
+/datum/reagent/ethanol/drink/manhattan_proj
 	name = "Manhattan Project"
 	id = MANHATTAN_PROJ
 	description = "A scientist's drink of choice, for thinking about how to blow up the station."
@@ -6641,7 +6645,7 @@
 	glass_icon_state = "proj_manhattanglass"
 	glass_name = "\improper Manhattan Project"
 
-/datum/reagent/ethanol/deadrum/whiskeysoda
+/datum/reagent/ethanol/drink/whiskeysoda
 	name = "Whiskey Soda"
 	id = WHISKEYSODA
 	description = "Ultimate refreshment."
@@ -6649,7 +6653,7 @@
 	color = "#664300" //rgb: 102, 67, 0
 	glass_icon_state = "whiskeysodaglass2"
 
-/datum/reagent/ethanol/deadrum/antifreeze
+/datum/reagent/ethanol/drink/antifreeze
 	name = "Anti-freeze"
 	id = ANTIFREEZE
 	description = "The ultimate refreshment."
@@ -6658,7 +6662,7 @@
 	glass_icon_state = "antifreeze"
 	glass_name = "\improper Anti-freeze"
 
-/datum/reagent/ethanol/deadrum/barefoot
+/datum/reagent/ethanol/drink/barefoot
 	name = "Barefoot"
 	id = BAREFOOT
 	description = "Barefoot and pregnant"
@@ -6667,7 +6671,7 @@
 	glass_icon_state = "b&p"
 	glass_name = "\improper Barefoot"
 
-/datum/reagent/ethanol/deadrum/snowwhite
+/datum/reagent/ethanol/drink/snowwhite
 	name = "Snow White"
 	id = SNOWWHITE
 	description = "Pale lager mixed with lemon-lime soda. Refreshing and sweet."
@@ -6676,7 +6680,7 @@
 	glass_icon_state = "snowwhite"
 	glass_name = "\improper Snow White"
 
-/datum/reagent/ethanol/deadrum/demonsblood
+/datum/reagent/ethanol/drink/demonsblood
 	name = "Demon's Blood"
 	id = DEMONSBLOOD
 	description = "AHHHH!!"
@@ -6688,7 +6692,7 @@
 	glass_name = "\improper Demon's Blood"
 	glass_desc = "Just looking at this thing makes the hair on the back of your neck stand up."
 
-/datum/reagent/ethanol/deadrum/vodkatonic
+/datum/reagent/ethanol/drink/vodkatonic
 	name = "Vodka and Tonic"
 	id = VODKATONIC
 	description = "For when a gin and tonic isn't Russian enough."
@@ -6699,7 +6703,7 @@
 	glass_icon_state = "vodkatonicglass"
 	glass_desc = "For when a gin and tonic isn't Russian enough."
 
-/datum/reagent/ethanol/deadrum/ginfizz
+/datum/reagent/ethanol/drink/ginfizz
 	name = "Gin Fizz"
 	id = GINFIZZ
 	description = "Refreshingly lemony, deliciously dry."
@@ -6710,7 +6714,7 @@
 	glass_icon_state = "ginfizzglass"
 	glass_name = "\improper Gin Fizz"
 
-/datum/reagent/ethanol/deadrum/bahama_mama
+/datum/reagent/ethanol/drink/bahama_mama
 	name = "Bahama mama"
 	id = BAHAMA_MAMA
 	description = "Tropical cocktail."
@@ -6720,7 +6724,7 @@
 	glass_name = "\improper Bahama Mama"
 	glass_desc = "A delicious tropical cocktail."
 
-/datum/reagent/ethanol/deadrum/pinacolada
+/datum/reagent/ethanol/drink/pinacolada
 	name = "Pina Colada"
 	id = PINACOLADA
 	description = "Sans pineapple."
@@ -6730,7 +6734,7 @@
 	glass_name = "\improper Pina Colada"
 	glass_desc = "If you like this and getting caught in the rain, come with me and escape."
 
-/datum/reagent/ethanol/deadrum/singulo
+/datum/reagent/ethanol/drink/singulo
 	name = "Singulo"
 	id = SINGULO
 	description = "A gravitational anomaly."
@@ -6742,7 +6746,7 @@
 	glass_name = "\improper Singulo"
 	glass_desc = "IT'S LOOSE!"
 
-/datum/reagent/ethanol/deadrum/sangria
+/datum/reagent/ethanol/drink/sangria
 	name = "Sangria"
 	id = SANGRIA
 	description = "So tasty you won't believe it's alcohol."
@@ -6754,7 +6758,7 @@
 	glass_icon_state = "sangria"
 	glass_name = "\improper Sangria"
 
-/datum/reagent/ethanol/deadrum/sbiten
+/datum/reagent/ethanol/drink/sbiten
 	name = "Sbiten"
 	id = SBITEN
 	description = "A spicy vodka."
@@ -6763,7 +6767,7 @@
 	glass_icon_state = "sbitenglass"
 	glass_desc = "A spicy mix of vodka and spice. Very hot."
 
-/datum/reagent/ethanol/deadrum/sbiten/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/sbiten/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
@@ -6771,7 +6775,7 @@
 	if(M.bodytemperature < 360)
 		M.bodytemperature = min(360, M.bodytemperature + 50) //310 is the normal bodytemp. 310.055
 
-/datum/reagent/ethanol/deadrum/devilskiss
+/datum/reagent/ethanol/drink/devilskiss
 	name = "Devil's Kiss"
 	id = DEVILSKISS
 	description = "Creepy time!"
@@ -6780,7 +6784,7 @@
 	glass_icon_state = "devilskiss"
 	glass_name = "\improper Devil's Kiss"
 
-/datum/reagent/ethanol/deadrum/red_mead
+/datum/reagent/ethanol/drink/red_mead
 	name = "Red Mead"
 	id = RED_MEAD
 	description = "A crimson beverage consumed by space vikings. The coloration is from berries... you hope."
@@ -6788,7 +6792,7 @@
 	color = "#664300" //rgb: 102, 67, 0
 	glass_icon_state = "red_meadglass"
 
-/datum/reagent/ethanol/deadrum/mead
+/datum/reagent/ethanol/drink/mead
 	name = "Mead"
 	id = MEAD
 	description = "A beverage consumed by space vikings on their long raids and rowdy festivities."
@@ -6796,7 +6800,7 @@
 	color = "#664300" //rgb: 102, 67, 0
 	glass_icon_state = "meadglass"
 
-/datum/reagent/ethanol/deadrum/iced_beer
+/datum/reagent/ethanol/drink/iced_beer
 	name = "Iced Beer"
 	id = ICED_BEER
 	description = "A beer so frosty the air around it freezes."
@@ -6804,7 +6808,7 @@
 	color = "#664300" //rgb: 102, 67, 0
 	glass_icon_state = "iced_beerglass"
 
-/datum/reagent/ethanol/deadrum/iced_beer/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/iced_beer/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
@@ -6812,7 +6816,7 @@
 	if(M.bodytemperature < T0C+33)
 		M.bodytemperature = min(T0C+33, M.bodytemperature - 4) //310 is the normal bodytemp. 310.055
 
-/datum/reagent/ethanol/deadrum/grog
+/datum/reagent/ethanol/drink/grog
 	name = "Grog"
 	id = GROG
 	description = "Watered down rum. NanoTrasen approves!"
@@ -6821,7 +6825,7 @@
 	glass_icon_state = "grogglass"
 	glass_desc = "The favorite of pirates everywhere."
 
-/datum/reagent/ethanol/deadrum/aloe
+/datum/reagent/ethanol/drink/aloe
 	name = "Aloe"
 	id = ALOE
 	description = "Watermelon juice and irish cream. Contains no actual aloe."
@@ -6830,7 +6834,7 @@
 	glass_icon_state = "aloe"
 	glass_name = "\improper Aloe"
 
-/datum/reagent/ethanol/deadrum/andalusia
+/datum/reagent/ethanol/drink/andalusia
 	name = "Andalusia"
 	id = ANDALUSIA
 	description = "Rum, whiskey, and lemon juice."
@@ -6840,7 +6844,7 @@
 	glass_name = "\improper Andalusia"
 	glass_desc = "A strong cocktail named after a historical Terran land."
 
-/datum/reagent/ethanol/deadrum/alliescocktail
+/datum/reagent/ethanol/drink/alliescocktail
 	name = "Allies Cocktail"
 	id = ALLIESCOCKTAIL
 	description = "English gin, French vermouth, and Russian vodka."
@@ -6850,7 +6854,7 @@
 	glass_name = "\improper Allies Cocktail"
 	glass_desc = "A cocktail of spirits from three historical Terran nations, symbolizing their alliance in a great war."
 
-/datum/reagent/ethanol/deadrum/acid_spit
+/datum/reagent/ethanol/drink/acid_spit
 	name = "Acid Spit"
 	id = ACIDSPIT
 	description = "Wine and sulphuric acid. You hope the wine has neutralized the acid."
@@ -6860,7 +6864,7 @@
 	glass_name = "\improper Acid Spit"
 	glass_desc = "Bites like a xeno queen."
 
-/datum/reagent/ethanol/deadrum/amasec
+/datum/reagent/ethanol/drink/amasec
 	name = "Amasec"
 	id = AMASEC
 	description = "The official drink of the Imperium."
@@ -6870,14 +6874,14 @@
 	glass_name = "\improper Amasec"
 	glass_desc = "A grim and dark drink that knows only war."
 
-/datum/reagent/ethanol/deadrum/amasec/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/amasec/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
 
 	M.stunned = 4
 
-/datum/reagent/ethanol/deadrum/neurotoxin
+/datum/reagent/ethanol/drink/neurotoxin
 	name = "Neurotoxin"
 	id = NEUROTOXIN
 	description = "A strong neurotoxin that puts the subject into a death-like state."
@@ -6887,7 +6891,7 @@
 	glass_name = "\improper Neurotoxin"
 	glass_desc = "Guaranteed to knock you silly."
 
-/datum/reagent/ethanol/deadrum/neurotoxin/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/neurotoxin/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
@@ -6923,7 +6927,7 @@
 		return 1
 	M.silent = max(M.silent, 15)
 
-/datum/reagent/ethanol/deadrum/changelingsting
+/datum/reagent/ethanol/drink/changelingsting
 	name = "Changeling Sting"
 	id = CHANGELINGSTING
 	description = "Milder than the name suggests. Not that you've ever been stung."
@@ -6933,14 +6937,14 @@
 	glass_name = "\improper Changeling Sting"
 	glass_desc = "Stings, but not deadly."
 
-/datum/reagent/ethanol/deadrum/changelingsting/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/changelingsting/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
 
 	M.dizziness += 5
 
-/datum/reagent/ethanol/deadrum/erikasurprise
+/datum/reagent/ethanol/drink/erikasurprise
 	name = "Erika Surprise"
 	id = ERIKASURPRISE
 	description = "The surprise is, it's green!"
@@ -6949,7 +6953,7 @@
 	glass_icon_state = "erikasurprise"
 	glass_name = "\improper Erika Surprise"
 
-/datum/reagent/ethanol/deadrum/irishcarbomb
+/datum/reagent/ethanol/drink/irishcarbomb
 	name = "Irish Car Bomb"
 	id = IRISHCARBOMB
 	description = "A troubling mixture of irish cream and ale."
@@ -6959,14 +6963,14 @@
 	glass_name = "\improper Irish Car Bomb"
 	glass_desc = "Something about this drink troubles you."
 
-/datum/reagent/ethanol/deadrum/irishcarbomb/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/irishcarbomb/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
 
 	M.dizziness += 5
 
-/datum/reagent/ethanol/deadrum/syndicatebomb
+/datum/reagent/ethanol/drink/syndicatebomb
 	name = "Syndicate Bomb"
 	id = SYNDICATEBOMB
 	description = "Whiskey cola and beer. Figuratively explosive."
@@ -6977,7 +6981,7 @@
 	glass_desc = "Somebody set up us the bomb!"
 	glass_isGlass = 0
 
-/datum/reagent/ethanol/deadrum/driestmartini
+/datum/reagent/ethanol/drink/driestmartini
 	name = "Driest Martini"
 	id = DRIESTMARTINI
 	description = "Only for the experienced. You think you see sand floating in the glass."
@@ -6987,7 +6991,7 @@
 	glass_icon_state = "driestmartiniglass"
 	glass_name = "\improper Driest Martini"
 
-/datum/reagent/ethanol/deadrum/driestmartini/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/driestmartini/on_mob_life(var/mob/living/M)
 
 	if(..())
 		return 1
@@ -6999,7 +7003,7 @@
 		M.confused = max(M.confused + 15, 15)
 	data++
 
-/datum/reagent/ethanol/deadrum/danswhiskey
+/datum/reagent/ethanol/drink/danswhiskey
 	name = "Discount Dan's 'Malt' Whiskey"
 	id = DANS_WHISKEY
 	description = "It looks like whiskey... kinda."
@@ -7009,7 +7013,7 @@
 	glass_name = "\improper Discount Dan's 'Malt' Whiskey"
 	glass_desc = "The cheapest path to liver failure."
 
-/datum/reagent/ethanol/deadrum/danswhiskey/on_mob_life(var/mob/living/M)
+/datum/reagent/ethanol/drink/danswhiskey/on_mob_life(var/mob/living/M)
 	if(..())
 		return 1
 
@@ -7041,14 +7045,14 @@
 					H.adjustToxLoss(3)
 				H.adjustToxLoss(0.3)
 
-/datum/reagent/ethanol/deadrum/pintpointer
+/datum/reagent/ethanol/drink/pintpointer
 	name = "Pintpointer"
 	id = PINTPOINTER
 	description = "A little help finding the bartender."
 	reagent_state = REAGENT_STATE_LIQUID
 	color = "#664300" //rgb: 102, 67, 0
 
-/datum/reagent/ethanol/deadrum/pintpointer/handle_special_behavior(var/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/D)
+/datum/reagent/ethanol/drink/pintpointer/handle_special_behavior(var/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/D)
 	var/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/pintpointer/P = new (get_turf(D))
 	var/datum/reagents/glassreagents = D.reagents
 
@@ -7555,7 +7559,7 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 	reagent_state = REAGENT_STATE_SOLID
 	color = "#8B4513"
 
-/datum/reagent/ethanol/deadrum/greyvodka
+/datum/reagent/ethanol/drink/greyvodka
 	name = "Greyshirt vodka"
 	id = GREYVODKA
 	description = "Made presumably from whatever scrapings you can get out of maintenance. Don't think, just drink."
@@ -7565,7 +7569,7 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 	glass_icon_state = "ginvodkaglass"
 	glass_desc = "A questionable concoction of ingredients found within maintenance. Tastes just like you'd expect."
 
-/datum/reagent/ethanol/deadrum/greyvodka/on_mob_life(var/mob/living/carbon/human/H)
+/datum/reagent/ethanol/drink/greyvodka/on_mob_life(var/mob/living/carbon/human/H)
 	if(..())
 		return 1
 	H.radiation = max(H.radiation - 5 * REM, 0)
@@ -7642,7 +7646,7 @@ var/global/list/tonio_doesnt_remove=list("tonio", "blood")
 	description = "Phenol is a corrosive acid which can cause chemical burns."
 	color = "#C71839" //rgb: 199, 24, 57
 
-/datum/reagent/ethanol/deadrum/neurotoxin/curare
+/datum/reagent/ethanol/drink/neurotoxin/curare
 	name = "Curare"
 	id = CURARE
 	description = "An alkaloid plant extract which causes weakness of the skeletal muscles."
