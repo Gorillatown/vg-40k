@@ -230,8 +230,7 @@
 
 	update_colour(0)
 
-	spawn()
-		update_mutantrace()
+	update_mutantrace()
 
 /mob/living/carbon/human/player_panel_controls()
 	var/html=""
@@ -1128,6 +1127,7 @@
 		to_chat(usr, "<span class='info'>You moved while counting. Try again.</span>")
 
 /mob/living/carbon/human/proc/set_species(var/new_species_name, var/force_organs, var/default_colour)
+	set waitfor = FALSE
 
 	if(new_species_name)
 		if(src.species && src.species.name && (src.species.name == new_species_name))
@@ -1191,12 +1191,13 @@
 	if((src.species.default_mutations.len > 0) || (src.species.default_blocks.len > 0))
 		src.do_deferred_species_setup = 1
 	meat_type = species.meat_type
-	spawn()
+	src.movement_speed_modifier = species.move_speed_multiplier
+	if(dna)
 		src.dna.species = new_species_name
-		src.species.handle_post_spawn(src)
-		src.update_icons()
-		if(species.species_intro)
-			to_chat(src, "<span class = 'notice'>[species.species_intro]</span>")
+	src.species.handle_post_spawn(src)
+	src.update_icons()
+	if(species.species_intro)
+		to_chat(src, "<span class = 'notice'>[species.species_intro]</span>")
 	return 1
 
 /mob/living/carbon/human/proc/bloody_doodle()
