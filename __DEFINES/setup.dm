@@ -1672,3 +1672,5 @@ var/proccalls = 1
 
 var/list/weekend_days = list("Friday", "Saturday", "Sunday")
 #define IS_WEEKEND (weekend_days.Find(time2text(world.timeofday, "Day")))
+
+#define RECOMMENDED_CLIENT_FPS 100

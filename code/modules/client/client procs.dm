@@ -219,6 +219,7 @@
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
+	fps = (prefs.fps < 0) ? RECOMMENDED_CLIENT_FPS : prefs.fps
 
 	//////////////
 	//DISCONNECT//
