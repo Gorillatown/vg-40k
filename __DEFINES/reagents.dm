@@ -12,6 +12,8 @@
 
 
 //Reagents
+#define EXPLICITLY_INVALID_REAGENT_ID "fuck you"
+
 
 #define VAPORSALT			"vaporsalt"
 #define BUSTANUT 			"bustanut"
