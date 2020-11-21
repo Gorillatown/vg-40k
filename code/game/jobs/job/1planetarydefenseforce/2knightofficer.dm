@@ -60,9 +60,9 @@
 	
 
 /datum/outfit/knight_officer/handle_special_abilities(var/mob/living/carbon/human/H)
-	H.attribute_strength = 10
-	H.attribute_agility = 10
-	H.attribute_dexterity = 10
+	H.attribute_strength += 2
+	H.attribute_agility += 2
+	H.attribute_dexterity += 2
 	return 1
 
 /datum/outfit/knight_officer/handle_faction(var/mob/living/M)

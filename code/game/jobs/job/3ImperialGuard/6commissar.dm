@@ -53,7 +53,7 @@
 	new_trooper.AssignToRole(M.mind,TRUE)
 
 /datum/outfit/commissar/handle_special_abilities(var/mob/living/carbon/human/H)
-	H.attribute_strength = 9
-	H.attribute_agility = 9
-	H.attribute_dexterity = 9
+	H.attribute_strength += 1
+	H.attribute_agility += 1
+	H.attribute_dexterity += 1
 	return 1

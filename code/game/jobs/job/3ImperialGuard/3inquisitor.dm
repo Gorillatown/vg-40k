@@ -52,9 +52,9 @@
 	new_trooper.AssignToRole(M.mind,TRUE)
  
 /datum/outfit/inquisitor/handle_special_abilities(var/mob/living/carbon/human/H)
-	H.attribute_strength = 10
-	H.attribute_agility = 12
-	H.attribute_dexterity = 13
+	H.attribute_strength += 2
+	H.attribute_agility += 4
+	H.attribute_dexterity += 5
 	H.attribute_willpower = 11
 	H.attribute_sensitivity = 500
 	H.psyker_points = 2

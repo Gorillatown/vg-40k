@@ -50,6 +50,6 @@
 	new_trooper.AssignToRole(M.mind,TRUE)
  
 /datum/outfit/preacher/handle_special_abilities(var/mob/living/carbon/human/H)
-	H.attribute_strength = 12
-	H.attribute_agility = 10
+	H.attribute_strength += 4
+	H.attribute_agility += 2
 	return 1

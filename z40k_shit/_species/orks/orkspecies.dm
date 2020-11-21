@@ -26,6 +26,7 @@
 
 	has_mutant_race = 0
 
+	RNG_modifier_sum_max = 4
 	base_strength = 9
 	base_strength_natural_limit = 13
 	base_agility = 8

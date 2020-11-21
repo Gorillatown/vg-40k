@@ -244,11 +244,7 @@
 			C.associated_account_number = H.mind.initial_account.account_number
 
 /datum/outfit/proc/handle_rng_modifiers(var/mob/living/carbon/human/H)
-	if(quest_master.configure_quest(H,ROGUE_PSYKER))
-		H.equip_or_collect(new /obj/item/weapon/psychic_spellbook, slot_in_backpack)
-		H.attribute_willpower = 11
-		H.attribute_sensitivity = 500
-		H.psyker_points = 8
+	quest_master.configure_quest(H,ROGUE_PSYKER) //Psyker Probability
 
 /datum/outfit/proc/post_equip(var/mob/living/carbon/human/H)
 	return // Empty

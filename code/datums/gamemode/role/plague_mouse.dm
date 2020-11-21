@@ -8,7 +8,7 @@
 	logo_state = "plague-logo"
 	greets = list(GREET_DEFAULT)
 
-datum/role/plague_mouse/Greet(var/greeting,var/custom)
+/datum/role/plague_mouse/Greet(var/greeting,var/custom)
 	if(!greeting)
 		return
 

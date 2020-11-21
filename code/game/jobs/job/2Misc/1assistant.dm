@@ -3,8 +3,8 @@
 	flag = PEASANT
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 2
-	spawn_positions = -1
+	total_positions = 500
+	spawn_positions = 20
 	supervisors = "absolutely everyone if you know whats good for you" 
 	wage_payout = 10
 	selection_color = "#dddddd"

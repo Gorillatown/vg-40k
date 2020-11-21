@@ -230,6 +230,69 @@
 		
 	attribute_sensitivity = species.base_sensitivity
 	attribute_sensitivity_natural_limit = species.base_sensitivity_natural_limit
+	
+	attr_modifier_time()
+
+/mob/living/carbon/human/proc/attr_modifier_time()
+	var/total_sum = species.RNG_modifier_sum_max //total sum we can have in additional stats from species datum
+	var/number_picked = 0 //A variable that holds the number that is rolled, mostly so we can subtract it.
+	var/positive_prob = 25 //The number that is used for positive stat modifiers
+	var/negative_prob = 3 //The number that is used for a negative stat modifier.
+	var/extra_boost = 3 //The probability of a extra boost in stats If you roll the max on a modifier
+	
+	//Yes, we actually only have 4 main stats. Willpower and Sensitivity are psyker stats.
+// STRENGTH-------------------------------------------------
+	if(prob(positive_prob)) 
+		number_picked = rand(0,total_sum)
+		attribute_strength += number_picked
+		total_sum -= number_picked
+		if((number_picked == total_sum)&&(prob(extra_boost)))
+			attribute_strength += rand(0,6)
+			extra_boost -= extra_boost
+	else if(prob(negative_prob))
+		number_picked = rand(0,3)
+		attribute_strength -= number_picked
+
+// AGILITY ------------------------------------------------
+	if(prob(positive_prob)) 
+		number_picked = rand(0,total_sum)
+		attribute_agility += number_picked
+		total_sum -= number_picked
+		if((number_picked == total_sum)&&(prob(extra_boost)))
+			attribute_agility += rand(0,6)
+			extra_boost -= extra_boost
+	else if(prob(negative_prob))
+		number_picked = rand(0,3)
+		attribute_agility -= number_picked
+
+// DEXTERITY ----------------------------------------------
+	if(prob(positive_prob)) 
+		number_picked = rand(0,total_sum)
+		attribute_dexterity += number_picked
+		total_sum -= number_picked
+		if((number_picked == total_sum)&&(prob(extra_boost)))
+			attribute_dexterity += rand(0,6)
+			extra_boost -= extra_boost
+	else if(prob(negative_prob))
+		number_picked = rand(0,3)
+		attribute_dexterity -= number_picked
+
+// CONSTITUTION --------------------- Unlike normal con modifiers, this time they get the extra hp.
+	if(prob(positive_prob)) 
+		number_picked = rand(0,total_sum)
+		attribute_constitution += number_picked
+		maxHealth += 10*number_picked
+		health += 10*number_picked
+		total_sum -= number_picked
+		if((number_picked == total_sum)&&(prob(extra_boost)))
+			var/extra_special_con = rand(0,6)
+			attribute_constitution += extra_special_con
+			maxHealth += 10*extra_special_con
+			health += 10*extra_special_con
+			extra_boost -= extra_boost
+	else if(prob(negative_prob))
+		number_picked = rand(0,3)
+		attribute_constitution -= number_picked
 
 /mob/living/carbon/verb/check_attributes()
 	set name = "Check Attributes"

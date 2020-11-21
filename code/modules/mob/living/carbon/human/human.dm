@@ -157,7 +157,7 @@
 		else
 			src.set_species()
   
-	initial_liveattr()
+//	initial_liveattr()
 
 	movement_speed_modifier = species.move_speed_multiplier
 
@@ -1157,7 +1157,9 @@
 	if(S.gender)
 		gender = S.gender
 
+	//40k EDIT - Species Datum Attributes to Live Mob Attributes
 	initial_liveattr()
+	
 	for(var/L in species.known_languages)
 		add_language(L)
 	if(species.default_language)
@@ -1182,20 +1184,24 @@
 				current_organ.setAmputatedTree()
 				current_organ.open = 0
 	var/datum/organ/internal/eyes/E = src.internal_organs_by_name["eyes"]
+	
 	if(E)
 		src.see_in_dark = E.see_in_dark
 	if(src.see_in_dark > 2)
 		src.see_invisible = SEE_INVISIBLE_LEVEL_ONE
 	else
 		src.see_invisible = SEE_INVISIBLE_LIVING
+	
 	if((src.species.default_mutations.len > 0) || (src.species.default_blocks.len > 0))
 		src.do_deferred_species_setup = 1
 	meat_type = species.meat_type
 	src.movement_speed_modifier = species.move_speed_multiplier
+	
 	if(dna)
 		src.dna.species = new_species_name
 	src.species.handle_post_spawn(src)
 	src.update_icons()
+	
 	if(species.species_intro)
 		to_chat(src, "<span class = 'notice'>[species.species_intro]</span>")
 	return 1

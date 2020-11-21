@@ -21,6 +21,27 @@
 	else
 		F.HandleRecruitedRole(src)
  
+/datum/role/rogue_psyker/OnPostSetup()
+	. = ..()
+	if(ishuman(antag.current))
+		equip_rogue_psyker(antag.current)
+
+/datum/role/rogue_psyker/Greet(var/greeting,var/custom)
+	if(!greeting)
+		return
+	var/icon/logo = icon('icons/logos.dmi', logo_state)
+	to_chat(antag.current, {"<img src='data:image/png;base64,[icon2base64(logo)]' style='position: relative; top: 10;'/> 
+	<span class='warning'><b>You are a unsanctioned psyker!</b><br>
+	Obviously nobody knows you are a psyker except yourself at this moment!<br>
+	Keep in mind that you are currently NOT tainted by Chaos<br>
+	You'll locate a power dictionary in your backpack!</span></br>"})
+
+/datum/role/rogue_psyker/proc/equip_rogue_psyker(var/mob/living/carbon/human/H)
+	H.equip_or_collect(new /obj/item/weapon/psychic_spellbook, slot_in_backpack)
+	H.attribute_willpower += 3
+	H.attribute_sensitivity = 500
+	H.psyker_points = 3
+
 /datum/role/rogue_psyker/GetScoreboard()
 	return // We handle it on the faction proc, since its a score list.
 

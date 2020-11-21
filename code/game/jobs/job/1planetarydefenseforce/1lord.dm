@@ -64,9 +64,9 @@
 	to_chat(world, "<b>[H.real_name] is the Lord of these lands!</b>")
 
 /datum/outfit/lord/handle_special_abilities(var/mob/living/carbon/human/H)
-	H.attribute_strength = 11
-	H.attribute_agility = 9
-	H.attribute_dexterity = 9
+	H.attribute_strength += 3 //8 + 3 = 11
+	H.attribute_agility += 1
+	H.attribute_dexterity += 1
 	return 1
 
 /datum/outfit/lord/handle_faction(var/mob/living/M)

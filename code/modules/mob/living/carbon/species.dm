@@ -50,7 +50,13 @@ var/global/list/whitelisted_species = list("Human")
 	var/mutantrace											// Safeguard due to old code.
 	var/myhuman												// mob reference
 
-	//STATLINES: See Statlines.dm || human.dm: Line 1174 for where we transition onto the mob.
+	//40k EDIT - Species Datum Attributes to Live Mob Attributes
+	//STATLINES: See Statlines.dm || human.dm: Around Line 1161 for where we transition onto the mob.
+	//Base_ATTR - Basically this is transitioned onto the mob, its the actual attribute score.
+	//Base_ATTR_natural_limit - This is the limit before they have no random prob of increase.
+	//RNG_Modifier_Sum_Max - This is a total sum of how many extra stats we can have.
+
+	var/RNG_modifier_sum_max = 12
 	var/base_strength = 1
 	var/base_strength_natural_limit = 12
 
@@ -68,6 +74,7 @@ var/global/list/whitelisted_species = list("Human")
 
 	var/base_sensitivity = 25
 	var/base_sensitivity_natural_limit = 1000
+	//----------------------------------------------------------------------------------------
 
 	var/breath_type = GAS_OXYGEN   // Non-oxygen gas breathed, if any.
 	var/survival_gear = /obj/item/weapon/storage/box/survival // For spawnin'.

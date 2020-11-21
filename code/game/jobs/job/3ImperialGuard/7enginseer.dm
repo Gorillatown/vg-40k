@@ -53,8 +53,8 @@
 	new_trooper.AssignToRole(M.mind,TRUE)
 
 /datum/outfit/enginseer/handle_special_abilities(var/mob/living/carbon/human/H)
-	H.attribute_strength = 12
-	H.attribute_agility = 12
-	H.attribute_dexterity = 13
+	H.attribute_strength += 4
+	H.attribute_agility += 4
+	H.attribute_dexterity += 5
 	H.add_spell(new /spell/aoe_turf/identify, "ork_spell_ready")
 	return 1

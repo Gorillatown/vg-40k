@@ -8,7 +8,7 @@
 	var/remaining_vows = 3
 
 /datum/role/rambler/OnPostSetup()
-	. =..()
+	. = ..()
 	if(ishuman(antag.current))
 		equip_rambler(antag.current)
 		name_rambler(antag.current)
