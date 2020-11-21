@@ -1,4 +1,6 @@
-			
+
+//DEPRECATED
+/*
 /datum/action/item_action/warhams/attachment/remove_atch
 	name = "Un-attach Attachment"
 	button_icon_state = "unattach"
@@ -18,3 +20,25 @@
 			ATCHSYS.attachment_handler(ATCH,FALSE,user)
 			user.put_in_hands(ATCH) //We remove the accessory picked from contents
 			return
+*/
+//THE NEW HOTNESS
+/obj/item/weapon/gun/verb/remove_attachment()
+	set name = "Remove Attachment"
+	set category = "Object"
+	set desc = "Click to remove an Attachment."
+
+	var/mob/user = usr
+	if(!user.mind)
+		return 0
+
+	if(!ATCHSYS.attachments.len)
+		to_chat(user, "<span class='notice'> [src] appears to be devoid of anything attached to it.</span>")
+		return
+	else
+		var/remove_acc = input(user,"Which attachment do you want to remove?", "", "Cancel") as null|anything in ATCHSYS.attachments
+		if(remove_acc != "Cancel")
+			var/obj/item/weapon/attachment/ATCH = remove_acc
+			ATCHSYS.attachment_handler(ATCH,FALSE,user)
+			user.put_in_hands(ATCH) //We remove the accessory picked from contents
+			return
+

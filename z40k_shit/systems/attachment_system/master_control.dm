@@ -24,8 +24,8 @@
 	if(istype(CHOSEN_ONE)) //Our chosen one is the place we are spawned into
 		my_atom = CHOSEN_ONE
 
-	var/RAGH = /datum/action/item_action/warhams/attachment/remove_atch
-	my_atom.actions_types += RAGH
+//	var/RAGH = /datum/action/item_action/warhams/attachment/remove_atch
+//	my_atom.actions_types += RAGH
 
 /datum/attachment_system/proc/attachment_handler(var/obj/item/weapon/attachment/ATCH, var/going_in, var/mob/user)
 	if(going_in)
