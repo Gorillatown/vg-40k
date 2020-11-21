@@ -400,7 +400,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		ghostize(1)
 	else if(stat == DEAD)
 		ghostize(1)
-	else
+	else 
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost, you will not be able to re-enter your current body!  You can't change your mind so choose wisely!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")
 			return	//didn't want to ghost after-all

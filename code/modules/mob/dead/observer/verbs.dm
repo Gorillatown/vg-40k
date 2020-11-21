@@ -134,7 +134,7 @@
 	if(!config.respawn_as_mouse)
 		to_chat(src, "<span class='warning'>Respawning as mouse is disabled.</span>")
 		return
-
+  
 	var/timedifference = world.time - client.time_died_as_mouse
 	if(client.time_died_as_mouse && timedifference <= mouse_respawn_time * 600)
 		var/timedifference_text

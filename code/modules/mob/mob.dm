@@ -1195,7 +1195,7 @@ Use this proc preferably at the end of an equipment loadout
 			return
 	var/deathtimeminutes = round(deathtime / 600)
 	var/pluralcheck = "minute"
-	if(deathtimeminutes == 0)
+	if(deathtimeminutes == 0) 
 		pluralcheck = ""
 	else if(deathtimeminutes == 1)
 		pluralcheck = " [deathtimeminutes] minute and"

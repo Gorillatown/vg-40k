@@ -332,7 +332,7 @@
 	splat = 1
 	src.icon_dead = icon_splat
 	src.icon_state = icon_splat
-	if(client)
+	if(client) 
 		client.time_died_as_mouse = world.time
 
 //copy paste from alien/larva, if that func is updated please update this one also
@@ -394,7 +394,7 @@
 /mob/living/simple_animal/mouse/death(var/gibbed = FALSE)
 	if(client)
 		client.time_died_as_mouse = world.time
-	..(gibbed)
+	..(gibbed) 
 
 /mob/living/simple_animal/mouse/say_quote(text)
 	if(!text)

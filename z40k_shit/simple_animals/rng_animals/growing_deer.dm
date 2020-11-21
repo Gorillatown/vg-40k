@@ -16,7 +16,7 @@
 
 	minbodytemp = 200
 
-	var/consumption_delay = 4 //Ticks down in life
+	var/consumption_delay = 10 //Ticks down in life
 	var/total_nutrition = 0 //Total nutrition
 	var/sprite_scales = 0
 	var/series_of_fifteens = 0 //Series of 15s
@@ -40,12 +40,11 @@
 	total_nutrition += nutrition
 	series_of_fifteens += nutrition
 
-	adjustBruteLoss(-20)
+	adjustBruteLoss(-10)
 
-	if(series_of_fifteens >= 15)
-		src.transform = src.transform.Scale(1.1)
-		health += 25
-		maxHealth += 25
+	if(series_of_fifteens >= 30)
+		health += 15
+		maxHealth += 15
 	//	melee_damage_lower += 1
 		melee_damage_upper += 1
 		series_of_fifteens = 0

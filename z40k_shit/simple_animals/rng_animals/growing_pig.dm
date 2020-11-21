@@ -53,7 +53,6 @@
 	adjustBruteLoss(-20)
 	
 	if(series_of_fifteens >= 15)
-		src.transform = src.transform.Scale(1.1)
 		health += 25
 		maxHealth += 25
 //		melee_damage_lower += 5
