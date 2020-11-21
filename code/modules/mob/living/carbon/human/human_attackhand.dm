@@ -120,7 +120,8 @@
 		damage +=  3
 		knockout += 3
 
-	damage += M.attribute_strength/2
+	//40k - STR damage modifier
+	damage += round(M.attribute_strength/2)
 	M.stat_increase(ATTR_STRENGTH,25)
 
 	//Handle shoes
