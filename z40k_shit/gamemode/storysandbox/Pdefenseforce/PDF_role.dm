@@ -24,6 +24,17 @@
 	else
 		F.HandleRecruitedRole(src)
  
+/datum/role/planetary_defense_force/Greet(var/greeting,var/custom)
+	if(!greeting)
+		return
+	var/icon/logo = icon('icons/logos.dmi', logo_state)
+	to_chat(antag.current, {"<img src='data:image/png;base64,[icon2base64(logo)]' style='position: relative; top: 10;'/> 
+	<span class='warning'><b>You are a member of the Defense Force!</b><br>
+	You serve various interests in this area!<br>
+	Your main aims are to hold the garrison, and patrol.<br>
+	Swipe your ID onto checkpoint consoles out in the world, and hold position to be logged!</span></br>"})
+
+
 /datum/role/planetary_defense_force/GetScoreboard()
 	return // We handle it on the faction proc, since its a score list.
 

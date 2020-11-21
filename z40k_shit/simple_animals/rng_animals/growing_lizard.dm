@@ -9,8 +9,8 @@
 	maxHealth = 50
 	speed = 0.9
 	attacktext = "bites"
-	melee_damage_lower = 1
-	melee_damage_upper = 2
+	melee_damage_lower = 5
+	melee_damage_upper = 5
 	response_help  	= "pets"
 	response_disarm = "shoos"
 	response_harm 	= "stomps on"
@@ -31,6 +31,7 @@
 
 	var/total_nutrition = 0 //Total nutrition
 	var/series_of_fifteens = 0 //Series of 15s
+	var/sprite_scales = 0
 	var/total_completion = FALSE //Are we a completely big pig? If so all the flags get turned on once
 
 	var/static/list/edibles = list(/mob/living/simple_animal/cockroach, 
@@ -54,17 +55,26 @@
 /mob/living/simple_animal/hostile/growing_lizard/proc/lizard_growth(var/nutrition) //nutrition is a number
 	total_nutrition += nutrition
 	series_of_fifteens += nutrition
-	if(series_of_fifteens >= 8)
+	
+	adjustBruteLoss(-20)
+	
+	if(series_of_fifteens >= 15)
 		src.transform = src.transform.Scale(1.1)
 		health += 25
 		maxHealth += 25
-		melee_damage_lower += 5
-		melee_damage_upper += 5
+//		melee_damage_lower += 2
+		melee_damage_upper += 2
 		series_of_fifteens = 0
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")
 		var/datum/role/native_animal/NTV = mind.GetRole(NATIVEANIMAL)
 		if(NTV)
 			NTV.total_growth++
+
+		if(sprite_scales <= 5)
+			src.transform = src.transform.Scale(1.1)
+			pixel_y += 1
+			sprite_scales++
+
 	if((total_nutrition >= 200) && (!total_completion))
 		environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
 		total_completion = TRUE
@@ -95,8 +105,6 @@
 
 /mob/living/simple_animal/hostile/growing_lizard/Life()
 	..()
-	if((health < maxHealth) && (stat != DEAD))
-		health += 5
 
 /mob/living/simple_animal/hostile/growing_lizard/LoseAggro()
 	..()

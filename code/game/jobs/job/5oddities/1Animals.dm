@@ -52,7 +52,7 @@
 				oursimplemob.see_invisible_override = SEE_INVISIBLE_OBSERVER_NOLIGHTING
 				spawn(5)
 					qdel(H)
-					to_chat(oursimplemob,"<span class='good'>You are one of the many native animals of the Detroid System, you can speak and find yourself capable of concise thought.</span>")
+					
 				
 				spawn(1 SECONDS)
 					var/datum/role/native_animal/new_animal = new
