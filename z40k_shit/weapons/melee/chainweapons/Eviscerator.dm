@@ -16,7 +16,7 @@
 	icon_state = "eviscerator_off" 
 	item_state = "eviscerator_off"
 	throwforce = 35
-	force = 50
+	force = 30
 	armor_penetration = 100
 	throw_speed = 5
 	throw_range = 10

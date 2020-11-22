@@ -8,7 +8,7 @@
 	hitsound = 'z40k_shit/sounds/chainaxe1.ogg'
 	siemens_coefficient = 1
 	slot_flags = SLOT_BELT
-	force = 25
+	force = 18
 	throwforce = 5
 	throw_speed = 5
 	throw_range = 7

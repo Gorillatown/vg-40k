@@ -164,7 +164,7 @@
 	src.icon_state = "scanner_1"
 	
 
-/obj/machinery/dna_scannernew/MouseDropTo(atom/movable/O, mob/user )
+/obj/machinery/dna_scannernew/MouseDropTo(atom/movable/O, mob/user)
 	if(!ismob(O)) //mobs only
 		return
 	if(O.loc == user || !isturf(O.loc) || !isturf(user.loc) || !user.Adjacent(O)) //no you can't pull things out of your ass

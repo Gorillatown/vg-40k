@@ -8,7 +8,7 @@
 	hitsound = 'z40k_shit/sounds/big_choppa.ogg'
 	flags = TWOHANDABLE | MUSTTWOHAND
 	siemens_coefficient = 1
-	force = 90
+	force = 60
 	throwforce = 50
 	throw_speed = 5
 	throw_range = 7

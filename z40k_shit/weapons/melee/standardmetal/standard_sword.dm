@@ -8,7 +8,7 @@
 	hitsound = 'sound/weapons/bloodyslice.ogg'
 	siemens_coefficient = 1
 	slot_flags = SLOT_BELT
-	force = 14
+	force = 11
 	throwforce = 18
 	throw_speed = 5
 	throw_range = 7
