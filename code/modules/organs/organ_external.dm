@@ -218,7 +218,7 @@
 			if(prob((5 * (brute * sharp)) * (sharp - 1))) //the same chance multiplier based on sharpness applies here as well
 				droplimb(1)
 				return
-
+ 
 	//High brute damage or sharp objects may damage internal organs
 	if(internal_organs != null)
 		if((sharp && brute >= 5) || brute >= 10)
@@ -285,7 +285,7 @@
 					target.take_damage(brute, burn, sharp, edge, used_weapon, forbidden_limbs + src)
 
 	//Sync the organ's damage with its wounds
-	src.update_damages()
+	src.update_damages() 
 	owner.updatehealth()
 
 	var/result = update_icon()
@@ -361,14 +361,14 @@
 					"<span class='warning'>The wound on your [display_name] widens with a nasty ripping sound.</span>", \
 					"You hear a nasty ripping noise, as if flesh is being torn apart.")
 				return
-
+ 
 	//Creating wound
 	var/datum/wound/W
 	var/size = min(max(1, damage/10), 6)
 	//Possible types of wound
 	var/list/size_names = list()
 	switch(type)
-		if(CUT)
+		if(CUT) 
 			size_names = typesof(/datum/wound/cut/) - /datum/wound/cut/
 		if(BRUISE)
 			size_names = typesof(/datum/wound/bruise/) - /datum/wound/bruise/

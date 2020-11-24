@@ -24,7 +24,7 @@
 	// whether this wound needs a bandage/salve to heal at all
 	var/needs_treatment = 0
 
-	// is the wound bandaged?
+	// is the wound bandaged? 
 	var/tmp/bandaged = 0
 	// Similar to bandaged, but works differently
 	var/tmp/clamped = 0
@@ -73,7 +73,7 @@
 	// this is more robust to changes to the list
 	max_bleeding_stage = src.desc_list.len - max_bleeding_stage
 
-	bleed_timer += damage / BLOODLOSS_SPEED_MULTIPLIER
+	bleed_timer += damage // BLOODLOSS_SPEED_MULTIPLIER
 
 // returns 1 if there's a next stage, 0 otherwise
 /datum/wound/proc/next_stage()
@@ -165,7 +165,7 @@
 // opens the wound again
 /datum/wound/proc/open_wound(damage)
 	src.damage += damage
-	bleed_timer += damage / BLOODLOSS_SPEED_MULTIPLIER
+	bleed_timer += damage // BLOODLOSS_SPEED_MULTIPLIER
 
 	while(src.current_stage > 1 && src.damage_list[current_stage-1] <= src.damage)
 		src.current_stage--

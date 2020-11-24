@@ -1,7 +1,7 @@
 /****************************************************
 				BLOOD SYSTEM
 ****************************************************/
-#define BLOODLOSS_SPEED_MULTIPLIER 0.75
+#define BLOODLOSS_SPEED_MULTIPLIER 0.25 //40k EDIT - BLOOD NERFS - ORIGINAL VALUE 0.75
 
 //Blood levels
 var/const/BLOOD_VOLUME_MAX = 560
@@ -10,6 +10,7 @@ var/const/BLOOD_VOLUME_WARN = 392
 var/const/BLOOD_VOLUME_OKAY = 336
 var/const/BLOOD_VOLUME_BAD = 224
 var/const/BLOOD_VOLUME_SURVIVE = 122
+var/const/BLOOD_VOLUME_FUCKED = 50
 
 /mob/living/carbon/human/var/datum/reagents/vessel/vessel	//Container for blood and BLOOD ONLY. Do not transfer other chems here.
 /mob/living/carbon/human/var/pale = 0			//Should affect how mob sprite is drawn, but currently doesn't.
@@ -129,16 +130,16 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 					if(prob(3))
 						var/word = pick("dizzy","woosey","faint")
 						to_chat(src, "<span class='danger'>You feel very [word].</span>")
-				if(oxyloss < 20)
-					oxyloss += 2
+				//if(oxyloss < 20) 
+				//	oxyloss += 2
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				if(!pale)
 					pale = 1
 					//update_body()
 				eye_blurry = max(eye_blurry,2)
-				if(oxyloss < 40)
-					oxyloss += 3
-				oxyloss += 3
+//				if(oxyloss < 40)
+//					oxyloss += 3
+//				oxyloss += 3
 				if(prob(15))
 					Paralyse(1)
 					var/word = pick("dizzy","woosey","faint")
@@ -148,21 +149,21 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 					pale = 1
 					//update_body()
 				eye_blurry = max(eye_blurry,4)
-				if(oxyloss < 60)
-					oxyloss += 5
-				oxyloss += 5
+//				if(oxyloss < 60)
+//					oxyloss += 5
+				oxyloss += 2
 				toxloss += 1
 				if(prob(15))
 					Paralyse(rand(1,3))
 					var/word = pick("dizzy","woosey","faint")
 					to_chat(src, "<span class='danger'>You feel deathly [word].</span>")
-			if(0 to BLOOD_VOLUME_SURVIVE)
+			if(0 to BLOOD_VOLUME_FUCKED)
 				// Kill then pretty fast, but don't overdo it
 				// I SAID DON'T OVERDO IT
 				if(!pale) //Somehow
 					pale = 1
 					//update_body()
-				oxyloss += 8
+				oxyloss += 4
 				toxloss += 2
 				//cloneloss += 1
 				Paralyse(5) //Keep them on the ground, that'll teach them
@@ -178,19 +179,19 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 				burn_calories(2)
 		*/
 
-		//Bleeding out
+		//Bleeding out 
 		var/blood_max = 0
 		for(var/datum/organ/external/temp in organs)
 			if(!(temp.status & ORGAN_BLEEDING) || temp.status & (ORGAN_ROBOT|ORGAN_PEG))
 				continue
 			for(var/datum/wound/W in temp.wounds) if(W.bleeding())
-				blood_max += W.damage / 4
+				blood_max += W.damage / 6
 			if(temp.status & ORGAN_DESTROYED && !(temp.status & ORGAN_GAUZED) && !temp.amputated)
-				blood_max += 20 //Yer missing a fucking limb.
+				blood_max += 10 //Yer missing a fucking limb.
 			if (temp.open)
 				blood_max += 2 //Yer stomach is cut open
 			blood_max = blood_max * BLOODLOSS_SPEED_MULTIPLIER
-			if(lying)
+			if(lying) 
 				blood_max = blood_max * 0.7
 			/*if(reagents.has_reagent(INAPROVALINE))
 				blood_max = blood_max * 0.7*/
@@ -200,7 +201,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 /mob/living/carbon/human/proc/drip(var/amt as num)
 
 
-	if(species && species.anatomy_flags & NO_BLOOD) //TODO: Make drips come from the reagents instead.
+	if((species) && (species.anatomy_flags & NO_BLOOD)) //TODO: Make drips come from the reagents instead.
 		return 0
 
 	if(!amt)
@@ -323,7 +324,7 @@ var/const/BLOOD_VOLUME_SURVIVE = 122
 	if(vessel.get_reagent_amount(BLOOD) < amount)
 		return null
 
-	. = ..()
+	. = ..() 
 	vessel.remove_reagent(BLOOD,amount) // Removes blood if human
 
 /mob/living/carbon/monkey/take_blood(obj/item/weapon/reagent_containers/container, var/amount)
