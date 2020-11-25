@@ -133,35 +133,35 @@
 //You return false when you want them to fail.
 //You return true when you want it to just end
 /obj/structure/barbed_wire/proc/barbwire_action(mob/living/user)
-	if(user.attribute_strength >= 16 && user.attribute_constitution >= 16)
+	if(user.attribute_strength >= 18 && user.attribute_constitution >= 20)
 		user.visible_message("<span class='warning'>[user] charges through [src] with their EXTREMELY muscled LITERALLY rock hard body!</span>")
 		qdel(src)
 		return 1
 	else
 		switch(user.attribute_dexterity)
 			if(1 to 6)
-				user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
+				user.apply_damage(5,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 				user.Knockdown(3)
 				user.Stun(3)
 				user.visible_message("<span class='warning'>[user] gets caught in [src] and collapses!</span>")
 				user.stat_increase(ATTR_DEXTERITY,50)
 				return 0
-			if(6 to 12)
+			if(6 to 16)
 				if(prob(20))
-					user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
+					user.apply_damage(5,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] but pushes through. DAMN!</span>")
 					user.stat_increase(ATTR_DEXTERITY,50)
 					return 1
 				else
-					user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
+					user.apply_damage(5,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 					user.Knockdown(3)
 					user.Stun(3)
 					user.visible_message("<span class='warning'>[user] gets caught in [src] and collapses!</span>")
 					user.stat_increase(ATTR_CONSTITUTION, 25)
 					return 0
-			if(12 to 16)
+			if(16 to 20)
 				if(prob(25))
-					user.apply_damage(4,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
+					user.apply_damage(5,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] but pushes through. DAMN!</span>")
 					return 1
 					user.stat_increase(ATTR_CONSTITUTION, 25)
@@ -172,7 +172,7 @@
 				else
 					user.visible_message("<span class='warning'>[user] carefully passes over [src]!</span>")
 					return 1
-			if(16 to 30)
+			if(20 to 30)
 				user.visible_message("<span class='warning'>[user] gracefully dances through [src] with ease!</span>")
 				return 1
 

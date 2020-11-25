@@ -9,8 +9,8 @@
 	maxHealth = 50
 	speed = 0.9
 	attacktext = "bites"
-	melee_damage_lower = 5
-	melee_damage_upper = 5
+	melee_damage_lower = 2
+	melee_damage_upper = 4
 	response_help  	= "pets"
 	response_disarm = "shoos"
 	response_harm 	= "stomps on"
@@ -29,10 +29,11 @@
 	idle_vision_range = 6
 	search_objects = 1
 
-	var/total_nutrition = 0 //Total nutrition
-	var/series_of_fifteens = 0 //Series of 15s
+	var/consumption_delay = 10 //Ticks down in life
+	var/current_nutrition = 0 //How much current growth we have undertaken
+	var/next_nutrition_level = 16
+	var/rolling_ticker = 1
 	var/sprite_scales = 0
-	var/total_completion = FALSE //Are we a completely big pig? If so all the flags get turned on once
 
 	var/static/list/edibles = list(/mob/living/simple_animal/cockroach, 
 	/obj/item/weapon/reagent_containers/food/snacks/roach_eggs, 
@@ -53,39 +54,56 @@
 	appearance_flags |= PIXEL_SCALE
 
 /mob/living/simple_animal/hostile/growing_lizard/proc/lizard_growth(var/nutrition) //nutrition is a number
-	total_nutrition += nutrition
-	series_of_fifteens += nutrition
-	
+	current_nutrition += nutrition
 	adjustBruteLoss(-20)
-	
-	if(series_of_fifteens >= 15)
-		health += 25
-		maxHealth += 25
-//		melee_damage_lower += 2
-		melee_damage_upper += 2
-		series_of_fifteens = 0
+	consumption_delay = 10
+
+	if(current_nutrition >= next_nutrition_level)
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")
+		health += 10
+		maxHealth += 10
+		rolling_ticker++
+		current_nutrition = 0
+		next_nutrition_level += round(next_nutrition_level/2) //raise the max for the next one
+
+		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
+			sprite_scales++ //Time for a sprite scale
+			rolling_ticker = 0 //I could prob use a modulo but I'm tired
+			melee_damage_upper += 2
+		
+			if(sprite_scales <= 5)
+				src.transform = src.transform.Scale(1.1)
+				pixel_y += 1
+				sprite_scales++
+
+				switch(sprite_scales)
+					if(2)
+						size = SIZE_SMALL
+					if(3)
+						density = TRUE
+						pass_flags = 0
+						size = SIZE_NORMAL
+						speed = 1
+					if(4)
+						size = SIZE_BIG
+						health += 50
+						maxHealth += 50
+					if(5)
+						environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
+						var/n_name = copytext(sanitize(input(src, "What would you like to name yourself?", "Renaming \the [src]", null) as text|null), 1, MAX_NAME_LEN)
+						if(n_name)
+							name = "[n_name]"
+
 		var/datum/role/native_animal/NTV = mind.GetRole(NATIVEANIMAL)
 		if(NTV)
 			NTV.total_growth++
 
-		if(sprite_scales <= 5)
-			src.transform = src.transform.Scale(1.1)
-			pixel_y += 1
-			sprite_scales++
-
-	if((total_nutrition >= 200) && (!total_completion))
-		environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
-		total_completion = TRUE
-		var/n_name = copytext(sanitize(input(src, "What would you like to name yourself?", "Renaming \the [src]", null) as text|null), 1, MAX_NAME_LEN)
-		if(n_name)
-			name = "[n_name]"
-
 /mob/living/simple_animal/hostile/growing_lizard/UnarmedAttack(var/atom/A)
 	if(is_type_in_list(A, edibles))
-		delayNextAttack(10)
-		lizard_growth(15)
-		gulp(A)
+		if(!consumption_delay)
+			delayNextAttack(10)
+			lizard_growth(15)
+			gulp(A)
 	else return ..()
 
 /mob/living/simple_animal/hostile/growing_lizard/proc/gulp(var/atom/eat_this)
@@ -104,10 +122,8 @@
 
 /mob/living/simple_animal/hostile/growing_lizard/Life()
 	..()
-
-/mob/living/simple_animal/hostile/growing_lizard/LoseAggro()
-	..()
-	search_objects = 1
+	if(consumption_delay)
+		consumption_delay--
 
 /mob/living/simple_animal/hostile/growing_lizard/CanAttack(var/atom/the_target)//Can we actually attack a possible target?
 	if(see_invisible < the_target.invisibility)//Target's invisible to us, forget it

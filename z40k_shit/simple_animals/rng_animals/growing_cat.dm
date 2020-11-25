@@ -18,7 +18,7 @@
 	see_in_dark = 6
 
 	health = 100
-	speed = 1
+	speed = 0.9
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //Those tusk will maul you!
 
@@ -30,67 +30,88 @@
 	max_oxy = 0
 	min_n2 = 0
 	max_n2 = 0
+	density = FALSE
+	pass_flags = PASSTABLE | PASSMOB
 
-	var/total_nutrition = 0 //Total nutrition
-	var/series_of_fifteens = 0 //Series of 15s
+	var/consumption_delay = 10 //Ticks down in life
+	var/current_nutrition = 0 //How much current growth we have undertaken
+	var/next_nutrition_level = 16
+	var/rolling_ticker = 1
 	var/sprite_scales = 0
-	var/total_completion = FALSE //Are we a completely big pig? If so all the flags get turned on once
 
 //Growth Mechanics
 /mob/living/simple_animal/hostile/growing_cat/animal_food_act(var/obj/item/weapon/reagent_containers/food/food)
-	var/nutrition = food.reagents.get_reagent_amount(NUTRIMENT)
-	playsound(src,'sound/items/eatfood.ogg', rand(10,50), 1)
-	src.visible_message("[src] eats [food].", "You eat [food].", "You hear crunching.")
-	cat_growth(nutrition)
-	qdel(food)
+	if(!consumption_delay)
+		var/nutrition = food.reagents.get_reagent_amount(NUTRIMENT)
+		playsound(src,'sound/items/eatfood.ogg', rand(10,50), 1)
+		src.visible_message("[src] eats [food].", "You eat [food].", "You hear crunching.")
+		cat_growth(nutrition)
+		qdel(food)
+
 
 /mob/living/simple_animal/hostile/growing_cat/New()
 	..()
 	appearance_flags |= PIXEL_SCALE
  
 /mob/living/simple_animal/hostile/growing_cat/proc/cat_growth(var/nutrition) //nutrition is a number
-	total_nutrition += nutrition
-	series_of_fifteens += nutrition
-
+	current_nutrition += nutrition
 	adjustBruteLoss(-20)
-	
-	if(series_of_fifteens >= 15)
-		health += 25
-		maxHealth += 25
-//		melee_damage_lower += 1
-		melee_damage_upper += 1
-		series_of_fifteens = 0
+	consumption_delay = 10
+
+	if(current_nutrition >= next_nutrition_level)
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")
+		health += 10
+		maxHealth += 10
+		rolling_ticker++
+		current_nutrition = 0
+		next_nutrition_level += round(next_nutrition_level/2) //raise the max for the next one
+
+		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
+			sprite_scales++ //Time for a sprite scale
+			rolling_ticker = 0 //I could prob use a modulo but I'm tired
+			melee_damage_upper += 1
+		
+			if(sprite_scales <= 5)
+				src.transform = src.transform.Scale(1.1)
+				pixel_y += 1
+				sprite_scales++
+
+				switch(sprite_scales)
+					if(2)
+						size = SIZE_SMALL
+					if(3)
+						density = TRUE
+						pass_flags = 0
+						size = SIZE_NORMAL
+						speed = 1
+					if(4)
+						size = SIZE_BIG
+					if(5)
+						environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
+						var/n_name = copytext(sanitize(input(src, "What would you like to name yourself?", "Renaming \the [src]", null) as text|null), 1, MAX_NAME_LEN)
+						if(n_name)
+							name = "[n_name]"
+
 		var/datum/role/native_animal/NTV = mind.GetRole(NATIVEANIMAL)
 		if(NTV)
 			NTV.total_growth++
 
-		if(sprite_scales <= 5)
-			src.transform = src.transform.Scale(1.1)
-			pixel_y += 1
-			sprite_scales++
-
-	if((total_nutrition >= 200) && (!total_completion))
-		environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
-		total_completion = TRUE
-		var/n_name = copytext(sanitize(input(src, "What would you like to name yourself?", "Renaming \the [src]", null) as text|null), 1, MAX_NAME_LEN)
-		if(n_name)
-			name = "[n_name]"
-
 /mob/living/simple_animal/hostile/growing_cat/examine(mob/user)
 	..()
-	switch(total_nutrition)
-		if(0 to 10)
+	switch(sprite_scales)
+		if(0 to 1)
 			to_chat(user, "<span class='info'>It's a [name] baby.</span>")
-		if(11 to 40)
+		if(2)
 			to_chat(user, "<span class='info'>It's a respectable size.</span>")
-		if(41 to 100)
+		if(4)
 			to_chat(user, "<span class='info'>Its a very large cat!</span>")
-		if(200 to INFINITY)
-			to_chat(user, "<span class='info'>HOLY SHIT, ITS A MONSTER</span>")
+		if(5 to INFINITY)
+			to_chat(user, "<span class='info'>One could call this cat, a true apex predator.</span>")
 
 /mob/living/simple_animal/hostile/growing_cat/Life()
 	..()
+	if(consumption_delay)
+		consumption_delay--
 
 /mob/living/simple_animal/hostile/growing_cat/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/food)) //Cats like FOOD

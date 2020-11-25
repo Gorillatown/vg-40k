@@ -17,10 +17,12 @@
 	minbodytemp = 200
 
 	var/consumption_delay = 10 //Ticks down in life
-	var/total_nutrition = 0 //Total nutrition
+
+	var/current_nutrition = 0 //How much current growth we have undertaken
+	var/next_nutrition_level = 16
+	var/rolling_ticker = 1
+
 	var/sprite_scales = 0
-	var/series_of_fifteens = 0 //Series of 15s
-	var/total_completion = FALSE //Are we a completely big pig? If so all the flags get turned on once
 
 	var/list/edibles = list(/obj/structure/flora/grass,
 	/obj/structure/flora/ausbushes,
@@ -31,39 +33,48 @@
 
 /mob/living/simple_animal/hostile/growing_deer/Life()
 	..()
-	if(isDead())
-		return
 	if(consumption_delay)
 		consumption_delay--
 
 /mob/living/simple_animal/hostile/growing_deer/proc/deer_growth(var/nutrition) //nutrition is a number
-	total_nutrition += nutrition
-	series_of_fifteens += nutrition
+	current_nutrition += nutrition
+	consumption_delay = 10
 
 	adjustBruteLoss(-10)
 
-	if(series_of_fifteens >= 30)
+	if(current_nutrition >= next_nutrition_level)
+		to_chat(src, "<span class='notice'>You grow a bit.</span>")
 		health += 15
 		maxHealth += 15
-	//	melee_damage_lower += 1
-		melee_damage_upper += 1
-		series_of_fifteens = 0
-		to_chat(src, "<span class='notice'>You grow a bit.</span>")
+		rolling_ticker++
+		current_nutrition = 0
+		next_nutrition_level += round(next_nutrition_level/2) //raise the max for the next one
+
+		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
+			sprite_scales++ //Time for a sprite scale
+			rolling_ticker = 0 //I could prob use a modulo but I'm tired
+			melee_damage_upper += 1
+		
+			if(sprite_scales <= 5)
+				src.transform = src.transform.Scale(1.1)
+				pixel_y += 1
+				sprite_scales++
+
+				switch(sprite_scales)
+					if(3)
+						density = TRUE
+						pass_flags = 0
+						size = SIZE_BIG
+						speed = 1
+					if(5)
+						environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
+						var/n_name = copytext(sanitize(input(src, "What would you like to name yourself?", "Renaming \the [src]", null) as text|null), 1, MAX_NAME_LEN)
+						if(n_name)
+							name = "[n_name]"
+
 		var/datum/role/native_animal/NTV = mind.GetRole(NATIVEANIMAL)
 		if(NTV)
 			NTV.total_growth++
-
-		if(sprite_scales <= 5)
-			src.transform = src.transform.Scale(1.1)
-			pixel_y += 1
-			sprite_scales++
-
-	if((total_nutrition >= 200) && (!total_completion))
-		environment_smash_flags |= SMASH_LIGHT_STRUCTURES | SMASH_CONTAINERS | SMASH_WALLS | SMASH_RWALLS | OPEN_DOOR_STRONG
-		total_completion = TRUE
-		var/n_name = copytext(sanitize(input(src, "What would you like to name yourself?", "Renaming \the [src]", null) as text|null), 1, MAX_NAME_LEN)
-		if(n_name)
-			name = "[n_name]"
 
 /mob/living/simple_animal/hostile/growing_deer/UnarmedAttack(var/atom/A)
 	if(is_type_in_list(A, edibles))
@@ -71,7 +82,6 @@
 			delayNextAttack(10)
 			deer_growth(8)
 			gulp(A)
-			consumption_delay = 4
 	else return ..()
 
 /mob/living/simple_animal/hostile/growing_deer/proc/gulp(var/atom/eat_this)
