@@ -402,7 +402,7 @@
 					if (prob_pos)
 						prob_name = lowertext(copytext(value, 1, prob_pos))
 						prob_value = copytext(value, prob_pos + 1)
-						if (prob_name in config.modes)
+						if (prob_name in config.modes) 
 							config.probabilities[prob_name] = text2num(prob_value)
 						else
 							diary << "Unknown game mode probability configuration definition: [prob_name]."
