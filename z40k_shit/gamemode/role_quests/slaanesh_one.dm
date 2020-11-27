@@ -13,7 +13,7 @@
 	var/percentage = round(((cur_num/17)*100))
 
 	score_results += "<b>[antag.key]</b> as <b>[antag.name]</b><br>"
-	if(percentage <= 100)
+	if(percentage >= 100)
 		score_results += "<b>Total Percent Complete:</b> <font color='#07fa0c'>[percentage]</font>%.<br>"
 	else
 		score_results += "<b>Total Percent Complete:</b> <font color='#ff0000'>[percentage]</font>%.<br>"

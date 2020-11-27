@@ -1,5 +1,7 @@
 /*
 	Ironically, we aren't using this one.
+	Basically its for orks to create custom mobs, but they all form into one mass anyways
+	Maybe one day?
 */
 
 /datum/faction/dyn_ork

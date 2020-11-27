@@ -16,9 +16,9 @@
 	..()
 	if(faction)
 		return
-	var/datum/faction/F = find_active_faction_by_type(/datum/faction/planetary_defense_force)
+	var/datum/faction/F = find_active_faction_by_type(/datum/faction/story_sandbox_main)
 	if(!F)
-		F = ticker.mode.CreateFaction(/datum/faction/planetary_defense_force, null, 1)
+		F = ticker.mode.CreateFaction(/datum/faction/story_sandbox_main, null, 1)
 		F.forgeObjectives()
 		F.HandleRecruitedRole(src)
 	else

@@ -1,3 +1,6 @@
+/*
+We don't need a ork role like this anymore.
+*/
 /datum/role/mob_boss
 	name = ORKMOBBOSS
 	id = ORKMOBBOSS

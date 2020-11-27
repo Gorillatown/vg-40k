@@ -38,6 +38,7 @@
 #define IMPERIALGUARD "Imperial Guard"
 #define PLANETARYDEFFORCE "PlanetaryDefForce"
 #define NATIVEANIMALS "NativeAnimals"
+#define POI_MODE_CONTROLLER "Mode Scoreboard"
 
 #define isgeneral(H) (H.mind && H.mind.GetRole(IMPERIALGUARDGENERAL))
 

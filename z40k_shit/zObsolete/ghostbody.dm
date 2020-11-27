@@ -1,5 +1,8 @@
 //obj/abstract/screen/HU
-
+/*
+	What this was was basically a way for ghosts to pick bodies tied to how many points they unlocked.
+	I'm obsoleting it because it sucks ass compared to just seeing the actual dead persons body.
+*/
 /spell/aoe_turf/ghost_body //Raaagh
 	name = "Ghost Bodies"
 	desc = "For the ghost with the most."

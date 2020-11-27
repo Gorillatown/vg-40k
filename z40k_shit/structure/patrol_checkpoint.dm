@@ -27,6 +27,7 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 	var/signal_cooldown = FALSE
 	var/time_left = 150 //Same here, 150 * 2 = 300. So this is 300 seconds, then divided by 60 is 5. So 5 mins
 	var/mob/living/logged_in_mob = null //Instead of a for loop we will get_dist between the console n this guy.
+	var/obj/item/weapon/card/id/logged_in_card = null //We now hold this ref too, to append req to.
 
 /obj/structure/patrol_checkpoint/ex_act(severity)
 	return
@@ -60,6 +61,7 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 				if(access_checkpoints in id_card.access)
 					say("Checkpoint Signal in 20 Seconds. Please Standby")
 					logged_in_mob = user
+					logged_in_card = id_card
 					checked_in = TRUE
 					return
 			else
@@ -77,13 +79,17 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 	Broadcast_Message(speech, level = list(src.z))
 	qdel(speech)
 	say("Checkpoint Signalled. Keep fulfilling your duty.")
-	for(var/role in logged_in_mob?.mind?.antag_roles)
-		var/datum/role/R = logged_in_mob.mind.antag_roles[role]
-		if(istype(R,/datum/role/planetary_defense_force))
-			R:times_patrolled += 1 //They gain a marker.
-
+	var/datum/role/planetary_defense_force/PEEDF = logged_in_mob.mind.GetRole(PDF)
+	if(PEEDF)
+		PEEDF.times_patrolled += 1
+		var/datum/faction/story_sandbox_main/SSM = logged_in_mob.mind.GetFactionFromRole(PDF)
+		if(SSM)
+			SSM.time_left += (5 MINUTES)/10
+//		logged_in_card.requisition += 1000 //TODO: Requisition holder/start of shit
+	
 	signal_cooldown = TRUE
 	logged_in_mob = null
+	logged_in_card = null
 
 /obj/structure/patrol_checkpoint/proc/lets_a_go(mob/user)
 	var/dat
@@ -127,12 +133,12 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 					Broadcast_Message(speech, level = list(src.z))
 					say("Duty check Resetting. [logged_in_mob.name] noted for cowardice. Please scan your identity.")
 					logged_in_mob = null
+					logged_in_card = null
 					checkin_pivot_timer = 10 //We reset this too
 					checked_in = FALSE
 					qdel(speech)
 	else
 		time_left--
-		logged_in_mob = null
 		if(time_left <= 0)
 			signal_cooldown = FALSE
 			time_left = 150

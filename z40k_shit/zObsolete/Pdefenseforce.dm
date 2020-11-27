@@ -1,3 +1,9 @@
+/*
+This became obsolete mostly because it turned out it started to just be used as a total sum scoreboard.
+Which is why its replaced with a total sum scoreboard faction for anything in the round.
+Along with that being a scoreboard, it lets us control gameflow better and consolidate information
+into a single data holder.
+*/
 /datum/faction/planetary_defense_force
 	name = "Planetary Defense Force"
 	desc = "Unlike the imperial guard, these people generally do not do their very best."

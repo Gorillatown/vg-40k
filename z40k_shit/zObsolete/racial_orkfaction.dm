@@ -1,3 +1,8 @@
+/*
+This is basically the button to make a custom ork mob, tied to dyn_ork_faction.dm
+It is obsolete mostly because orks tend to just form one uniform mass instead of infight
+People aren't good at going against the flow, or splitting.
+*/
 /spell/aoe_turf/ork_mob_builder //Raaagh
 	name = "Ork Mob Builder"
 	abbreviation = "WG"

@@ -1,5 +1,7 @@
 //obj/abstract/screen/HU
-
+/*
+Obsoleting due to byond issues, this menu causes some memory leaks and hijinks.
+*/
 /spell/aoe_turf/ghost_actions//Raaagh
 	name = "Ghost Actions"
 	desc = "Ghost Actions."

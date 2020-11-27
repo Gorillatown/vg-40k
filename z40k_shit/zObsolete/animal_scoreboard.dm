@@ -1,4 +1,6 @@
-
+/*
+Just like Pdfenseforce.dm, I've decided to consolidate all the scoreboards into a single one.
+*/
 /datum/faction/native_animal_faction
 	name = "Native Animals"
 	desc = "Its a faction of Native Animals, who aren't a faction but are animals."
