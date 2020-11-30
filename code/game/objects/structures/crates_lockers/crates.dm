@@ -35,7 +35,7 @@
 
 	starting_materials = list(MAT_PLASTIC = 10*CC_PER_SHEET_MISC) // Recipe calls for 10 sheets.
 
-/obj/structure/closet/crate/internals
+/obj/structure/closet/crate/internals 
 	desc = "A internals crate."
 	name = "Internals crate"
 	icon = 'icons/obj/storage/storage.dmi'
@@ -100,21 +100,21 @@
 	var/target_temp = T0C - 40
 	var/cooling_power = 40
 
-	return_air()
-		var/datum/gas_mixture/gas = (..())
-		if(!gas)
-			return null
-		var/datum/gas_mixture/newgas = new/datum/gas_mixture()
-		newgas.copy_from(gas)
-		if(newgas.temperature <= target_temp)
-			return
+/obj/structure/closet/crate/freezer/return_air()
+	var/datum/gas_mixture/gas = (..())
+	if(!gas)
+		return null
+	var/datum/gas_mixture/newgas = new/datum/gas_mixture()
+	newgas.copy_from(gas)
+	if(newgas.temperature <= target_temp)
+		return
 
-		if((newgas.temperature - cooling_power) > target_temp)
-			newgas.temperature -= cooling_power
-		else
-			newgas.temperature = target_temp
-		newgas.update_values()
-		return newgas
+	if((newgas.temperature - cooling_power) > target_temp)
+		newgas.temperature -= cooling_power
+	else
+		newgas.temperature = target_temp
+	newgas.update_values()
+	return newgas
 
 /obj/structure/closet/crate/freezer/surgery
 	desc = "A freezer specifically designed to store organic material."
@@ -493,7 +493,7 @@
 
 /obj/structure/closet/crate/secure/proc/togglelock(mob/user)
 	if(src.allowed(user))
-		src.locked = !src.locked
+		src.locked = !src.locked 
 		if (src.locked)
 			to_chat(user, "<span class='notice'>You lock \the [src].</span>")
 			update_icon()

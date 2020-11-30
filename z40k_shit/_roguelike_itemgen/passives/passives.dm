@@ -14,7 +14,8 @@ code\game\objects\items.dm Line: 307 dropped()
 attached_object is gained on the init proc, the list is init in the ..() call
 
 NOTES:
-Remember to handle 	the roguelike_process list too.
+Remember to handle 	the scenario_process list too.
+As thats what calls the process()
 
 */
 /datum/roguelike_effects/passives

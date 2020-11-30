@@ -30,9 +30,8 @@ var/ork_total_points = 0
 
 //One must ask, is it worthwhile having lists? Probably not until theres more than one faction.
 
-//var/list/scenario_order_three = list()
-var/list/tzeentchpads = list()
-var/list/roguelike_process = list()
+var/list/tzeentchpads = list() //The dumb teleportation pads
+var/list/scenario_process = list() //basically it calls everything in this list every call on the loop.
 
 //Basically this keeps timing, we dump it onto a datum really.
 /datum/subsystem/scenario_controller
@@ -62,13 +61,13 @@ var/list/roguelike_process = list()
 
 /datum/subsystem/scenario_controller/fire(resumed = FALSE)
 	ticker++
-	switch(ticker)	//for now we have two firing orders
-		if(1)
-			if(active_dungeon)
+
+	if(active_dungeon)
+		switch(ticker)	//for now we have two firing orders
+			if(1)
 				for(var/obj/structure/traps/traps in scenario_order_one)
 					traps.turn_my_ass_over()
-		if(2)
-			if(active_dungeon)
+			if(2)
 				for(var/obj/structure/traps/traps in scenario_order_two)
 					traps.turn_my_ass_over()
 
@@ -80,12 +79,19 @@ var/list/roguelike_process = list()
 	else
 		active_dungeon = FALSE
 
-	for(var/datum/roguelike_effects/RE in roguelike_process)
-		RE.re_process()
-		
 	if(ticker >= 2)
 		ticker = 0
-	
+	/*
+	Forewarning: we are turning safety checks off for scenario_process.
+	You may ask why? Its because its handling a lot of datums that aren't on the same path.
+	For now its handling one shuttle datum, and all the roguelike passives.
+	We are even putting it at the end, so it doesn't cancel other shit with a runtime.
+	*/
+	for(var/NO_BAD_THINGS in scenario_process)
+		NO_BAD_THINGS:sc_process()
+		
+//This exists mostly to move people into the dungeon properly/make sure its not on If nobody is in it
+//To save on CPU.
 /datum/subsystem/scenario_controller/proc/check_pads(mob/user, var/entering)
 	var/activated_pads = 0
 	for(var/obj/structure/pressure_plate/pad in tzeentchpads)

@@ -197,11 +197,14 @@
 	var/assignment = null	//can be alt title or the actual job
 	var/rank = null			//actual job
 	var/dorm = 0		// determines if this ID has claimed a dorm already
+	var/datum/detroid_credstick/req_holder = null
 
 	var/datum/money_account/virtual_wallet = 1	//money! If 0, don't create a wallet. Otherwise create one!
 
 /obj/item/weapon/card/id/New()
 	..()
+
+	req_holder = new()
 
 	if(virtual_wallet)
 		update_virtual_wallet()
@@ -210,6 +213,12 @@
 				var/mob/living/carbon/human/H = loc
 				SetOwnerInfo(H)
 			update_virtual_wallet()
+
+//We cleanup our datum too.
+/obj/item/weapon/card/id/Destroy()
+	qdel(req_holder)
+	req_holder = null
+	..()
 
 /obj/item/weapon/card/id/examine(mob/user)
 	..()
@@ -411,13 +420,13 @@
 	origin_tech = Tc_SYNDICATE + "=3"
 	var/registered_user=null
 
-/obj/item/weapon/card/id/syndicate/afterattack(var/obj/item/weapon/O, mob/user )
+/obj/item/weapon/card/id/syndicate/afterattack(var/obj/item/weapon/O, mob/user)
 	if(istype(O, /obj/item/weapon/card/id))
 		var/obj/item/weapon/card/id/I = O
 		to_chat(user, "<span class='notice'>The [src]'s microscanners activate as you pass it over \the [I], copying its access.</span>")
 		access |= I.access
 
-/obj/item/weapon/card/id/syndicate/attack_self(mob/user )
+/obj/item/weapon/card/id/syndicate/attack_self(mob/user)
 	if(!src.registered_name)
 		//Stop giving the players unsanitized unputs! You are giving ways for players to intentionally crash clients! -Nodrak
 		var t = reject_bad_name(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name))

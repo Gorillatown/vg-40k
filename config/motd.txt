@@ -1,5 +1,7 @@
-<h1>/vg/station: 40k</h1>
+<h1>Welcome to Detroid II</h1>
 <h3>This is a testing session.</h3>
-<i>Report Bugs, Feedback, and suggestions in the discord.
-<b>Respawns are currently on.
+<i>Report Bugs and suggestions in the discord.
+<br><b>Respawns are currently on.</b>
+<h3>Have any questions? CLICK SHIT BELOW!</h3>
 <b>Discord:</b> https://discord.gg/QK9XgqN
+<br><b>Wiki:</b> http://rscserb.site.nfoservers.com/mediawiki-1.35.0/index.php/Main_Page

@@ -2,7 +2,7 @@
 	name = "Stun Recovery"
 	desc = "Protects you from being stunned."
 
-/datum/roguelike_effects/passives/unstunnable/re_process()
+/datum/roguelike_effects/passives/unstunnable/sc_process()
 	current_mob.drowsyness = 0
 	current_mob.sleeping = 0
 	current_mob.AdjustParalysis(-5)

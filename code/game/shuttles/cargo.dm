@@ -25,3 +25,4 @@ var/global/datum/shuttle/supply/cargo_shuttle = new(starting_area = /area/shuttl
 
 /obj/docking_port/destination/supply/station
 	areaname = "cargo bay"
+ 

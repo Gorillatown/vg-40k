@@ -1,0 +1,1 @@
+All the stuff in this folder can be moved out/organized/scrapped etc. Its mostly just boredom coding and weird ideas.

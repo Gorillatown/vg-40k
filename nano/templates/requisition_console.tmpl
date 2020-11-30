@@ -1,0 +1,96 @@
+<!--
+Used In File(s): z40k_shit\systems\detroid_economy\requisition_console.dm
+-->
+<h1>THERE ARE NO REFUNDS</h1>
+
+<!-- This shit should appear in the top right -->
+<div style="float: right; width: 32%; margin-top: 3px;">
+	<div class="line">
+		{{:helper.link('Signal Delivery', 'key', {'shuttle_time' : 1})}}
+	</div>
+	<div class="line">
+		{{if data.shuttle_status}}
+			<span class="Average">Cargo in Transit</span>
+		{{else}}
+			<span class="Average">Vessel Currently Docked</span>
+		{{/if}}
+	</div>
+</div>
+
+<!-- The below occurs in the bottom left -->
+<div class="item" style="float: left; width:100%; margin-bottom: 0px;">
+	<div class="itemLabel">
+		Identification:
+	</div>
+	<div class="itemContent">
+		{{:data.name_of_credholder}}
+		{{if data.authorized_name != ""}}
+			{{:data.name_of_source_account}} as {{:data.authorized_name}}
+		{{else}}
+			{{:data.name_of_source_account}}
+		{{/if}}
+	</div>
+</div>
+
+<!-- The below occurs in the bottom left -->
+<div class="item" style="width:100%; margin-bottom: 3px;">
+	<div class="itemLabel">
+		Funds on Credstick:
+	</div>
+	<div class="itemContent">
+		{{:data.requisition}}
+	</div>
+</div>
+
+<!-- The below occurs in the bottom left -->
+<div class="item" style="width:100%; margin-bottom: 3px;">
+	<div class="itemLabel">
+	{{:helper.link('Eject Credstick', 'key', {'eject_credstick' : '1'})}}
+	</div>
+</div>
+
+<!-- The below was float right and width 67 percent 
+But this is basically the main window, we just dump a list of random shit in and they click it.
+-->
+<div style="float: none; width: 100%;">
+	<div class="itemLabel">
+		Currently Available Objects
+	</div>
+	<div class="itemContentWide" style="width: 95%;">
+		<div class="statusDisplay">
+			<div class="line" style="overflow-y: auto; overflow-x: hidden; scrollbar-base-color: #336699; scrollbar-arrow-color: #ffffff; height: 184px">
+				{{for data.req_datums}}
+					<div class="line">
+						<div class="statusValue">
+							{{:helper.link(value.name, null, null, null, 'fixedLeftWidest noOverflow')}}
+							{{:helper.link(value.price, null, {'purchase' : value.name})}}REQ
+						</div>
+					</div>
+				{{/for}}
+			</div>
+		</div>
+	</div>
+</div>  
+
+<!-- The below occurs in the very bottom -->
+<div class='item'>
+	<div class='statusDisplay'>
+		<div class="line">
+			{{if data.shuttle_max_capacity}}
+				<div class="statusValue"><span class="bad">{{:data.shuttle_max_capacity}}</span>
+			{{else}}
+				<div class="statusValue"><span class="good">{{:data.shuttle_max_capacity}}</span>
+			{{/if}}
+				</div>
+		</div>
+		<br>
+		<br>
+		<u><b>Incoming Manifest</b></u>
+		{{for data.shipping_manifest}}
+			<div class="line">
+				{{:value.manifest}}
+			</div>
+		{{/for}}
+	</div>
+</div>
+

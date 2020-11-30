@@ -534,7 +534,7 @@ For vending packs, see vending_packs.dm*/
 		ui = new(user, src, ui_key, "order_console.tmpl", name, 600, 660)
 		ui.set_initial_data(data)
 		ui.open()
-
+ 
 /obj/machinery/computer/ordercomp/Topic(href, href_list)
 	if(..())
 		return 1

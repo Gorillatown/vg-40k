@@ -2,7 +2,7 @@
 	name = "Regeneration"
 	desc = "Heals you rather quickly."
 
-/datum/roguelike_effects/passives/regen/re_process()
+/datum/roguelike_effects/passives/regen/sc_process()
 	if(current_mob)
 		current_mob.adjustBruteLoss(-5)
 		current_mob.adjustToxLoss(-5)

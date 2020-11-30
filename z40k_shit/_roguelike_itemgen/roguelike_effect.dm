@@ -29,7 +29,7 @@ effects flags - How the effects interact with the mob
 *----Effects Flags-----*
 
 /------------Procedures------------------------/
-re_process() - Its called on process from a subsystem, occurs every 2 seconds. handles cooldowns, and passives
+sc_process() - Its called on process from a subsystem, occurs every 2 seconds. handles cooldowns, and passives
 re_effect_act()  - Its called for effects and curses
 NOTES: Remember to call if(..()) to check if we are good to go on the children.
 
@@ -59,12 +59,12 @@ Notes - Holds a ref to obj and mob gained on equipped, and lost on dropped/unequ
 	I.roguelike_effects += src
 
 	if(cooldown_max)
-		roguelike_process += src
+		scenario_process += src
 	
-/datum/roguelike_effects/proc/re_process()
+/datum/roguelike_effects/proc/sc_process()
 	cooldown--
 	if(cooldown <= 0)
-		roguelike_process -= src
+		scenario_process -= src
 
 /datum/roguelike_effects/proc/re_effect_act(mob/living/carbon/C, obj/item/I)
 	if(max_charges > 0)
@@ -78,5 +78,5 @@ Notes - Holds a ref to obj and mob gained on equipped, and lost on dropped/unequ
 			return 1
 		else
 			cooldown = cooldown_max
-			roguelike_process += src
+			scenario_process += src
 

@@ -101,7 +101,7 @@
 				PRE.current_mob = null
 				PRE.attached_object = null
 			roguelike_effects -= RE
-			roguelike_process -= RE
+			scenario_process -= RE
 
 	..()
 
@@ -300,7 +300,7 @@
 
 	if(roguelike_effects?.len)
 		for(var/datum/roguelike_effects/passives/RE in roguelike_effects)
-			roguelike_process -= RE
+			scenario_process -= RE
 			RE.current_mob = null
 
 ///called when an item is stripped off by another person, called BEFORE it is dropped. return 1 to prevent it from actually being stripped.
@@ -356,7 +356,7 @@
 		for(var/datum/roguelike_effects/RE in roguelike_effects)
 			if(istype(RE, /datum/roguelike_effects/passives))
 				var/datum/roguelike_effects/passives/PRE = RE
-				roguelike_process += RE
+				scenario_process += RE
 				PRE.current_mob = user
 				continue
 			
@@ -380,7 +380,7 @@
 
 	if(roguelike_effects?.len)
 		for(var/datum/roguelike_effects/passives/RE in roguelike_effects)
-			roguelike_process -= RE
+			scenario_process -= RE
 			RE.current_mob = null
 
 	return

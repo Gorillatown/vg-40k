@@ -1,6 +1,6 @@
 //For cargo crates, see /code/defines/obj/supplypacks.dm
 //For the cargo computers, see computer/cargo.dm
-
+ 
 //Config stuff
 #define SUPPLY_DOCKZ 2          //Z-level of the Dock.
 #define SUPPLY_STATIONZ 1       //Z-level of the Station.
@@ -128,7 +128,7 @@ var/datum/subsystem/supply_shuttle/SSsupply_shuttle
 	var/area/shuttle = cargo_shuttle.linked_area
 	if(!shuttle)
 		return
-
+ 
 	var/datum/money_account/cargo_acct = department_accounts["Cargo"]
 
 	for(var/atom/movable/MA in shuttle)
