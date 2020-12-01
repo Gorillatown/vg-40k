@@ -23,21 +23,24 @@ Used In File(s): z40k_shit\systems\detroid_economy\requisition_console.dm
 
 <!-- The below occurs in the bottom left -->
 <div class="item" style="float: left; width:100%; margin-bottom: 0px;">
-	<div class="itemLabel">
-		Identification :
-	</div>
-	<div class="itemContent">
-		{{:data.name_of_credholder}}
+	<div class="line">
+		<div class="itemLabel">
+			Identification :
+		</div>
+		<div class="itemContent">
+			{{:data.name_of_credholder}}
+		</div>
 	</div>
 </div>
-
 <!-- The below occurs in the bottom left -->
 <div class="item" style="width:100%; margin-bottom: 3px;">
-	<div class="itemLabel">
-		Requisition :
-	</div>
-	<div class="itemContent">
-		{{:data.requisition}}
+	<div class="line">
+		<div class="itemLabel">
+			Requisition :
+		</div>
+		<div class="itemContent">
+			{{:data.requisition}}
+		</div>
 	</div>
 </div>
 
@@ -54,11 +57,6 @@ But this is basically the main window, we just dump a list of random shit in and
 
 
 <div style="float: none; width: 100%;">
-	<div class="line>
-		<div class="itemLabel">
-			Currently Available Objects
-		</div>
-	</div>
 	<div class="itemContentWide" style="width: 95%;">
 		<div class="statusDisplay">
 			<div class="line" style="overflow-y: auto; overflow-x: hidden; scrollbar-base-color: #336699; scrollbar-arrow-color: #ffffff; height: 184px">
@@ -76,7 +74,7 @@ But this is basically the main window, we just dump a list of random shit in and
 </div>  
 
 <!-- The below occurs in the very bottom -->
-<div class='item'>
+<div class='item' style="width: 95%;">
 	<div class='statusDisplay'>
 		<div class="line">
 			{{if data.shuttle_max_capacity}}
