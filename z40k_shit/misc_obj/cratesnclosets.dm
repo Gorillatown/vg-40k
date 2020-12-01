@@ -2,11 +2,18 @@
 /obj/structure/closet/crate/id_secure
 	name = "ID secured Crate"
 	desc = "Registered to the person who requisitioned a smaller item."
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'z40k_shit/icons/obj/crates.dmi'
+	icon_state = "greencrate_closed"
 	icon_opened = "greencrate_open"
 	icon_closed = "greencrate_closed"
 	locked = TRUE
 	var/obj/item/weapon/card/id/id_ref = null //We need this exact ID
+
+/obj/structure/closet/crate/id_secure/New()
+	..()
+
+/obj/structure/closet/crate/id_secure/initialize()
+	..()
 
 /obj/structure/closet/crate/id_secure/Destroy()
 	id_ref = null
@@ -32,7 +39,7 @@
 	else
 		return FALSE
 
-/obj/structure/closet/crate/secure/attack_hand(mob/user)
+/obj/structure/closet/crate/id_secure/attack_hand(mob/user)
 	if(locked)
 		return 0
 	else

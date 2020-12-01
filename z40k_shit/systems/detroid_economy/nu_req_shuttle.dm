@@ -27,13 +27,10 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 	var/in_transit = FALSE 
 	var/off_station = TRUE
 
-	var/time_to_departure = 90
+	var/time_to_departure = 5//90 //a tick is 2 seconds, so 90*2 = 180 seconds. 180/60 = 3 Minutes
 	var/list/shipping_manifest = list() //List of objects being shipped. Spawns em all before it heads out.
 	var/list/to_ship = list()
 	var/max_capacity = 0 //If we are at max capacity
-
-/datum/shuttle/nu_req_shuttle/New()
-	..()
 
 /datum/shuttle/nu_req_shuttle/initialize()
 	. = ..()
@@ -46,8 +43,10 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 /datum/shuttle/nu_req_shuttle/proc/transit_time()
 	if(in_transit)
 		return 0
-	if((off_station) && (!max_capacity))
-		move_shuttle_objects()
+
+	if(off_station)
+		if(!max_capacity)
+			move_shuttle_objects()
 
 	in_transit = TRUE
 	scenario_process += src
@@ -60,14 +59,14 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 
 		if(off_station)
 			move_to_dock(dock_onmap)
-			time_to_departure = 60
+			time_to_departure = 5//60
 			shipping_manifest.Cut()
-			off_station = TRUE
+			off_station = FALSE
 		else
 			move_to_dock(dock_offmap)
 			remove_shuttle_objects() //Time to delete/process everything
-			time_to_departure = 90
-			off_station = FALSE
+			time_to_departure = 5//90
+			off_station = TRUE
 
 		scenario_process -= src
 
@@ -93,7 +92,7 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 			continue
 		var/contcount
 		for(var/atom/A in T.contents)
-			if(A.density)
+			if(islightingoverlay(A))
 				continue
 			contcount++
 		if(contcount)
@@ -114,14 +113,12 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 //Said crate will be locked unless the specific ID is used to open it.
 //A personal note is there is a datum on the id, we could move it to be possible on anything tbqh.
 //But the first argument is the ID, and the second argument is the req datum of the object bought.
-/datum/shuttle/nu_req_shuttle/proc/buy_objects(var/obj/item/weapon/card/id/credstick, var/datum/requisition_buyable/bought_obj)
+/datum/shuttle/nu_req_shuttle/proc/buy_objects(var/obj/item/weapon/card/id/credstick, var/datum/requisition_buyable/bought_object)
 	var/obj/structure/closet/crate/id_secure/current_crate = new()
+	var/datum_object_path = bought_object.object
 	to_ship += current_crate
 	current_crate.id_ref = credstick
 	current_crate.desc = "This order is registered to a identification of [credstick.registered_name]"
-	var/obj/the_obj = bought_obj.object
-	if(the_obj)
-		the_obj = new (current_crate)
-		shipping_manifest += "[the_obj.name] registered to [credstick.registered_name]"
-	else
-		message_admins("[bought_obj] HAS NO OBJECT PATH")
+	new datum_object_path(current_crate)
+	shipping_manifest += "[bought_object.name] registered to [credstick.registered_name]"
+

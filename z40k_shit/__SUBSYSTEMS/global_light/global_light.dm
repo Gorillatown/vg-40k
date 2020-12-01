@@ -81,14 +81,3 @@ var/global/list/day_and_night_lights = list()
 						if(istype(TITTIES, /turf/unsimulated/outside)) //If we are outside.
 							TITTIES.set_light(hogrange,hogpower,current_color) //Set it, starlighto scanno
 							break
-
-/*
-	for(var/cdir in cardinal)
-		var/turf/TITTIES = get_step(T,cdir)
-		if(istype(TITTIES, /turf/unsimulated/outside)) //If we are outside.
-			TITTIES.set_light(hogrange,hogpower,current_color) //Set it, starlighto scanno
-
-	for(var/curX in 1 to world.maxx)
-		for(var/curY in 1 to world.maxy)
-			T = locate(curX, curY, 1)
-*/

@@ -26,7 +26,7 @@ Along with like showing the last person to actually use the checkpoint.
 
 /obj/structure/patrol_checkpoint_master/Destroy()
 	..()
-
+ 
 /obj/structure/patrol_checkpoint_master/attack_hand(mob/user)
 	ui_interact(user)
 

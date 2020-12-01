@@ -261,7 +261,7 @@ For vending packs, see vending_packs.dm*/
 		if(SO)
 			orders_list.Add(list(list("ordernum" = SO.ordernum, "supply_type" = SO.object.name, "orderedby" = SO.orderedby, "authorized_name" = SO.authorized_name, "comment" = SO.comment)))
 	data["orders"] = orders_list
-
+ 
 	var/centcomm_list[0]
 	for(var/datum/centcomm_order/O in SSsupply_shuttle.centcomm_orders)
 		centcomm_list.Add(list(list("id" = O.id, "requested" = O.getRequestsByName(), "fulfilled" = O.getFulfilledByName(), "name" = O.name, "worth" = O.worth, "to" = O.acct_by_string)))
