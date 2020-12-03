@@ -10,8 +10,9 @@
 	supervisors = "Knight Officers, and your lord."
 	selection_color = "#f8cb69"
 	minimal_player_age = 7
-	outfit_datum = /datum/outfit/swamp_trooper
+	outfit_datum = /datum/outfit/new_swamp_trooper
 	species_whitelist = list("Human")
+//	alt_titles = list("PDF Trooper")
 	access = list(access_checkpoints)
 
 	landmark_job_override = TRUE
@@ -93,4 +94,68 @@
 /datum/outfit/swamp_trooper/post_equip(var/mob/living/carbon/human/H)
 	spawn(2 SECONDS)
 		to_chat(H,"<span class='good'>You are trooper of the 4th Detroid Burning Vipers, you gain prestige for the extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console. The dynasty you serve under is the Mannheim Dynasty.</span>")
+
+/*
+	New Swamp Trooper
+*/
+/datum/outfit/new_swamp_trooper
+	outfit_name = "new swamp trooper"
+	associated_job = /datum/job/patrolman
+	no_backpack = TRUE
+	RNG_modifier = TRUE
+
+	items_to_spawn = list(
+		"Default" = list(
+			slot_ears_str = /obj/item/device/radio/headset,
+			slot_w_uniform_str = /obj/item/clothing/under/patrolman_uniform_jg,
+			slot_shoes_str = /obj/item/clothing/shoes/patrolman_jg_boots,
+			slot_wear_suit_str = /obj/item/clothing/suit/armor/jg_patrolman_suit,
+			slot_head_str = list(/obj/item/clothing/head/redbandana,
+									/obj/item/clothing/head/milcap,
+									/obj/item/clothing/head/red_headband,
+									/obj/item/clothing/head/iron_helmet
+								),
+			slot_belt_str = /obj/item/weapon/dksword,
+			slot_s_store_str = /obj/item/weapon/gun/projectile/stubpistol,
+			slot_back_str  = /obj/item/weapon/storage/backpack/brownbackpack,
+			slot_r_hand  = /obj/item/weapon/gun/energy/lasgun
+		),
+	)
+
+	items_to_collect = list(
+	)
+
+	implant_types = list(
+	)
 	
+	id_type = /obj/item/weapon/card/id/imperial_guard_dogtag
+
+/datum/outfit/swamp_trooper/handle_faction(var/mob/living/M)
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
+
+/datum/outfit/swamp_trooper/post_equip(var/mob/living/carbon/human/H)
+	spawn(2 SECONDS)
+		to_chat(H,"<span class='good'>You are trooper of the 4th Detroid Burning Vipers, you gain prestige for the extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console. The dynasty you serve under is the Mannheim Dynasty.</span>")
+
+/*	
+	items_to_spawn = list(
+		"Default" = list(
+			slot_ears_str = list("PDF Trooper" = /obj/item/device/radio/headset),
+			slot_w_uniform_str = list("PDF Trooper" = /obj/item/clothing/under/patrolman_uniform_jg),
+			slot_shoes_str = list("PDF Trooper" = /obj/item/clothing/shoes/patrolman_jg_boots),
+			slot_wear_suit_str = list("PDF Trooper" = /obj/item/clothing/suit/armor/jg_patrolman_suit),
+			slot_head_str = list(
+				"PDF Trooper" = list(/obj/item/clothing/head/redbandana,
+									/obj/item/clothing/head/milcap,
+									/obj/item/clothing/head/red_headband,
+									/obj/item/clothing/head/iron_helmet),
+			),
+			slot_belt_str = list("PDF Trooper" = /obj/item/weapon/dksword),
+			slot_s_store_str = list("PDF Trooper" = /obj/item/weapon/gun/projectile/stubpistol),
+			slot_back_str = list("PDF Trooper" = /obj/item/weapon/storage/backpack/brownbackpack),
+			slot_r_hand = list("PDF Trooper" = /obj/item/weapon/gun/energy/lasgun)
+		),
+	)
+
+*/

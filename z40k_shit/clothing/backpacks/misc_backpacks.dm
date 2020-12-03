@@ -5,3 +5,10 @@
 	icon_state = "brownbackpack"
 	item_state = "brownbackpack"
 	species_fit = list("Ork", "Ork Nob", "Ork Warboss")
+
+/obj/item/weapon/storage/backpack/brownbackpack/pdf_trooper/New()
+	..()
+	new /obj/item/clothing/mask/gas/hecu(src)
+	new /obj/item/weapon/cell/lasgunmag(src)
+	new /obj/item/weapon/cell/lasgunmag(src)
+

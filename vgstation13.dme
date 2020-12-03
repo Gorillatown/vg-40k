@@ -2683,6 +2683,7 @@
 #include "z40k_shit\clothing\backpacks\cadian_backpacks.dm"
 #include "z40k_shit\clothing\backpacks\enginseerpack.dm"
 #include "z40k_shit\clothing\backpacks\jumppack.dm"
+#include "z40k_shit\clothing\backpacks\misc_backpacks.dm"
 #include "z40k_shit\clothing\backpacks\ork_backpacks.dm"
 #include "z40k_shit\clothing\belts\misc_belts.dm"
 #include "z40k_shit\clothing\belts\ork_belts.dm"

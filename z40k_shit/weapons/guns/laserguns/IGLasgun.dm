@@ -16,8 +16,8 @@
 					*/
 
 /obj/item/weapon/gun/energy/lasgun 
-	name = "M-Galaxy Pattern Lasgun"
-	desc = "Standard issue ranged weapon given to Guardsmen of the Imperial Guard."
+	name = "Detroid Mystery-Pattern Lasgun"
+	desc = "Its a standard issue lasgun handed to the Detroid troopers. It is manufactured in the sector, and you can certaintly see it has some odd and questionable characteristics."
 	icon = 'z40k_shit/icons/obj/ig/IGequipment.dmi'
 	icon_state = "lasgun100-nby-nscp"
 	item_state = "lasgun-unwielded-nby-nscp" //We jsut auto change neways
@@ -370,14 +370,14 @@
 	
 /obj/item/projectile/beam/medpower
 	name = "average laser"
-	damage = 25
+	damage = 30
 
 /obj/item/projectile/beam/medpower/degraded
-	damage = 15
+	damage = 25
 
 /obj/item/projectile/beam/lowpower
 	name = "low-power laser"
-	damage = 15
+	damage = 20
 
 /obj/item/projectile/beam/lowpower/degraded
-	damage = 10
+	damage = 15

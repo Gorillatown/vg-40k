@@ -96,6 +96,8 @@
 	if(!H || !H.mind)
 		return
 	
+	var/datum/job/concrete_job = new associated_job
+
 	pre_equip(H)
 	var/species = H.species.type //Species is the species type of the human we have inputted in.
 	var/list/L = items_to_spawn[species] //the list of L is the items to spawn + species key
@@ -113,16 +115,26 @@
 				continue
 		
 			var/obj_type = L[slot] //Obj type is species tied key list and then the slot key
-			if(islist(obj_type)) // Special objects for alt-titles, if the obj type is another list.
-				var/list/L2 = obj_type
-				obj_type = L2[H.mind.role_alt_title]
-				if(islist(obj_type))
-					if(gender_gear) //This would mean that you would use gender as the key for the lists.
-						var/list/L3 = obj_type
-						obj_type = L3[H.gender]
-						if(islist(obj_type)) //rng select on list in list in list in list
+			if(concrete_job.alt_titles.len)
+				if(islist(obj_type)) // Special objects for alt-titles, if the obj type is another list.
+					var/list/L2 = obj_type
+					obj_type = L2[H.mind.role_alt_title]
+					if(islist(obj_type))
+						if(gender_gear) //This would mean that you would use gender as the key for the lists.
+							var/list/L3 = obj_type
+							obj_type = L3[H.gender]
+							if(islist(obj_type)) //rng select on list in list in list in list
+								obj_type = pick(obj_type)
+						else //same deal except we now aren't tied to a gender key in
 							obj_type = pick(obj_type)
-					else //same deal except we now aren't tied to a gender key in
+			else
+				if(islist(obj_type)) //No alt titles, and a rng selection
+					if(gender_gear) //Gender gear no alt titles
+						var/list/L2 = obj_type
+						obj_type = L2[H.gender]
+						if(islist(obj_type))
+							obj_type = pick(obj_type)
+					else
 						obj_type = pick(obj_type)
 
 			if(!obj_type)
