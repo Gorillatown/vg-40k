@@ -171,34 +171,38 @@
 					break
 				sleep(1)
 			
-			MOTHERFUCKER = new result_type(user.loc)
-			to_chat(user,"<span class='good'> You finish crafting the [title]</span>")
+			if(!failed)
+				MOTHERFUCKER = new result_type(user.loc)
+				to_chat(user,"<span class='good'> You finish crafting the [title]</span>")
+				return
 		else
 			to_chat(user,"<span class='bad'>You failed the craft the [title]</span>")
+			return
 
-		if(jokes_on_you_cunt.len)
-			var/extra_force = 0
-			for(var/obj/item/fucked in jokes_on_you_cunt)
-				to_chat(user, "<span class='sinister'> You use extra resources </span>")
-				extra_force += 5
-				qdel(fucked)
-		
-			if(!failed)
-				if(istype(MOTHERFUCKER, /obj/item))
-					var/obj/item/OHYEAH = MOTHERFUCKER
-					switch(extra_force)
-						if(10)
-							to_chat(user, "<span class='good'> Your object seems notably stronger than normal.</span>")
-							OHYEAH.desc += "<span class='good'> This object seems to be of high quality.</span>"
-						if(11 to 30)
-							to_chat(user,"<span class='good'> You feel power emanating from this object.</span>")
-							if(prob(20))
-								OHYEAH.desc += "<span class='sinister'> This object pulses with OVERWHELMING power.</span>"
-								extra_force += rand(10,50)
-							else
-								OHYEAH.desc += "<span class='sinister'> You feel power emanating from this object.</span>"
-								extra_force += 10
-					OHYEAH.force += extra_force
+		if(!failed)
+			if(jokes_on_you_cunt.len)
+				var/extra_force = 0
+				for(var/obj/item/fucked in jokes_on_you_cunt)
+					to_chat(user, "<span class='sinister'> You use extra resources </span>")
+					extra_force += 5
+					qdel(fucked)
+			
+				if(!failed)
+					if(istype(MOTHERFUCKER, /obj/item))
+						var/obj/item/OHYEAH = MOTHERFUCKER
+						switch(extra_force)
+							if(10)
+								to_chat(user, "<span class='good'> Your object seems notably stronger than normal.</span>")
+								OHYEAH.desc += "<span class='good'> This object seems to be of high quality.</span>"
+							if(11 to 30)
+								to_chat(user,"<span class='good'> You feel power emanating from this object.</span>")
+								if(prob(20))
+									OHYEAH.desc += "<span class='sinister'> This object pulses with OVERWHELMING power.</span>"
+									extra_force += rand(10,50)
+								else
+									OHYEAH.desc += "<span class='sinister'> You feel power emanating from this object.</span>"
+									extra_force += 10
+						OHYEAH.force += extra_force
 	else
 		to_chat(user,"<span class='warning'> You do not have enough materials near you. </span>")
 		return 0

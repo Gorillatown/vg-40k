@@ -1203,7 +1203,7 @@ Use this proc preferably at the end of an equipment loadout
 		pluralcheck = " [deathtimeminutes] minutes and"
 	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 	to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
-	if (deathtime < (respawn_modifier+(config.respawn_delay*600)))
+	if(deathtime < respawn_modifier+config.respawn_delay*600)
 		to_chat(usr, "You must wait [config.respawn_delay] minutes to respawn! Your current respawn modifier is [respawn_modifier/600] Minutes.")
 		return
 	else 

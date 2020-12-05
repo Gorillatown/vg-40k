@@ -29,7 +29,7 @@ REVIVAL_CLONING 1
 REVIVAL_BRAIN_LIFE -1
 
 ## Amount of time users must wait to respawn (as a human, assuming the server has respawn enabled)
-RESPAWN_DELAY 1
+RESPAWN_DELAY 2
 
 
 ### MOB MOVEMENT ###

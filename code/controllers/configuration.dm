@@ -58,7 +58,7 @@
 	var/allow_ai = 1					// allow ai job
 	var/hostedby = null
 	var/respawn = 1
-	var/respawn_delay=30
+	var/respawn_delay = 5
 	var/respawn_as_mommi = 0
 	var/respawn_as_mouse = 1
 	var/guest_jobban = 1

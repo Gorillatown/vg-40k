@@ -213,6 +213,7 @@
 //Appended in one place
 /mob/living/carbon/human/proc/initial_liveattr()
 
+	respawn_modifier = species.balancing_respawn_modifier
 	attribute_strength = species.base_strength
 	attribute_strength_natural_limit = species.base_strength_natural_limit
 		
