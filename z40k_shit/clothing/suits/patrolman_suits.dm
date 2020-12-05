@@ -29,8 +29,8 @@
 	name = "Heavy Metal Chest and Groin Protection"
 	desc = "At some point, the troopers ditched the shoulderpads and opted for protecting the parts they liked."
 	icon = 'z40k_shit/icons/obj/clothing/suits.dmi'
-	icon_state = "patrolman" //Check: Its there
-	item_state = "patrolman"//Check: Its there
+	icon_state = "patrolman_jg" //Check: Its there
+	item_state = "patrolman_jg"//Check: Its there
 	body_parts_covered = UPPER_TORSO
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
 	armor = list(melee = 50, bullet = 50, laser = 70,energy = 25, bomb = 60, bio = 20, rad = 0)
