@@ -25,7 +25,6 @@
 
 /mob/living/carbon/human/disarm_mob(mob/living/target)
 	add_logs(src, target, "disarmed", admin = (src.ckey && target.ckey) ? TRUE : FALSE) //Only add this to the server logs if both mobs were controlled by player
-	var/agi_vs_dex
 
 	if(ishuman(target))
 		var/mob/living/carbon/human/T = target
@@ -40,27 +39,30 @@
 			visible_message("<span class='danger'>[src] places a hand over [target]'s mouth!</span>")
 			return
 
-		if(attribute_dexterity >= T.attribute_agility)
-			agi_vs_dex = (attribute_dexterity - T.attribute_agility)
-			//In the case of whether it misses or not, if its negative it adds higher probability
-			//In the case of whether we knock someone on they ass, it adds so if its negative it reduces probability.
-
 	if(target.disarmed_by(src))
 		return
-
-	if(prob(40 - agi_vs_dex)) //40% miss chance
+	
+	//VG 40k - Disarm Stat modifiers
+	if(prob(25-(attribute_dexterity/4))) //40% miss chance
+		var/flavor_msg
+		if(prob(50))
+			flavor_msg = pick(disarm_flavors_1_t_a)
+			visible_message("<span class='danger'>[target] [flavor_msg] [src]!</span>")
+		else
+			flavor_msg = pick(disarm_flavors1_a_t)
+			visible_message("<span class='danger'>[src] [flavor_msg] [target]!</span>")
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
-		visible_message("<span class='danger'>[src] has attempted to disarm [target]!</span>")
 		return
 
 	do_attack_animation(target, src)
 
-	if(prob(40 + agi_vs_dex)) //True chance of something happening per click is hit_chance*event_chance, so in this case the stun chance is actually 0.6*0.4=24%
+	if(prob(25-(target.attribute_agility/2))) //True chance of something happening per click is hit_chance*event_chance, so in this case the stun chance is actually 0.6*0.4=24%
 		target.apply_effect(4, WEAKEN)
 		target.stat_increase(ATTR_AGILITY,10)
 		stat_increase(ATTR_DEXTERITY,50)
+		var/flavor_msg = pick(disarm_flavors_2)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-		visible_message("<span class='danger'>[src] has pushed [target]!</span>")
+		visible_message("<span class='danger'>[src] [flavor_msg] [target]!</span>")
 		add_logs(src, target, "pushed", admin = (src.ckey && target.ckey) ? TRUE : FALSE) //Only add this to the server logs if both mobs were controlled by player
 		return
 

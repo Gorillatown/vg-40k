@@ -15,6 +15,7 @@
 #include "__40kEARLYLoad\ATCHDEF.dm"
 #include "__40kEARLYLoad\CAMERANETS.dm"
 #include "__40kEARLYLoad\CHEMS.dm"
+#include "__40kEARLYLoad\flavor_texts.dm"
 #include "__40kEARLYLoad\global_lists.dm"
 #include "__40kEARLYLoad\global_vars.dm"
 #include "__40kEARLYLoad\HACKJOB.dm"

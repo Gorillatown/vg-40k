@@ -257,9 +257,9 @@ emp_act
 
 		switch(hit_area)
 			if(LIMB_HEAD)//Harder to score a stun but if you do it lasts a bit longer
-/*				if(prob(final_force))
+				if(prob(final_force))
 					if(apply_effect(20, PARALYZE, armor))
-						visible_message("<span class='danger'>[src] has been knocked unconscious!</span>")*/
+						visible_message("<span class='danger'>[src] has been knocked unconscious!</span>")
 
 				if(bloody)//Apply blood
 					if(wear_mask)
@@ -273,9 +273,9 @@ emp_act
 						update_inv_glasses(0)
 
 			if(LIMB_CHEST)//Easier to score a stun but lasts less time
-/*				if(prob((final_force + 10)))
+				if(prob((final_force + 10)))
 					apply_effect(5, WEAKEN, armor)
-					visible_message("<span class='danger'>[src] has been knocked down!</span>")*/
+					visible_message("<span class='danger'>[src] has been knocked down!</span>")
 
 				if(bloody)
 					bloody_body(src)

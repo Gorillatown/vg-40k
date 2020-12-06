@@ -98,7 +98,7 @@
 					break //If the turf in which to spawn a log doesn't exist, stop the thing
 
 				var/obj/item/I = new log_type(our_turf) //Spawn a log and throw it at the "current_turf"
-				I.throw_at(current_turf, 10, 10)
+				I.throw_at(current_turf, 10, 2)
 
 				current_turf = get_step(current_turf, falling_dir)
 

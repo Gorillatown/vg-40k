@@ -9,6 +9,7 @@
 	overlay_state = "perspective_cliff_overlay"
 	legacywalls = FALSE
 	var/rockbase = "cliff"
+	mining_difficulty = MINE_DIFFICULTY_TOUGH
 
 /turf/unsimulated/mineral/perspective_rock/bottom //mostly a map helper honestly.
 	icon_state = "cliff_bottom"
@@ -45,6 +46,9 @@
 	mining_difficulty = MINE_DIFFICULTY_DENSE
 	minimum_mine_time = 99 SECONDS //GL HF
 	rockbase = "densecliff"
+
+/turf/unsimulated/mineral/perspective_rock/bedrock/ex_act(severity)
+	return
 
 /*	This unironically works at adding shadow borders, but fuck that shit yo.
 	var/image/img = image('z40k_shit/icons/turfs/turf_outline_overlays.dmi',"main",layer = SIDE_LAYER)
