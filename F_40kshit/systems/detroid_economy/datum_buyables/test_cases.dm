@@ -1,3 +1,16 @@
+/* Basically trading some memory off to be lazy,
+	We can actually weight the list too.
+	Its basically what the requisition system randomly picks from in scenario_controller
+*/
+var/list/req_obj_reference_list = list(
+	/datum/requisition_buyable/eviscerator = 20,
+	/datum/requisition_buyable/chain_axe = 40,
+	/datum/requisition_buyable/needler = 1,
+	/datum/requisition_buyable/lasgun = 60,
+	/datum/requisition_buyable/plasgun = 5,
+	/datum/requisition_buyable/plasgun_backpack = 5
+)
+
 /datum/requisition_buyable
 	var/name = "PARENT" //Name for display purposes
 	var/req_price = 9999999 //The price of the object

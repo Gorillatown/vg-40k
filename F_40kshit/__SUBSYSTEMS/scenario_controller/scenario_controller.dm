@@ -23,6 +23,7 @@ var/datum/job_quest/global_tracker/quest_master //Datum storage for job_quest sh
 var/list/scenario_order_one = list() // A list of objects that fire on one tick
 var/list/scenario_order_two = list() //A list of objects that fire on the next they alternate
 var/list/patrol_checkpoints = list() //A list of patrol checkpoints on the map.
+var/list/requisition_buyable_obj_list = list()
 
 //These are basically point totals
 var/ig_total_points = 0
@@ -43,6 +44,7 @@ var/list/scenario_process = list() //basically it calls everything in this list 
 	flags         = SS_BACKGROUND|SS_FIRE_IN_LOBBY
 
 	var/ticker = 1 //Basically ticks in fire to help keep traps synced to a timing
+	var/next_req_refill_time = 0 //Basically world_time + minutes
 
 	/*
 		Segment one - Immaterium Dungeon
@@ -81,6 +83,10 @@ var/list/scenario_process = list() //basically it calls everything in this list 
 
 	if(ticker >= 2)
 		ticker = 0
+
+	if(world.time > next_req_refill_time)
+		fill_req_list()
+		next_req_refill_time = world.time + 10 MINUTES
 	/*
 	Forewarning: we are turning safety checks off for scenario_process.
 	You may ask why? Its because its handling a lot of datums that aren't on the same path.
@@ -108,3 +114,13 @@ var/list/scenario_process = list() //basically it calls everything in this list 
 							H.loc = END.loc
 					pads.activated = FALSE
 					scenario_one_participants += H
+
+/datum/subsystem/scenario_controller/proc/fill_req_list()
+	for(var/datum/requisition_buyable/CUR_OBJ in requisition_buyable_obj_list)
+		requisition_buyable_obj_list -= CUR_OBJ
+		qdel(CUR_OBJ)
+		
+	for(var/i=0 to req_obj_reference_list.len)
+		var/picked_datum = pickweight(req_obj_reference_list)
+		var/datum/requisition_buyable/REQ_OBJ = new picked_datum
+		requisition_buyable_obj_list += REQ_OBJ

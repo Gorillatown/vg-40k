@@ -21,11 +21,6 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	//req_price - This is a price aka integer
 	//object - This is a path to a object
 
-	//This is an associated list, basically the contents are tagged as [name] = datum.
-	//Ex: "Eviscerator" = /datum/requisition_buyable/eviscerator
-	//Its done that way cause we dealin wit strings on the href shit, and we gotta find our boys.
-	var/list/buyable_obj_list = list() 
-	
 	//I'm still undecided on whether we tie the purchase to the object on the screen.
 	//Or let them hit purchase to move it into the list, so they can have a shopping cart.
 	//var/list/current_datums = list() //We jam datums in, and move them out when necessary. Aka purchase holder.
@@ -39,18 +34,10 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 
 /obj/structure/requisition_console/initialize()
 	..()
-	fill_buyables_list()
 
 /obj/structure/requisition_console/Destroy()
 	..()
  
-//This proc fills the buyables list with datums to ref data from.
-//TODO: Move it to a global singular iteration.
-/obj/structure/requisition_console/proc/fill_buyables_list()
-	for(var/req_datum in typesof(/datum/requisition_buyable) - /datum/requisition_buyable)
-		var/datum/requisition_buyable/req_datum_ref = new req_datum
-		buyable_obj_list += req_datum_ref
-	
 //we handle the card slot in and out on attackby.
 /obj/structure/requisition_console/attackby(obj/item/weapon/W, mob/user)
 	..()
@@ -72,14 +59,11 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 /obj/structure/requisition_console/Topic(href, href_list)
 	if(href_list["purchase"]) 
 		if(contained_card)
-			to_chat(world, "WE HIT")
 			var/req_on_credstick = contained_card.req_holder.requisition
 			var/datum/requisition_buyable/req_datum_ref
 			var/comparison_string = href_list["selection"]
 			var/price = text2num(href_list["sel_price"])
-			to_chat(world, "[comparison_string]")
-			to_chat(world,"[price]")
-			for(var/datum/requisition_buyable/req_datum in buyable_obj_list)
+			for(var/datum/requisition_buyable/req_datum in requisition_buyable_obj_list)
 				if(req_datum.name == comparison_string)
 					req_datum_ref = req_datum
 					break
@@ -88,7 +72,7 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 				return
 			if(req_on_credstick >= price)
 				contained_card.req_holder.requisition -= price
-				buyable_obj_list -= req_datum_ref
+				requisition_buyable_obj_list -= req_datum_ref
 				nu_req_shuttle.buy_objects(contained_card,req_datum_ref)
 			else
 				say("Insufficient Worth") //A denial message, and a return, no goods.
@@ -122,7 +106,7 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	data["shuttle_max_capacity"] = nu_req_shuttle.max_capacity
 
 	var/buyables_list[0]
-	for(var/datum/requisition_buyable/req_buyable in buyable_obj_list)
+	for(var/datum/requisition_buyable/req_buyable in requisition_buyable_obj_list)
 		buyables_list.Add(list(list("name" = req_buyable.name, "price" = req_buyable.req_price, "quality" = req_buyable.quality))) 
 	data["buyables"] = buyables_list
 	
@@ -136,7 +120,7 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "requisition_console.tmpl", "Requisition Console", 440, 500)
+		ui = new(user, src, ui_key, "requisition_console.tmpl", "Requisition Console", 450, 500)
 		// when the ui is first opened this is the data it will use
 		ui.set_initial_data(data)
 		// open the new ui window
