@@ -4,6 +4,7 @@ JTGSZ defined as the holder of the github account JTGSZ.
 Applicable Work defined as original work (code/art/sound assets) done by the holder of the github account JTGSZ.
 Applicable Work is (NOT) code/art done by people who are not the holder of the github account JTGSZ.
 
-All other work is licensed as GPL3 unless their creator states otherwise.
+All codework not created by github account JTGSZ is licensed as GPL3 unless it is stated otherwise.
+All other art/sound assets not created by github account JTGSZ use the original license they came with which is CC-BY-SA-NC 3.0 unless stated otherwise.
 
-(Feel free to ask for a relicense, but If you haven't stomped on my feet I won't care if you re-use it, I mostly did this because someones being very rude atm.)
+(Feel free to ask for a re-license, but If you haven't actively antagonized me. I won't care if you use it even if you don't tell me, I mostly did this because someones being very rude atm.)
