@@ -27,6 +27,14 @@
 	can_enlarge = FALSE
 	map_vault_area = /area/warhammer/snow
 
+/****************************
+**	Day and Night Lighting **
+**	See: daynightcycle.dm  **
+****************************/
+/datum/subsystem/daynightcycle
+	flags = SS_FIRE_IN_LOBBY
+	daynight_z_lvl = STATION_Z
+
 
 ////////////////////////////////////////////////////////////////
 #include "maptestsnow.dmm"

@@ -38,6 +38,14 @@
 	//so you can just read it out on dream daemon instead of actually joining game.
 	dd_debug = FALSE
 
+/****************************
+**	Day and Night Lighting **
+**	See: daynightcycle.dm  **
+****************************/
+/datum/subsystem/daynightcycle
+	flags = SS_FIRE_IN_LOBBY
+	daynight_z_lvl = STATION_Z
+
 /datum/map/active/map_specific_init()
 	new /datum/loada_gen(src, "prototype_desert")
 

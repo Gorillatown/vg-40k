@@ -3,7 +3,7 @@
 /obj/machinery/singularity/narsie/large/exit
 	name = "Bluespace Rift"
 	desc = "NO TIME TO EXPLAIN, JUMP IN"
-	icon = 'z40k_shit/icons/cleanup_time.dmi'
+	icon = 'F_40kshit/icons/cleanup_time.dmi'
 	icon_state = "error"
 	move_self = FALSE
 	announce = FALSE

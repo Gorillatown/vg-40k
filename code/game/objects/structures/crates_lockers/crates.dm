@@ -196,8 +196,8 @@
 	greenlight = "largebing"
 	sparks = "largebinsparks"
 	emag = "largebinemag"
-	sound_effect_open = 'z40k_shit/sounds/misc_effects/bin_open.ogg'
-	sound_effect_close = 'z40k_shit/sounds/misc_effects/bin_close.ogg'
+	sound_effect_open = 'F_40kshit/sounds/misc_effects/bin_open.ogg'
+	sound_effect_close = 'F_40kshit/sounds/misc_effects/bin_close.ogg'
 
 
 /obj/structure/closet/crate/secure/bin/attackby(var/obj/item/weapon/W, var/mob/user)

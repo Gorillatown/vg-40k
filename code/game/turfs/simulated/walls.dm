@@ -1,7 +1,7 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of metal used to separate rooms."
-	//icon = 'z40k_shit/icons/turfs/walls.dmi'
+	//icon = 'F_40kshit/icons/turfs/walls.dmi'
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "metal0"
 	var/mineral = "metal"

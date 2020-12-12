@@ -25,13 +25,18 @@
 	center_y = 125
 	only_spawn_map_exclusive_vaults = FALSE
 	can_enlarge = FALSE
-	daynight_cycle = STATION_Z // TURN IT ON
-
-
 	map_vault_area = /area/warhammer/desert
 
 /datum/map/active/map_specific_init()
 	new /datum/loada_gen(src, "prototype_swamp")
+
+/****************************
+**	Day and Night Lighting **
+**	See: daynightcycle.dm  **
+****************************/
+/datum/subsystem/daynightcycle
+	flags = SS_FIRE_IN_LOBBY
+	daynight_z_lvl = STATION_Z
 
 ////////////////////////////////////////////////////////////////
 #include "greenGulch.dmm"

@@ -419,7 +419,7 @@ var/global/list/damage_icon_parts = list()
 		add_image = 1
 		for(var/datum/mutation/WM in warp_mutations)
 			if(WM.icon_state)
-				var/image/I = image(icon = 'z40k_shit/icons/mutations.dmi', icon_state = WM.icon_state)
+				var/image/I = image(icon = 'F_40kshit/icons/mutations.dmi', icon_state = WM.icon_state)
 				I.blend_mode = BLEND_MULTIPLY
 				if(WM.overlay) 
 					O.overlays += I
