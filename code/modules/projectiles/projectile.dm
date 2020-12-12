@@ -511,7 +511,7 @@ var/list/impact_master = list()
 			timestopped = loc.timestopped
 			tS = 0
 	return
-
+ 
 /obj/item/projectile/proc/dumbfire(var/dir) // for spacepods, go snowflake go
 	if(!dir)
 		//del(src)

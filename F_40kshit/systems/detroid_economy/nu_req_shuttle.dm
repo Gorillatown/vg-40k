@@ -115,10 +115,11 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 //But the first argument is the ID, and the second argument is the req datum of the object bought.
 /datum/shuttle/nu_req_shuttle/proc/buy_objects(var/obj/item/weapon/card/id/credstick, var/datum/requisition_buyable/bought_object)
 	var/obj/structure/closet/crate/id_secure/current_crate = new()
-	var/datum_object_path = bought_object.object
+	var/datum_object_path = bought_object.object //Get the object path from the datum
 	to_ship += current_crate
 	current_crate.id_ref = credstick
 	current_crate.desc = "This order is registered to a identification of [credstick.registered_name]"
-	new datum_object_path(current_crate)
+	new datum_object_path(current_crate) //Spawn it in a crate
 	shipping_manifest += "[bought_object.name] registered to [credstick.registered_name]"
+	bought_object.handle_modifiers(datum_object_path) //Handle quality modifiers
 

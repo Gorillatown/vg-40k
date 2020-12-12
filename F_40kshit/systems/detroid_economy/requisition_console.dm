@@ -123,7 +123,7 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 
 	var/buyables_list[0]
 	for(var/datum/requisition_buyable/req_buyable in buyable_obj_list)
-		buyables_list.Add(list(list("name" = req_buyable.name, "price" = req_buyable.req_price))) 
+		buyables_list.Add(list(list("name" = req_buyable.name, "price" = req_buyable.req_price, "quality" = req_buyable.quality))) 
 	data["buyables"] = buyables_list
 	
 	var/shipping_list[0]
@@ -136,7 +136,7 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	if(!ui)
 		// the ui does not exist, so we'll create a new() one
         // for a list of parameters and their descriptions see the code docs in \code\\modules\nano\nanoui.dm
-		ui = new(user, src, ui_key, "requisition_console.tmpl", "Requisition Console", 400, 500)
+		ui = new(user, src, ui_key, "requisition_console.tmpl", "Requisition Console", 440, 500)
 		// when the ui is first opened this is the data it will use
 		ui.set_initial_data(data)
 		// open the new ui window

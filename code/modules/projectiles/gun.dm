@@ -45,6 +45,7 @@
 	var/conventional_firearm = 1	//Used to determine whether, when examined, an /obj/item/weapon/gun/projectile will display the amount of rounds remaining.
 
 	var/currently_zoomed = FALSE //40k EDIT - MARKED - JTGSZ
+	var/quality_modifier = FALSE //40k EDIT - Gun quality
 	var/my_scope
 	
 	var/projectile_color = null
@@ -229,6 +230,10 @@
 
 		user.apply_inertia(get_dir(target, user))
 
+	if(quality_modifier)
+		in_chamber.force += round(quality_modifier/2)
+		in_chamber.kill_count += quality_modifier
+	
 	play_firesound(user, reflex)
 
 	in_chamber.original = target

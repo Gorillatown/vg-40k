@@ -64,6 +64,13 @@ But this is basically the main window, we just dump a list of random shit in and
 					<div class="line">
 						<div class="statusValue">
 							{{:helper.link(value.name, null, {'purchase' : '1', 'selection' : value.name, 'sel_price' : value.price}, null, 'fixedLeftWidest noOverflow')}}
+							{{if value.quality <= 4}}
+								<span class="bad"> Poor </span>
+							{{else value.quality >= 5}}
+								<span class="average"> Average </span>
+							{{else value.quality >= 7}}
+								<span class="good"> Good </span>
+							{{/if}}
 							{{:value.price}} REQ
 						</div>
 					</div>

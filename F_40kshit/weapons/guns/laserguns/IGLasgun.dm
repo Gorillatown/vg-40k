@@ -118,19 +118,19 @@
 		switch(degradation_state)
 			if(0 to 5)
 				projectile_type = /obj/item/projectile/beam/lowpower/degraded
-			if(6 to 10)
+			if(6 to 50)
 				projectile_type = /obj/item/projectile/beam/lowpower
 	if(lasgun_shot_strength == 2)
 		switch(degradation_state)
 			if(0 to 5)
 				projectile_type = /obj/item/projectile/beam/medpower/degraded
-			if(6 to 10)
+			if(6 to 50)
 				projectile_type = /obj/item/projectile/beam/medpower
 	if(lasgun_shot_strength == 3)
 		switch(degradation_state)
 			if(0 to 5)
 				projectile_type = /obj/item/projectile/beam/maxpower/degraded
-			if(6 to 10)
+			if(6 to 50)
 				projectile_type = /obj/item/projectile/beam/maxpower
 	in_chamber = null
 		
