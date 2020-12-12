@@ -24,6 +24,7 @@
 	center_y = 125
 	only_spawn_map_exclusive_vaults = FALSE
 	can_enlarge = FALSE
+	daynight_cycle = STATION_Z // TURN IT ON
 
 	map_vault_area = /area/warhammer/desert
 

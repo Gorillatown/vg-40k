@@ -32,6 +32,9 @@
 	var/zAsteroid = 5
 	var/zDeepSpace = 6
 
+	var/daynight_cycle = FALSE // Does it got day and night firin?
+
+
 	//Center of thunderdome admin room
 	var/tDomeX = 0
 	var/tDomeY = 0

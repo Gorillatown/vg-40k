@@ -19,6 +19,7 @@
 	enabled_jobs = list()
 
 	load_map_elements = list()
+	daynight_cycle = STATION_Z // TURN IT ON
 
 	center_x = 50
 	center_y = 50
