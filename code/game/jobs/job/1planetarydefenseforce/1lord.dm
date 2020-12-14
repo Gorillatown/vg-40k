@@ -33,7 +33,6 @@
 			slot_shoes_str = /obj/item/clothing/shoes/lord_boots,
 			slot_wear_suit_str = /obj/item/clothing/suit/armor/lord_suit,
 			slot_belt_str = /obj/item/weapon/dksword,
-			slot_r_store_str = /obj/item/weapon/shield/energy,
 			slot_s_store_str = /obj/item/weapon/gun/projectile/automatic/boltpistol,
 			slot_l_store_str = /obj/item/weapon/gun/projectile/needler,
 			slot_back_str = /obj/item/weapon/storage/backpack/brownbackpack

@@ -8,5 +8,5 @@
 	_color = "knight_officer"
 	has_sensor = 2
 	species_restricted = list("Human")
-	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
-	armor = list(melee = 50, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
+	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY 
+	armor = list(melee = 10, bullet = 10, laser = 10, energy = 25, bomb = 60, bio = 100, rad = 50)

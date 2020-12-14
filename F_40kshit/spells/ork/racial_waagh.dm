@@ -1,14 +1,14 @@
 /spell/aoe_turf/waaagh1	//Raaagh
 	name = "WAAAGH!"
 	abbreviation = "WG"
-	desc = "Makes ya faster (And heals if theres more than 4 orks around you)"
+	desc = "Makes ya faster."
 	panel = "Racial Abilities"
 	override_base = "ork"
 	override_icon = 'F_40kshit/icons/buttons/warpmagic.dmi' //Basically points us to a different dmi.
 	hud_state = "racial_waagh"
 	spell_flags = INCLUDEUSER
 	charge_type = Sp_RECHARGE
-	charge_max = 190
+	charge_max = 150
 	invocation_type = SpI_NONE
 	range = 4
 	cast_sound = 'F_40kshit/sounds/waagh1.ogg'
@@ -19,10 +19,10 @@
 	for(var/T in targets)
 		var/mob/living/carbon/human/H = T
 		H.vis_contents += new /obj/effect/overlay/weak_green_circle(H,10)
-		H.movement_speed_modifier += 0.2
+		H.movement_speed_modifier += 0.4
 		//healcounter++
 		spawn(3 SECONDS)
-			H.movement_speed_modifier -= 0.2
+			H.movement_speed_modifier -= 0.4
 
 	/*		
 	if(healcounter >= 5)

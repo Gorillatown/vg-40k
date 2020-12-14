@@ -32,7 +32,7 @@ Gretchin 	->	 Ork 	->	 Nob	 -> 	Warboss
 		else if(isgretchin(src))
 			return 1
 		else
-			if(ork_growth >= 500)
+			if(ork_growth >= 250)
 				to_chat(src, "<span class='good'>You feel a bit bigga and meana.</span>")
 				if(set_species("Ork Nob"))
 					regenerate_icons()

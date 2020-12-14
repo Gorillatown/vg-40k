@@ -61,13 +61,13 @@
 			if(ismultitool(our_protagonist.get_active_hand()))
 				our_protagonist.visible_message("<span class='notice'>[our_protagonist] pulls the device apart and begins to reconfigure it.</span>", "<span class='notice'>Not sure if this will work but it is worth a shot.</span>", "<span class='warning'>You can't see shit.</span>")
 				qdel(our_protagonist.get_active_hand())
-				new /obj/item/device/hacktool(our_protagonist.loc)
+				our_protagonist.put_in_hands(new /obj/item/device/hacktool(our_protagonist))
 				alignment--
 				return 1
 			else if(ismultitool(our_protagonist.get_inactive_hand()))
 				our_protagonist.visible_message("<span class='notice'>[our_protagonist] pulls the device apart and begins to reconfigure it.</span>", "<span class='notice'>Not sure if this will work but it is worth a shot.</span>", "<span class='warning'>You can't see shit.</span>")
 				qdel(our_protagonist.get_inactive_hand())
-				new /obj/item/device/hacktool(our_protagonist.loc)
+				our_protagonist.put_in_hands(new /obj/item/device/hacktool(our_protagonist))
 				alignment--
 				return 1
 			else
@@ -176,7 +176,7 @@
 		if(-26)
 			to_chat(our_protagonist, "<span class='notice'>You don't remember how this got in your pocket... It might be the work of the laughing god. You have a feeling it will help you get the armor you need. Perhaps we should start with that strange black religious vending machine in the room we awoke from.</span>")
 			our_protagonist.visible_message("[our_protagonist] fishes a strange coin out of \his pocket!")
-			new /obj/item/weapon/coin/harlequin(our_protagonist.loc)
+			our_protagonist.put_in_hands(new /obj/item/weapon/coin/harlequin(our_protagonist))
 			alignment--
 		if(-27)
 			for(var/obj/item/clothing/suit/armor/harlequin/HS in our_protagonist.contents)

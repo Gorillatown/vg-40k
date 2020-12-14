@@ -53,7 +53,7 @@
 	layer += rangevalue * (1 - (y + 0.5 * (x & 1)) / world.maxy)
 
 /obj/structure/flora/tree/examine(mob/user)
-	.=..()
+	. = ..()
 
 	//Tell user about the height. Note that normally height ranges from 3 to 8 (with a 5% chance of having 6 to 15 instead)
 	to_chat(user, "<span class='info'>It appears to be about [height*3] feet tall.</span>")
@@ -200,7 +200,8 @@
 	name = "Tall Tree"
 	icon = 'F_40kshit/icons/doodads/flora128x160.dmi'
 	desc = "Its like a masculine version of a regular tree. Aka, the non-bitch tree"
-	pixel_x = -32
+	pixel_x = -50
+	pixel_y = -25
 
 /obj/structure/flora/tree/swamp/tall/New()
 	..()

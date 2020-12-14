@@ -3,7 +3,9 @@
 							*/
 /datum/button_crafting
 	var/temp = null
-	var/next_desc_fire //CD so we can't have someone rapidfire flood with the mek desc
+	var/next_action_fire //CD so we can't have someone rapidfire flood with the mek desc
+	var/currently_active = FALSE //Are we currently active?
+	var/safety_cd 
 	var/list/possible_recipes = list()
 
 /datum/button_crafting/New(var/list/recipes)
@@ -33,26 +35,28 @@
 		return
 
 	if(href_list["build"])
-		var/datum/crafting_recipes/MR = locate(href_list["recipe"])
-		if(consume_resources(L,MR))
-			return 1
+		if((world.time >= next_action_fire)&&(!currently_active)) //only do this every 2 seconds.
+			var/datum/crafting_recipes/MR = locate(href_list["recipe"])
+			if(consume_resources(L,MR))
+				return 1
 
 	if(href_list["desc"])
-		if(world.time >= next_desc_fire) //only do this every 2 seconds.
+		if(world.time >= next_action_fire) //only do this every 2 seconds.
 			var/datum/crafting_recipes/MR = locate(href_list["recipe"])
 			if(find_desc(L,MR))
 				return 1
 
 	src.use(usr)
-
+//TODO: This needs a cooldown added somewhere
 //We consume resources here, basically it calls a proc on the recipe datum.
 //If the proc returns 0 it gives a error message.
 /datum/button_crafting/proc/consume_resources(mob/living/user, var/datum/crafting_recipes/crafting_recipes)
+	next_action_fire = world.time + 0.5 SECONDS
 	crafting_recipes.datum_begin_chaintest(user)
 
 //Basically this just plugs in a desc if you click the mat value
 /datum/button_crafting/proc/find_desc(mob/living/user, var/datum/crafting_recipes/crafting_recipes)
-	next_desc_fire = world.time + 0.5 SECONDS
+	next_action_fire = world.time + 0.5 SECONDS
 	to_chat(user,"Item Description: [crafting_recipes.obj_desc]")
 	return 1
 
@@ -69,6 +73,9 @@
 
 	var/list/sheet_types = list() // Sheet type then number we are using
 	var/list/other_objects = list()
+
+/datum/crafting_recipes/Destroy()	
+	..()
 
 //We can have custom building right here, you return 1 if they succeed and 0 if they fail.
 /datum/crafting_recipes/proc/datum_begin_chaintest(mob/living/user)

@@ -29,7 +29,10 @@
 				new/datum/crafting_recipes/mekanical_shouta,
 				new/datum/crafting_recipes/trophy_banner,
 				new/datum/crafting_recipes/kustom_shoota_belt,
-				new/datum/crafting_recipes/stikkbombs
+				new/datum/crafting_recipes/ork_slugga_mag,
+				new/datum/crafting_recipes/ork_shotta_mag,
+				new/datum/crafting_recipes/stikkbombs,
+				new/datum/crafting_recipes/duct_tape
 				)
 /* 
 	Old List

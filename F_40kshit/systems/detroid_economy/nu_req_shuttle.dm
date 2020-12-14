@@ -119,7 +119,7 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 	to_ship += current_crate
 	current_crate.id_ref = credstick
 	current_crate.desc = "This order is registered to a identification of [credstick.registered_name]"
-	new datum_object_path(current_crate) //Spawn it in a crate
+	var/obj/item/O = new datum_object_path(current_crate) //Spawn it in a crate
 	shipping_manifest += "[bought_object.name] registered to [credstick.registered_name]"
-	bought_object.handle_modifiers(datum_object_path) //Handle quality modifiers
+	bought_object.handle_modifiers(O) //Handle quality modifiers
 
