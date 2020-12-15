@@ -1,7 +1,7 @@
 /datum/crafting_recipes/stikkbombs
 	title = "Stikkbombs"
 	result_type = /obj/item/weapon/grenade/stikkbomb
-	time = 2 SECONDS
+	time = 1 SECONDS
 	build_desc = "8 Metal Sheets, 8 Standard Metal Floortiles"
 	obj_desc = "Its a bomm on a stikk idiot."
 	sheet_types = list(/obj/item/stack/sheet/metal = 8,

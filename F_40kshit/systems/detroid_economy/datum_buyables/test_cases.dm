@@ -27,11 +27,28 @@ var/list/req_obj_reference_list = list(
 	var/quality = 0 //Basically a random value to change things on the object.
 
 /datum/requisition_buyable/New()
-	quality = rand(0,10)
+	quality = rand(1,10)
 	if(quality <= 4)
-		req_price -= clamp(quality*40, req_price/10, req_price)
+		var/subtract = round(15/quality)
+		subtract = subtract*10
+		req_price -= subtract
+		if(req_price <= 0)
+			req_price = 50
 	else if(quality > 5)
 		req_price += quality*30
+
+
+/datum/requisition_buyable/proc/handle_string()
+	var/quality_string = ""
+	switch(quality)
+		if(1 to 4)
+			quality_string = "<span class='bad'>Poor</span> [req_price] REQ"
+		if(5 to 6)
+			quality_string = "<span class='average'>Average</span> [req_price] REQ"
+		if(7 to 10)
+			quality_string = "<span class='good'>Good</span> [req_price] REQ"
+	
+	return quality_string
 
 /*
 	The fact of the matter is, there are a lot of items with different traits.

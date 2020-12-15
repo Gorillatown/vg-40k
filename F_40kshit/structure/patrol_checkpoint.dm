@@ -85,7 +85,7 @@ Also we need to add a signal strength that garbles the radio signal, and that ca
 		var/datum/faction/story_sandbox_main/SSM = logged_in_mob.mind.GetFactionFromRole(PDF)
 		if(SSM)
 			SSM.time_left += (5 MINUTES)/10
-		logged_in_card.req_holder.requisition += 50 //TODO: Requisition holder/start of shit
+		logged_in_card.req_holder.requisition += 100 //TODO: Requisition holder/start of shit
 	
 	signal_cooldown = TRUE
 	logged_in_mob = null

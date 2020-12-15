@@ -24,15 +24,16 @@
 		user.drop_item(src)
 		qdel(A)
 		qdel(src)
-		user.put_in_any_hand_if_possible(PP) //pp hands lol
-
-	//	PP.good2go = TRUE
+		user.put_in_any_hand_if_possible(PP)
 
 	if(istype(A,/obj/item/ammo_storage/box/piles/sluggabulletpile))
 		var/obj/item/ammo_storage/box/piles/sluggabulletpile/PP = A
-		user.drop_item(src,A)
-		PP.stored_ammo += src
-		PP.update_icon()
+		if(PP.stored_ammo.len+1 < PP.max_ammo)
+			user.drop_item(src,A)
+			PP.stored_ammo += src
+			PP.update_icon()
+		else
+			to_chat(user, "<span class='notice'>At some point, you need to realize this pile needs to occupy more room.</span>")
 
 /obj/item/ammo_storage/box/piles
 	name = "A pile of something you shouldn't see"
@@ -111,13 +112,16 @@
 		user.drop_item(src)
 		qdel(A)
 		qdel(src)
-		user.put_in_any_hand_if_possible(PP) //pp hands lol
+		user.put_in_any_hand_if_possible(PP)
 	
 	if(istype(A,/obj/item/ammo_storage/box/piles/buckshotpile))
 		var/obj/item/ammo_storage/box/piles/buckshotpile/PP = A
-		user.drop_item(src,A)
-		PP.stored_ammo += src
-		PP.update_icon()
+		if(PP.stored_ammo.len+1 < PP.max_ammo)
+			user.drop_item(src,A)
+			PP.stored_ammo += src
+			PP.update_icon()
+		else
+			to_chat(user, "<span class='notice'>At some point, you need to realize this pile needs to occupy more room.</span>")
 
 /*
 	MAGAZINES AND AMMO BELTS AND SHIT

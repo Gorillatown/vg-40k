@@ -53,10 +53,6 @@
 	var/datum/role/planetary_defense_force/new_trooper = new
 	new_trooper.AssignToRole(M.mind,TRUE)
 
-/datum/outfit/desert_trooper/post_equip(var/mob/living/carbon/human/H)
-	spawn(2 SECONDS)
-		to_chat(H,"<span class='good'>You are part of the 7th Detroid Desert Raiders, you gain points for extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console and across the land.</span>")
-
 /*
 	Patrolman swamp uniform
 */
@@ -90,10 +86,6 @@
 /datum/outfit/swamp_trooper/handle_faction(var/mob/living/M)
 	var/datum/role/planetary_defense_force/new_trooper = new
 	new_trooper.AssignToRole(M.mind,TRUE)
-
-/datum/outfit/swamp_trooper/post_equip(var/mob/living/carbon/human/H)
-	spawn(2 SECONDS)
-		to_chat(H,"<span class='good'>You are trooper of the 4th Detroid Burning Vipers, you gain prestige for the extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console. The dynasty you serve under is the Mannheim Dynasty.</span>")
 
 /*
 	New Swamp Trooper
@@ -132,13 +124,9 @@
 	
 	id_type = /obj/item/weapon/card/id/imperial_guard_dogtag
 
-/datum/outfit/swamp_trooper/handle_faction(var/mob/living/M)
+/datum/outfit/new_swamp_trooper/handle_faction(var/mob/living/M)
 	var/datum/role/planetary_defense_force/new_trooper = new
 	new_trooper.AssignToRole(M.mind,TRUE)
-
-/datum/outfit/swamp_trooper/post_equip(var/mob/living/carbon/human/H)
-	spawn(2 SECONDS)
-		to_chat(H,"<span class='good'>You are trooper of the 4th Detroid Burning Vipers, you gain prestige for the extermination of orks and patroling. You finish a patrol by shoving your ID into a checkpoint, you can see all the checkpoints at the main console. The dynasty you serve under is the Mannheim Dynasty.</span>")
 
 /*	
 	items_to_spawn = list(

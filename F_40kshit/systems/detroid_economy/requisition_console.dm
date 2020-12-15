@@ -104,10 +104,11 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	data["shuttle_status"] = nu_req_shuttle.in_transit
 	data["transit_time"] = "[nu_req_shuttle.time_to_departure*2] seconds"
 	data["shuttle_max_capacity"] = nu_req_shuttle.max_capacity
-
+ 
 	var/buyables_list[0]
 	for(var/datum/requisition_buyable/req_buyable in requisition_buyable_obj_list)
-		buyables_list.Add(list(list("name" = req_buyable.name, "price" = req_buyable.req_price, "quality" = req_buyable.quality))) 
+		var/dumb_string = req_buyable.handle_string()
+		buyables_list.Add(list(list("name" = req_buyable.name, "price" = req_buyable.req_price, "quality" = dumb_string))) 
 	data["buyables"] = buyables_list
 	
 	var/shipping_list[0]
@@ -125,8 +126,6 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 		ui.set_initial_data(data)
 		// open the new ui window
 		ui.open()
-		// auto update every Master Controller tick
-		ui.set_auto_update(1)
 
 /obj/structure/requisition_console/attackby(obj/item/weapon/W, mob/user)
 	..()

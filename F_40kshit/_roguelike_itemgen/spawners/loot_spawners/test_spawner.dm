@@ -79,9 +79,19 @@
 					/obj/item/clothing/head/bandana = 1,
 					/obj/item/clothing/head/helmet/gladiator = 1,
 					/obj/item/clothing/gloves/knuckles = 1,
-					/obj/item/weapon/melee/classic_baton = 1,
 					/obj/item/weapon/reagent_containers/food/snacks/hoboburger = 1,
 					/obj/item/weapon/shield/IGshield = 1,
 					/obj/item/weapon/dksword = 1,
 					/obj/item/weapon/chainsword = 1)
 
+
+/obj/abstract/loot_spawners/ork_mat_stack
+	amount_to_pick = 2
+	chance_of_artifact = 0
+	loot_table = list(
+					/obj/item/stack/sheet/metal/bigstack = 1,
+					/obj/item/stack/sheet/metal/bigstack = 1,
+					/obj/item/stack/cable_coil/random = 1,
+					/obj/item/weapon/weldingtool = 1,
+					/obj/item/weapon/crowbar = 1
+					)

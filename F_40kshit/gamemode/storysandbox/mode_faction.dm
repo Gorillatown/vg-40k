@@ -2,14 +2,14 @@
 	TODO: Write scoreboard primary faction here, tie gamemode flow shit into it
 */
 /datum/faction/story_sandbox_main
-	name = "Story Sandbox Main"
+	name = "The Scoreboard"
 	desc = "Despite what you think, this is mostly a scoreboard and controller for the roles that go into it."
 	ID = POI_MODE_CONTROLLER
 	required_pref = PDF
 	initial_role = PDF
 	late_role = PDF
 	roletype = /datum/role/planetary_defense_force
-	initroletype = /datum/role/planetary_defense_force
+	initroletype = /datum/role/planetary_defense_force 
 	logo_state = "ig-logo"
 	hud_icons = list()
 
@@ -63,6 +63,7 @@
 	var/datum/role/native_animal/biggest_animal = null //Its null until we put someone in as a ref
 
 	score_results += "<span class='danger'>The round has come to a close.</span><br><br>"
+	score_results += "<h2> Detroid Mixed Forces Results:</h2>"
 	for(var/datum/role/R in members)
 		if(istype(R,/datum/role/planetary_defense_force)) //lmao this is so lazy but idc if it crashes at the end of a round.
 			var/datum/role/planetary_defense_force/PEEDF = R
@@ -87,8 +88,8 @@
 	score_results += "Total Rogue Chaos Psykers: <font color='#ff0000'><b>0</b></font><br>"
 	var/warcrime_total = clamp((total_life_exterminated-total_orks_exterminated),0,500)
 	score_results += "Warcrime total: <font color='#ff0000'><b>[warcrime_total]</b></font><br>"
-	score_results += "The total checkpoints checked in: <b>[total_times_patrolled]</b> times.<br>"
-	score_results += "<b>Notable Members:</b><br>"
+	score_results += "The total checkpoints checked in: <b>[total_times_patrolled]</b> times.<br><br>"
+	score_results += "<b><font size='3'>Notable Members:</b></font><br>"
 
 	for(var/datum/role/R in members)
 		if(istype(R,/datum/role/planetary_defense_force))
@@ -119,15 +120,16 @@
 				end_icons += flat
 				var/tempstate = end_icons.len
 				ANIMAL_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
-				ANIMAL_results += "<b>[NTR.antag.key]</b> as <b>[NTR.antag.name]</b><br>"
+				ANIMAL_results += "<b>[NTR.antag.key]</b> as <b>[NTR.antag.current.name]</b><br>"
 				ANIMAL_results += "<b>Total Growth:</font></b> <font color='#07fa0c'>[NTR.total_growth]</font> total times grown.<br>"
 				if(NTR.antag.current.client)
 					var/client/C = NTR.antag.current.client
 					C.persist.potential += NTR.total_growth
 
 	score_results += PDF_results //Mostly so we can re-order things and just have one singular loop.
-	score_results += "<HR>" //<HR> is a line across the page, <UL> is a unordered list.
 	if(biggest_animal) //If we even got a biggest animal.
+		score_results += "<HR>" //<HR> is a line across the page, <UL> is a unordered list.
+		score_results += "<h2> Animal Results </h2>"
 		score_results += ANIMAL_results //Grr, me an animimal
 
 	return score_results

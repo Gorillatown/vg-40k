@@ -13,14 +13,16 @@
 
 
 /datum/role/native_animal/Greet(var/greeting,var/custom)
-	if(!greeting)
-		return
 	var/icon/logo = icon('icons/logos.dmi', logo_state)
 	to_chat(antag.current, {"<img src='data:image/png;base64,[icon2base64(logo)]' style='position: relative; top: 10;'/> 
-	<span class='warning'><b>You are a native!</b><br>
-	Unlike other animals, you find yourself capable of thought and notable growth!<br>
-	You heal through eating, and grow through eating<br>
-	You are your own master!</span></br>"})
+	<span class='warning'><b>You are a native!</span></b>"})
+	to_chat(antag.current, "Unlike other animals, you find yourself capable of thought and notable growth!")
+	to_chat(antag.current, "You heal through eating, and grow through eating.")
+	to_chat(antag.current, "You are your own master!")
+
+/datum/role/native_animal/OnPostSetup()
+	Greet()
+	return 1
 
 /datum/role/native_animal/New(var/datum/mind/M, var/datum/faction/fac=null, var/new_id)
 	..()
