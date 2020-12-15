@@ -8,7 +8,7 @@ var/list/daynight_turfs = list()
 #define TOD_DAYTIME 	"#FFFFFF"
 #define TOD_AFTERNOON 	"#ffeedf"
 #define TOD_SUNSET 		"#75497e"
-#define TOD_NIGHTTIME 	"#001522"
+#define TOD_NIGHTTIME 	"#00243a"
 
 //Basically this keeps timing, we dump it onto a datum really.
 /datum/subsystem/daynightcycle

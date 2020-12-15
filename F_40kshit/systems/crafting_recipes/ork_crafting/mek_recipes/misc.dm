@@ -18,7 +18,7 @@
 /datum/crafting_recipes/shield
 	title = "Shield"
 	result_type = /obj/item/weapon/shield/orkshield
-	time = 3 SECONDS
+	time = 2 SECONDS
 	build_desc = "10 Metal Sheets"
 	obj_desc = "Its an orkish shield"
 	sheet_types = list(/obj/item/stack/sheet/metal = 10)
@@ -35,7 +35,7 @@
 /datum/crafting_recipes/burnapack
 	title = "Burnapack"
 	result_type = /obj/item/weapon/ork/burnapack
-	time = 5 SECONDS
+	time = 2 SECONDS
 	build_desc = "20 Metal Sheets, 1 Welding Fuel Tanks"
 	obj_desc = "It lets you shoot flames"
 	sheet_types = list(/obj/item/stack/sheet/metal = 20)
@@ -44,7 +44,7 @@
 /datum/crafting_recipes/mekanical_shouta
 	title = "Mekanical Shouta"
 	result_type = /obj/structure/mekanical_shouta
-	time = 10 SECONDS
+	time = 5 SECONDS
 	build_desc = "20 Metal Sheets, 1 Power Cell(Battery)"
 	obj_desc = "Lets everyone hear you across the entire battlefield hella loud."
 	sheet_types = list(/obj/item/stack/sheet/metal = 30)
@@ -53,7 +53,7 @@
 /datum/crafting_recipes/duct_tape
 	title = "Tape Roll"
 	result_type = /obj/item/weapon/taperoll
-	time = 10 SECONDS
+	time = 2 SECONDS
 	build_desc = "1 Metal Sheets"
 	obj_desc = "A tool for if ya have a kustom ya git."
 	sheet_types = list(/obj/item/stack/sheet/metal = 1)

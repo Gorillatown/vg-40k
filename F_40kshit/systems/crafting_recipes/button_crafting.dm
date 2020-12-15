@@ -37,6 +37,7 @@
 	if(href_list["build"])
 		if((world.time >= next_action_fire)&&(!currently_active)) //only do this every 2 seconds.
 			var/datum/crafting_recipes/MR = locate(href_list["recipe"])
+			currently_active = TRUE
 			if(consume_resources(L,MR))
 				return 1
 
@@ -50,9 +51,16 @@
 //TODO: This needs a cooldown added somewhere
 //We consume resources here, basically it calls a proc on the recipe datum.
 //If the proc returns 0 it gives a error message.
-/datum/button_crafting/proc/consume_resources(mob/living/user, var/datum/crafting_recipes/crafting_recipes)
+/datum/button_crafting/proc/consume_resources(mob/living/user, var/datum/crafting_recipes/CR)
 	next_action_fire = world.time + 0.5 SECONDS
-	crafting_recipes.datum_begin_chaintest(user)
+	if(CR.datum_begin_chaintest(user))
+		currently_active = FALSE
+	else
+		currently_active = FALSE
+		
+
+		//next_action_fire = world.time+((CR.sheet_types.len+CR.other_objects.len)*CR.time)
+
 
 //Basically this just plugs in a desc if you click the mat value
 /datum/button_crafting/proc/find_desc(mob/living/user, var/datum/crafting_recipes/crafting_recipes)
@@ -76,6 +84,9 @@
 
 /datum/crafting_recipes/Destroy()	
 	..()
+
+/datum/crafting_recipes/proc/datum_begin_construction(mob/living/user)
+	return 1
 
 //We can have custom building right here, you return 1 if they succeed and 0 if they fail.
 /datum/crafting_recipes/proc/datum_begin_chaintest(mob/living/user)
@@ -181,10 +192,10 @@
 			if(!failed)
 				MOTHERFUCKER = new result_type(user.loc)
 				to_chat(user,"<span class='good'> You finish crafting the [title]</span>")
-				return
+				return 1
 		else
 			to_chat(user,"<span class='bad'>You failed the craft the [title]</span>")
-			return
+			return 0
 
 		if(!failed)
 			if(jokes_on_you_cunt.len)
