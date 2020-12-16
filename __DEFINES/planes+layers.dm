@@ -170,9 +170,7 @@ What is the naming convention for planes or layers?
 	#define CHAIR_ARMREST_LAYER 	0
 	#define WINDOOR_LAYER 			1
 	#define OPEN_CURTAIN_LAYER		2
-	// BELOW_OBJ_LAYER				2
-	// OBJ_LAYER 	 				3
-	// ABOVE_OBJ_LAYER				4
+	#define LIGHTBULB_LAYER			3
 	#define CLOSED_CURTAIN_LAYER	5
 	#define CHAT_LAYER				6
 
@@ -202,7 +200,7 @@ What is the naming convention for planes or layers?
 
 #define LIGHTING_PLANE 			-2
 
-	#define LIGHTBULB_LAYER 		0
+//	#define LIGHTBULB_LAYER 		0 
 	#define POINTER_LAYER 			1
 	#define LIGHTING_LAYER 			2
 	#define ABOVE_LIGHTING_LAYER 	3
