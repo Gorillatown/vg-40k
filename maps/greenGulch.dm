@@ -28,7 +28,7 @@
 	map_vault_area = /area/warhammer/desert
 
 /datum/map/active/map_specific_init()
-//	new /datum/loada_gen(src, "prototype_swamp")
+	new /datum/loada_gen(src, "prototype_swamp")
 
 /****************************
 **	Day and Night Lighting **
