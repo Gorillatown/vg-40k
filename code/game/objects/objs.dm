@@ -359,7 +359,7 @@ var/global/list/reagents_to_log = list(FUEL, PLASMA, PACID, SACID, AMUTATIONTOXI
 	return "<b>[label]:</b> <a href=\"?src=\ref[src];[act]=[varname]\">[value]</a>"
 
 
-/obj/proc/update_multitool_menu(mob/user )
+/obj/proc/update_multitool_menu(mob/user)
 	var/obj/item/device/multitool/P = get_multitool(user)
 
 	if(!istype(P))

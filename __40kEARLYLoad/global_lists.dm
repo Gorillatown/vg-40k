@@ -11,6 +11,20 @@ var/global/list/barricadepool = list(1 = null,
 
 //Some overlays
 var/global/list/viscon_overlays = list(1 = null)
+
+var/global/list/manufacturing_recipes = list()
+
+//Ez cloning
+/*
+var/list/manufacturing_cloning = list(
+									/obj/machinery/conveyor_switch, 
+									/obj/machinery/conveyor,
+									/obj/machinery/signal_lights,
+									/obj/machinery/stamp_molder,
+									/obj/machinery/furnace
+									)
+
+*/
 /*
 	DEAD LIST ZONE
 */

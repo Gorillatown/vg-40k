@@ -65,7 +65,7 @@
 				if(SSTELEPATHY)
 					telepathy_spells += psyker_spell
 
-/obj/item/weapon/psychic_spellbook/attack_self(var/mob/living/user)
+/obj/item/weapon/psychic_spellbook/attack_self(mob/living/user)
 	if(!user)
 		return
 

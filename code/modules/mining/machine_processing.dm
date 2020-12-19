@@ -305,7 +305,7 @@
 		icon_state = "furnace"
 		set_light(light_range_on, light_power_on)
 
-/obj/machinery/mineral/processing_unit/RefreshParts()
+/obj/machinery/mineral/processing_unit/RefreshParts() 
 	var/i = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/A in component_parts)
 		i += A.rating
@@ -334,7 +334,7 @@
 
 	mover = new
 
-	ore = new
+	ore = new 
 
 	for(var/recipe in typesof(/datum/smelting_recipe) - /datum/smelting_recipe)
 		recipes += new recipe()
@@ -471,7 +471,7 @@
 		var/idx = clamp(signal.data["dec_priority"], 1, recipes.len - 1)
 		recipes.Swap(idx, idx + 1)
 
-/obj/machinery/mineral/processing_unit/multitool_menu(var/mob/user, var/obj/item/device/multitool/P)
+/obj/machinery/mineral/processing_unit/multitool_menu(var/mob/user, var/obj/item/device/multitool/P) 
 	return {"
 	<ul>
 		<li><b>Frequency:</b> <a href="?src=\ref[src];set_freq=-1">[format_frequency(frequency)] GHz</a> (<a href="?src=\ref[src];set_freq=[1439]">Reset</a>)</li>

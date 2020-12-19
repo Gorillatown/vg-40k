@@ -286,7 +286,7 @@
 		to_chat(user, "You change the direction of \the [src] using \the [O].")
 		return
 	return ..()
-
+ 
 /obj/machinery/conveyor/multitool_menu(var/mob/user,var/obj/item/device/multitool/P)
 	//var/obj/item/device/multitool/P = get_multitool(user)
 	var/dis_id_tag="-----"
@@ -468,11 +468,6 @@
 		id_tag = "[rand(9999)]"
 		set_frequency(frequency) //I tried just assigning the ID tag during initialize(), but that didn't work somehow, probably because it makes TOO MUCH SENSE
 	update()
-	spawn(5)		// allow map load
-		updateConfig()
-
-/obj/machinery/conveyor_switch/proc/updateConfig()
-	//initialize()
 
 // update the icon depending on the position
 
@@ -570,10 +565,9 @@
 /obj/machinery/conveyor_switch/multitool_topic(var/mob/user,var/list/href_list,var/obj/O)
 	. = ..()
 	if(.)
-		return
+		return .
 	if("setconvdir" in href_list)
 		convdir = text2num(href_list["setconvdir"])
-		updateConfig()
 		return MT_UPDATE
 
 /obj/machinery/conveyor_switch/npc_tamper_act(mob/living/L)

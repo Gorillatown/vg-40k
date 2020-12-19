@@ -1,0 +1,54 @@
+/obj/machinery/machine_miner
+	name = "Drilling Machine"
+	icon = 'F_40kshit/icons/obj/industrial_madness.dmi'
+	icon_state = "autominer"
+	machine_flags = MULTITOOL_MENU
+	var/frequency = 1367
+	var/datum/radio_frequency/radio_connection
+	density = TRUE
+	anchored = TRUE
+/* Animated State is
+	autominer_on
+*/
+
+/obj/machinery/machine_miner/New()
+	..()
+
+/obj/machinery/machine_miner/Destroy()
+	..()
+
+/obj/machinery/machine_miner/initialize()
+	..()
+	if(frequency)
+		set_frequency(frequency)
+
+/obj/machinery/machine_miner/proc/set_frequency(var/new_frequency)
+	radio_controller.remove_object(src, frequency)
+	frequency = new_frequency
+	radio_connection = radio_controller.add_object(src, frequency, RADIO_CONVEYORS)
+
+/obj/machinery/machine_miner/receive_signal(datum/signal/signal)
+	if(!signal || signal.encryption)
+		return
+	if(id_tag != signal.data["tag"] || !signal.data["command"])
+		return
+	switch(signal.data["command"])
+		if("forward")
+			mining_time()
+
+/obj/machinery/machine_miner/proc/mining_time()
+	var/turf/out_T = get_step(src, dir)
+	flick("autominer_on", src)
+	new /obj/item/stack/ore/iron(out_T)
+
+/obj/machinery/machine_miner/multitool_menu(var/mob/user,var/obj/item/device/multitool/P)
+	//var/obj/item/device/multitool/P = get_multitool(user)
+	var/dis_id_tag="-----"
+	if(id_tag!=null && id_tag!="")
+		dis_id_tag=id_tag
+	return {"
+	<ul>
+		<li><b>Frequency:</b> <a href="?src=\ref[src];set_freq=-1">[format_frequency(frequency)] GHz</a> (<a href="?src=\ref[src];set_freq=1367">Reset</a>)</li>
+		<li><b>ID Tag:</b> <a href="?src=\ref[src];set_id=1">[dis_id_tag]</a></li>
+	</ul>"}
+

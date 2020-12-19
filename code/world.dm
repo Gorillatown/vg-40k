@@ -119,7 +119,7 @@ var/datum/early_init/early_init_datum = new
 	//radio_controller = new /datum/controller/radio()
 	data_core = new /obj/effect/datacore()
 	paiController = new /datum/paiController()
-	viscon_pooler = new /datum/visconpooler() //40k addition.
+	lazy_pooler = new /datum/lazy_pooler() //40k addition.
 
 	plmaster = new /obj/effect/overlay()
 	plmaster.icon = 'icons/effects/tile_effects.dmi'

@@ -257,7 +257,7 @@ Class Procs:
 
 	return 1
 
-/obj/machinery/proc/multitool_topic(var/mob/user,var/list/href_list,var/obj/O)
+/obj/machinery/proc/multitool_topic(var/mob/user,var/list/href_list,var/obj/O) 
 	if("set_id" in href_list)
 		if(!("id_tag" in vars))
 			warning("set_id: [type] has no id_tag var.")
@@ -550,7 +550,7 @@ Class Procs:
  * Handle emags.
  * @param user /mob The mob that used the emag.
  */
-/obj/machinery/proc/emag(mob/user )
+/obj/machinery/proc/emag(mob/user)
 	// Disable emaggability. Note that some machines such as the Communications Computer might be emaggable multiple times.
 	machine_flags &= ~EMAGGABLE
 	new/obj/effect/effect/sparks(get_turf(src))

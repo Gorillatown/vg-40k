@@ -47,7 +47,7 @@
 			return
 	return
 
-/obj/machinery/ai_slipper/attack_ai(mob/user )
+/obj/machinery/ai_slipper/attack_ai(mob/user)
 	if(stat & (NOPOWER|BROKEN))
 		return
 

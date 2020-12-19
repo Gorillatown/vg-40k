@@ -9,7 +9,7 @@ TODO: Mcguffin Objects
 /obj/item/manufacturing_parts/blade
 	name = "Blade"
 	desc = "A blade definitely made to be attached to something"
-	icon_state = "blade"
+	icon_state = "part_blade"
 
 /obj/item/manufacturing_parts/lens
 	name = "Lens"

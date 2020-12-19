@@ -1,14 +1,15 @@
 //So, i'm going to try a vis_contents pooling system right here.
 //We will explore the different forms of it, and see how it goes.
-/datum/visconpooler
+/datum/lazy_pooler
 	
-/datum/visconpooler/New()
+/datum/lazy_pooler/New()
 	load_barricades()
 	load_overlays()
+	load_manufacturing_recipes()
 //	load_ghostbodies()
 //	load_ghostbuttons()
 
-/datum/visconpooler/proc/load_barricades()
+/datum/lazy_pooler/proc/load_barricades()
 	barricadepool[1] = new /obj/effect/overlay/viscons/aegisline/north
 	barricadepool[2] = new /obj/effect/overlay/viscons/aegisline/south
 	barricadepool[3] = new /obj/effect/overlay/viscons/aegisline/east_one
@@ -16,8 +17,13 @@
 	barricadepool[5] = new /obj/effect/overlay/viscons/aegisline/west_one
 	barricadepool[6] = new /obj/effect/overlay/viscons/aegisline/west_two
 
-/datum/visconpooler/proc/load_overlays()
+/datum/lazy_pooler/proc/load_overlays()
 	viscon_overlays[1] = new /obj/effect/overlay/viscons/water_overlay
+
+/datum/lazy_pooler/proc/load_manufacturing_recipes()
+	for(var/recipes in typesof(/datum/manufacturing_recipe) - /datum/manufacturing_recipe)
+		var/datum/manufacturing_recipe/the_recipe = new recipes
+		manufacturing_recipes += the_recipe
 
 /*/datum/visconpooler/proc/load_ghostbodies()
 	var/p_width = 1
