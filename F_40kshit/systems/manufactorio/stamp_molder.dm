@@ -6,7 +6,7 @@ TODO: Stamp Molder + Menus
 	name = "Stamp Molding Machine"
 	icon = 'F_40kshit/icons/obj/industrial_madness.dmi'
 	icon_state = "stamper"
-	machine_flags = MULTITOOL_MENU
+	machine_flags = MULTITOOL_MENU|WRENCHMOVE|FIXED2WORK
 	var/frequency = 1367
 	var/datum/radio_frequency/radio_connection
 	var/datum/manufacturing_recipe/cur_recipe = null
@@ -33,9 +33,6 @@ TODO: Stamp Molder + Menus
 
 /obj/machinery/stamp_molder/initialize()
 	..()
-
-/obj/machinery/stamp_molder/process()
-	return
 
 /obj/machinery/stamp_molder/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption)

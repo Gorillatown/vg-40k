@@ -5,7 +5,7 @@ TODO: Signal lights + Menus
 	name = "Signal Lights"
 	icon = 'F_40kshit/icons/obj/industrial_madness.dmi'
 	icon_state = "signal_light"
-	machine_flags = MULTITOOL_MENU
+	machine_flags = MULTITOOL_MENU|WRENCHMOVE|FIXED2WORK
 	var/ticker = 0
 	var/tick_counter = 0 //Basically we count when to activate per tick
 	var/signal_repeat = FALSE

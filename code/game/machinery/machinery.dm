@@ -569,8 +569,6 @@ Class Procs:
 /obj/machinery/attackby(var/obj/item/O, var/mob/user)
 	..()
 
-	
-
 	if(istype(O, /obj/item/weapon/card/emag) && machine_flags & EMAGGABLE)
 		var/obj/item/weapon/card/emag/E = O
 		if(E.canUse(user,src))

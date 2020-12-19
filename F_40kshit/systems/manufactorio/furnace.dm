@@ -6,7 +6,7 @@ This one isn't so useful considering the regular processing furnace exists.
 	name = "Furnace"
 	icon = 'F_40kshit/icons/obj/industrial_madness.dmi'
 	icon_state = "furnace"
-	machine_flags = MULTITOOL_MENU
+	machine_flags = MULTITOOL_MENU|WRENCHMOVE|FIXED2WORK
 	var/frequency = 1367
 	var/datum/radio_frequency/radio_connection
 	var/datum/materials/ore

@@ -42,7 +42,7 @@
 	for(var/path in req_components)
 		amt += req_components[path]
 	return amt
-
+ 
 /obj/machinery/constructable_frame/machine_frame/attackby(obj/item/P, mob/user )
 	if(P.crit_fail)
 		to_chat(user, "<span class='warning'>This part is faulty, you cannot add this to the machine!</span>")
