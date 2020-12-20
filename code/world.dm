@@ -351,7 +351,7 @@ var/datum/early_init/early_init_datum = new
 	//	s += "<b>[config.server_name]</b> &#8212; " //SORRY CONFIG-KUN -JTGSZ
 
 
-	s += "<b>>Tales of Detroid II: <i> Overhaul 5.6!</i></b><br>"
+	s += "<b>>Tales of Detroid II: <i> Overhaul 6.7!</i></b><br>"
 	s += "A planetserver fueled by shitcode and grim-darkness!<br>"
 	s += " \[<a href=\"https://discord.gg/5F9sQDF\">Discord</a><br>"
 	
