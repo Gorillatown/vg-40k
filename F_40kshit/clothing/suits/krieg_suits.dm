@@ -6,4 +6,3 @@
 	item_state = "kriegcoat"//Check: Its there
 	body_parts_covered = FULL_TORSO|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 30, bullet = 35, laser = 55, energy = 15, bomb = 25, bio = 90, rad = 90)
-	species_restricted = list("Human")

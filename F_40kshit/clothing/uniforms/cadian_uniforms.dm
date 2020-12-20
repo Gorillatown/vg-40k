@@ -8,4 +8,3 @@
 	item_state = "guardsman_under"//Check: Its fine
 	_color = "guardsman_under"
 	has_sensor = 2 //Imperial guards cannot disable sensors, for good or for ill.
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.

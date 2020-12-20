@@ -154,9 +154,6 @@ GUEST_JOBBAN
 
 ## Uncomment this to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
 #GUEST_BAN
-## Set to jobban everyone who's key is not listed in data/whitelist.txt from Captain, HoS, HoP, CE, RD, CMO, Warden, Security, Detective, and AI positions.
-## Uncomment to 1 to jobban, leave commented out to allow these positions for everyone (but see GUEST_JOBBAN above and regular jobbans)
-# USEWHITELIST
 
 ## set a server location for world reboot. Don't include the byond://, just give the address and port.
 # SERVER ss13.example.com:2506
@@ -202,9 +199,6 @@ GATEWAY_DELAY 18000
 ## Remove the # to make rounds which end instantly (Rev, Wizard, Malf) to continue until the shuttle is called or the station is nuked.
 ## Malf and Rev will let the shuttle be called when the antags/protags are dead.
 #CONTINUOUS_ROUNDS
-
-## Uncomment to restrict non-admins from using humanoid alien races
-USEALIENWHITELIST
 
 ## Comment this to unrestrict the number of alien players allowed in the round. The number represents the number of alien players for every human player.
 #ALIEN_PLAYER_RATIO 0.2

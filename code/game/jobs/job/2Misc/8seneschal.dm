@@ -12,7 +12,7 @@
 	access = list(access_seneschal)
 	minimal_player_age = 7
 	outfit_datum = /datum/outfit/seneschal
-	species_whitelist = list("Human")
+	species_whitelist = list("Human","Squat")
 	landmark_job_override = TRUE
 
 	relationship_chance = HUMAN_NO_RELATIONS

@@ -5,7 +5,6 @@
 	icon_state = "commissar" //Check: Its there
 	item_state = "commissar" //Check Its there:
 	_color = "commissar"
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 	
 /obj/item/clothing/under/enginseer_uniform
 	name = "Enginseer Outer Plating"
@@ -14,7 +13,6 @@
 	icon_state = "mech_uniform" //Check: Its there
 	item_state = "mech_uniform" //Check Its there:
 	_color = "mech_uniform"
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 	canremove = 0
 
 /obj/item/clothing/under/seneschal
@@ -24,7 +22,6 @@
 	icon_state = "seneschal_coat" //Check: Its there
 	item_state = "seneschal_coat" //Check Its there:
 	_color = "seneschal_coat"
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 
 /obj/item/clothing/under/harlequin
 	name = "mime's outfit"

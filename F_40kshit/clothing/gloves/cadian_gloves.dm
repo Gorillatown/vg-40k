@@ -15,4 +15,3 @@
 	bonus_knockout = 25
 	damage_added = 5
 	force = 7
-	species_restricted = list("Human")

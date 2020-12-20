@@ -14,7 +14,7 @@
 	minimal_player_age = 30
 	landmark_job_override = TRUE
 
-	species_whitelist = list("Human")
+	species_whitelist = list("Human","Squat")
 
 	outfit_datum = /datum/outfit/knight_officer
 

@@ -13,7 +13,7 @@
 
 	eyes = "bald_s"
 
-	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | NO_SKIN | NO_BLOOD | IS_WHITELISTED
+	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | NO_SKIN | NO_BLOOD | IS_PREF_SELECTABLE
 	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS
 
 	cold_level_1 = -1  // Cold damage level 1 below this point.

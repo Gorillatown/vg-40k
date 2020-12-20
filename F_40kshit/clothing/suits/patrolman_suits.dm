@@ -8,7 +8,6 @@
 	body_parts_covered = ARMS
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
 	armor = list(melee = 20, bullet = 20, laser = 20,energy = 25, bomb = 20, bio = 20, rad = 0)
-	species_restricted = list("Human")
 	allowed = list(/obj/item/weapon)
 
 //----------SUIT ARMOR--------------------
@@ -21,7 +20,6 @@
 	body_parts_covered = ARMS
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
 	armor = list(melee = 5, bullet = 10, laser = 10 ,energy = 10, bomb = 20, bio = 40, rad = 30)
-	species_restricted = list("Human")
 	allowed = list(/obj/item/weapon)
 
 //----------SUIT ARMOR--------------------
@@ -34,5 +32,4 @@
 	body_parts_covered = UPPER_TORSO
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
 	armor = list(melee = 50, bullet = 50, laser = 70,energy = 25, bomb = 60, bio = 20, rad = 0)
-	species_restricted = list("Human")
 	allowed = list(/obj/item/weapon)

@@ -7,4 +7,3 @@
 	item_state = "kuniform"//Check: Its fine
 	_color = "kuniform"
 	has_sensor = 2
-	species_restricted = list("Human")

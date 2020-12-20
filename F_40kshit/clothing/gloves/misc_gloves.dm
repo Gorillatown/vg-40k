@@ -13,7 +13,6 @@
 	bonus_knockout = 17 //Slight knockout chance increase.
 	damage_added = 8
 	canremove = FALSE
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 
 /obj/item/clothing/gloves/combat/harlequin
 	name = "harlequin gloves"

@@ -8,5 +8,4 @@
 	body_parts_covered = UPPER_TORSO
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
 	armor = list(melee = 30, bullet = 30, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
-	species_restricted = list("Human")
 	allowed = list(/obj/item/weapon)

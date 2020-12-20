@@ -7,4 +7,3 @@
 	item_state = "lord"//Check: Its fine
 	_color = "lord"
 	has_sensor = 2
-	species_restricted = list("Human")

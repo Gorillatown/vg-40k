@@ -334,7 +334,7 @@
 	body_parts_covered = HANDS
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenges")
-	species_restricted = list("exclude","Unathi","Tajaran","Muton")
+	species_restricted = list("exclude","Unathi","Tajaran","Muton","Ork","Ork Nob")
 	var/pickpocket = 0 //Master pickpocket?
 
 	var/bonus_knockout = 0 //Knockout chance is multiplied by (1 + bonus_knockout) and is capped at 1/2. 0 = 1/12 chance, 1 = 1/6 chance, 2 = 1/4 chance, 3 = 1/3 chance, etc.
@@ -465,7 +465,7 @@
 	permeability_coefficient = 0.50
 	sterility = 50
 
-	species_restricted = list("exclude","Unathi","Tajaran","Muton")
+	species_restricted = list("exclude","Unathi","Tajaran","Muton","Ork","Ork Nob")
 	var/step_sound = ""
 	var/stepstaken = 1
 
@@ -511,7 +511,7 @@
 	heat_conductivity = ARMOUR_HEAT_CONDUCTIVITY
 	body_parts_covered = ARMS|LEGS|FULL_TORSO
 	var/blood_overlay_type = "suit"
-	species_restricted = list("exclude","Muton")
+	species_restricted = list("exclude","Muton","Ork","Ork Nob")
 	siemens_coefficient = 0.9
 	clothing_flags = CANEXTINGUISH
 	sterility = 30
@@ -532,7 +532,7 @@
 	body_parts_visible_override = EYES
 	siemens_coefficient = 0.9
 	heat_conductivity = SPACESUIT_HEAT_CONDUCTIVITY
-	species_restricted = list("exclude","Diona","Muton")
+	species_restricted = list("exclude","Diona","Muton","Ork","Ork Nob")
 	eyeprot = 1
 	cold_breath_protection = 230
 	sterility = 100
@@ -553,7 +553,7 @@
 	slowdown = HARDSUIT_SLOWDOWN_BULKY
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 50)
 	siemens_coefficient = 0.9
-	species_restricted = list("exclude","Diona","Muton")
+	species_restricted = list("exclude","Diona","Muton","Ork","Ork Nob")
 	heat_conductivity = SPACESUIT_HEAT_CONDUCTIVITY
 	clothing_flags = CANEXTINGUISH
 	sterility = 100
@@ -568,7 +568,7 @@
 	slot_flags = SLOT_ICLOTHING
 	heat_conductivity = JUMPSUIT_HEAT_CONDUCTIVITY
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
-	species_restricted = list("exclude","Muton")
+	species_restricted = list("exclude","Muton","Ork","Ork Nob")
 	var/has_sensor = 1 //For the crew computer 2 = unable to change mode
 	var/sensor_mode = 0
 		/*

@@ -10,14 +10,12 @@
 	siemens_coefficient = 0.6
 	body_parts_covered = FEET
 	canremove = FALSE
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 
 /obj/item/clothing/shoes/enginseer_boots
 	name = "Metal Feet(?)"
 	desc = "Oddly enough, you are pretty sure these are boots. But perhaps they are also the feet. Who exactly knows"
 	icon = 'F_40kshit/icons/obj/clothing/shoes.dmi'
 	icon_state = "mech_boots"
-	species_restricted = list("Human")
 	canremove = 0
 
 /obj/item/clothing/shoes/seneschal_boots
@@ -25,7 +23,6 @@
 	desc = "Fancy Boots, for a fancy man"
 	icon = 'F_40kshit/icons/obj/clothing/shoes.dmi'
 	icon_state = "seneschal_boots"
-	species_restricted = list("Human")
 
 /obj/item/clothing/shoes/swat/harlequin
 	name = "harlequin boots"

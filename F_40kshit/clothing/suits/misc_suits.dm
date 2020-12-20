@@ -13,7 +13,6 @@
 			)
 	armor = list(melee = 70, bullet = 80, laser = 70,energy = 25, bomb = 50, bio = 100, rad = 50)
 	canremove = FALSE
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 
 
 //-----COMMISSAR COAT
@@ -27,7 +26,6 @@
 	body_parts_covered = FULL_TORSO
 	allowed = list(/obj/item/weapon)
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
-	species_restricted = list("Human") //Only humans can wear IG stuff for now at least.
 
 //Inquisitor Suits
 /obj/item/clothing/suit/armor/inq 
@@ -40,7 +38,6 @@
 	pressure_resistance = 3 * ONE_ATMOSPHERE
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
 	armor = list(melee = 55, bullet = 35, laser = 55, energy = 15, bomb = 25, bio = 0, rad = 0)
-	species_restricted = list("Human")
 	allowed = list(/obj/item/weapon)
 
 /obj/item/clothing/suit/armor/inq/alt
@@ -90,8 +87,6 @@
 	body_parts_covered = UPPER_TORSO
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
 	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
-	species_restricted = list("Human")
-
 
 /obj/item/clothing/suit/armor/harlequin
 	name = "Harlequin Coat"

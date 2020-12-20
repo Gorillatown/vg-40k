@@ -59,9 +59,14 @@ This one isn't so useful considering the regular processing furnace exists.
 
 		if(!istype(A, /obj/item/stack/ore) || !A.materials) // Check if it's an ore
 			failure = TRUE
+			if(isliving(A))
+				var/mob/living/L = A
+				L.ghostize()
+				new /obj/effect/decal/remains/human(out_T)
 
 		if(!failure)
 			ore.addFrom(A.materials, FALSE)
+		
 		qdel(A)
 
 	if(!failure)

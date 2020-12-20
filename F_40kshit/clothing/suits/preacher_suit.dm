@@ -10,7 +10,6 @@
 	var/nohood = 0
 	var/obj/item/clothing/head/preacherhood/hood
 	actions_types = list(/datum/action/item_action/toggle_hood)
-	species_restricted = list("Human")
 	allowed = list(/obj/item/weapon)
 
 /obj/item/clothing/suit/armor/preacherrobe/New()

@@ -151,13 +151,8 @@
 			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return
 
-		if(client.prefs.species != "Human")
-
-			if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
-				to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
-				return 0
-
 		LateChoices()
+	
 	if(href_list["predict"])
 		var/dat = {"<html><body>
 		<h4>High Job Preferences</h4>"}
@@ -171,10 +166,6 @@
 		if(!enter_allowed)
 			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 			return
-
-		if(!is_alien_whitelisted(src, client.prefs.species) && config.usealienwhitelist)
-			to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
-			return 0
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
@@ -532,7 +523,7 @@ Round Duration: [round(hours)]h [round(mins)]m<br>"}
 	if(client.prefs.species)
 		chosen_species = all_species[client.prefs.species]
 	if(chosen_species)
-		if(is_alien_whitelisted(src, client.prefs.species) || !config.usealienwhitelist || !(chosen_species.flags & WHITELISTED) || (client && client.holder && (client.holder.rights & R_ADMIN)) )// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
+		if(!(chosen_species.flags & WHITELISTED) || (client && client.holder && (client.holder.rights & R_ADMIN)) )// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 			new_character.set_species(client.prefs.species)
 			//if(chosen_species.language)
 				//new_character.add_language(chosen_species.language)
@@ -541,7 +532,7 @@ Round Duration: [round(hours)]h [round(mins)]m<br>"}
 	if(client.prefs.language)
 		chosen_language = all_languages["[client.prefs.language]"]
 	if(chosen_language)
-		if(is_alien_whitelisted(src, client.prefs.language) || !config.usealienwhitelist || !(chosen_language.flags & WHITELISTED) )
+		if(!(chosen_language.flags & WHITELISTED) )
 			new_character.add_language("[client.prefs.language]")
 	if(ticker.random_players || appearance_isbanned(src)) //disabling ident bans for now
 		new_character.setGender(pick(MALE, FEMALE))

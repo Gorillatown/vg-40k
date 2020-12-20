@@ -11,7 +11,7 @@
 	selection_color = "#f8cb69"
 	minimal_player_age = 7
 	outfit_datum = /datum/outfit/new_swamp_trooper
-	species_whitelist = list("Human")
+	species_whitelist = list("Human","Squat")
 	alt_titles = list("PDF Trooper")
 	access = list(access_checkpoints)
 

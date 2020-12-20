@@ -85,9 +85,22 @@ TODO: Stamp Molder + Menus
 						failed = FALSE
 						break
 	
-	if(contained_objects.len)
+	for(var/atom/movable/A in contained_objects)
 		failed = TRUE
-	
+		contained_objects -= A
+		if(isliving(A))
+			spawn(1 SECONDS)
+				A.loc = out_T
+				if(isanimal(A))
+					var/mob/living/simple_animal/SA = A
+					SA.gib()
+				if(ishuman(A))
+					var/mob/living/carbon/human/H = A
+					var/datum/organ/external/limb = pick(H.organs)
+					limb.droplimb(1)
+		else
+			qdel(A)
+
 	if(failed)
 		return
 	else

@@ -29,7 +29,7 @@
 	var/gender = NEUTER
 
 	// Restrict some styles to specific species
-	var/list/species_allowed = list("Human","Manifested")
+	var/list/species_allowed = list("Human","Manifested","Squat")
 
 	// Whether or not the accessory can be affected by colouration
 	var/do_colouration = 1
@@ -62,7 +62,7 @@
 	name = "Bald"
 	icon_state = "bald"
 	gender = MALE
-	species_allowed = list("Human","Manifested","Unathi","Grey","Plasmaman","Skellington","Diona","Muton","Golem","Skeletal Vox","Horror","Ghoul","Slime","Evolved Slime","Insectoid", "Ork", "Astartes")
+	species_allowed = list("Human","Manifested","Unathi","Grey","Plasmaman","Skellington","Diona","Muton","Golem","Skeletal Vox","Horror","Ghoul","Slime","Evolved Slime","Insectoid", "Ork", "Astartes","Squat")
 
 /datum/sprite_accessory/hair/short
 	name = "Short Hair"	  // try to capatilize the names please~
