@@ -352,7 +352,8 @@ var/datum/early_init/early_init_datum = new
 
 
 	s += "<b>>Tales of Detroid II: <i> Overhaul 6.7!</i></b><br>"
-	s += "A planetserver fueled by shitcode and grim-darkness!<br>"
+	s += "A loose wh40k-universe free roleplay planetserver<br>"
+	s += "Fueled by extensive bizarre <b>NEW</b> shitcode and poor ideas!<br>"
 	s += " \[<a href=\"https://discord.gg/5F9sQDF\">Discord</a><br>"
 	
 /*	var/list/features = list()

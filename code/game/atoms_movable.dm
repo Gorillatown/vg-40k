@@ -486,6 +486,7 @@
 
 /atom/movable/proc/throw_at(atom/target, range, speed, override = 1, var/fly_speed = 0) //fly_speed parameter: if 0, does nothing. Otherwise, changes how fast the object flies WITHOUT affecting damage!
 	set waitfor = FALSE
+	var/afterimage = 0
 	if(!target || !src)
 		return 0
 	if(override)
@@ -501,15 +502,22 @@
 	var/mob/user
 	if(usr)
 		user = usr
-		if(M_HULK in usr.mutations)
+		if(isliving(user))
+			var/mob/living/L = user
+			range += round(L.attribute_strength/2)
+			speed += L.attribute_strength
+			if(L.attribute_strength >= 15)
+				afterimage = 1
+				src.throwing = 2
+		if(M_HULK in user.mutations)
 			src.throwing = 2 // really strong throw!
-
+	
 	if(istype(src,/obj/mecha))
 		var/obj/mecha/M = src
 		M.dash_dir = dir
 		src.throwing = 2// mechas will crash through windows, grilles, tables, people, you name it
 
-	var/afterimage = 0
+
 	if(istype(src,/mob/living/simple_animal/construct/armoured/perfect))
 		var/mob/living/simple_animal/construct/armoured/perfect/M = src
 		M.dash_dir = dir

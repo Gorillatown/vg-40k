@@ -55,3 +55,13 @@ TODO: Mcguffin Objects
 	name = "Gun Receiver"
 	desc = "Generally once you have this a assembled gun isn't far in the future."
 	icon_state = "receiver"
+
+/obj/item/manufacturing_parts/chainsheet
+	name = "Chain Sheet"
+	desc = "A sheet of chains, for things that like chains."
+	icon_state = "chainsheet"
+
+/obj/item/manufacturing_parts/armorplate
+	name = "Armor Plate"
+	desc = "Unlike a regular metal sheet, this one is a regular metal sheet with half of it compressed on the other half"
+	icon_state = "armor_plate"

@@ -95,3 +95,15 @@ var/list/manufacturing_recipes = list(
 	requirements = list(/obj/item/stack/sheet/metal = 2,
 						/obj/item/manufacturing_parts/blade = 5)
 	end_result = /obj/item/manufacturing_parts/chainblade
+
+/datum/manufacturing_recipe/chainsheet
+	name = "Chainsheet"
+	desc_string = "2 Metal Sheets"
+	requirements = list(/obj/item/stack/sheet/metal = 2)
+	end_result = /obj/item/manufacturing_parts/chainsheet
+
+/datum/manufacturing_recipe/armorplate
+	name = "Armor Plate"
+	desc_string = "1 Metal Sheet"
+	requirements = list(/obj/item/stack/sheet/metal = 1)
+	end_result = /obj/item/manufacturing_parts/armorplate

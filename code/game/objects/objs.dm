@@ -597,7 +597,7 @@ a {
 	if(!anchored && !user.incapacitated() && user.has_limbs) //if you're buckled onto a non-anchored object (like office chairs) you harmlessly push yourself away with your legs
 		spawn() //return 1 first thing
 			var/movementdirection = turn(get_dir(src,A),180)
-			if(user.attribute_strength >= 14) //hulk KICK!
+			if(user.attribute_strength >= 15) //hulk KICK!
 				user.visible_message("<span class='danger'>[user] puts \his foot to \the [A] and kicks \himself away!</span>", \
 					"<span class='warning'>You put your foot to \the [A] and kick as hard as you can! [pick("RAAAAAAAARGH!", "HNNNNNNNNNGGGGGGH!", "GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", "AAAAAAARRRGH!")]</span>")
 				var/turf/T = get_edge_target_turf(src, movementdirection)

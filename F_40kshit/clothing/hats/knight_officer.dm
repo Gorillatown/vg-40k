@@ -1,6 +1,6 @@
 //------------HELMETS-----------------
 /obj/item/clothing/head/knight_officer_helmet
-	name = "Knight Helmet"
+	name = "Heavy Metal Helmet"
 	desc = "Shiny and basically protects your entire head."
 	icon = 'F_40kshit/icons/obj/clothing/hats.dmi'
 	icon_state = "knight_officer" //Check: Its there
