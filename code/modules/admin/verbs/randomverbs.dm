@@ -1,56 +1,3 @@
-/client/proc/cmd_admin_drop_everything(mob/M  in mob_list)
-	set category = null
-	set name = "Drop Everything"
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-
-	var/confirm = alert(src, "Make [M] drop everything?", "Message", "Yes", "No")
-	if(confirm != "Yes")
-		return
-
-	M.drop_all()
-
-	log_admin("[key_name(usr)] made [key_name(M)] drop everything!")
-	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!", 1)
-	feedback_add_details("admin_verb","DEVR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/manage_religions()
-	set category = "Admin"
-	set name = "Manage Religions"
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-
-	holder.updateRelWindow()
-
-
-/client/proc/cmd_admin_prison(mob/M  in mob_list)
-	set category = "Admin"
-	set name = "Prison"
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-	if (ismob(M))
-		if(istype(M, /mob/living/silicon/ai))
-			alert("The AI can't be sent to prison you jerk!", null, null, null, null, null)
-			return
-		//strip their stuff before they teleport into a cell :downs:
-		for(var/obj/item/W in M)
-			M.drop_from_inventory(W)
-		//teleport person to cell
-		M.Paralyse(5)
-		sleep(5)	//so they black out before warping
-		M.forceMove(pick(prisonwarp))
-		if(istype(M, /mob/living/carbon/human))
-			var/mob/living/carbon/human/prisoner = M
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/under/color/prisoner(prisoner), slot_w_uniform)
-			prisoner.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(prisoner), slot_shoes)
-		spawn(50)
-			to_chat(M, "<span class='warning'>You have been sent to the prison station!</span>")
-		log_admin("[key_name(usr)] sent [key_name(M)] to the prison station.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] sent [key_name_admin(M)] to the prison station.</span>", 1)
-		feedback_add_details("admin_verb","PRISON") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_admin_subtle_message(mob/M  in mob_list)
 	set category = "Special Verbs"
@@ -221,27 +168,6 @@ proc/cmd_admin_mute(mob/M, mute_type, automute = 0)
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(M)] from [mute_string].", 1)
 	to_chat(M, "You have been [muteunmute] from [mute_string].")
 	feedback_add_details("admin_verb","MUTE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
-/client/proc/cmd_admin_add_random_ai_law()
-	set category = "Fun"
-	set name = "Add Random AI Law"
-
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm != "Yes")
-		return
-	log_admin("[key_name(src)] has added a random AI law.")
-	message_admins("[key_name_admin(src)] has added a random AI law.", 1)
-
-	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
-	if(show_log == "Yes")
-		command_alert(/datum/command_alert/ion_storm)
-
-	generate_ion_law()
-	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
 //I use this proc for respawn character too. /N
@@ -795,76 +721,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	M.gib()
 	feedback_add_details("admin_verb","GIB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_gib_self()
-	set name = "Gibself"
-	set category = "Fun"
-
-	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm == "Yes")
-		log_admin("[key_name(usr)] used gibself.")
-		message_admins("<span class='notice'>[key_name_admin(usr)] used gibself.</span>", 1)
-		if(!istype(mob, /mob/dead/observer))
-			mob.gib()
-		feedback_add_details("admin_verb","GIBS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-/*
-/client/proc/cmd_manual_ban()
-	set name = "Manual Ban"
-	set category = "Special Verbs"
-	if(!authenticated || !holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-	var/mob/M = null
-	switch(alert("How would you like to ban someone today?", "Manual Ban", "Key List", "Enter Manually", "Cancel"))
-		if("Key List")
-			var/list/keys = list()
-			for(var/mob/M in world)
-				keys += M.client
-			var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in keys
-			if(!selection)
-				return
-			M = selection:mob
-			if ((M.client && M.client.holder && (M.client.holder.level >= holder.level)))
-				alert("You cannot perform this action. You must be of a higher administrative rank!")
-				return
-
-	switch(alert("Temporary Ban?",,"Yes","No"))
-	if("Yes")
-		var/mins = input(usr,"How long (in minutes)?","Ban time",1440) as num
-		if(!mins)
-			return
-		if(mins >= 525600)
-			mins = 525599
-		var/reason = input(usr,"Reason?","reason","Griefer") as text
-		if(!reason)
-			return
-		if(M)
-			AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
-			to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
-			to_chat(M, "<span class='warning'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
-			to_chat(M, "<span class='warning'>To try to resolve this matter head to http:)//ss13.donglabs.com/forum/</span>"
-
-			log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
-			message_admins("<span class='warning'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</span>")
-			world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=[mins]&server=[replacetext(config.server_name, "#", "")]")
-			del(M.client)
-			qdel(M)
-		else
-
-	if("No")
-		var/reason = input(usr,"Reason?","reason","Griefer") as text
-		if(!reason)
-			return
-		AddBan(M.ckey, M.computer_id, reason, usr.ckey, 0, 0)
-		to_chat(M, "<span class='warning'><BIG><B>You have been banned by [usr.client.ckey].\nReason: [reason].</B></BIG></span>")
-		to_chat(M, "<span class='warning'>This is a permanent ban.</span>")
-		to_chat(M, "<span class='warning'>To try to resolve this matter head to http:)//ss13.donglabs.com/forum/</span>"
-
-		log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.")
-		message_admins("<span class='warning'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.</span>")
-		world.Export("http://216.38.134.132/adminlog.php?type=ban&key=[usr.client.key]&key2=[M.key]&msg=[html_decode(reason)]&time=perma&server=[replacetext(config.server_name, "#", "")]")
-		del(M.client)
-		qdel(M)
-*/
 
 /client/proc/update_world()
 	// If I see anyone granting powers to specific keys like the code that was here,

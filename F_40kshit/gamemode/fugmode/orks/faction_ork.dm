@@ -78,11 +78,13 @@
 			for(var/datum/role/R in members)
 				if(R.antag.current.client)
 					var/client/C = R.antag.current.client
-					C.persist.potential += 1
+					var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
+					persist.change_potential(1)
 		else
 			results = "THE 'UMIES KRUMPED US."
 			for(var/datum/role/R in members)
 				if(R.antag.current.client)
 					var/client/C = R.antag.current.client
-					C.persist.potential -= 1
+					var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
+					persist.change_potential(-1)
 			

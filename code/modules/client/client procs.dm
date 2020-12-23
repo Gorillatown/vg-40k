@@ -177,13 +177,6 @@
 	prefs.client = src
 	prefs.initialize_preferences(client_login = 1)
  
-	//An append for a datum of various persistence shit that isn't going to be ran on prefs
-	persist = persistentchar_datums[ckey]
-	if(!persist)
-		persist = new /datum/interactive_persistence(src)
-		persistentchar_datums[ckey] = persist
-	prefs.client = src
-
 	. = ..()	//calls mob.Login()
 	chatOutput.start()
 

@@ -5,6 +5,3 @@
 	machine_flags = WRENCHMOVE|FIXED2WORK
 	density = TRUE
 	anchored = TRUE
-/* Animated State is
-	furnace_on
-*/

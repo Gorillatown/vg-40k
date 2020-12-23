@@ -111,10 +111,11 @@
 		return 1
 
 	if(href_list["potential"])
-		if(!client.persist.persistenceloaded)
+		var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+		if(!persist)
 			to_chat(usr, "<span class='warning'>Your persistence database information hasn't loaded.</span>")
 			return
-		client.persist.PersistMenu(src)
+		persist.PersistMenu(src)
 		return 1
 
 	if(href_list["ready"])

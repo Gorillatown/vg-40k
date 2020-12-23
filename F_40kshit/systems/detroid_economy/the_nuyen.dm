@@ -16,7 +16,6 @@
 	src.pixel_y = rand(-5, 5) * PIXEL_MULTIPLIER
 
 /obj/item/weapon/nuyen/throw_impact(atom/hit_atom, speed, mob/user)
-	
 	playsound(src.loc, 'F_40kshit/sounds/misc_effects/nuyen_sound.wav', 50, 1)
 
 /obj/item/weapon/nuyen/dropped(mob/user)
@@ -24,5 +23,5 @@
 
 /obj/item/weapon/nuyen/examine(mob/user)
 	..()
-	to_chat(user, "There is currently [amount] worth Nuyen in this pile.")
+	to_chat(user, "There is currently [amount] of worth in this Nuyen Pile.")
 

@@ -398,9 +398,6 @@ var/datum/controller/gameticker/ticker
 
 			gameend_time = world.time / 10
 			
-			for(var/client/C in clients)
-				C.persist.save_persistence_sqlite(C.ckey,C,TRUE)
-			
 			if(config.map_voting)
 				//testing("Vote picked [chosen_map]")
 				vote.initiate_vote("map","The Server", popup = 1, weighted_vote = config.weighted_votes)
@@ -429,7 +426,9 @@ var/datum/controller/gameticker/ticker
 					to_chat(world, "<span class='notice'><B>Restarting in [restart_timeout/10] seconds</B></span>")
 
 			end_credits.on_round_end()
-
+		//	for(var/m in json_persistence)
+		//		var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+			
 			if(blackbox)
 				if(config.map_voting)
 					spawn(restart_timeout + 1)
@@ -437,8 +436,8 @@ var/datum/controller/gameticker/ticker
 				else
 					blackbox.save_all_data_to_sql()
  
-			stat_collection.Process()
-
+			//stat_collection.Process()
+ 
 			if(!delay_end)
 				sleep(restart_timeout)
 				if(!delay_end)

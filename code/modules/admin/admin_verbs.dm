@@ -78,7 +78,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
 	/client/proc/allow_character_respawn,    /* Allows a ghost to respawn */
-	/client/proc/manage_religions,
 	/client/proc/set_veil_thickness,
 	/client/proc/credits_panel,			/*allows you to customize the roundend credits before they happen*/
 	/client/proc/persistence_panel,			/*lets you check out the kind of shit that will persist to the next round and say "holy fuck no"*/
@@ -99,7 +98,6 @@ var/list/admin_verbs_sounds = list(
 var/list/admin_verbs_fun = list(
 	/datum/admins/proc/media_stop_all,
 	/client/proc/object_talk,
-	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
 	/client/proc/drop_emp,
 	/client/proc/cinematic,
@@ -108,7 +106,6 @@ var/list/admin_verbs_fun = list(
 	/datum/admins/proc/toggle_aliens,
 	// FUUUUCKED /client/proc/zombie_event, // ZOMBB-B-BIES
 	/client/proc/cmd_admin_add_freeform_ai_law,
-	/client/proc/cmd_admin_add_random_ai_law,
 	/client/proc/toggle_random_events,
 	/client/proc/editappear,
 	/client/proc/commandname,
@@ -233,16 +230,13 @@ var/list/admin_verbs_hideable = list(
 	/client/proc/play_local_sound,
 	/client/proc/play_sound,
 	/client/proc/object_talk,
-	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
 	/client/proc/drop_emp,
 	/client/proc/cinematic,
 	/datum/admins/proc/toggle_aliens,
 	/client/proc/cmd_admin_add_freeform_ai_law,
-	/client/proc/cmd_admin_add_random_ai_law,
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/toggle_random_events,
-	/client/proc/cmd_admin_add_random_ai_law,
 	/client/proc/Set_Holiday,
 	/client/proc/ToRban,
 	/datum/admins/proc/startnow,

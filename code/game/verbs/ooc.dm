@@ -37,7 +37,8 @@
 			if(alert("Your message \"[msg]\" looks like it was meant for in game communication, say it in OOC?", "Meant for OOC?", "No", "Yes") != "Yes")
 				return
 
-	var/display_colour = src.persist.ooc_color
+	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+	var/display_colour = persist.ooc_color
 
 	for(var/client/C in clients)
 		if(C.prefs.toggles & CHAT_OOC)

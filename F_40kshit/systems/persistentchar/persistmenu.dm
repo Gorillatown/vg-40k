@@ -18,12 +18,10 @@
 	popup.open(0)
 
 /datum/interactive_persistence/Topic(href, href_list)
-	if(!client)
-		return
 	if(!usr)
-		WARNING("No usr on Topic for [client] with href [href]!")
+		WARNING("No usr on Topic for [usr.client] with href [href]!")
 		return
-	if(client.mob!=usr)
+	if(usr.client.mob!=usr)
 		to_chat(usr, "YOU AREN'T ME GO AWAY")
 		return
 
@@ -32,7 +30,6 @@
 			var/new_ooccolor = input(usr, "Choose your OOC colour:", "Rewards Menu") as color|null
 			if(new_ooccolor)
 				ooc_color = new_ooccolor
-				save_persistence_sqlite(client.ckey,client,FALSE)
 		else
 			to_chat(usr, "You don't have enough potential to stand out.")
 	

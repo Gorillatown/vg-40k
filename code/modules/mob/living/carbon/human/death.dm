@@ -100,9 +100,8 @@
 	dizziness = 0
 	remove_jitter()
 	if(client)
-		var/client/C = client
-		C.persist.potential -= 1
-		C.persist.save_persistence_sqlite(C.ckey,C,FALSE)
+		var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+		persist.change_potential(-1)
 		to_chat(src, "<span class='bad'> You feel the possibilities fade from you, along with everything else. </span>.")
 
 	//If we have brain worms, dump 'em.

@@ -1,5 +1,7 @@
-//A list that holds persistent char datums
-var/list/persistentchar_datums = list()
+//A list that holds persistent char datums sqlite3
+//var/list/persistentchar_datums = list()
+
+
 
 //Global vis_contents references
 var/global/list/barricadepool = list(1 = null,

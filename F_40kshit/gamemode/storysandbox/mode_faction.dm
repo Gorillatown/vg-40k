@@ -108,8 +108,9 @@
 				PDF_results += "<b><font size='4'>Total Reward:</font></b> <font color='#07fa0c'>[personal_score]</font> Points gained."
 				if(PDEFF.antag.current.client)
 					var/client/C = PDEFF.antag.current.client
-					C.persist.potential += personal_score
-	
+					var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
+					persist.change_potential(personal_score)
+
 		//Repurposed from sorting thru animals, mostly so we can sort for scoreboard leaders/ties to leader.
 		if(istype(R,/datum/role/native_animal))
 			var/datum/role/native_animal/NTR = R
@@ -124,7 +125,8 @@
 				ANIMAL_results += "<b>Total Growth:</font></b> <font color='#07fa0c'>[NTR.total_growth]</font> total times grown.<br>"
 				if(NTR.antag.current.client)
 					var/client/C = NTR.antag.current.client
-					C.persist.potential += NTR.total_growth
+					var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
+					persist.change_potential(NTR.total_growth)
 
 	score_results += PDF_results //Mostly so we can re-order things and just have one singular loop.
 	if(biggest_animal) //If we even got a biggest animal.
