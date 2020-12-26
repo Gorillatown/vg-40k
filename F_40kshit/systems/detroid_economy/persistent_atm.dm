@@ -110,13 +110,13 @@
 		if(contained_nuyen > 0)
 			var/nuyen_to_req = input(usr, "How much Nuyen to convert to Requisition?", "Nuyen to Requisition", contained_nuyen) as null|num
 			contained_card.req_holder.requisition += clamp(round(nuyen_to_req*3),0,contained_nuyen)
-			contained_nuyen -= clamp(round(nuyen_to_req*3),0,contained_nuyen)
+			contained_nuyen -= clamp(round(nuyen_to_req),0,contained_nuyen)
 	
 	if(href_list["req_to_nuyen"])
 		if(contained_card.req_holder.requisition > 0)
 			var/req_to_nuyen = input(usr, "How much Requisition to convert to Nuyen?", "Requisition to Nuyen", contained_card.req_holder.requisition) as null|num
 			contained_nuyen += clamp(round(req_to_nuyen/3),0,contained_card.req_holder.requisition)
-			contained_card.req_holder.requisition -= clamp(round(req_to_nuyen/3),0,contained_card.req_holder.requisition)
+			contained_card.req_holder.requisition -= clamp(round(req_to_nuyen),0,contained_card.req_holder.requisition)
 	
 	if(href_list["withdraw_sector"])
 		if(persist.money_saved > 0)
@@ -134,7 +134,7 @@
 		if(contained_nuyen > 0)
 			var/deposit_sector = input(usr, "How much physical currency to withdraw from the machine?", "Physical Currency Withdrawal", contained_nuyen) as null|num
 			if(deposit_sector > 0)
-				var/obj/item/weapon/nuyen/our_nuyen = new(src.loc)
+				var/obj/item/weapon/nuyen/our_nuyen = new(loc,deposit_sector)
 				our_nuyen.amount += clamp(round(deposit_sector),0,contained_nuyen)
 				contained_nuyen -= clamp(round(deposit_sector),0,contained_nuyen)
 				L.put_in_hands(our_nuyen)

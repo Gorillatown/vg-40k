@@ -119,9 +119,7 @@ var/obj/machinery/requisition_console/req_con
 		if(contained_card)
 			contained_card.req_holder.requisition += current_cargo_req_held
 			current_cargo_req_held = 0
-	
-	attack_hand(usr)
-			
+		
 //The nano_ui proc, in this we want to prepare data for display on (MY shoddy ass) js interface.
 /obj/machinery/requisition_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]

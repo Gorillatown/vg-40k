@@ -7,11 +7,12 @@
 	throw_speed = 1
 	w_class = W_CLASS_TINY
 	throw_range = 10
-	var/amount = 100
+	var/amount = 0
 //F_40kshit/sounds/misc_effects/nuyen_sound.wav
 
-/obj/item/weapon/nuyen/New()
+/obj/item/weapon/nuyen/New(amount_to_add)
 	..()
+	amount = amount_to_add
 	src.pixel_x = rand(-5, 5) * PIXEL_MULTIPLIER
 	src.pixel_y = rand(-5, 5) * PIXEL_MULTIPLIER
 
