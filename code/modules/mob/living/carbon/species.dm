@@ -55,7 +55,6 @@ var/global/list/pref_select_species = list("Human")
 	//Base_ATTR - Basically this is transitioned onto the mob, its the actual attribute score.
 	//Base_ATTR_natural_limit - This is the limit before they have no random prob of increase.
 	//RNG_Modifier_Sum_Max - This is a total sum of how many extra stats we can have.
-	var/balancing_respawn_modifier = 0 MINUTES // How many minutes we are punished for dying
 	var/RNG_modifier_sum_max = 12
 	var/base_strength = 1
 	var/base_strength_natural_limit = 12

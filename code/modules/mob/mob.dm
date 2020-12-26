@@ -1187,13 +1187,16 @@ Use this proc preferably at the end of an equipment loadout
 		to_chat(usr, "<span class='notice'> <B>You must be dead to use this!</B></span>")
 		return
 
-	var/deathtime = world.time - src.timeofdeath
-	if(istype(src,/mob/dead/observer))
+	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+	var/deathtime = world.time - persist.time_ghosted
+	
+	/*if(istype(src,/mob/dead/observer))
 		var/mob/dead/observer/G = src
 		if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
 			to_chat(usr, "<span class='notice'> <B>Upon using the antagHUD you forfeighted the ability to join the round.</B></span>")
-			return
-	var/deathtimeminutes = round(deathtime / 600)
+			return*/
+	
+	/*var/deathtimeminutes = round(deathtime / 600)
 	var/pluralcheck = "minute"
 	if(deathtimeminutes == 0) 
 		pluralcheck = ""
@@ -1202,9 +1205,14 @@ Use this proc preferably at the end of an equipment loadout
 	else if(deathtimeminutes > 1)
 		pluralcheck = " [deathtimeminutes] minutes and"
 	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-	to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
-	if(deathtime < respawn_modifier+config.respawn_delay*600)
-		to_chat(usr, "You must wait [config.respawn_delay] minutes to respawn! Your current respawn modifier is [respawn_modifier/600] Minutes.")
+	to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")*/
+
+	var/minutes_remaining = round((persist.respawn_modifier+config.respawn_delay*600)-deathtime)
+	var/seconds_remaining = round((deathtime - minutes_remaining * 600) / 10,1)
+
+	if(deathtime < persist.respawn_modifier+config.respawn_delay*600)
+		to_chat(usr, "You have [round(minutes_remaining/600)] minutes and [seconds_remaining] before you can respawn.")
+//		to_chat(usr, "You must wait [respawn_modifier+config.respawn_delay*600] minutes to respawn!")
 		return
 	else 
 		to_chat(usr, "You can respawn now, enjoy your new life!")
@@ -1228,6 +1236,8 @@ Use this proc preferably at the end of an equipment loadout
 		M = null
 		return
 
+	persist.respawn_modifier = 0
+	persist.time_ghosted = 0
 	M.key = key
 //	M.Login()	//wat
 	return

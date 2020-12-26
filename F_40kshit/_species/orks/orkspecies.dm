@@ -26,7 +26,6 @@
 
 	has_mutant_race = 0
 
-	balancing_respawn_modifier = 4 MINUTES
 	RNG_modifier_sum_max = 4
 	base_strength = 9
 	base_strength_natural_limit = 13

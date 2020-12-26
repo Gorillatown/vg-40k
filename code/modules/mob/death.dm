@@ -32,6 +32,9 @@
 
 
 /mob/proc/death(gibbed)
+	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+	if(persist)
+		persist.handle_respawns(world.time)
 	timeofdeath = world.time
 	lazy_invoke_event(/lazy_event/on_death, list("user" = src, "body_destroyed" = gibbed))
 	living_mob_list -= src

@@ -12,6 +12,8 @@ Gretchin 	->	 Ork 	->	 Nob	 -> 	Warboss
 	var/ork_growth = 0 //A symbol of our orks growth from beating peoples asses.
 
 /mob/living/carbon/human/proc/grow_nigga(var/gainedrate)
+	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+	persist.respawn_modifier = 2 MINUTES
 	if(isork(src))
 		ork_growth += gainedrate
 		if(iswarboss(src))
@@ -19,7 +21,7 @@ Gretchin 	->	 Ork 	->	 Nob	 -> 	Warboss
 				to_chat(src, "<span class='good'>You grow a bit bigger, but not a ton.</span>")
 				stat_increase(ATTR_STRENGTH,100)
 				ork_growth = 0
-				respawn_modifier = 3600
+				persist.respawn_modifier = 3 MINUTES
 			return 1 //We maxed out here, just hand some stat help i guess.
 		else if(isnob(src))
 			if(ork_growth >= 1000)
@@ -27,7 +29,7 @@ Gretchin 	->	 Ork 	->	 Nob	 -> 	Warboss
 				if(set_species("Ork Warboss"))
 					regenerate_icons()
 					ork_growth = 0
-					respawn_modifier = 4 MINUTES
+					persist.respawn_modifier = 4 MINUTES
 			return 1
 		else if(isgretchin(src))
 			return 1
@@ -37,5 +39,5 @@ Gretchin 	->	 Ork 	->	 Nob	 -> 	Warboss
 				if(set_species("Ork Nob"))
 					regenerate_icons()
 					ork_growth = 0
-					respawn_modifier = 3 MINUTES //deciseconds
+					persist.respawn_modifier = 3 MINUTES //deciseconds
 			return 1

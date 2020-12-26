@@ -11,6 +11,10 @@ var/list/json_persistence = list()
 	var/ooc_color = "#002eb8" //OOC color
 	var/money_saved = 0 // The amount of money currently held in the datum
 	
+	//RESPAWN TRACKING
+	var/time_ghosted = FALSE
+	var/respawn_modifier = FALSE
+	
 
 	var/list/characters = list() //No character saving yet.
 /*
@@ -86,6 +90,12 @@ var/list/json_persistence = list()
 		potential += value
 	else
 		potential -= value
+
+/datum/interactive_persistence/proc/handle_respawns(var/value)
+	if(!time_ghosted)
+		time_ghosted = value
+
+
 
 /*
 /mob/verb/read_my_datum_nigga()

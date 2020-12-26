@@ -20,7 +20,6 @@
 /mob
 	var/warp_speed = FALSE //We are currently in WARP INDUCED SPEED INCREASE (Aka extra attacks)
 	var/soul_blaze_melee = FALSE //Are we currently applying soul blaze?
-	var/respawn_modifier = 0 //How much is our respawn delayed cause we died?
 	
 	var/dodging = FALSE //Are we currently special dodging?
  
