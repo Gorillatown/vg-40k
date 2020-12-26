@@ -8,7 +8,7 @@ At the end of the round, maybe in the future there will be more tables etc for p
 But the preferences menu and other stuff will need cleaned up and such.
 *///This needs to be appended to gameticker.dm or the mode end segment.
 
-/datum/persist_sqlite3
+/datum/interactive_persistence
 	var/database/persistdb = ("persistence.sqlite")
 	var/client/client
 	var/potential = 0
@@ -46,7 +46,7 @@ But the preferences menu and other stuff will need cleaned up and such.
 
 */
 
-/datum/persist_sqlite3/New(client/C)
+/datum/interactive_persistence/New(client/C)
 	client=C
 	if(istype(C))
 		var/theckey = C.ckey
@@ -61,7 +61,7 @@ But the preferences menu and other stuff will need cleaned up and such.
 					save_persistence_sqlite(theckey,C,FALSE)
 					persistenceloaded = 1
 
-/datum/persist_sqlite3/proc/save_persistence_sqlite(var/ckey, var/user, var/journeyend = FALSE)
+/datum/interactive_persistence/proc/save_persistence_sqlite(var/ckey, var/user, var/journeyend = FALSE)
 	var/database/query/check = new
 	var/database/query/q = new
 	if(!ckey)
@@ -95,7 +95,7 @@ But the preferences menu and other stuff will need cleaned up and such.
 	return 1
 
 
-/datum/persist_sqlite3/proc/load_persistence_sqlite(var/ckey,var/user)
+/datum/interactive_persistence/proc/load_persistence_sqlite(var/ckey,var/user)
 	var/list/persistence_one = new
 	var/database/query/check = new
 	var/database/query/q = new

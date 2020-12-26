@@ -67,14 +67,13 @@ var/list/req_obj_reference_list = list(
 	//Armorcheck
 	if(istype(E,/obj/item/clothing))
 		var/obj/item/clothing/C = E
+
 		if(quality <= 4)
-			C.armor["melee"] = clamp((C.armor["melee"]-(15/quality)),0,100)
-			C.armor["bullet"] = clamp((C.armor["bullet"]-(15/quality)),0,100)
-			C.armor["laser"] = clamp((C.armor["laser"]-(15/quality)),0,100)
+			for(var/A in C.armor)
+				C.armor[A] = clamp((C.armor[A]-(15/quality)),0,100)
 		else if(quality > 5)
-			C.armor["melee"] = clamp((C.armor["melee"]+quality*1.5),0,100)
-			C.armor["bullet"] = clamp((C.armor["bullet"]+quality*1.5),0,100)
-			C.armor["laser"] = clamp((C.armor["laser"]+quality*1.5),0,100)
+			for(var/A in C.armor)
+				C.armor[A] = clamp((C.armor[A]+quality*1.5),0,100)
 
 	if(quality <= 4)
 		E.force -= quality

@@ -2892,6 +2892,7 @@
 #include "F_40kshit\systems\crafting_recipes\ork_crafting\mek_recipes\mags_n_ammo.dm"
 #include "F_40kshit\systems\crafting_recipes\ork_crafting\mek_recipes\misc.dm"
 #include "F_40kshit\systems\detroid_economy\detroid_credstick.dm"
+#include "F_40kshit\systems\detroid_economy\market_economy.dm"
 #include "F_40kshit\systems\detroid_economy\nu_req_shuttle.dm"
 #include "F_40kshit\systems\detroid_economy\persistent_atm.dm"
 #include "F_40kshit\systems\detroid_economy\requisition_console.dm"

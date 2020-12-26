@@ -11,4 +11,3 @@ Clean out the virtual wallet shit from the old economy system, and jam this in w
 */
 /datum/detroid_credstick
 	var/requisition = 0 //Requisition
-	var/detroid_nuyen = 0 //Cause I still want the two money persistence system I planned eons ago.

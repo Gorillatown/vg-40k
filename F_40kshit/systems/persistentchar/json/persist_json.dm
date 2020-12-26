@@ -6,11 +6,13 @@
 var/list/json_persistence = list()
 
 /datum/interactive_persistence
-	var/potential = 0
-	var/ooc_color = "#002eb8"
-	var/money_saved = 0
+	var/ckey_ref // a reference to the ckey
+	var/potential = 0 // Our rewards points
+	var/ooc_color = "#002eb8" //OOC color
+	var/money_saved = 0 // The amount of money currently held in the datum
+	
 
-	var/list/characters = list()
+	var/list/characters = list() //No character saving yet.
 /*
 	Unlike the sqlite3 iteration of persistence, this one just writes peoples shit to
 	individual json files.
@@ -26,21 +28,20 @@ var/list/json_persistence = list()
 
 */
 /datum/interactive_persistence/New(var/ckey)
-	if(fexists("fuckyou/[ckey].json"))
-		load_persistence_json(ckey)
+	ckey_ref = ckey
+	if(fexists("fuckyou/[ckey_ref].json"))
+		load_persistence_json()
 	else //This only occurs on a player first joining.
-		save_persistence_json(ckey)
-		json_persistence["[ckey]"] = src
+		save_persistence_json()
+		json_persistence["[ckey_ref]"] = src
 
-	to_chat(world,"INTERACTIVE PERSISTENCE NEW")
-
-/datum/interactive_persistence/proc/save_persistence_json(var/ckey)
-	to_chat(world,"INTERACTIVE PERSISTENCE SAVE")
-	if(fexists("fuckyou/[ckey].json")) //check if the file already exists
-		if(!fdel("fuckyou/[ckey].json")) //delete the old file.
-			world.log << "unable to clear [ckey]'s old file!"
+//See: gameticker.dm Line: 430
+/datum/interactive_persistence/proc/save_persistence_json()
+	if(fexists("fuckyou/[ckey_ref].json")) //check if the file already exists
+		if(!fdel("fuckyou/[ckey_ref].json")) //delete the old file.
+			message_admins("unable to clear [ckey_ref]'s old file!")
 			return 0
-	var/writing = file("fuckyou/[ckey].json")
+	var/writing = file("fuckyou/[ckey_ref].json")
 	var/list/save_list = list()
 	
 	save_list["potential"] = potential
@@ -54,10 +55,9 @@ var/list/json_persistence = list()
 
 	writing << json_encode(save_list)
 
-/datum/interactive_persistence/proc/load_persistence_json(var/ckey)
-	to_chat(world,"INTERACTIVE PERSISTENCE LOAD")
+/datum/interactive_persistence/proc/load_persistence_json()
 	var/list/load_list = list()
-	var/reading = file("fuckyou/[ckey].json")
+	var/reading = file("fuckyou/[ckey_ref].json")
 	load_list = json_decode(file2text(reading))
 	for(var/key in load_list)
 		switch(key)
@@ -77,7 +77,7 @@ var/list/json_persistence = list()
 							argh.impurity = load_list_chars["impurity"]
 							characters["[argh.charname]"] = argh
 	
-	json_persistence["[ckey]"] = src
+	json_persistence["[ckey_ref]"] = src
 
 /datum/interactive_persistence/proc/change_potential(var/value)
 	if(!value)
@@ -87,6 +87,7 @@ var/list/json_persistence = list()
 	else
 		potential -= value
 
+/*
 /mob/verb/read_my_datum_nigga()
 //	set name = "Gibself"
 //	set category = "Fun"
@@ -95,7 +96,7 @@ var/list/json_persistence = list()
 
 /mob/verb/save_persistence()
 	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
-	persist.save_persistence_json(ckey)
+	persist.save_persistence_json()
 
 /mob/verb/raise_potential()
 	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
@@ -105,3 +106,4 @@ var/list/json_persistence = list()
 /mob/verb/what_is_in_db()
 	for(var/m in json_persistence)
 		to_chat(world, "[m] = [json_persistence[m]]")
+*/

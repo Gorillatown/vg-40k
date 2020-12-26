@@ -2,15 +2,19 @@
 Notes:
 Deffo not my best work, a mix of copy-pasting and shitcode.
 */
-/obj/structure/requisition_console
+var/obj/machinery/requisition_console/req_con
+/obj/machinery/requisition_console
 	name = "Requisition Console"
-	icon = 'F_40kshit/icons/obj/64xstructures.dmi'
-	icon_state = "patrolcomp"
+	icon = 'F_40kshit/icons/obj/64x64machines.dmi'
+	icon_state = "req_base"
 	desc = "This console acknowledges your service to the Mannheim Dynasty, in the form of letting you spend it on material goods."
-	density = 1
-	anchored = 1
-	pixel_x = -12
-	pixel_y = -12
+	machine_flags = WRENCHMOVE|FIXED2WORK 
+	density = TRUE
+	anchored = TRUE
+	bound_width = 64
+	plane = ABOVE_HUMAN_PLANE
+	layer = WINDOOR_LAYER
+	var/current_cargo_req_held = 0 //Amount of sales Req we currently got.
 
 	//var/logged_in = FALSE //Did we swipe our credstick.
 	var/obj/item/weapon/card/id/contained_card = null //Keep track of the ID inserted.
@@ -25,21 +29,42 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	//Or let them hit purchase to move it into the list, so they can have a shopping cart.
 	//var/list/current_datums = list() //We jam datums in, and move them out when necessary. Aka purchase holder.
 
-/obj/structure/requisition_console/ex_act(severity)
+/obj/machinery/requisition_console/ex_act(severity)
 	return
 
-/obj/structure/requisition_console/New()
+/obj/machinery/requisition_console/New()
 	..()
-	set_light(3, 3, "#0afd01")
+	set_light(3, 6, "#FDFDFD")
+	req_con = src
 
-/obj/structure/requisition_console/initialize()
+/obj/machinery/requisition_console/initialize()
 	..()
 
-/obj/structure/requisition_console/Destroy()
+/obj/machinery/requisition_console/Destroy()
+	req_con = null
+	qdel(contained_card)
+	contained_card = null
 	..()
  
+/obj/machinery/requisition_console/update_icon()
+	if(stat & (NOPOWER))
+		vis_contents.Cut()
+	else
+		vis_contents += new /obj/effect/overlay/viscons/detroid_req_overlay
+
+/obj/effect/overlay/viscons/detroid_req_overlay
+	name = "Detroid Req Light"
+	desc = "Ayep"
+	icon = 'F_40kshit/icons/obj/64x64machines.dmi'
+	icon_state = "req_on"
+	vis_flags = VIS_INHERIT_ID
+
+/obj/machinery/requisition_console/power_change()
+	..()
+	update_icon()
+
 //we handle the card slot in and out on attackby.
-/obj/structure/requisition_console/attackby(obj/item/weapon/W, mob/user)
+/obj/machinery/requisition_console/attackby(obj/item/weapon/W, mob/user)
 	..()
 	if(istype(W,/obj/item/weapon/card/id))
 		var/obj/item/weapon/card/id/id_card = W
@@ -52,11 +77,11 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 				contained_card = id_card //If there isn't a contained card, change the contained card to ours.
 
 //Attacking with open hand opens the nanoui template up.
-/obj/structure/requisition_console/attack_hand(mob/user)
+/obj/machinery/requisition_console/attack_hand(mob/user)
 	ui_interact(user)
 
 //The Addlink shit in the template calls the topic.
-/obj/structure/requisition_console/Topic(href, href_list)
+/obj/machinery/requisition_console/Topic(href, href_list)
 	if(href_list["purchase"]) 
 		if(contained_card)
 			var/req_on_credstick = contained_card.req_holder.requisition
@@ -89,9 +114,16 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 			var/mob/living/M = usr
 			M.put_in_hands(contained_card)
 			contained_card = null
+
+	if(href_list["withdraw_cargo_req"])
+		if(contained_card)
+			contained_card.req_holder.requisition += current_cargo_req_held
+			current_cargo_req_held = 0
+	
+	attack_hand(usr)
 			
 //The nano_ui proc, in this we want to prepare data for display on (MY shoddy ass) js interface.
-/obj/structure/requisition_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
+/obj/machinery/requisition_console/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = NANOUI_FOCUS)
 	var/data[0]
 	if(contained_card)
 		data["name_of_credholder"] = "[contained_card.registered_name]"
@@ -99,6 +131,7 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 	else
 		data["name_of_credholder"] = "Please Insert Identifier"
 		data["requisition"] = "NULL"
+	data["req_from_sales"] = "[current_cargo_req_held]"
 
 	data["going_places"] = nu_req_shuttle.off_station
 	data["shuttle_status"] = nu_req_shuttle.in_transit
@@ -126,7 +159,3 @@ Deffo not my best work, a mix of copy-pasting and shitcode.
 		ui.set_initial_data(data)
 		// open the new ui window
 		ui.open()
-
-/obj/structure/requisition_console/attackby(obj/item/weapon/W, mob/user)
-	..()
-

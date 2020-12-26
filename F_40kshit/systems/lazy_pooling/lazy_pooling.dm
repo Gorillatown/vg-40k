@@ -6,8 +6,12 @@
 	load_barricades()
 	load_overlays()
 	load_manufacturing_recipes()
+	load_single_datums()
 //	load_ghostbodies()
 //	load_ghostbuttons()
+
+/datum/lazy_pooler/proc/load_single_datums()
+	market_economy = new /datum/market_economy
 
 /datum/lazy_pooler/proc/load_barricades()
 	barricadepool[1] = new /obj/effect/overlay/viscons/aegisline/north

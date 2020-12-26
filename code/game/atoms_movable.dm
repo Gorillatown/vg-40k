@@ -505,7 +505,7 @@
 		if(isliving(user))
 			var/mob/living/L = user
 			range += round(L.attribute_strength/2)
-			speed += L.attribute_strength
+			speed += round(L.attribute_strength/4)
 			if(L.attribute_strength >= 15)
 				afterimage = 1
 				src.throwing = 2

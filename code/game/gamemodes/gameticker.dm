@@ -426,8 +426,10 @@ var/datum/controller/gameticker/ticker
 					to_chat(world, "<span class='notice'><B>Restarting in [restart_timeout/10] seconds</B></span>")
 
 			end_credits.on_round_end()
-		//	for(var/m in json_persistence)
-		//		var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+
+			for(var/m in json_persistence) //Goes through all the datums we have and saves them if they were in the round.
+				var/datum/interactive_persistence/persist = json_persistence["[m]"]
+				persist.save_persistence_json()
 			
 			if(blackbox)
 				if(config.map_voting)

@@ -77,8 +77,14 @@ var/global/datum/shuttle/nu_req_shuttle/nu_req_shuttle = new(starting_area = /ar
 		if(MA.anchored) //If its anchored, don't bother it aka the fucking lights/glass/grilles/doors
 			continue
 		else
-			qdel(MA) //You could process selling items here, but for now we just want the labor of plebs.
-	max_capacity = 0
+			var/the_payout = market_economy.sell_object(MA)
+			req_con.current_cargo_req_held += the_payout
+			if(isliving(MA))
+				var/mob/living/L = MA
+				if(L.client)
+					to_chat(MA,"<span class='bad'> Your journey comes to a end, as you've been sold into slavery for [the_payout] requisition.</span>")
+					L.ghostize()
+			qdel(MA)
 
 //This proc basically moves everything on when we are off map and about to go to main map.
 /datum/shuttle/nu_req_shuttle/proc/move_shuttle_objects()

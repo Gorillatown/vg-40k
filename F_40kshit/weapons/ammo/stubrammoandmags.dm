@@ -1,6 +1,7 @@
 /obj/item/projectile/bullet/stubber
 	name = "\improper 10mm Stubber Bullet"
-	damage = 10
+	damage = 14
+	penetration = 2
 	bounce_type = PROJREACT_WALLS //Yeah I want it to bounce off walls.
 
 /obj/item/ammo_casing/stubber
