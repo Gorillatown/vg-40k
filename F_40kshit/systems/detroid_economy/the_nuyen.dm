@@ -25,3 +25,10 @@
 	..()
 	to_chat(user, "There is currently [amount] of worth in this Nuyen Pile.")
 
+/obj/item/weapon/nuyen/attackby(obj/item/weapon/W, mob/user)
+	..()
+	if(istype(W,/obj/item/weapon/nuyen))
+		var/obj/item/weapon/nuyen/other_stack = W
+		playsound(src.loc, 'F_40kshit/sounds/misc_effects/nuyen_sound.wav', 50, 1)
+		amount += other_stack.amount
+		qdel(W)
