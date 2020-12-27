@@ -59,34 +59,42 @@ TODO: Stamp Molder + Menus
 /obj/machinery/stamp_molder/proc/check_objects()
 	var/turf/out_T = get_step(src, dir)
 	var/list/recipe_requirements = cur_recipe.requirements.Copy()
-	var/failed = FALSE
+	var/sheet_check_failed = FALSE
+	var/other_obj_check_failed = FALSE
 
 	for(var/i=1 to recipe_requirements.len)
-		failed = TRUE
 		var/obj/item/recipe_obj = recipe_requirements[i]
 		var/recipe_amount = recipe_requirements[recipe_obj]
-	
+		//to_chat(world,"VARS: [recipe_obj], [recipe_amount]")
+
 		if(ispath(recipe_obj,/obj/item/stack))
+			sheet_check_failed = TRUE
 			for(var/obj/item/I in contained_objects)
 				if(istype(I,recipe_obj))
 					var/obj/item/stack/STK = I
 					if(STK.amount == recipe_amount)
 						contained_objects -= I
 						qdel(I)
-						failed = FALSE
+						sheet_check_failed = FALSE
+						//to_chat(world,"SHEET CHECK PASSED")
 						break
 		else
+			//to_chat(world,"OTHER OBJ CHECK ENTERED")
 			for(var/ii=1 to recipe_amount)
-				failed = TRUE
+				other_obj_check_failed = TRUE
 				for(var/obj/item/I in contained_objects)
 					if(istype(I,recipe_obj))
 						contained_objects -= I
 						qdel(I)
-						failed = FALSE
+						other_obj_check_failed = FALSE
+						//to_chat(world,"OTHER OBJ CHECK PASSED")
 						break
+
+	//to_chat(world,"[sheet_check_failed], [other_obj_check_failed]")
 	
 	for(var/atom/movable/A in contained_objects)
-		failed = TRUE
+		//to_chat(world,"CONTAMINATION CHECK ENTERED")
+		sheet_check_failed = TRUE
 		contained_objects -= A
 		if(isliving(A))
 			spawn(1 SECONDS)
@@ -101,9 +109,11 @@ TODO: Stamp Molder + Menus
 		else
 			qdel(A)
 
-	if(failed)
+	if(other_obj_check_failed || sheet_check_failed)
+		//to_chat(world,"FAILURE")
 		return
 	else
+		//to_chat(world,"SUCCESS")
 		new cur_recipe.end_result(out_T)
 					
 /obj/machinery/stamp_molder/multitool_menu(var/mob/user,var/obj/item/device/multitool/P)
