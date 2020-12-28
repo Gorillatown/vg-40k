@@ -139,9 +139,10 @@
 			playsound(user, fire_sound, fire_volume, 1)
 		else if (in_chamber.fire_sound)
 			playsound(user, in_chamber.fire_sound, fire_volume, 1)
-		user.visible_message("<span class='warning'>[user] fires [src][reflex ? " by reflex":""]!</span>", \
-		"<span class='warning'>You fire [src][reflex ? "by reflex":""]!</span>", \
-		"You hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
+		if(world.time >= last_fired + fire_delay)
+			user.visible_message("<span class='warning'>[user] fires [src][reflex ? " by reflex":""]!</span>", \
+			"<span class='warning'>You fire [src][reflex ? "by reflex":""]!</span>", \
+			"You hear a [istype(in_chamber, /obj/item/projectile/beam) ? "laser blast" : "gunshot"]!")
 
 /obj/item/weapon/gun/proc/prefire_check(mob/user, var/display_message = 0)
 	if(ishuman(user))

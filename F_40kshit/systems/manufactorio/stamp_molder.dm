@@ -35,6 +35,8 @@ TODO: Stamp Molder + Menus
 	..()
 
 /obj/machinery/stamp_molder/receive_signal(datum/signal/signal)
+	if(stat & NOPOWER)
+		return
 	if(!signal || signal.encryption)
 		return
 	if(id_tag != signal.data["tag"] || !signal.data["command"])

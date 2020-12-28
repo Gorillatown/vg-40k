@@ -10,7 +10,7 @@
 	layer = 4
 	blinded = 0
 	anchored = 1	//  don't get pushed around
-	density = 0
+	density = 1
 	//invisibility = INVISIBILITY_OBSERVER //This is what makes it a proper spirit.
 	see_invisible = SEE_INVISIBLE_OBSERVER //Daemons can see into the immaterial world, I should think.
 	maxHealth = 500
@@ -25,7 +25,7 @@
 	melee_damage_upper = 150
 	attacktext = "flogs"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
-	speed = 0
+	speed = 1
 	stop_automated_movement = 1
 	status_flags = 0
 	environment_smash_flags = 0

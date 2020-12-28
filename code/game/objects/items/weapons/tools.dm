@@ -489,7 +489,7 @@
 
 //Decides whether or not to damage a player's eyes based on what they're wearing as protection
 //Note: This should probably be moved to mob
-/obj/item/weapon/weldingtool/proc/eyecheck(mob/user )
+/obj/item/weapon/weldingtool/proc/eyecheck(mob/user)
 	if(!iscarbon(user))
 		return 1
 	var/mob/living/carbon/C = user //eyecheck is living-level
@@ -517,7 +517,7 @@
 					if(E.damage > 10)
 						E.damage += rand(4,10)
 				if(-1)
-					var/obj/item/clothing/to_blame = H.head //blame the hat
+					var/obj/item/clothing/to_blame = H.head //blame the hat 
 					if(!to_blame || (istype(to_blame) && H.glasses && H.glasses.eyeprot < to_blame.eyeprot)) //if we don't have a hat, the issue is the glasses. Otherwise, if the glasses are worse, blame the glasses
 						to_blame = H.glasses
 					user.simple_message("<span class='warning'>Your [to_blame] intensifies the welder's glow. Your eyes itch and burn severely.</span>",\

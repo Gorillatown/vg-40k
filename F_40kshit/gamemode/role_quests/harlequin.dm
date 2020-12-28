@@ -73,7 +73,7 @@
 			else
 				to_chat(our_protagonist, "<span class='notice'>You just need a multitool. Where can you find something like that?.</span>")
 		if(-11)
-			to_chat(our_protagonist, "<span class='notice'>We will need to use this device on a webway gate. If memory serves you, you can find a Dream Stone at Crone21775, along with a webway gate somewhere to the south-east. But be careful. That is in the eye of terror. Right in the center of it.</span>")
+			to_chat(our_protagonist, "<span class='notice'>We will need to use this device on a webway gate. If memory serves you, you can find a Dream Stone at Crone21775, along with a webway gate somewhere to the south-east along the eastern side of the ruins. But be careful. That is in the eye of terror. Right in the center of it.</span>")
 			alignment--
 		if(-12)
 			if(istype(our_protagonist.get_active_hand(), /obj/item/device/soulstone))
@@ -212,7 +212,7 @@
 				qdel(MF)
 				alignment--
 				return
-			to_chat(our_protagonist, "<span class='notice'>The power room. That underground area the humans built up has a power room. Something... Something there. Something was there before the humans were.</span>")
+			to_chat(our_protagonist, "<span class='notice'>The power room. That underground area the humans built up near the webway gate has a power room. Something... Something there. Something was there before the humans were.</span>")
 		if(-33)
 			for(var/obj/item/weapon/powersword/harlequin/HB in our_protagonist.contents)
 				to_chat(our_protagonist, "<span class='notice'>Now <i>this</i> is a suitable weapon. It must have remained in here for centuries... And that creature was attracted to it's power. It is yours now. You do not know the blade's story; it may have served one of the darker souls of your kind, or it may have served a performer for the laughing god. But you will forge a new story for it. A good one.</span>")

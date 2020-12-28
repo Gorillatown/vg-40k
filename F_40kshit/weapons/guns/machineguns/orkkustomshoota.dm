@@ -137,14 +137,14 @@
 
 /obj/item/weapon/gun/projectile/kustomshoota/Fire(atom/target, mob/living/user, params, reflex = 0, struggle = 0)
 	..()
-	if(!cooldown)
+	if(!cooldown) 
 		makethepainstop(target, user, params, struggle)
 		return
 
 /obj/item/weapon/gun/projectile/kustomshoota/proc/makethepainstop(atom/target, mob/living/user, params, struggle = 0) //Burst fires don't work well except by calling Fire() multiple times
 	var/fucked_fire = FALSE //We set this if someone has fucked up firing.
 	if(!isork(user))
-		if(user.attribute_strength <= 12)
+		if(user.attribute_strength <= 18)
 			fucked_fire = TRUE
 	if(!taped)
 		user.visible_message("<span class='warning'> This needs to be taped up before it can be used!</span>")

@@ -1,5 +1,5 @@
 /datum/roguelike_effects/raise
-	name = "Beckons spirits"
+	name = "Warp Manipulation"
 	desc = "Beckons things from the warp, along with those who have recently passed."
 	cooldown_max = 10
 

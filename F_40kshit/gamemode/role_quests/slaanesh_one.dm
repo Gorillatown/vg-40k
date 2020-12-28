@@ -51,13 +51,13 @@
 				to_chat(our_protagonist,"<span class='notice'>Oh holy crap man! That was awesome! Are you feeling better? I'm feeling better. This is nice. REAL nice.</span>")
 				alignment--
 			else
-				to_chat(our_protagonist,"<span class='notice'>Man I am a disembodied voice in your head! Did you really think you can trick me? Go get that Laserbrain dust! FUCKING STEAL IT if you have to! Just get it into your body!</span>")
+				to_chat(our_protagonist,"<span class='notice'>Man I am a disembodied voice in your head! Did you really think you can trick me? Go get that Laserbrain dust! FUCKING STEAL IT if you have to! Just get it into your body! Laserbrain Dust is totally in the far northwest caverns.</span>")
 		if(-4)
 			to_chat(our_protagonist,"<span class='notice'>That was sweet but it's kind of lonely misbehaving by ourselves. Lets find some one else to get high with. And I know just the thing. WOOPS! Dropped it on the ground. Hope no one saw.</span>")
 			new /obj/item/weapon/lighter/zippo(our_protagonist.loc)
 			our_protagonist.equip_to_slot_or_drop(new /obj/item/clothing/mask/cigarette/celeb(our_protagonist), slot_l_hand)
 			our_protagonist.visible_message(text("<span class='alert'>[our_protagonist] pulls out a cigarette and smiles at it.</span>"))
-			to_chat(our_protagonist,"<span class='notice'>I forgot we had this. This will do nicely. Lets find some one to share it BEFORE we light it up.</span>")
+			to_chat(our_protagonist,"<span class='notice'>I forgot we had this. This will do nicely. Lets find some one to share it with BEFORE we light it up.</span>")
 			our_protagonist.maxHealth = 200
 			our_protagonist.health = 200
 			our_protagonist.faction = "Slaanesh"
@@ -138,7 +138,7 @@
 				for(var/obj/structure/ladder/theladders in ladders) //Get your asses to work ladders
 					theladders.update_links()
 				return
-			to_chat(our_protagonist,"<span class='notice'> Remember that paper report? It said something about stuff going on far south..")
+			to_chat(our_protagonist,"<span class='notice'> Remember that paper report? It said something about stuff going on far south coming from the cliffs..")
 		if(-15)
 //			our_protagonist.loud = 1
 			var/mob/living/carbon/human/H = our_protagonist

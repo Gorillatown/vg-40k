@@ -7,7 +7,8 @@ Basically this is a assc list that handles cargo prices
 var/datum/market_economy/market_economy
 
 /datum/market_economy
-	var/list/market_economy = list()
+	var/list/market_economy = list(/obj/item/stack/ore/iron = 0.1,
+									/obj/item/stack/ore/glass = 0.1) 
 
 /datum/market_economy/proc/sell_object(atom/movable/O)
 	var/payout = market_economy[O.type]
@@ -25,10 +26,16 @@ var/datum/market_economy/market_economy
 			return payout
 		
 		else if(istype(O,/obj/item/stack))
-			var/rand_number_payout = rand(1,25)
+			var/rand_number_payout = 0.1
+			if(istype(O,/obj/item/stack/sheet/mineral)||istype(O,/obj/item/stack/ore)) //If its a mineral sheet pay out
+				rand_number_payout = rand(5,10)
+			else //If its not fuck you enjoy jackshit idiot
+				rand_number_payout = 0.2
+			
 			market_economy[O.type] = rand_number_payout
 			var/obj/item/stack/STKK = O
-			rand_number_payout = rand_number_payout*STKK.amount
+			
+			rand_number_payout = round(rand_number_payout*STKK.amount)
 			return rand_number_payout
 		
 		else if(ismob(O))
@@ -59,7 +66,7 @@ var/datum/market_economy/market_economy
 	else //It already exists in the assc list, thus we reduce the value
 		if(istype(O,/obj/item/stack))
 			var/obj/item/stack/STKK = O
-			var/stack_payout = STKK.amount*payout
+			var/stack_payout = round(STKK.amount*payout)
 			if(payout-1 > 0)
 				market_economy[O.type] -= 1
 			return stack_payout

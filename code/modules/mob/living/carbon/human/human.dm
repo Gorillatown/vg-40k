@@ -633,6 +633,7 @@
 	. = 0
 	var/obj/item/clothing/head/headwear = src.head
 	var/obj/item/clothing/glasses/eyewear = src.glasses
+	var/obj/item/clothing/mask/facewear = src.wear_mask
 	var/datum/organ/internal/eyes/E = src.internal_organs_by_name["eyes"]
 
 	if (istype(headwear))
@@ -640,6 +641,9 @@
 
 	if (istype(eyewear))
 		. += eyewear.eyeprot
+
+	if(istype(facewear))
+		. += facewear.eyeprot
 
 	if(E)
 		. += E.eyeprot

@@ -14,13 +14,27 @@
 
 /obj/machinery/splitter/New()
 	..()
+	handle_rotation()
 
 /obj/machinery/splitter/initialize()
 	..()
-	handle_rotation()
+	//handle_rotation()
+
+/obj/machinery/splitter/Bumped(atom/movable/AM)
+	if(AM.loc == in_T)
+		switch(splitter)
+			if(1)
+				AM.loc = out_T
+				splitter = 2
+			if(2)
+				AM.loc = split_T
+				splitter = 1
+	else
+		if(AM.loc == out_T || AM.loc == split_T)
+			AM.loc = in_T
 
 /obj/machinery/splitter/process()
-	for(var/atom/movable/A in in_T)
+/*	for(var/atom/movable/A in in_T)
 		if(A.anchored)
 			continue
 		switch(splitter)
@@ -29,7 +43,18 @@
 				splitter = 2
 			if(2)
 				A.loc = split_T
-				splitter = 1
+				splitter = 1*/
+
+/obj/machinery/splitter/verb/rotate()
+	set category = "Object"
+	set name = "Rotate Splitter"
+	set src in oview(1)
+
+	if(usr.isUnconscious() || usr.restrained())
+		return
+
+	src.dir = turn(dir, -90)
+	handle_rotation()
 
 /obj/machinery/splitter/proc/handle_rotation()
 	out_T = get_step(src,dir)

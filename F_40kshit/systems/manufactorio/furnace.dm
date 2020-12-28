@@ -38,6 +38,8 @@ This one isn't so useful considering the regular processing furnace exists.
 	radio_connection = radio_controller.add_object(src, frequency, RADIO_CONVEYORS)
 
 /obj/machinery/furnace/receive_signal(datum/signal/signal)
+	if(stat & NOPOWER)
+		return
 	if(!signal || signal.encryption)
 		return
 	if(id_tag != signal.data["tag"] || !signal.data["command"])

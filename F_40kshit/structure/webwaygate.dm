@@ -17,6 +17,7 @@ var/list/obj/structure/webwaygate/ELDARGATES = list()
 	var/active = 0
 	var/reconfigurable = 1
 	var/oldID = null
+	bound_width = 64
 
 /obj/structure/webwaygate/New()
 	..()
@@ -39,7 +40,7 @@ var/list/obj/structure/webwaygate/ELDARGATES = list()
 		if(reconfigurable)
 			var/obj/item/device/hacktool/P = I
 			id_target = P.injectid
-			user.visible_message("<span class='notice'>[user] uses the tool to reconfigure it's destination and activate it.</span>", "<span class='notice'>Destination overridden. You have a limited time to enter it..</span>", "<span class='warning>You can't see shit.</span>")
+			user.visible_message("<span class='notice'>[user] uses the tool to reconfigure it's destination and activate it.</span>", "<span class='notice'>Destination overridden. YOU HAVE A LIMITED TIME to enter it..</span>", "<span class='warning>You can't see shit.</span>")
 			active = 1
 			qdel(I)
 		else
