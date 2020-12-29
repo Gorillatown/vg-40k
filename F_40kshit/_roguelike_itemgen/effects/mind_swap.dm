@@ -5,20 +5,19 @@
 /datum/roguelike_effects/mindswap/re_effect_act(mob/living/M, obj/item/I)
 	if(..())
 		return
-	var/list/targets = list()
-	for(var/mob/living/C in range(9,M)) //Can include ghosts. Because that is basically possession
+	var/list/targets = list() //is_afk(?)
+	for(var/mob/living/C in range(9,M)) //No ghosts with this one.
 		if(C == M)
 			continue
 		targets += C
-	if(length(targets))
+	if(targets.len)
 		var/mob/target = pick(targets)
-		var/mob/dead/observer/ghost
-		if(istype(target,/mob/living))
-			ghost = target.ghostize(0)
-		else
-			ghost = target
-		M.mind?.transfer_to(target)
-		ghost.mind?.transfer_to(M)
+		var/mob/dead/observer/host_ghost = M.ghostize(0) //Turn our guy into a ghost
+	
+		target.mind?.transfer_to(M) //Transfer target into us
+		host_ghost.mind.transfer_to(target) //Transfer us into target
+		
+
 		to_chat(M, "<span class='warning'> You don't feel like yourself, somehow...</span>")
 		to_chat(target, "<span class='warning'> You don't feel like yourself, somehow...</span>")
 		
