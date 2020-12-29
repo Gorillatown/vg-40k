@@ -78,6 +78,7 @@
 	var/time = 50 //Time spent processing each individual recipe object.
 	var/build_desc //The building desc for how to make it.
 	var/obj_desc //A description of the object
+	var/skip_qual_boost = FALSE
 
 	var/list/sheet_types = list() // Sheet type then number we are using
 	var/list/other_objects = list()
@@ -158,7 +159,7 @@
 								object_checks_passed = TRUE 
 								qdel_these_idiot += THEBOYS 
 								break
-						else if(prob(5))
+						else if((prob(5)) && (!skip_qual_boost))
 							jokes_on_you_cunt += THEBOYS 
 			
 	if(!object_checks_passed)

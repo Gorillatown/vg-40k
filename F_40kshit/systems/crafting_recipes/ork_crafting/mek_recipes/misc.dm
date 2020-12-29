@@ -2,6 +2,7 @@
 	title = "Stikkbombs"
 	result_type = /obj/item/weapon/grenade/stikkbomb
 	time = 1 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "8 Metal Sheets, 8 Standard Metal Floortiles"
 	obj_desc = "Its a bomm on a stikk idiot."
 	sheet_types = list(/obj/item/stack/sheet/metal = 8,
@@ -27,6 +28,7 @@
 	title = "Jumppack"
 	result_type = /obj/item/ork/jumppack
 	time = 5 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "40 Metal Sheets, 1 Welding Fuel Tank"
 	obj_desc = "It lets you jump into the air"
 	sheet_types = list(/obj/item/stack/sheet/metal = 40)
@@ -45,6 +47,7 @@
 	title = "Mekanical Shouta"
 	result_type = /obj/structure/mekanical_shouta
 	time = 5 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "20 Metal Sheets, 1 Power Cell(Battery)"
 	obj_desc = "Lets everyone hear you across the entire battlefield hella loud."
 	sheet_types = list(/obj/item/stack/sheet/metal = 30)
@@ -54,6 +57,7 @@
 	title = "Tape Roll"
 	result_type = /obj/item/weapon/taperoll
 	time = 2 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "1 Metal Sheets"
 	obj_desc = "A tool for if ya have a kustom ya git."
 	sheet_types = list(/obj/item/stack/sheet/metal = 1)

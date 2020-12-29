@@ -90,7 +90,7 @@
 	set desc = "Asset Control over the host."
 	set category = "Daemon"
 	
-	if(!possesed)
+	if(!possessed)
 		to_chat(src, "<span class='info'>You aren't possessing anything.</span>")
 		return
 	

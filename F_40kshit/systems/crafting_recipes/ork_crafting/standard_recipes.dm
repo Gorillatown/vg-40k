@@ -1,6 +1,7 @@
 /datum/crafting_recipes/trophy_banner
 	title = "Trophy Banner"
 	result_type = /obj/structure/orktrophybanner
+	skip_qual_boost = TRUE
 	time = 10 SECONDS
 	build_desc = "5 Metal Sheets, 1 Piece of Uniform Clothing"
 	obj_desc = "A banner for ya to stick heads on."

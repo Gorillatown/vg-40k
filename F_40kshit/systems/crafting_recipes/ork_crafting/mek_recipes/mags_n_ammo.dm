@@ -2,6 +2,7 @@
 	title = "Ork Slugga Mag"
 	result_type = /obj/item/ammo_storage/magazine/sluggamag
 	time = 2 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "15 Metal Sheets, 12 Standard Metal Floortiles"
 	obj_desc = "A mag for a slugga, ya make the bullets too"
 	sheet_types = list(/obj/item/stack/sheet/metal = 15,
@@ -11,6 +12,7 @@
 	title = "Ork Shotta Mag"
 	result_type = /obj/item/ammo_storage/magazine/shottamag
 	time = 2 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "15 Metal Sheets, 12 Standard Metal Floortiles"
 	obj_desc = "Mag for ya shotta, ya make the shells too"
 	sheet_types = list(/obj/item/stack/sheet/metal = 15,
@@ -20,6 +22,7 @@
 	title = "Kustom Shoota Ammo Belt"
 	result_type = /obj/item/ammo_storage/magazine/kustom_shoota_belt
 	time = 2 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "15 Metal Sheets, 12 Standard Metal Floortiles"
 	obj_desc = "Its a belt for a kustom shoota, uses scrap bullets tho"
 	sheet_types = list(/obj/item/stack/sheet/metal = 15,
@@ -29,6 +32,7 @@
 	title = "Rokkits"
 	result_type = /obj/item/ammo_casing/rocket_rpg/rokkit
 	time = 2 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "20 Metal Sheets, 4 Metal Rods, 4 Standard Metal Floortiles"
 	obj_desc = "A rokkit for a rokkitlauncha."
 	sheet_types = list(/obj/item/stack/sheet/metal = 20,
@@ -39,6 +43,7 @@
 	title = "Pile O' Bullets"
 	result_type = /obj/item/ammo_storage/box/piles/sluggabulletpile/max_pile
 	time = 1 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "5 Metal Sheets, 4 Standard Metal Floortiles"
 	obj_desc = "Its a pile of general purpose bullets"
 	sheet_types = list(/obj/item/stack/sheet/metal = 5,
@@ -48,6 +53,7 @@
 	title = "Pile O' Buckshot"
 	result_type = /obj/item/ammo_storage/box/piles/buckshotpile/max_pile
 	time = 1 SECONDS
+	skip_qual_boost = TRUE
 	build_desc = "5 Metal Sheets, 4 Standard Metal Floortiles"
 	obj_desc = "Its a pile of buckshot"
 	sheet_types = list(/obj/item/stack/sheet/metal = 5,
