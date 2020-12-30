@@ -50,6 +50,8 @@
 	desc = "Ayep"
 	icon = 'F_40kshit/icons/obj/64x64machines.dmi'
 	icon_state = "atm_on"
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 	vis_flags = VIS_INHERIT_ID
 
 /obj/machinery/detroid_teller/attack_hand(mob/user)

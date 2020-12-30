@@ -58,6 +58,8 @@ var/obj/machinery/requisition_console/req_con
 	icon = 'F_40kshit/icons/obj/64x64machines.dmi'
 	icon_state = "req_on"
 	vis_flags = VIS_INHERIT_ID
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/machinery/requisition_console/power_change()
 	..()

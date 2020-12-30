@@ -117,5 +117,8 @@ TODO: Signal lights + Menus
 	name = "Signal Light"
 	icon = 'F_40kshit/icons/obj/industrial_madness.dmi'
 	icon_state = "si_overlay_off"
+		plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
+
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
 

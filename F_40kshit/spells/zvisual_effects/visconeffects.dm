@@ -14,6 +14,8 @@
 /obj/effect/overlay/viscons/afterimages
 	name = "Afterimage"
 	desc = "H-hes fast!"
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 	vis_flags = VIS_INHERIT_ICON|VIS_UNDERLAY|VIS_INHERIT_ICON_STATE
 
 /obj/effect/overlay/viscons/afterimages/New(var/mob/M,var/effect_duration)
@@ -37,6 +39,8 @@
 	name = "Pulsing Aura"
 	desc = "Looks pretty sinister."
 
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 	vis_flags = VIS_INHERIT_ICON|VIS_UNDERLAY|VIS_INHERIT_ICON_STATE
 
 /obj/effect/overlay/viscons/highperformance/New(var/mob/M,var/effect_duration)

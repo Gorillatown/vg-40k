@@ -53,7 +53,8 @@
 	name = "warp sparkles"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "green_sparkles"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/greensparkles/New(var/mob/M,var/effect_duration)
 	..()
@@ -66,7 +67,8 @@
 	name = "warp sparkles"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "red_sparkles"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/redsparkles/New(var/mob/M,var/effect_duration)
 	..()
@@ -83,7 +85,8 @@
 	name = "warp sparkles"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "red_debuff"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/red_downwards_lines/New(var/mob/M,var/effect_duration)
 	..()
@@ -96,7 +99,8 @@
 	name = "warp sparkles"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "red_radiating"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/red_radiating/New(var/mob/M,var/effect_duration)
 	set waitfor = 0
@@ -114,7 +118,8 @@
 	name = "warp sparkles"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "upper_blue_glow"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/upper_blue_glow/New(var/mob/M,var/effect_duration)
 	..()
@@ -126,7 +131,8 @@
 	name = "psychic flame"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "purple_flame"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/purple_flame/New(var/mob/M,var/effect_duration)
 	set waitfor = 0
@@ -145,7 +151,8 @@
 	name = "psychic flame"
 	icon = 'F_40kshit/icons/32x32effects.dmi'
 	icon_state = "soul_blaze"
-	layer = LIGHTING_LAYER
+	plane = LIGHTING_PLANE
+	layer = ABOVE_LIGHTING_LAYER
 
 /obj/effect/overlay/soul_blaze/New(var/mob/M,var/effect_duration)
 	set waitfor = 0
