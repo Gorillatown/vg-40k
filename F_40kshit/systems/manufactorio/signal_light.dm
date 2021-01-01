@@ -16,6 +16,8 @@ TODO: Signal lights + Menus
 	var/frequency = 1367
 	var/datum/radio_frequency/radio_connection
 	var/already_ticked = FALSE
+	var/stay_on = FALSE
+	var/tamper_protection = FALSE
 	anchored = TRUE
 /* The overlay states for the bulb are basically
 	si_overlay_off
@@ -45,7 +47,7 @@ TODO: Signal lights + Menus
 /obj/machinery/signal_lights/process()
 	switch(currently_on)
 		if("ON")
-			if(tick_counter)
+			if(tick_counter && !stay_on)
 				ticker++
 				if(ticker >= tick_counter && !already_ticked)
 					signal_shit("forward")
@@ -56,7 +58,7 @@ TODO: Signal lights + Menus
 					signal_shit("stop")
 					signal_light_overlay.icon_state = "si_overlay_off"
 					ticker = 0
-					already_ticked = FALSE
+					already_ticked = FALSE	
 		if("OFF")
 			return
 
@@ -79,11 +81,13 @@ TODO: Signal lights + Menus
 	return {"
 		<ul>
 			<li><b>Currently On:</b><a href="?src=\ref[src];turn_on=1">[currently_on]</a></li>
+			<li><b>Non-Ticker Mode:</b> <a href="?src=\ref[src];stay_online=1">[stay_on]</a></li>
 			<li><b>Frequency:</b> <a href="?src=\ref[src];set_freq=-1">[format_frequency(frequency)] GHz</a> (<a href="?src=\ref[src];set_freq=1367">Reset</a>)</li>
 			<li><b>ID Tag:</b> <a href="?src=\ref[src];set_id=1">[dis_id_tag]</a></li>
 			<li><b>Set Light color:</b> <a href="?src=\ref[src];set_light_color=1"><span style='border:1px solid #161616; background-color: [current_color];'>&nbsp;&nbsp;&nbsp;</span></a></li>
 			<li><b>Set Sound Tone:</b> <a href="?src=\ref[src];set_sound_tone=1">[current_tone]</a></li>
 			<li><b>Set Tick Ending:</b> <a href="?src=\ref[src];set_tick_ending=1">[tick_counter]</a></li>
+			<li><b>Tamper Protection:</b> <a href="?src=\ref[src];tamper_protection_shift=1">[tamper_protection]</a></li>
 		</ul>"}
 
 		
@@ -108,8 +112,21 @@ TODO: Signal lights + Menus
 		switch(currently_on)
 			if("OFF")
 				currently_on = "ON"
+				if(stay_on)
+					signal_light_overlay.icon_state = "si_overlay_on"
+					signal_shit("forward")
 			if("ON")
 				currently_on = "OFF"
+				if(stay_on)
+					signal_light_overlay.icon_state = "si_overlay_off"
+					signal_shit("stop")
+		return MT_UPDATE
+	if("stay_online" in href_list)
+		stay_on = !stay_on
+		return MT_UPDATE
+	if("tamper_protection_shift" in href_list)
+		tamper_protection = !tamper_protection
+		signal_shit("tamper")
 		return MT_UPDATE
 	return ..()
 
@@ -117,7 +134,7 @@ TODO: Signal lights + Menus
 	name = "Signal Light"
 	icon = 'F_40kshit/icons/obj/industrial_madness.dmi'
 	icon_state = "si_overlay_off"
-		plane = LIGHTING_PLANE
+	plane = LIGHTING_PLANE
 	layer = ABOVE_LIGHTING_LAYER
 
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER

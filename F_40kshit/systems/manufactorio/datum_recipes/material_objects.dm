@@ -107,3 +107,9 @@ var/list/manufacturing_recipes = list(
 	desc_string = "1 Metal Sheet"
 	requirements = list(/obj/item/stack/sheet/metal = 1)
 	end_result = /obj/item/manufacturing_parts/armorplate
+
+/datum/manufacturing_recipe/metal_spike
+	name = "Metal Spike"
+	desc_string = "1 Metal Sheet"
+	requirements = list(/obj/item/stack/sheet/metal = 1)
+	end_result = /obj/item/manufacturing_parts/metal_spike

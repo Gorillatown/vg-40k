@@ -61,3 +61,16 @@
 	desc_string = "2 Armor Plates"
 	requirements = list(/obj/item/manufacturing_parts/armorplate = 2)
 	end_result = /obj/item/clothing/shoes/knight_officer
+
+/datum/manufacturing_recipe/spike_trap
+	name = "Spike Trap"
+	desc_string = "6 Spikes"
+	requirements = list(/obj/item/manufacturing_parts/metal_spike = 6)
+	end_result = /obj/machinery/spike_trap
+
+/datum/manufacturing_recipe/spike_bumper
+	name = "Spiked Bumper"
+	desc_string = "4 Spikes, 2 Metal Sheets"
+	requirements = list(/obj/item/stack/sheet/metal = 2,
+						/obj/item/manufacturing_parts/metal_spike = 4)
+	end_result = /mob/living/simple_animal/hostile/spike_bumper_lite

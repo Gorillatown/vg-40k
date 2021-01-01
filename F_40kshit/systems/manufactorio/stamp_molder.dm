@@ -9,6 +9,7 @@ TODO: Stamp Molder + Menus
 	machine_flags = MULTITOOL_MENU|WRENCHMOVE|FIXED2WORK
 	var/frequency = 1367
 	var/datum/radio_frequency/radio_connection
+	var/tamper_protection = FALSE
 	var/datum/manufacturing_recipe/cur_recipe = null
 	var/list/contained_objects = list()
 	density = TRUE
@@ -44,11 +45,23 @@ TODO: Stamp Molder + Menus
 	switch(signal.data["command"])
 		if("forward")
 			stamping_time()
+		if("tamper")
+			tamper_protection = !tamper_protection
+
+/obj/machinery/stamp_molder/attackby(obj/item/O, mob/living/user)
+	if(tamper_protection)
+		say("BEEP")
+		user.adjustFireLoss(5)
+		user.Knockdown(2)
+		spark(src, 5)
+		return
+	else
+		..()
 
 /obj/machinery/stamp_molder/proc/stamping_time()
 	var/turf/in_T = get_step(src, turn(dir,180))
 	flick("stamper_on",src)
-	playsound(src,'sound/machines/compactor.ogg', 30, 1) //Placeholder
+	playsound(src,'sound/machines/compactor.ogg', 50, 1) //Placeholder
 	//failure = FALSE
 	for(var/atom/movable/A in in_T)
 		if(A.anchored)

@@ -46,3 +46,25 @@
 	req_components = list(
 							/obj/item/weapon/stock_parts/manipulator = 1,
 							/obj/item/weapon/stock_parts/matter_bin = 1)
+
+/obj/item/weapon/circuitboard/bumper_control_point
+	name = "Circuit Board (Bumper Control Point)"
+	desc = "A circuit board used to build a machine that controls moving a single object."
+	build_path = /obj/machinery/bumper_control_point
+	board_type = MACHINE
+	origin_tech = Tc_MATERIALS + "=2;" + Tc_ENGINEERING + "=2;" + Tc_POWERSTORAGE + "=3"
+	req_components = list(
+							/obj/item/weapon/stock_parts/manipulator = 1,
+							/obj/item/weapon/stock_parts/capacitor = 1)
+
+/obj/item/weapon/circuitboard/bumper_redirector
+	name = "Circuit Board (Bumper Redirector)"
+	desc = "A circuit board used to build a machine that redirects a moving object."
+	build_path = /obj/machinery/bumper_redirector
+	board_type = MACHINE
+	origin_tech = Tc_MATERIALS + "=2;" + Tc_ENGINEERING + "=2;" + Tc_POWERSTORAGE + "=3"
+	req_components = list(
+							/obj/item/weapon/stock_parts/manipulator = 1,
+							/obj/item/weapon/stock_parts/capacitor = 1)
+
+

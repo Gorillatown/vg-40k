@@ -5,6 +5,7 @@
 	machine_flags = MULTITOOL_MENU|WRENCHMOVE|FIXED2WORK
 	var/frequency = 1367
 	var/datum/radio_frequency/radio_connection
+	var/tamper_protection = FALSE
 	density = TRUE
 	anchored = TRUE
 /* Animated State is
@@ -37,6 +38,18 @@
 	switch(signal.data["command"])
 		if("forward")
 			mining_time()
+		if("tamper")
+			tamper_protection = !tamper_protection
+
+/obj/machinery/machine_miner/attackby(obj/item/O, mob/living/user)
+	if(tamper_protection)
+		say("BEEP")
+		user.adjustFireLoss(5)
+		user.Knockdown(2)
+		spark(src, 5)
+		return
+	else
+		..()
 
 /obj/machinery/machine_miner/proc/mining_time()
 	var/turf/out_T = get_step(src, dir)

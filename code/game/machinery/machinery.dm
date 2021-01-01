@@ -583,6 +583,7 @@ Class Procs:
 			else
 				if(wrenchAnchor(user, O) && machine_flags & FIXED2WORK) //wrenches/unwrenches into place if possible, then updates the power and state if necessary
 					state = anchored
+					O.playtoolsound(src, 50)
 					power_change() //updates us to turn on or off as necessary
 					return 1
 		else

@@ -12,6 +12,7 @@ This one isn't so useful considering the regular processing furnace exists.
 	var/datum/materials/ore
 	var/list/recipes[0]
 	var/failure = FALSE
+	var/tamper_protection = FALSE
 	density = TRUE
 	anchored = TRUE
 /* Animated State is
@@ -47,13 +48,25 @@ This one isn't so useful considering the regular processing furnace exists.
 	switch(signal.data["command"])
 		if("forward")
 			burning_time()
+		if("tamper")
+			tamper_protection = !tamper_protection
+
+/obj/machinery/furnace/attackby(obj/item/O, mob/living/user)
+	if(tamper_protection)
+		say("BEEP")
+		user.adjustFireLoss(5)
+		user.Knockdown(2)
+		spark(src, 5)
+		return
+	else
+		..()
 
 /obj/machinery/furnace/proc/burning_time()
 	var/turf/in_T = get_step(src, turn(dir,180))
 	var/turf/out_T = get_step(src, dir)
 
 	flick("furnace_on",src)
-	//PSSSHSHSSSS sound here, then ores get shit out.
+	playsound(src, 'F_40kshit/sounds/misc_effects/furnace.wav', 50, 1)
 	failure = FALSE
 	for(var/atom/movable/A in in_T)
 		if(A.anchored)
@@ -81,19 +94,6 @@ This one isn't so useful considering the regular processing furnace exists.
 	else
 		new /obj/item/stack/ore/slag(out_T)
 
-/*
-/obj/machinery/furnace/proc/dump_shit()
-	var/turf/out_T = get_step(src, dir)
-	if(!failure)
-		for(var/datum/smelting_recipe/R in recipes)
-			while(R.checkIngredients(src)) //While we have materials for this
-				for(var/ore_id in R.ingredients)
-					ore.removeAmount(ore_id, R.ingredients[ore_id]) //arg1 = ore name, arg2 = how much per sheet
-
-			drop_stack(R.yieldtype, out_T)
-	else
-		new /obj/item/stack/ore/slag(out_T)
-*/
 /obj/machinery/furnace/multitool_menu(var/mob/user,var/obj/item/device/multitool/P)
 	//var/obj/item/device/multitool/P = get_multitool(user)
 	var/dis_id_tag="-----"

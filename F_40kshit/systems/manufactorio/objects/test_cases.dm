@@ -65,3 +65,8 @@ TODO: Mcguffin Objects
 	name = "Armor Plate"
 	desc = "Unlike a regular metal sheet, this one is a regular metal sheet with half of it compressed on the other half"
 	icon_state = "armor_plate"
+
+/obj/item/manufacturing_parts/metal_spike
+	name = "Metal Spike"
+	desc = "Its a spike, made of metal"
+	icon_state = "spike"
