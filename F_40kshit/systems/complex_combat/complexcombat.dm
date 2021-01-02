@@ -207,7 +207,7 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 
 		if(saw_execution)
 			user.visible_message("<span class='danger'> [user] begins sawing [target] to death!</span>")
-			if(do_after(user,src,40))
+			if(do_mob(user,src,40))
 				H.word_combo_chain += "saw"
 				disp_msg += "<font color='#ff00f2'><b><i> Saw! </i></b></font>"
 				for(var/datum/organ/external/E in T.organs) //TARGETS ORGANS

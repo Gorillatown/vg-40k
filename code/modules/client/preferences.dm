@@ -217,7 +217,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	var/no_goonchat_for_obj = FALSE
 
 	var/tgui_fancy = TRUE
-	var/fps = 0
+	var/fps = RECOMMENDED_CLIENT_FPS
 
 	var/client/client
 	var/saveloaded = 0

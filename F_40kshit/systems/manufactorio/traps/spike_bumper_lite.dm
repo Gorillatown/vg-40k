@@ -51,11 +51,12 @@
 /mob/living/simple_animal/hostile/spike_bumper_lite/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O,/obj/item/weapon/wrench))
 		O.playtoolsound(src, 50)
-		if(anchored)
-			visible_message("<span class='warning'>[user] unanchors \The [src]!</span>")
-		else
-			visible_message("<span class='warning'>[user] anchors \The [src]!</span>")
-		anchored = !anchored
+		if(do_mob(user, src, 60))
+			if(anchored)
+				visible_message("<span class='warning'>[user] unanchors \The [src]!</span>")
+			else
+				visible_message("<span class='warning'>[user] anchors \The [src]!</span>")
+			anchored = !anchored
 	else
 		if(ismob(user))
 			if(isliving(user))
