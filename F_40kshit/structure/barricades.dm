@@ -44,6 +44,7 @@
 
 /obj/structure/nubarricade/metal/Destroy()
 	qdel(mirrorcade)
+	mirrorcade = null
 	..()
 
 /obj/structure/nubarricade/metal/proc/handle_direction(var/direction)
@@ -200,6 +201,9 @@
 	density = 1
 	invisibility = 101
 	throwpass = TRUE //can we throw shit over
+
+/obj/structure/barricadeinvis/Destroy()
+	..()
 
 /obj/structure/barricadeinvis/Cross(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
 	if(air_group || !height) //The mover is an airgroup

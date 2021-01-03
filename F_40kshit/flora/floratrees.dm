@@ -12,7 +12,7 @@
 
 	var/health = 100
 	var/maxHealth = 100
-
+	mouse_opacity = 0
 	var/height = 6 //How many logs are spawned
 
 

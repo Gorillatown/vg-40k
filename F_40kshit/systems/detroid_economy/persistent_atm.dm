@@ -135,9 +135,8 @@
 	if(href_list["withdraw_phys_machine"])
 		if(contained_nuyen > 0)
 			var/deposit_sector = input(usr, "How much physical currency to withdraw from the machine?", "Physical Currency Withdrawal", contained_nuyen) as null|num
-			if(deposit_sector > 0)
-				var/obj/item/weapon/nuyen/our_nuyen = new(loc,deposit_sector)
-				our_nuyen.amount += clamp(round(deposit_sector),0,contained_nuyen)
+			if((deposit_sector > 0) && (deposit_sector <= contained_nuyen))
+				var/obj/item/weapon/nuyen/our_nuyen = new(loc, deposit_sector)
 				contained_nuyen -= clamp(round(deposit_sector),0,contained_nuyen)
 				L.put_in_hands(our_nuyen)
 	

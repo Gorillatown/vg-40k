@@ -46,9 +46,7 @@
 		density = 1
 		//for(var/mob/living/carbon/M in range(0,src))
 		for(var/mob/living/carbon/M in loc)
-			M.adjustBruteLoss(100)
-			M.Paralyse(30)
-			M.Knockdown(12)
+			M.adjustBruteLoss(70)
 			break
 	else
 		currently_active = FALSE
@@ -60,7 +58,6 @@
 		playsound(src, 'F_40kshit/sounds/spike_ring.ogg', 100, 1)
 		var/mob/living/carbon/M = AM
 		M.adjustBruteLoss(30)
-		M.Knockdown(12)
 		return
 	..()
 	

@@ -1,4 +1,4 @@
-
+ 
 /obj/item/barbed_wire_handler
 	name = "barbed wire roll"
 	icon = 'F_40kshit/icons/obj/barbedwire.dmi'
@@ -124,7 +124,11 @@
 		if(M.flying || M.highflying)
 			return 1
 		else
-			return (barbwire_action(mover))
+			var/obj/structure/nubarricade/metal/AT = locate() in get_turf(M)
+			if(AT)
+				return 0
+			else
+				return (barbwire_action(mover))
 	if(istype(mover,/obj/item/projectile))
 		return 1
 	return 0

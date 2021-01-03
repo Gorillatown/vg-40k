@@ -10,9 +10,13 @@
 	var/amount = 0
 //F_40kshit/sounds/misc_effects/nuyen_sound.wav
 
-/obj/item/weapon/nuyen/New(amount_to_add)
+/obj/item/weapon/nuyen/New(loc, amount_to_add)
 	..()
-	amount = amount_to_add
+	if(amount_to_add)
+		amount = amount_to_add
+	else
+		amount = 1
+	
 	src.pixel_x = rand(-5, 5) * PIXEL_MULTIPLIER
 	src.pixel_y = rand(-5, 5) * PIXEL_MULTIPLIER
 

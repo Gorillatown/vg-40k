@@ -67,9 +67,9 @@
 			<a href="?src=\ref[src];setdir=[SOUTHEAST]" title="Southeast">["&#8598;"]</a>
 			<a href="?src=\ref[src];setdir=[SOUTHWEST]" title="Southwest">["&#8601;"]</a>
 		</li>
-	</ul>"}
+	</ul>"} 
 
-/obj/machinery/bumper_control_point/multitool_topic(mob/user, list/href_list, obj/O)
+/obj/machinery/bumper_redirector/multitool_topic(mob/user, list/href_list, obj/O)
 	if("setdir" in href_list)
 		dir = text2num(href_list["setdir"])
 		return MT_UPDATE
