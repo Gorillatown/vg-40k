@@ -3,6 +3,8 @@
 	name = "flora"
 	var/icon/clicked //Because BYOND can't give us runtime icon access, this is basically just a click catcher
 	var/shovelaway = FALSE
+	var/health = 100
+	var/maxHealth = 100
 
 /obj/structure/flora/New()
 	..()
@@ -12,15 +14,31 @@
 	clicked = new/icon(src.icon, src.icon_state, src.dir)
 
 /obj/structure/flora/attackby(var/obj/item/I, var/mob/user, params)
+
+	flora_act(I,user)
+//	if(istype(I, /obj/item/ornament))
+//		hang_ornament(I, user, params)
+//		return 1
+	..()
+
+/obj/structure/flora/proc/flora_act(obj/item/I, mob/living/user)
 	if(shovelaway && isshovel(I))
 		to_chat(user,"<span class='notice'>You clear away \the [src]</span>")
 		playsound(loc, 'sound/items/shovel.ogg', 50, 1)
 		qdel(src)
 		return 1
-//	if(istype(I, /obj/item/ornament))
-//		hang_ornament(I, user, params)
-//		return 1
-	..()
+	if(istype(I, /obj/item/weapon))
+		playsound(loc, 'F_40kshit/sounds/misc_effects/bushhit.wav', 50, 1)
+		user.visible_message("[user] beats upon \the [src].",
+							"You have beat \the [src].",
+							"You hear the sound of foilage being ravaged.")
+		if(I.sharpness_flags & (CHOPWOOD|SERRATED_BLADE))
+			health -= ((user.attribute_strength/2) + (I.force))
+		else
+			health -= (((user.attribute_strength/2) + (I.force))/2)
+		if(health <= 0)
+			to_chat(user,"<span class='notice'>You clear away \the [src]</span>")
+			qdel(src)
 
 /obj/structure/flora/proc/hang_ornament(var/obj/item/I, var/mob/user, params)
 	var/list/params_list = params2list(params)

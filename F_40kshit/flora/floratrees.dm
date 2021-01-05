@@ -10,8 +10,8 @@
 
 	pixel_x = -WORLD_ICON_SIZE/2
 
-	var/health = 100
-	var/maxHealth = 100
+	health = 100
+	maxHealth = 100
 	mouse_opacity = 0
 	var/height = 6 //How many logs are spawned
 
@@ -64,20 +64,21 @@
 			to_chat(user, "<span class='notice'>It's almost cut down, [falling_dir ? "and it's leaning towards the [dir2text(falling_dir)]." : "but it still stands upright."]</span>")
 		if(0 to 0.2)
 			to_chat(user, "<span class='danger'>It's going to fall down any minute now!</span>")
-
+/*
 /obj/structure/flora/tree/attackby(obj/item/W, mob/living/user)
 	..()
-
-	if(istype(W, /obj/item/weapon))
-		if(W.sharpness_flags & (CHOPWOOD|SERRATED_BLADE))
-			health -= ((user.attribute_strength/2) * (W.force))
-			user.stat_increase(ATTR_STRENGTH,75)
-			playsound(loc, 'sound/effects/woodcuttingshort.ogg', 50, 1)
+*/
+/obj/structure/flora/tree/flora_act(obj/item/I, mob/living/user)
+	if(istype(I, /obj/item/weapon))
+		if(I.sharpness_flags & (CHOPWOOD|SERRATED_BLADE))
+			if(do_after(user,src,30))
+				health -= ((user.attribute_strength/2) + (I.force))
+				user.stat_increase(ATTR_STRENGTH,40)
+				playsound(loc, 'sound/effects/woodcuttingshort.ogg', 50, 1)
 		else
-			to_chat(user, "<span class='info'>\The [W] doesn't appear to be suitable to cut into \the [src]. Try something sturdier.</span>")
+			to_chat(user, "<span class='info'>\The [I] doesn't appear to be suitable to cut into \the [src]. Try something sturdier.</span>")
 
 	update_health()
-
 	return 1
 
 /obj/structure/flora/tree/proc/fall_down()
@@ -96,9 +97,9 @@
 			while(height > 0)
 				if(!current_turf)
 					break //If the turf in which to spawn a log doesn't exist, stop the thing
-
-				var/obj/item/I = new log_type(our_turf) //Spawn a log and throw it at the "current_turf"
-				I.throw_at(current_turf, 10, 2)
+				if(IsEven(height))
+					var/obj/item/I = new log_type(our_turf) //Spawn a log and throw it at the "current_turf"
+					I.throw_at(current_turf, 10, 5)
 
 				current_turf = get_step(current_turf, falling_dir)
 
