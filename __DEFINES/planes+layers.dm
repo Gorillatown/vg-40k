@@ -163,7 +163,7 @@ What is the naming convention for planes or layers?
 	#define OPEN_CURTAIN_LAYER			2
 	#define LIGHTBULB_LAYER				3
 	#define CLOSED_CURTAIN_LAYER		5
-	#define CHAT_LAYER					6
+	//#define CHAT_LAYER					6
 
 #define BLOB_PLANE 				-5		// For Blobs, which are above humans.
 
@@ -200,8 +200,9 @@ What is the naming convention for planes or layers?
 	#define NARSIE_GLOW 				6
 
 #define ABOVE_LIGHTING_PLANE	-1
+	#define CHAT_LAYER					1
 	#define MAPPING_AREA_LAYER			999
-
+	
 #define BASE_PLANE 				0		//  this is where darkness is! see "how planes work" - needs SEE_BLACKNESS or SEE_PIXEL (see blackness is better for ss13)
 
 #define MISC_HUD_MARKERS_PLANE	1

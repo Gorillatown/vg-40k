@@ -5,6 +5,7 @@
 /obj/item/clothing/shoes/IG_cadian_boots
 	name = "Imperial Flak Boots"
 	desc = "Footwear of the Imperial Guard, they look aight"
+	icon = 'F_40kshit/icons/obj/ig/IGarmorandclothesOBJ.dmi'
 	icon_state = "flakboots" //Check: Its there
 	item_state = "flakboots" //Check: Its fine
 	body_parts_covered = LEGS|FEET
@@ -13,6 +14,7 @@
 /obj/item/clothing/shoes/IG_wepspec_boots
 	name = "Kneepads and boots Combo"
 	desc = "Hmmm..."
+	icon = 'F_40kshit/icons/obj/ig/IGarmorandclothesOBJ.dmi'
 	icon_state = "cadian_wepspec_boots" //Check: Its there
 	item_state = "cadian_wepspec_boots" //Check: Its fine
 	body_parts_covered = LEGS|FEET

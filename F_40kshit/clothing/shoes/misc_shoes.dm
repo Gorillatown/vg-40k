@@ -5,6 +5,7 @@
 /obj/item/clothing/shoes/hospitaller_shoes
 	name = "Armored Boots"
 	desc = "Armored boots, that are probably bolted on."
+	icon = 'F_40kshit/icons/obj/ig/IGarmorandclothesOBJ.dmi'
 	icon_state = "hospitaller_boots"
 	item_state = "hospitaller_boots"
 	siemens_coefficient = 0.6

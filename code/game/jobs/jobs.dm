@@ -12,6 +12,7 @@ var/const/RNGANIMALS		=(1<<8)
 var/const/COMMISSAR			=(1<<9)
 var/const/ENGINSEER			=(1<<10)
 var/const/SENESCHAL			=(1<<11)
+var/const/SISTERHOSPITALLER =(1<<12)
 
 var/const/MEDSCI			=(1<<1)
 var/const/DOCTOR			=(1<<0)

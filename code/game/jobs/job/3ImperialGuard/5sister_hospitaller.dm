@@ -1,5 +1,5 @@
 //--------------Sister Hospitaller---------------//
-/*/datum/job/sister_hospitaller
+/datum/job/sister_hospitaller
 	title = "Sister Hospitaller"
 	flag = SISTERHOSPITALLER
 	department_flag = ENGSEC
@@ -16,11 +16,10 @@
 	landmark_job_override = TRUE
 
 	relationship_chance = HUMAN_NO_RELATIONS
-*/
-/datum/outfit/sister_hospitaller 
 
+/datum/outfit/sister_hospitaller 
 	outfit_name = "sister_hospitaller"
-//	associated_job = /datum/job/sister_hospitaller
+	associated_job = /datum/job/sister_hospitaller
 	no_backpack = TRUE
 
 	items_to_spawn = list(
@@ -31,8 +30,8 @@
 			slot_head_str = /obj/item/clothing/head/hospitaller_head,
 			slot_wear_suit_str = /obj/item/clothing/suit/armor/hospitaller_suit,
 			slot_belt_str = /obj/item/weapon/storage/belt/hospitaller_belt,
-			slot_r_hand = /obj/item/weapon/powersword,
-			slot_l_hand = /obj/item/weapon/gun/projectile/automatic/boltpistol
+			slot_s_store_str = /obj/item/weapon/gun/projectile/automatic/boltpistol,
+			slot_back_str = /obj/item/weapon/powersword,
 		),
 	)
 
@@ -66,11 +65,9 @@
 		id.name = "[H.real_name]'s ID Card"
 		id.registered_name = H.real_name
 
-
 /datum/outfit/sister_hospitaller/handle_faction(var/mob/living/M)
-	var/datum/role/imperial_guard/inquisitor/inquisitor = new
-	inquisitor.AssignToRole(M.mind,TRUE)
-	inquisitor.mind_storage(M.mind)
+	var/datum/role/planetary_defense_force/new_trooper = new
+	new_trooper.AssignToRole(M.mind,TRUE)
 
 /datum/outfit/sister_hospitaller/handle_special_abilities(var/mob/living/carbon/human/H)
 	H.attribute_strength = 14

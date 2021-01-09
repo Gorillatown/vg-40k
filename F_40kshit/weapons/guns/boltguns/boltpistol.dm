@@ -7,6 +7,7 @@
 	inhand_states = list("left_hand" = 'F_40kshit/icons/inhands/LEFTIES/IG_guns_left.dmi', "right_hand" = 'F_40kshit/icons/inhands/RIGHTIES/IG_guns_right.dmi')
 	origin_tech = Tc_COMBAT + "=5;" + Tc_MATERIALS + "=2"
 	w_class = W_CLASS_MEDIUM
+	slot_flags = SLOT_BELT
 	max_shells = 16
 	burst_count = 1
 	caliber = list(STANDARDBOLTER = 1)

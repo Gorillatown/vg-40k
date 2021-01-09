@@ -2,6 +2,7 @@
 /obj/item/weapon/storage/belt/hospitaller_belt
 	name = "Cloth Armor Addition"
 	desc = "Its basically cloth that makes your armor look kind of stylish."
+	icon = 'F_40kshit/icons/obj/ig/IGarmorandclothesOBJ.dmi'
 	icon_state = "hospitaller_belt"
 	item_state = "hospitaller_belt"
 	max_combined_w_class = 200
@@ -10,9 +11,10 @@
 	armor = list(melee = 30, bullet = 20, laser = 40,energy = 10, bomb = 10, bio = 10, rad = 0)
 	w_class = W_CLASS_LARGE
 	storage_slots = 7
-	can_only_hold = list(/obj/item/weapon/gun/projectile/automatic/boltpistol,
-					/obj/item/weapon/chainsword,
-					/obj/item/weapon/powersword
+	can_only_hold = list("/obj/item/weapon/gun/projectile/automatic/boltpistol",
+					"/obj/item/weapon/chainsword",
+					"/obj/item/weapon/powersword",
+					"/obj/item/weapon/"
 					)
 	canremove = FALSE
 

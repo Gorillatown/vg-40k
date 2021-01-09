@@ -393,6 +393,13 @@
 					clothes_s.Blend(new /icon('icons/mob/head.dmi', "seneschal_hat"), ICON_OVERLAY)
 					clothes_s.Blend(new /icon(feet_dmi, "seneschal_boots"), ICON_UNDERLAY)
 					clothes_s.Blend(new /icon('icons/mob/belt.dmi', "DKsword"), ICON_OVERLAY)
+				if(SISTERHOSPITALLER)
+					clothes_s = new /icon(uniform_dmi, "uni-church_s")
+					clothes_s.Blend(new /icon(feet_dmi, "hospitaller_boots"), ICON_UNDERLAY)
+					clothes_s.Blend(new /icon('icons/mob/hands.dmi', "hospitaller_gloves"), ICON_UNDERLAY)
+					clothes_s.Blend(new /icon('icons/mob/head.dmi', "hospitaller_hat"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon(suit_dmi, "hospitaller_suit"), ICON_OVERLAY)
+					clothes_s.Blend(new /icon('icons/mob/belt.dmi', "hospitaller_belt"),ICON_OVERLAY)
 
 	// Observers get tourist outfit.
 	else

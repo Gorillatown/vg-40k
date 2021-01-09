@@ -1,6 +1,6 @@
 /obj/item/weapon/powersword
-	name = "Powersword Parent"
-	desc = "This is a parent, it does not much. You shouldn't see this spawned anyways."
+	name = "Powersword"
+	desc = "Its a powersword, these things can go through about anything easily."
 	icon = 'F_40kshit/icons/obj/weapons.dmi'
 	inhand_states = list("left_hand" = 'F_40kshit/icons/inhands/LEFTIES/IGequipment_left.dmi', "right_hand" = 'F_40kshit/icons/inhands/RIGHTIES/IGequipment_right.dmi')
 	item_state = "powersword"
@@ -8,13 +8,14 @@
 	sharpness_flags = SHARP_BLADE | HOT_EDGE
 	heat_production = 3500
 	source_temperature = TEMPERATURE_PLASMA
+	slot_flags = SLOT_BELT | SLOT_BACK
 	sterility = 0
 	force = 30
 	var/sharpness_on = 1.5 //so badmins can VV this!
 	var/active = 0
 	var/activeforce = 30
 	var/onsound = 'sound/weapons/saberon.ogg'
-	var/base_state = "sword"
+	var/base_state = "powersword"
 	actions_types = list(/datum/action/item_action/warhams/piercing_blow,
 					/datum/action/item_action/warhams/basic_swap_stance)
 	armor_penetration = 100
