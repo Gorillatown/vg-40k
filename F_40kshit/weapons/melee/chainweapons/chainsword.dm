@@ -7,6 +7,7 @@
 	item_state = "chainsword"
 	hitsound = 'F_40kshit/sounds/chainsword_swing.ogg'
 	siemens_coefficient = 1
+	armor_penetration = 50
 	slot_flags = SLOT_BELT
 	force = 16
 	throwforce = 5

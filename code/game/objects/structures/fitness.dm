@@ -64,8 +64,8 @@
 			sleep(3)
 			playsound(user, 'sound/effects/spring.ogg', 60, 1)
 
-		if(user.attribute_strength <= 11)
-			user.stat_increase(ATTR_STRENGTH,40)
+		if(user.attribute_strength <= 20)
+			user.stat_increase(ATTR_STRENGTH,70)
 
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		in_use = 0
@@ -116,8 +116,8 @@
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		in_use = 0
 		animate(user, pixel_y = pixel_y, time = 3)
-		if(user.attribute_strength <= 11)
-			user.stat_increase(ATTR_STRENGTH,40)
+		if(user.attribute_strength <= 20)
+			user.stat_increase(ATTR_STRENGTH,70)
 		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
 		icon_state = "fitnessweight"
 		overlays -= W

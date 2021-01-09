@@ -96,20 +96,21 @@
 			var/datum/role/planetary_defense_force/PDEFF = R
 			if(PDEFF.times_patrolled > 0)
 				var/mob/M = PDEFF.antag.current
-				var/icon/flat = getFlatIcon(M, SOUTH, 0, 1)
-				end_icons += flat
-				var/tempstate = end_icons.len
-				PDF_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
-				PDF_results += "<b>[PDEFF.antag.key]</b> as <b>[PDEFF.antag.name]</b><br>"
-				PDF_results += "<b>Times Patrolled:</b> [PDEFF.times_patrolled]<br>"
-				PDF_results += "<b>Orks Exterminated:</b> [PDEFF.orks_exterminated]<br>"
-				PDF_results += "<b>Total Beings Exterminated:</b> [PDEFF.exterminated]<br>"
-				var/personal_score = round(PDEFF.times_patrolled+PDEFF.orks_exterminated)
-				PDF_results += "<b><font size='4'>Total Reward:</font></b> <font color='#07fa0c'>[personal_score]</font> Points gained."
-				if(PDEFF.antag.current.client)
-					var/client/C = PDEFF.antag.current.client
-					var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
-					persist.change_potential(personal_score)
+				if(M)
+					var/icon/flat = getFlatIcon(M, SOUTH, 0, 1)
+					end_icons += flat
+					var/tempstate = end_icons.len
+					PDF_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
+					PDF_results += "<b>[M.name]</b><br>"
+					PDF_results += "<b>Times Patrolled:</b> [PDEFF.times_patrolled]<br>"
+					PDF_results += "<b>Orks Exterminated:</b> [PDEFF.orks_exterminated]<br>"
+					PDF_results += "<b>Total Beings Exterminated:</b> [PDEFF.exterminated]<br>"
+					var/personal_score = round(PDEFF.times_patrolled+PDEFF.orks_exterminated)
+					PDF_results += "<b><font size='4'>Total Reward:</font></b> <font color='#07fa0c'>[personal_score]</font> Points gained."
+					if(PDEFF.antag.current.client)
+						var/client/C = PDEFF.antag.current.client
+						var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
+						persist.change_potential(personal_score)
 
 		//Repurposed from sorting thru animals, mostly so we can sort for scoreboard leaders/ties to leader.
 		if(istype(R,/datum/role/native_animal))
@@ -117,16 +118,17 @@
 			//We already found the apex predator, time to find ties to it. Its in the list too
 			if(NTR.total_growth == biggest_animal.total_growth) //Display anyone who meets the criteria.
 				var/mob/M = NTR.antag.current
-				var/icon/flat = getFlatIcon(M, SOUTH, 0, 1)
-				end_icons += flat
-				var/tempstate = end_icons.len
-				ANIMAL_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
-				ANIMAL_results += "<b>[NTR.antag.key]</b> as <b>[NTR.antag.current.name]</b><br>"
-				ANIMAL_results += "<b>Total Growth:</font></b> <font color='#07fa0c'>[NTR.total_growth]</font> total times grown.<br>"
-				if(NTR.antag.current.client)
-					var/client/C = NTR.antag.current.client
-					var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
-					persist.change_potential(NTR.total_growth)
+				if(M)
+					var/icon/flat = getFlatIcon(M, SOUTH, 0, 1)
+					end_icons += flat
+					var/tempstate = end_icons.len
+					ANIMAL_results += "<img src='logo_[tempstate].png' style='position:relative; top:10px;'/>"
+					ANIMAL_results += "<b>[NTR.antag.key]</b> as <b>[M.name]</b><br>"
+					ANIMAL_results += "<b>Total Growth:</font></b> <font color='#07fa0c'>[NTR.total_growth]</font> total times grown.<br>"
+					if(NTR.antag.current.client)
+						var/client/C = NTR.antag.current.client
+						var/datum/interactive_persistence/persist = json_persistence["[C.ckey]"]
+						persist.change_potential(NTR.total_growth)
 
 	score_results += PDF_results //Mostly so we can re-order things and just have one singular loop.
 	if(biggest_animal) //If we even got a biggest animal.

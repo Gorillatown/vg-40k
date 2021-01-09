@@ -83,6 +83,7 @@
 			H.attribute_strength = 12
 			spawn(2 SECONDS)
 				to_chat(H,"<span class='good'>Lucky you, you are a mek, a 1 in 11 chance. You can still grow like other orks, but you also have the ability to build things, from a menu located on a spell to the top right of your screen.</span>")
+	
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/automatic/slugga(get_turf(H)),slot_s_store)
 	H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/brownbackpack/ork_generic(get_turf(H)), slot_back)
 	return 1

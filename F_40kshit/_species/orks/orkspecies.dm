@@ -27,8 +27,8 @@
 	has_mutant_race = 0
 
 	RNG_modifier_sum_max = 4
-	base_strength = 9
-	base_strength_natural_limit = 13
+	base_strength = 11
+	base_strength_natural_limit = 16
 	base_agility = 8
 	base_agility_natural_limit = 12
 	base_dexterity = 7
@@ -219,8 +219,8 @@
 	burn_mod = 0.8 // burn multiplier
 	tox_mod	= 0.8	// toxin multiplier
 
-	base_strength = 11
-	base_strength_natural_limit = 16
+	base_strength = 13
+	base_strength_natural_limit = 18
 	base_agility = 9
 	base_agility_natural_limit = 13
 	base_dexterity = 7
@@ -319,8 +319,8 @@
 	burn_mod = 0.5 // burn multiplier
 	tox_mod	= 0.5	// toxin multiplier
 
-	base_strength = 13
-	base_strength_natural_limit = 20
+	base_strength = 16
+	base_strength_natural_limit = 30
 	base_agility = 9
 	base_agility_natural_limit = 14
 	base_dexterity = 9

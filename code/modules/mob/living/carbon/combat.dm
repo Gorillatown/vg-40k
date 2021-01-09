@@ -64,7 +64,7 @@
 			return TRUE 
 	var/damage = run_armor_absorb(target_zone, I.damtype, I.force)
 	//40k - STRENGTH DAMAGE MODIFIER
-	damage += round(user.attribute_strength/6)
+	damage += round(user.attribute_strength/2)
 	apply_damage(damage, I.damtype, affecting, armor, I.is_sharp(), used_weapon = I)
 
 	return TRUE

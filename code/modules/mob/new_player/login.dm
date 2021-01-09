@@ -8,9 +8,10 @@
 		mind.active = 1
 		mind.current = src
 
-	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
-	if(!persist)
-		new /datum/interactive_persistence(ckey)
+	if(!IsGuestKey(key))
+		var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
+		if(!persist)
+			new /datum/interactive_persistence(ckey)
 
 	if(length(newplayer_start))
 		loc = pick(newplayer_start)

@@ -143,11 +143,14 @@
 		
 	if(attribute_strength)
 		//40k - STRENGTH DAMAGE MODIFIER
-		damage += round(attribute_strength/4)
+		if(isork(src))
+			damage += round(attribute_strength/3)
+		else
+			damage += round(attribute_strength/6)
 
 	if(attribute_dexterity)
 		//40k - DEXTERITY STRENGTH MODIFIER
-		damage += round(attribute_dexterity/3)
+		damage += round(attribute_dexterity/4)
 
 	if(istype(gloves))
 		var/obj/item/clothing/gloves/G = gloves
