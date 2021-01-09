@@ -16,5 +16,9 @@
 
 /datum/organ/internal/heart/ork/Life()
 	if(owner.health < owner.maxHealth)
-		owner.health += 2
+		owner.heal_organ_damage(2,2)
+		for(var/obj/structure/orktrophybanner/nearby_banners in ork_banners)
+			if(get_dist(nearby_banners,owner) < 5)
+				owner.heal_organ_damage(4,4)
+				break
 		

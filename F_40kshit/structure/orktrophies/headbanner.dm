@@ -9,12 +9,16 @@
 	layer = WINDOOR_LAYER
 	pixel_x = -6
 	var/obj/item/organ/external/head/mounted_head = null
+	var/maxHealth = 500
+	var/health = 500
 
 /obj/structure/orktrophybanner/New()
 	..()
+	ork_banners += src
 
 /obj/structure/orktrophybanner/Destroy()
 	mounted_head.forceMove(get_turf(src))
+	ork_banners -= src
 	..()
 
 /obj/structure/orktrophybanner/examine(mob/user)
@@ -44,4 +48,14 @@
 			mounted_head_img.pixel_y = 37
 			mounted_head_img.pixel_x = 7
 			overlays += mounted_head_img.appearance
+	
+	if(W.damtype == BRUTE || W.damtype == BURN)
+		user.delayNextAttack(10)
+		health -= W.force
+		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W].</span>", \
+		"<span class='warning'>You hit \the [src] with \the [W].</span>")
 
+		if(health <= 0)
+			user.visible_message("<span class='warning'>\The [user] destroys \the [src] with \the [W].</span>", \
+			"<span class='warning'>You destroy \the [src] with \the [W].</span>")
+			qdel(src)

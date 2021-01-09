@@ -12,3 +12,9 @@
 	new /obj/item/weapon/cell/lasgunmag(src)
 	new /obj/item/weapon/cell/lasgunmag(src)
 
+
+
+/obj/item/weapon/storage/backpack/brownbackpack/ork_generic/New()
+	..()
+	new /obj/item/ammo_storage/magazine/sluggamag(src)
+	new /obj/item/ammo_storage/magazine/sluggamag(src)

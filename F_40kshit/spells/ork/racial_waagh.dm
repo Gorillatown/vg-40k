@@ -19,10 +19,10 @@
 	for(var/T in targets)
 		var/mob/living/carbon/human/H = T
 		H.vis_contents += new /obj/effect/overlay/weak_green_circle(H,10)
-		H.movement_speed_modifier += 0.4
+		H.movement_speed_modifier += 0.6
 		//healcounter++
 		spawn(3 SECONDS)
-			H.movement_speed_modifier -= 0.4
+			H.movement_speed_modifier -= 0.6
 
 	/*		
 	if(healcounter >= 5)

@@ -65,6 +65,7 @@
 			H.add_spell(new /spell/aoe_turf/mekbuild/standard_ork_build, "ork_spell_ready", /obj/abstract/screen/movable/spell_master/ork_racial)
 			spawn(2 SECONDS)
 				to_chat(H,"<span class='good'>Ya a ork, ya grow by krumpin gits (to death) n' mountin their heads onta a pole or banner. But dat don't mean ya shouldn't balance that with a social life, ya git. After-all ya need a mek for some good bits.</span>")
+			
 		if(9 to 10) //Gretchin
 			H.set_species("Ork Gretchin")
 			spawn(2 SECONDS)
@@ -82,8 +83,8 @@
 			H.attribute_strength = 12
 			spawn(2 SECONDS)
 				to_chat(H,"<span class='good'>Lucky you, you are a mek, a 1 in 11 chance. You can still grow like other orks, but you also have the ability to build things, from a menu located on a spell to the top right of your screen.</span>")
-	
-	H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/brownbackpack(get_turf(H)), slot_back)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/projectile/automatic/slugga(get_turf(H)),slot_s_store)
+	H.equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/brownbackpack/ork_generic(get_turf(H)), slot_back)
 	return 1
 
 /datum/outfit/basicork/post_equip(var/mob/living/carbon/human/H)
