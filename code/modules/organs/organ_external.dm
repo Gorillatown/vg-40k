@@ -197,7 +197,7 @@
 			if(isslimeperson(owner))
 				var/chance_multiplier = 1
 				if(istype(src, /datum/organ/external/head))
-					chance_multiplier = 0
+					chance_multiplier = 0 
 				if(prob(brute * sharp * chance_multiplier))
 					droplimb(1)
 					return
@@ -205,18 +205,22 @@
 				if(sharp || is_peg())
 					if(prob((5 * brute) * sharp)) //sharp things have a greater chance to sever based on how sharp they are
 						droplimb(1)
+						new /obj/effect/overlay/critical_hit(owner,20)
 						return
 				else if(!sharp && brute > 15) //Massive blunt damage can result in limb explosion
 					if(prob((brute/7.5)**3)) //15 dmg - 8% chance, 22 dmg - 27%, 30 dmg - 64%, anything higher than ~35 is a guaranteed limbgib
 						explode()
+						new /obj/effect/overlay/critical_hit(owner,20)
 						return
 				else if(brute > 20 && prob(2 * brute)) //non-sharp hits with force greater than 20 can cause limbs to sever, too (smaller chance)
 					droplimb(1)
+					new /obj/effect/overlay/critical_hit(owner,20)
 					return
 
 		else if((config.limbs_can_break && sharp == 100) || ((sharp >= 2) && (config.limbs_can_break && brute_dam + burn_dam >= (max_damage)/sharp))) //items of exceptional sharpness are capable of severing the limb below its damage threshold, the necessary threshold scaling inversely with sharpness
 			if(prob((5 * (brute * sharp)) * (sharp - 1))) //the same chance multiplier based on sharpness applies here as well
 				droplimb(1)
+				new /obj/effect/overlay/critical_hit(owner,20)
 				return
  
 	//High brute damage or sharp objects may damage internal organs

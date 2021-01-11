@@ -282,7 +282,7 @@
 			if(120 to 220)
 				die()
 
-	if(istype(obstacle, /obj/structure))
+	if(isstructure(obstacle)||ismachine(obstacle))
 		if(obstacle.anchored)
 			switch(acceleration)
 				if(0 to 30)

@@ -20,5 +20,6 @@
 				new/datum/crafting_recipes/trophy_banner,
 				new/datum/crafting_recipes/ork_slugga_mag,
 				new/datum/crafting_recipes/stikkbombs,
-				new/datum/crafting_recipes/flashlight
+				new/datum/crafting_recipes/flashlight,
+				new/datum/crafting_recipes/ork_clothes
 				)

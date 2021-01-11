@@ -4,7 +4,6 @@ Basically this is a assc list that handles cargo prices
 	Basically when people sell things, the type path is entered into the list with a number generated
 	It will go down per how much they sell of a object
 */
-var/datum/market_economy/market_economy
 
 /datum/market_economy
 	var/list/market_economy = list(/obj/item/stack/ore/iron = 0.1,

@@ -259,6 +259,7 @@ emp_act
 			if(LIMB_HEAD)//Harder to score a stun but if you do it lasts a bit longer
 				if(prob(final_force))
 					if(apply_effect(20, PARALYZE, armor))
+						new /obj/effect/overlay/critical_hit(src,20)
 						visible_message("<span class='danger'>[src] has been knocked unconscious!</span>")
 
 				if(bloody)//Apply blood
@@ -275,6 +276,7 @@ emp_act
 			if(LIMB_CHEST)//Easier to score a stun but lasts less time
 				if(prob((final_force + 10)))
 					apply_effect(5, WEAKEN, armor)
+					new /obj/effect/overlay/critical_hit(src,20)
 					visible_message("<span class='danger'>[src] has been knocked down!</span>")
 
 				if(bloody)
@@ -302,7 +304,8 @@ emp_act
 
 	var/turf/throw_to = get_step(get_turf(src), src.dir) //Throw them in the direction we're facing!
 	teeth.throw_at(throw_to, 2, 2)
-
+	new /obj/effect/overlay/critical_hit(src,20)
+	
 	if(L)
 		src.visible_message(\
 			"<span class='danger'>\The [L] knocks [(amount < 3) ? "some" : "a bunch"] of \the [src]'s teeth out!</span>",\

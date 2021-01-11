@@ -12,7 +12,7 @@
 
 	health = 100
 	maxHealth = 100
-	mouse_opacity = 0
+	//mouse_opacity = 1
 	var/height = 6 //How many logs are spawned
 
 
@@ -73,11 +73,12 @@
 		if(I.sharpness_flags & (CHOPWOOD|SERRATED_BLADE))
 			if(do_after(user,src,30))
 				health -= ((user.attribute_strength/2) + (I.force))
-				user.stat_increase(ATTR_STRENGTH,40)
+				user.stat_increase(ATTR_STRENGTH,20)
 				playsound(loc, 'sound/effects/woodcuttingshort.ogg', 50, 1)
 		else
 			to_chat(user, "<span class='info'>\The [I] doesn't appear to be suitable to cut into \the [src]. Try something sturdier.</span>")
-
+			return 0
+	
 	update_health()
 	return 1
 

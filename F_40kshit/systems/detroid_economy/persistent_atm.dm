@@ -1,3 +1,4 @@
+#define CONVERSION_RATE 10
 /obj/machinery/detroid_teller
 	name = "Mannheim Dynasty ATM Machine"
 	icon = 'F_40kshit/icons/obj/64x64machines.dmi'
@@ -111,13 +112,13 @@
 	if(href_list["nuyen_to_req"])
 		if(contained_nuyen > 0)
 			var/nuyen_to_req = input(usr, "How much Nuyen to convert to Requisition?", "Nuyen to Requisition", contained_nuyen) as null|num
-			contained_card.req_holder.requisition += clamp(round(nuyen_to_req*3),0,contained_nuyen)
+			contained_card.req_holder.requisition += clamp(round(nuyen_to_req*CONVERSION_RATE),0,contained_nuyen*CONVERSION_RATE)
 			contained_nuyen -= clamp(round(nuyen_to_req),0,contained_nuyen)
 	
 	if(href_list["req_to_nuyen"])
 		if(contained_card.req_holder.requisition > 0)
 			var/req_to_nuyen = input(usr, "How much Requisition to convert to Nuyen?", "Requisition to Nuyen", contained_card.req_holder.requisition) as null|num
-			contained_nuyen += clamp(round(req_to_nuyen/3),0,contained_card.req_holder.requisition)
+			contained_nuyen += clamp(round(req_to_nuyen/CONVERSION_RATE),0,contained_card.req_holder.requisition/CONVERSION_RATE)
 			contained_card.req_holder.requisition -= clamp(round(req_to_nuyen),0,contained_card.req_holder.requisition)
 	
 	if(href_list["withdraw_sector"])
@@ -142,3 +143,5 @@
 	
 	time_cooldown = world.time+2 SECONDS
 	attack_hand(L)
+
+#undef CONVERSION_RATE

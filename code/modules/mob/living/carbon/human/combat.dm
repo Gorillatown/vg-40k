@@ -1,9 +1,4 @@
-//#define COMBAT_STATS
-#ifdef COMBAT_STATS
-#define show_combat_stat(x) to_chat(usr, "[x]")
-#else
-#define show_combat_stat(x) null << x
-#endif
+
 
 /mob/living/carbon/human/grabbed_by(mob/living/grabber)
 	return ..()
@@ -43,14 +38,10 @@
 		return
 	
 	//VG 40k - Disarm Stat modifiers
+	//[target] is the person being disarmed, [src] is the mob doing it
 	if(prob(25-(attribute_dexterity/4))) //40% miss chance
-		var/flavor_msg
-		if(prob(50))
-			flavor_msg = pick(disarm_flavors_1_t_a)
-			visible_message("<span class='danger'>[target] [flavor_msg] [src]!</span>")
-		else
-			flavor_msg = pick(disarm_flavors1_a_t)
-			visible_message("<span class='danger'>[src] [flavor_msg] [target]!</span>")
+		var/flavor_msg = flavortown.ftown_string_disarm(target,src,1)
+		visible_message("<span class='danger'>[flavor_msg]!</span>")
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 		return
 
@@ -60,9 +51,10 @@
 		target.apply_effect(4, WEAKEN)
 		target.stat_increase(ATTR_AGILITY,10)
 		stat_increase(ATTR_DEXTERITY,50)
-		var/flavor_msg = pick(disarm_flavors_2)
+		new /obj/effect/overlay/critical_hit(target,20)
+		var/flavor_msg = flavortown.ftown_string_disarm(target,src,2)
+		visible_message("<span class='danger'>[flavor_msg]!</span>")
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-		visible_message("<span class='danger'>[src] [flavor_msg] [target]!</span>")
 		add_logs(src, target, "pushed", admin = (src.ckey && target.ckey) ? TRUE : FALSE) //Only add this to the server logs if both mobs were controlled by player
 		return
 
@@ -76,7 +68,8 @@
 
 	if(!talked)
 		target.drop_item()
-		visible_message("<span class='danger'>[src] has disarmed [target]!</span>")
+		var/flavor_msg = flavortown.ftown_string_disarm(target,src,3)
+		visible_message("<span class='danger'>[flavor_msg]!</span>")
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 /mob/living/carbon/human/proc/get_organ_species(organ)
@@ -200,26 +193,18 @@
 		knockout_chance += ((attribute_dexterity + attribute_strength) - (target.attribute_agility + target.attribute_constitution))
 		target.stat_increase(ATTR_CONSTITUTION,50)
 
-	show_combat_stat("Knockout chance: [knockout_chance]")
 	if(prob(knockout_chance))
 		visible_message("<span class='danger'>[src] has knocked down \the [target]!</span>")
+		new /obj/effect/overlay/critical_hit(target,20)
 		target.apply_effect(2, WEAKEN, armor)
-
 
 	//Hand transplants increase punch damage
 	//However, arm transplants are needed to send people flying through punches
-	var/datum/species/arm_species = get_organ_species(get_active_arm_organ())
 	if(attribute_strength >= target.attribute_constitution+7)
-		target.visible_message("<span class='danger'>[target] is thrown by the force of the assault!</span>")
-		var/turf/T = get_turf(target)
-		var/turf/destination
-		if(istype(T, /turf/space)) // if ended in space, then range is unlimited
-			destination = get_edge_target_turf(T, src.dir)
-		else						// otherwise limit to 10 tiles
-			destination = get_ranged_target_turf(T, src.dir, arm_species.punch_throw_range)
-		target.throw_at(destination, 100, arm_species.punch_throw_speed)
+		target.visible_message("<span class='danger'>[target] is too weak to withstand the assault!</span>")
+		var/the_range = clamp((attribute_strength-(target.attribute_constitution)),1,5)
+		target.throw_at(get_edge_target_turf(src,dir),the_range,2)
 	
-
 /mob/living/carbon/human/unarmed_attacked(mob/living/attacker, damage, damage_type, zone)
 	if(zone == "head")
 		var/chance = 0.5 * damage

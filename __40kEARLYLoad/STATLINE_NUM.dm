@@ -22,7 +22,7 @@
 	var/soul_blaze_melee = FALSE //Are we currently applying soul blaze?
 	
 	var/dodging = FALSE //Are we currently special dodging?
- 
+
 /mob/living
 	var/stat_increase_cooldown = FALSE //A optional cooldown on stat increases
 	var/objuration_mechanicum = FALSE //Causes Gun failures

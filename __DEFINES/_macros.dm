@@ -213,6 +213,10 @@
 
 #define iswall(A) (istype(A, /turf/simulated/wall) || istype(A, /turf/unsimulated/wall))
 
+#define ismachine(A) (istype(A, /obj/machinery))
+
+#define isstructure(A) (istype(A,/obj/structure))
+
 #define ismatrix(A) (istype(A, /matrix))
 
 #define ismecha(A) (istype(A, /obj/mecha))

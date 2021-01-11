@@ -15,7 +15,7 @@
 
 /obj/structure/flora/attackby(var/obj/item/I, var/mob/user, params)
 
-	flora_act(I,user)
+	flora_act(I, user)
 //	if(istype(I, /obj/item/ornament))
 //		hang_ornament(I, user, params)
 //		return 1

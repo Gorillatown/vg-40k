@@ -54,7 +54,8 @@
 			if(attribute_strength <= attribute_strength_natural_limit) //If our stat is lesser than the natural limit
 				if(attribute_strength_trained_integer >= 1000)
 					attribute_strength += 1 //Increase our strength by 1
-					to_chat(src,"<span class = 'good'>You feel stronger.</span>")
+					to_chat(src,"<span class='good'><b>You feel stronger.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					attribute_strength_trained_integer = 0 //Set strength trained integer to nothing
 					return 1 //Return true
 				if(attribute_strength <= attribute_strength_natural_limit-4) //If we are still lesser than 4 away from cap
@@ -68,7 +69,8 @@
 						increase_probability += 3 //Add another 2
 			if(prob(increase_probability)) //If we hit the probability
 				attribute_strength += 1 //Increase our strength by 1
-				to_chat(src,"<span class = 'good'>You feel stronger.</span>")
+				to_chat(src,"<span class='good'><b>You feel stronger.</b></span>")
+				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				attribute_strength_trained_integer = 0 //Set strength trained integer to nothing
 				return 1 //Return true
 			else
@@ -78,7 +80,8 @@
 			if(attribute_agility <= attribute_agility_natural_limit) //If our stat is lesser than the natural limit
 				if(attribute_agility_trained_integer >= 1000)
 					attribute_agility += 1
-					to_chat(src,"<span class = 'good'>You feel a bit faster.</span>")
+					to_chat(src,"<span class='good'><b>You feel a bit faster.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					attribute_agility_trained_integer = 0 
 					return 1
 				if(attribute_agility <= attribute_agility_natural_limit-4) //If we are still lesser than 4 away from cap
@@ -92,7 +95,8 @@
 						increase_probability += 3 //Add another 2
 			if(prob(increase_probability))
 				attribute_agility += 1
-				to_chat(src,"<span class = 'good'>You feel a bit faster.</span>")
+				to_chat(src,"<span class='good'><b>You feel a bit faster.</b></span>")
+				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				attribute_agility_trained_integer = 0
 				return 1
 			else
@@ -102,7 +106,8 @@
 			if(attribute_dexterity <= attribute_dexterity_natural_limit) //If our stat is lesser than the natural limit
 				if(attribute_dexterity_trained_integer >= 1000)
 					attribute_dexterity += 1
-					to_chat(src,"<span class = 'good'> Your coordination seems better.</span>")
+					to_chat(src,"<span class='good'><b>Your coordination seems better.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					attribute_dexterity_trained_integer = 0
 					return 1
 				if(attribute_dexterity <= attribute_dexterity_natural_limit-4) //If we are still lesser than 4 away from cap
@@ -116,7 +121,8 @@
 						increase_probability += 3 //Add another 2
 			if(prob(increase_probability))
 				attribute_dexterity += 1
-				to_chat(src,"<span class = 'good'> Your coordination seems better.</span>")
+				to_chat(src,"<span class='good'><b>Your coordination seems better.</b></span>")
+				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				attribute_dexterity_trained_integer = 0
 				return 1
 			else
@@ -126,7 +132,8 @@
 			if(attribute_constitution <= attribute_constitution_natural_limit) //If our stat is lesser than the natural limit
 				if(attribute_constitution_trained_integer >= 1000)
 					attribute_constitution += 1
-					to_chat(src,"<span class = 'good'> You feel tougher. </span>")
+					to_chat(src,"<span class='good'><b>You feel tougher.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					maxHealth += 10
 					health += 10
 					attribute_constitution_trained_integer = 0
@@ -142,7 +149,8 @@
 						increase_probability += 3 //Add another 2		
 			if(prob(increase_probability))
 				attribute_constitution += 1
-				to_chat(src,"<span class = 'good'> You feel tougher. </span>")
+				to_chat(src,"<span class='good'><b>You feel tougher.</b></span>")
+				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				maxHealth += 10
 				health += 10
 				attribute_constitution_trained_integer = 0
@@ -154,11 +162,13 @@
 			if(attribute_willpower <= attribute_willpower_natural_limit) //If our stat is lesser than the natural limit
 				if(attribute_willpower_trained_integer >= 1000)
 					attribute_willpower += 1
-					to_chat(src,"<span class='good'>You feel more willful.</span>")
+					to_chat(src,"<span class='good'><b>You feel more willful.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					attribute_willpower_trained_integer = 0
 					ticker_to_next_psyker_point += 2
 					if(ticker_to_next_psyker_point >= 6)
-						to_chat(src,"<span class = 'good'>You feel like you can tap into more power.</span>")
+						to_chat(src,"<span class='good'><b>You feel like you can tap into more power.</b></span>")
+						src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 						psyker_points += 1
 						ticker_to_next_psyker_point = 0
 				if(attribute_willpower <= attribute_willpower_natural_limit-4) //If we are still lesser than 4 away from cap
@@ -172,11 +182,13 @@
 						increase_probability += 3 //Add another 2				
 			if(prob(increase_probability))
 				attribute_willpower += 1
-				to_chat(src,"<span class='good'>You feel more willful.</span>")
+				to_chat(src,"<span class='good'><b>You feel more willful.</b></span>")
+				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				attribute_willpower_trained_integer = 0
 				ticker_to_next_psyker_point += 2
 				if(ticker_to_next_psyker_point >= 6)
-					to_chat(src,"<span class = 'good'>You feel like you can tap into more power.</span>")
+					to_chat(src,"<span class='good'><b>You feel like you can tap into more power.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					psyker_points += 1
 					ticker_to_next_psyker_point = 0
 				return 1
@@ -186,23 +198,25 @@
 			attribute_sensitivity_trained_integer += attr_trained_value //We put trained value in
 			if(attribute_sensitivity <= attribute_sensitivity_natural_limit) //If our stat is lesser than the natural limit		
 				attribute_sensitivity += 25
-				to_chat(src,"<span class='good'>You feel more in touch with reality.</span>")
+				to_chat(src,"<span class='good'><b>You feel more in touch with reality.</b></span>")
+				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				attribute_sensitivity_trained_integer = 0
 				ticker_to_next_psyker_point += 1
 				ticker_to_next_chaos_psyker_point += 1
 				if(ticker_to_next_psyker_point >= 6)
-					to_chat(src,"<span class='good'>You feel like you can tap into more power.</span>")
+					to_chat(src,"<span class='good'><b>You feel like you can tap into more power.</b></span>")
+					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					psyker_points += 1
 					ticker_to_next_psyker_point = 0
 				if(chaos_tainted)
 					if(ticker_to_next_chaos_psyker_point >= 3)
-						to_chat(src,"<span class='sinister'>Power courses through you.<s/apn>")
+						to_chat(src,"<span class='sinister'><b>Power courses through you.</b></span>")
 						chaos_psyker_points += 1
 						ticker_to_next_chaos_psyker_point = 0
 				if(attribute_sensitivity >= 500 && !chaos_tainted)
 					if(prob(attribute_sensitivity/250))
 						chaos_tainted = TRUE
-						to_chat(src,"<span class='sinister'>The Gods of Chaos call to you.</span>")
+						to_chat(src,"<span class='sinister'><b>The Gods of Chaos call to you.</b></span>")
 				return 1
 			else
 				return 0
@@ -299,9 +313,9 @@
 	set category = "IC"
 	set desc = "See what attributes you currently have."
 
-	to_chat(src, "<span class='good'>Strength: [attribute_strength].</span>")
-	to_chat(src, "<span class='good'>Agility: [attribute_agility].</span>")
-	to_chat(src, "<span class='good'>Dexterity: [attribute_dexterity].</span>")
-	to_chat(src, "<span class='good'>Constitution: [attribute_constitution].</span>")
-	to_chat(src, "<span class='good'>Willpower: [attribute_willpower].</span>")
-	to_chat(src, "<span class='bad'>Warp Sensitivity: [attribute_sensitivity].</span>")
+	to_chat(src, "<span class='good'><b>Strength: [attribute_strength].</b></span>")
+	to_chat(src, "<span class='good'><b>Agility: [attribute_agility].</b></span>")
+	to_chat(src, "<span class='good'><b>Dexterity: [attribute_dexterity].</b></span>")
+	to_chat(src, "<span class='good'><b>Constitution: [attribute_constitution].</b></span>")
+	to_chat(src, "<span class='good'><b>Willpower: [attribute_willpower].</b></span>")
+	to_chat(src, "<span class='bad'><b>Warp Sensitivity: [attribute_sensitivity].</b></span>")

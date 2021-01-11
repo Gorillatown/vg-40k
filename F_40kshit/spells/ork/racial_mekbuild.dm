@@ -32,27 +32,9 @@
 				new/datum/crafting_recipes/ork_slugga_mag,
 				new/datum/crafting_recipes/ork_shotta_mag,
 				new/datum/crafting_recipes/stikkbombs,
-				new/datum/crafting_recipes/duct_tape
+				new/datum/crafting_recipes/duct_tape,
+				new/datum/crafting_recipes/ork_clothes
 				)
-/* 
-	Old List
-	var/list/crafting_recipes = list(
-				new/datum/crafting_recipes/choppa,
-				new/datum/crafting_recipes/slugga,
-				new/datum/crafting_recipes/shield,
-				new/datum/crafting_recipes/shotta,
-				new/datum/crafting_recipes/shoota,
-				new/datum/crafting_recipes/kustom_shoota,
-				,
-				new/datum/crafting_recipes/scrapbullets,
-				new/datum/crafting_recipes/buckshot,
-				new/datum/crafting_recipes/rokkits,
-				new/datum/crafting_recipes/rokkitlauncha,
-				new/datum/crafting_recipes/ork_jumppack,
-				new/datum/crafting_recipes/burnapack,
-				new/datum/crafting_recipes/mekanical_shouta
-				)
-*/
 
 /spell/aoe_turf/mekbuild/New()
 	..()

@@ -116,21 +116,21 @@
 /mob/living/carbon/human/Stun(amount)
 	if(M_HULK in mutations)
 		return
-	if(attribute_constitution >= 16)
+	if(attribute_constitution >= 25)
 		return
 	..()
 
 /mob/living/carbon/human/Knockdown(amount)
 	if(M_HULK in mutations)
 		return
-	if(attribute_constitution >= 16)
+	if(attribute_constitution >= 25)
 		return
 	..()
 
 /mob/living/carbon/human/Paralyse(amount)
 	if(M_HULK in mutations)
 		return
-	if(attribute_constitution >= 16)
+	if(attribute_constitution >= 25)
 		return
 	..()
 
