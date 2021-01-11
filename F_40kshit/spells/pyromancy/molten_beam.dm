@@ -93,29 +93,20 @@
 	consume(A)
 
 /obj/effect/super_molten_beam/proc/consume(atom/A)
-	var/obj/item/O = A
-	if(istype(A,/obj/item))
-		qdel(O)
-
-	var/obj/complex_vehicle/CV = A
 	if(istype(A,/obj/complex_vehicle))
-		CV.health -= 2000
-	
-	var/turf/simulated/T = A
-	if(istype(A,/turf/simulated))
+		var/obj/complex_vehicle/CV = A
+		CV.health -= 3000
+
+	if(isturf(A))
+		var/turf/T = A
 		T.ChangeTurf(get_base_turf(src.z))
 
-	if(iscarbon(A))
-		var/mob/living/carbon/C = A
-		C.gib()
+	if(isliving(A))
+		var/mob/living/L = A
+		L.gib()
 
-	var/obj/structure/ST = A
-	if(istype(A, /obj/structure))
-		qdel(ST)
-
-	var/obj/machinery/MACH = A
-	if(istype(A,/obj/machinery))
-		qdel(MACH)
+	if(ismachine(A) || isstructure(A) || isobj(A))
+		qdel(A)
 
 /obj/effect/super_molten_beam/head
 	var/list/segments = list() //we recordo ur segments
@@ -205,25 +196,20 @@
 	consume(A)
 
 /obj/effect/molten_beam/proc/consume(atom/A)
-	var/obj/item/O = A
-	if(istype(A,/obj/item))
-		qdel(O)
-
-	var/obj/complex_vehicle/CV = A
 	if(istype(A,/obj/complex_vehicle))
+		var/obj/complex_vehicle/CV = A
 		CV.health -= 1000
 
-	var/turf/simulated/T = A
-	if(istype(A,/turf/simulated))
+	if(isturf(A))
+		var/turf/T = A
 		T.ChangeTurf(get_base_turf(src.z))
 
-	var/mob/living/carbon/C = A
-	if(istype(A,/mob/living/carbon))
-		C.gib()
+	if(isliving(A))
+		var/mob/living/L = A
+		L.gib()
 
-	var/obj/structure/ST = A
-	if(istype(A, /obj/structure))
-		qdel(ST)
+	if(ismachine(A) || isstructure(A) || isobj(A))
+		qdel(A)
 
 /obj/effect/molten_beam/head
 	var/list/segments = list() //record our segments

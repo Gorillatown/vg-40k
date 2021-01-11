@@ -77,53 +77,61 @@ var/list/ladders = list()
 	else	//wtf make your ladders properly assholes
 		icon_state = "ladder00"
 
-/obj/structure/ladder/attack_hand(mob/user )
+/obj/structure/ladder/attack_hand(mob/user)
+	climb_menu(user)
+
+/obj/structure/ladder/proc/climb_menu(mob/user, obj/dumbass_shit)
 	if(up && down)
-		switch( alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
+		switch(alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
 			if("Up")
 				user.visible_message("<span class='notice'>[user] climbs up \the [src]!</span>", \
 									 "<span class='notice'>You climb up \the [src]!</span>")
-				climb(user, get_turf(up))
+				climb(user, get_turf(up), dumbass_shit)
 			if("Down")
 				user.visible_message("<span class='notice'>[user] climbs down \the [src]!</span>", \
 									 "<span class='notice'>You climb down \the [src]!</span>")
-				climb(user, get_turf(down))
+				climb(user, get_turf(down), dumbass_shit)
 			if("Cancel")
 				return
 
 	else if(up)
 		user.visible_message("<span class='notice'>[user] climbs up \the [src]!</span>", \
 							 "<span class='notice'>You climb up \the [src]!</span>")
-		climb(user, get_turf(up))
+		climb(user, get_turf(up), dumbass_shit)
 
 	else if(down)
 		user.visible_message("<span class='notice'>[user] climbs down \the [src]!</span>", \
 							 "<span class='notice'>You climb down \the [src]!</span>")
-		climb(user, get_turf(down))
+		climb(user, get_turf(down), dumbass_shit)
 
 	else
 		to_chat(user, "<span class='notice'>This ladder is broken!</span>")
 
-	
-
 /obj/structure/ladder/attack_paw(mob/user)
-	return attack_hand(user)
+	climb_menu(user)
 
 /obj/structure/ladder/attackby(obj/item/weapon/W, mob/user)
 	if(isrobot(user))
 		return
-
-	return attack_hand(user)
+	
+	if(istype(W,/obj/item/weapon/daemonweapon/blissrazor))
+		climb_menu(user,W)
+	else
+		climb_menu(user)
 
 /obj/structure/ladder/attack_slime(mob/user)
-	return attack_hand(user)
+	climb_menu(user)
 
-/obj/structure/ladder/proc/climb(mob/user, turf/destination)
-	user.forceMove(destination)
-
-	for(var/obj/item/weapon/grab/G in user.held_items)
-		if(G.affecting)
-			G.affecting.forceMove(destination)
-
+/obj/structure/ladder/proc/climb(mob/user, turf/destination, obj/dumbass_shit)
+	if(!dumbass_shit)
+		user.forceMove(destination)
+		
+		for(var/obj/item/weapon/grab/G in user.held_items)
+			if(G.affecting)
+				G.affecting.forceMove(destination)
+	else
+		dumbass_shit.forceMove(destination)
+	
 /obj/structure/ladder/attack_ghost(mob/user)
-	return attack_hand(user)
+	climb_menu(user)
+
