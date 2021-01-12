@@ -3,7 +3,6 @@
 var/datum/market_economy/market_economy
 var/datum/flavortown/flavortown
 var/datum/lazy_pooler/lazy_pooler
-var/datum/map_allocator/map_allocator
 
 /*
 If things get laggy with all the effects, I'll append a pooling system for them.
@@ -19,7 +18,6 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 /datum/lazy_pooler/proc/load_single_datums()
 	market_economy = new /datum/market_economy
 	flavortown = new /datum/flavortown
-	map_allocator = new /datum/map_allocator
 
 /datum/lazy_pooler/proc/load_overlays()
 	viscon_overlays[1] = new /obj/effect/overlay/viscons/water_overlay

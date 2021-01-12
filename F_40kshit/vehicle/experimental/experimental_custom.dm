@@ -1,3 +1,6 @@
+
+var/kustom_vehicles = 0
+
 /area/kustom_vehicle
 	name = "Kustom Vehicle"
 	icon = 'F_40kshit/icons/40kareas.dmi'
@@ -48,12 +51,13 @@
 /obj/structure/experimental_custom_vehicle/New()
 	..()
 	
+	viewport_holder = new(src)
 	var/the_x = 2
-	var/the_y = 2+(map_allocator.iterations*10)
-	if(map_allocator.iterations >= 20)
+	var/the_y = 2+(kustom_vehicles*10)
+	if(kustom_vehicles >= 20)
 		the_x = 12
 	start_position = locate(the_x,the_y,2)
-	map_allocator.iterations++
+	kustom_vehicles++
 
 /*
 	Because we are letting people build them segment by segment
@@ -66,3 +70,5 @@
 		ass.screen_loc = "CENTER,CENTER"
 		ass.vis_contents = list(T)
 		map_image_objects += ass
+
+	
