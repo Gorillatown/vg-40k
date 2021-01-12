@@ -66,8 +66,6 @@
 	var/movement_delay = 3 //Speed of turning
 	var/movement_warning_oncd = FALSE
 
-	
-
 //Visible Slots - I'm sure theres a better way to do this. But we can optimize later
 	//What is in position 1, or Is there a position 1.
 	var/position_1 = null
