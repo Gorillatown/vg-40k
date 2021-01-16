@@ -8,7 +8,7 @@
 	var/obj/complex_vehicle/S = target
 	S.attempt_move_inandout(owner)
 
-/obj/complex_vehicle/proc/attempt_move_inandout(var/mob/user)
+/obj/complex_vehicle/proc/attempt_move_inandout(mob/user)
 	if(occupants.Find(user))
 		if(pilot_zoom && user == get_pilot())
 			user.regenerate_icons()

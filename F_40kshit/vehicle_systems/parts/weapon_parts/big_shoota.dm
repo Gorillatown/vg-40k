@@ -1,0 +1,1 @@
+/obj/item/vehicle_parts/big_shoota

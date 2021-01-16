@@ -114,7 +114,7 @@
 		return M.click_action(A,src)
 
 	if(istype(loc,/obj/complex_vehicle))
-		var/obj/complex_vehicle/M = loc
+		var/obj/com_vehicle/M = loc
 		return M.click_action_control(A,src)
 
 	if(restrained())

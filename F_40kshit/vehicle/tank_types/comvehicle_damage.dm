@@ -1,6 +1,6 @@
 
 
-/obj/complex_vehicle/to_bump(var/atom/A)
+/obj/complex_vehicle/to_bump(atom/A)
 	..()
 	var/randomizer = pick('F_40kshit/sounds/wallsmash1.ogg','F_40kshit/sounds/wallsmash2.ogg', 'F_40kshit/sounds/wallsmash3.ogg')
 	var/ntime = world.time
@@ -99,7 +99,7 @@
 		visible_message("<span class = 'warning'>\The [src] collides into [A]</span>")
 		playsound(loc,'F_40kshit/sounds/squash.ogg',75,1)
 
-/obj/complex_vehicle/bullet_act(var/obj/item/projectile/P)
+/obj/complex_vehicle/bullet_act(obj/item/projectile/P)
 	if(vehicle_broken_husk)
 		return
 	if(health <= 0)

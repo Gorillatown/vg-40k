@@ -209,7 +209,7 @@
 		W.on_attack(src, user)
 
 
-/obj/complex_vehicle/attack_hand(mob/user )
+/obj/complex_vehicle/attack_hand(mob/user)
 	if(!hatch_open)
 		return ..()
 	if(!ES.equipment_systems.len)
