@@ -44,6 +44,8 @@ Proc call vars. - Attachment Master
 					var/datum/action/fuck = new equipment_action.type(my_atom)
 					extra_actions += fuck
 					fuck.Grant(theuser)
+	
+	my_atom.handle_parts_overlays()
 					
 /datum/comvehicle_parts/proc/parts_removal(mob/user, obj/item/vehicle_parts/equipment)
 	equipment.my_atom = null //you don't got no atom equipment.
@@ -68,10 +70,14 @@ Proc call vars. - Attachment Master
 					var/other_users = my_atom.occupants[i] //Other user is in the occupants iteration
 					ASS.Remove(other_users) //We remove the action from them too.
 
+	my_atom.handle_parts_overlays()
+
 /datum/comvehicle_parts/proc/action_clean_up()
 	for(var/datum/action/linked_parts_buttons/equipment_action in action_storage)
 		qdel(equipment_action)
 
 	for(var/datum/action/linked_parts_buttons/equipment_action in extra_actions)
 		qdel(equipment_action)
+
+	my_atom.handle_parts_overlays()
 

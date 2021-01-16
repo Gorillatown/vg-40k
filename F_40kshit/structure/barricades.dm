@@ -1,7 +1,7 @@
 /obj/item/weapon/nubarricade_parts
 	name = "barricade parts" //Currently unused, mostly because i don't give a shit about
 	desc = "Parts of a barricade." //Spriting a barricade tbqh
-	icon = 'F_40kshit/icons/obj/barricades.dmi' //nmevermind lol
+	icon = 'F_40kshit/icons/obj/barricadesmk2.dmi' //nmevermind lol
 	icon_state = "barricade_parts"
 	siemens_coefficient = 1
 	starting_materials = list(MAT_IRON = 3750)
@@ -27,7 +27,7 @@
 /obj/structure/nubarricade/metal
 	name = "metal barricade"
 	desc = "A barricade made out of wood planks, it looks like it can take a few solid hits."
-	icon = 'F_40kshit/icons/obj/barricades.dmi'
+	icon = 'F_40kshit/icons/obj/barricadesmk2.dmi' //nmevermind lol
 	icon_state = "barricade"
 	anchored = 1
 	density = 1
@@ -58,23 +58,23 @@
 		if(NORTH)
 			plane = OBJ_PLANE
 			layer = SIDE_WINDOW_LAYER
-//			icon_state = "barricade_north"
+			icon_state = "barricade_north"
 		if(SOUTH)
 			plane = ABOVE_HUMAN_PLANE
 			layer = WINDOOR_LAYER
-//			icon_state = "barricade_south"
+			icon_state = "barricade_south"
 		if(EAST)
 			plane = ABOVE_HUMAN_PLANE
 			layer = WINDOOR_LAYER
-			//plane = OBJ_PLANE
-			//layer = FULL_WINDOW_LAYER
-//			icon_state = "barricade_east"
+			plane = OBJ_PLANE
+			layer = FULL_WINDOW_LAYER
+			icon_state = "barricade_east"
 		if(WEST)
 			plane = ABOVE_HUMAN_PLANE
 			layer = WINDOOR_LAYER
-			//plane = OBJ_PLANE
-			//layer = FULL_WINDOW_LAYER	
-//			icon_state = "barricade_west"
+			plane = OBJ_PLANE
+			layer = FULL_WINDOW_LAYER	
+			icon_state = "barricade_west"
 
 /obj/structure/nubarricade/metal/proc/healthcheck(var/mob/M, var/sound = 1)
 	if(health <= 0)

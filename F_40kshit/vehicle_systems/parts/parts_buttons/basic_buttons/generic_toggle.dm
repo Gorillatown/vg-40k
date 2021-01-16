@@ -17,3 +17,18 @@
 	UpdateButtonIcon()
 	
 	S.toggle_part(systems_online, id)
+
+
+/datum/action/linked_parts_buttons/toggle_engine
+	name = "Toggle Engine"
+	button_icon_state = "engine_off"
+
+/datum/action/linked_parts_buttons/toggle_engine/Trigger()
+	var/obj/com_vehicle/S = target
+	S.toggle_engine()
+	
+	if(S.engine_online)
+		button_icon_state = "engine_on"
+	else
+		button_icon_state = "engine_off"
+	UpdateButtonIcon()

@@ -56,7 +56,8 @@ Engine & Movement Procs -
 	var/mechanically_disabled = FALSE //Are we currently mechanically disabled? Aka health depleted etc
 	var/health = 100 //the Moving Health value
 	//list/chassis_actions - Basically this holds actions innate to the vehicle itself
-	var/chassis_actions = list(/datum/action/linked_parts_buttons/exit_vehicle)
+	var/chassis_actions = list(/datum/action/linked_parts_buttons/exit_vehicle,
+								/datum/action/linked_parts_buttons/toggle_engine)
 	//list/occupants - Basically a list that keeps track of occupants, if it contains them instead of atom locks them on.
 	var/list/occupants
 	var/pilot_zoom = FALSE //Mostly so we don't fuck this up and let zoomed out people go scott free
@@ -75,6 +76,7 @@ Engine & Movement Procs -
 *****************************/
 	var/engine_fire_delay = 0 //Delay until next engine movement fire.
 	var/engine_online = FALSE //Whether the engine is on or off
+	var/engine_cooldown = FALSE
 	var/in_reverse = FALSE //Are we currently in reverse?
 	var/speed = 0 //The current acceleration we are at a scale of -1000 to 1000
 	var/movement_warning_oncd = FALSE
@@ -306,7 +308,12 @@ Engine & Movement Procs -
 	handle_parts_overlays
 **************************/
 /obj/com_vehicle/proc/handle_parts_overlays()
-	return
+	vis_contents.Cut()
+	for(var/obj/item/vehicle_parts/parts in comvehicle_parts.equipment_systems)
+		if(parts.vis_con_overlay)
+			var/obj/effect/overlay/the_overlay = new parts.vis_con_overlay()
+			the_overlay.icon_state = "[icon_state]-[name]"
+			vis_contents += the_overlay
 
 /**************************
 		update_icon

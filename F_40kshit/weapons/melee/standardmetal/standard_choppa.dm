@@ -13,7 +13,7 @@
 	siemens_coefficient = 1
 	slot_flags = SLOT_BELT
 	force = 16
-	armor_penetration = 10
+	armor_penetration = 15
 	throwforce = 20
 	throw_speed = 5
 	throw_range = 7

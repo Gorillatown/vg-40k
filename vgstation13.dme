@@ -2994,6 +2994,7 @@
 #include "F_40kshit\vehicle_systems\parts\parts_buttons\basic_buttons\generic_toggle.dm"
 #include "F_40kshit\vehicle_systems\parts\weapon_parts\big_shoota.dm"
 #include "F_40kshit\vehicle_systems\parts\weapon_parts\multi_laser.dm"
+#include "F_40kshit\vehicle_systems\parts\weapon_parts\parts_weapon_parent.dm"
 #include "F_40kshit\vehicle_systems\walkers\killa_kan.dm"
 #include "F_40kshit\vehicle_systems\walkers\sentinel.dm"
 #include "F_40kshit\weapons\commentedout.dm"

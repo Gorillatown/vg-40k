@@ -17,3 +17,6 @@
 
 /obj/com_vehicle/sentinel/New()
 	..()
+	var/obj/item/I = new /obj/item/vehicle_parts/weaponery/multi_laser(loc)
+	I.forceMove(src)
+	comvehicle_parts.parts_insertion(null,I)

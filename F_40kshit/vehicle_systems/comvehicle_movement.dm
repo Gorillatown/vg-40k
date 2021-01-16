@@ -105,3 +105,37 @@
 
 		if(50 to 1000)
 			speed -= speed_loss
+
+
+/**************************
+		toggle_engine
+One day this will be replaced by
+Just a generic engine part but for now
+Its a static object
+**************************/
+/obj/com_vehicle/proc/toggle_engine()
+	if(usr!=get_pilot())
+		to_chat(src.get_pilot(), "<span class='average'> [usr] reaches forward and flips the engine switch in front of you.")
+	
+	if(mechanically_disabled)
+		to_chat(get_pilot(), "<span class='notice'> The engine makes a little noise but ultimately does nothing.</span>")
+		playsound(src, 'sound/items/flashlight_on.ogg', 50, 1)
+		return
+	
+	engine_online = !engine_online
+	
+	if(mechanically_disabled)
+		engine_online = FALSE
+	
+	if(engine_online) //If Engine toggle is true, and we are not on cooldown
+		if(!engine_cooldown) //if engine cooldown is false
+			engine_cooldown = TRUE //Engine cooldown becomes true
+			spawn(10) //we spawn to give everything time to finish so we don't lock them up
+				speed = 25
+			spawn(30)
+				engine_cooldown = FALSE
+	else
+		speed = 0 //We set acceleration back to neutral if the engine is turned off.
+	
+	to_chat(src.get_pilot(), "<span class='notice'>Engine [engine_online?"starting up":"shutting down"].</span>")
+	playsound(src, 'sound/items/flashlight_on.ogg', 50, 1)

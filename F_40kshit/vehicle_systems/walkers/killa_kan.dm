@@ -16,3 +16,6 @@
 
 /obj/com_vehicle/killa_kan/New()
 	..()
+	var/obj/item/I = new /obj/item/vehicle_parts/weaponery/big_shoota(loc)
+	I.forceMove(src)
+	comvehicle_parts.parts_insertion(null,I)

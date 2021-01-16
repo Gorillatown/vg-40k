@@ -10,11 +10,12 @@ Procs
 /obj/item/vehicle_parts
 	name = "equipment"
 	icon = 'F_40kshit/icons/complex_vehicle/vehicle_equipment.dmi'
-	var/tied_action //The action button tied to the object
+	var/datum/action/linked_parts_buttons/tied_action //The action button tied to the object
 	var/obj/my_atom //Basically the object we are attached to.
 	var/id			//The ID we share with our action button if we have one.
 	var/parts_weight = 0 //Basically this is basically how much a part weighs.
 	var/systems_online = FALSE //Is the system currently toggled to be online?
+	var/obj/effect/overlay/vis_con_overlay = null //A attached overlay
 
 //Our ID is tied to the action button ID. Theoretically theres a 1 in 10000 chance for a magic button.
 /obj/item/vehicle_parts/New()
