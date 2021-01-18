@@ -36,15 +36,17 @@
 		return
 	if(user != get_pilot()) //If user is not pilot return false
 		return
+
 	var/dir_to_target = get_dir(src,target)
 	if(dir_to_target && !(dir_to_target & dir))//wrong direction
 		return
+	
 	if(Adjacent(target))
 		if(vehicle_melee(target))
 			return
-	if(get_dist(src, target)>1)
-		if(comvehicle_parts.equipment_systems.len)
-			for(var/obj/item/vehicle_parts/vehicle_part in comvehicle_parts.equipment_systems)
-				if(vehicle_part.systems_online)
-					vehicle_part.action(target)
-					sleep(1)
+	
+	if(comvehicle_parts.equipment_systems.len)
+		for(var/obj/item/vehicle_parts/vehicle_part in comvehicle_parts.equipment_systems)
+			if(vehicle_part.systems_online)
+				vehicle_part.action(target)
+				sleep(1)

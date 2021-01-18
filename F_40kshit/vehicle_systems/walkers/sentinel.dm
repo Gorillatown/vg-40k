@@ -5,6 +5,8 @@
 	
 	maxHealth = 1500
 	contains_occupants = TRUE
+	movement_sounds = list('F_40kshit/sounds/vehicles/sentinel_move_loop.wav')
+	turning_sounds = list('F_40kshit/sounds/vehicles/sentinel_turn.wav')
 
 /*****************************
 	Engine Master Variables
@@ -18,5 +20,4 @@
 /obj/com_vehicle/sentinel/New()
 	..()
 	var/obj/item/I = new /obj/item/vehicle_parts/weaponery/multi_laser(loc)
-	I.forceMove(src)
 	comvehicle_parts.parts_insertion(null,I)

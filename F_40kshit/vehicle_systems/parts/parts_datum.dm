@@ -24,6 +24,9 @@ Proc call vars. - Attachment Master
 */
 /datum/comvehicle_parts/proc/parts_insertion(mob/user, obj/item/vehicle_parts/equipment)
 	equipment_systems += equipment //We add equipment to our equipment list
+	equipment.forceMove(my_atom)
+	equipment.my_atom = my_atom
+	
 	if(equipment.tied_action) //If equipment has a tied action.
 		var/datum/action/linked_parts_buttons/equipment_action = new equipment.tied_action(my_atom) //new abstract construct spawned into massa obj.
 		action_storage += equipment_action
@@ -46,7 +49,8 @@ Proc call vars. - Attachment Master
 					fuck.Grant(theuser)
 	
 	my_atom.handle_parts_overlays()
-					
+
+//Unlike the insertion, we do not move it to any loc due to the variations that can occur of removal.
 /datum/comvehicle_parts/proc/parts_removal(mob/user, obj/item/vehicle_parts/equipment)
 	equipment.my_atom = null //you don't got no atom equipment.
 	equipment_systems -= equipment //and you leavin our equipment_systems

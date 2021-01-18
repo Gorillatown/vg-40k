@@ -8,4 +8,4 @@
 	
 	var/weapon_online = FALSE //Is our weapon online or not, we are checked in the click loop.
 	var/next_firetime = 0 //Basically Holds our cooldown
-	var/list/fire_sound = list('F_40kshit/sounds/slugga_1.ogg') //Fire sound when we fire
+	var/list/fire_sound = null

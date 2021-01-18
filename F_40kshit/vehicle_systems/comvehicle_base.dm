@@ -56,8 +56,7 @@ Engine & Movement Procs -
 	var/mechanically_disabled = FALSE //Are we currently mechanically disabled? Aka health depleted etc
 	var/health = 100 //the Moving Health value
 	//list/chassis_actions - Basically this holds actions innate to the vehicle itself
-	var/chassis_actions = list(/datum/action/linked_parts_buttons/exit_vehicle,
-								/datum/action/linked_parts_buttons/toggle_engine)
+	var/chassis_actions = list(/datum/action/linked_parts_buttons/toggle_engine)
 	//list/occupants - Basically a list that keeps track of occupants, if it contains them instead of atom locks them on.
 	var/list/occupants
 	var/pilot_zoom = FALSE //Mostly so we don't fuck this up and let zoomed out people go scott free
@@ -70,6 +69,11 @@ Engine & Movement Procs -
 	var/maxHealth = 100 //The maximum health we can achieve, health is set to this in New()
 	//contains_occupants - Basically if the vehicle contains occupants, or lets them ride outside of the vehicle.
 	var/contains_occupants = FALSE
+
+//-------Sounds--------
+	var/list/movement_sounds = null
+	var/list/turning_sounds = null
+	var/list/engine_startup_noise = null
 	
 /*****************************
 	Engine Master Variables
@@ -114,6 +118,8 @@ Engine & Movement Procs -
 
 	if(contains_occupants)
 		occupants = list()
+		var/datum/action/linked_parts_buttons/exit_vehicle/exit = new(src)
+		comvehicle_parts.action_storage += exit
 
 /**************************
 		destroy

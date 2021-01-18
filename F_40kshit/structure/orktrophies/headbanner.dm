@@ -34,12 +34,12 @@
 			return
 		if(user.drop_item(W, src))
 			mounted_head = W
-			mounted_head.used = TRUE
 			if(isork(user))
 				var/mob/living/carbon/human/the_ork = user
 				if(!mounted_head.used)
 					the_ork.grow_nigga(50)
 					to_chat(user,"<span class='good'> You feel yaself gro a bit.</span>")
+			mounted_head.used = TRUE
 			var/image/mounted_head_img = new(src)
 			mounted_head_img.dir = SOUTH
 			mounted_head_img.appearance = mounted_head.appearance

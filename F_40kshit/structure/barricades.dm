@@ -76,7 +76,7 @@
 			layer = FULL_WINDOW_LAYER	
 			icon_state = "barricade_west"
 
-/obj/structure/nubarricade/metal/proc/healthcheck(var/mob/M, var/sound = 1)
+/obj/structure/nubarricade/metal/proc/healthcheck()
 	if(health <= 0)
 		visible_message("<span class='warning'>[src] breaks down!</span>")
 		new parts(loc)

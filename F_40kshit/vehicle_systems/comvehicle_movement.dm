@@ -33,12 +33,18 @@
 				dir = turn(dir, 90) //Tank controls
 			else
 				dir = turn(dir,-90)
+			
+			if(turning_sounds)
+				playsound(src,pick(turning_sounds),50)
 		if(WEST)
 			if(inverse_handling)
 				dir = turn(dir, -90) //Technically its reversed too
 			else
 				dir = turn(dir, 90)
-
+			
+			if(turning_sounds)
+				playsound(src,pick(turning_sounds),50)
+			
 	to_chat(user,"We are currently at [speed] speed")
 	move_delayer.delayNext(round(movement_delay,world.tick_lag)) //Delay
 
@@ -88,6 +94,8 @@
 			Move(get_step(src,dir), dir)
 		else
 			Move(get_step(src,turn(dir, -180)), dir)
+		if(movement_sounds)
+			playsound(src,pick(movement_sounds),50)
 	
 		sleep(engine_fire_delay)
 
@@ -130,12 +138,13 @@ Its a static object
 	if(engine_online) //If Engine toggle is true, and we are not on cooldown
 		if(!engine_cooldown) //if engine cooldown is false
 			engine_cooldown = TRUE //Engine cooldown becomes true
-			spawn(10) //we spawn to give everything time to finish so we don't lock them up
-				speed = 25
+			speed = 25
+			if(engine_startup_noise)
+				playsound(src,pick(engine_startup_noise),50)
 			spawn(30)
 				engine_cooldown = FALSE
 	else
 		speed = 0 //We set acceleration back to neutral if the engine is turned off.
 	
-	to_chat(src.get_pilot(), "<span class='notice'>Engine [engine_online?"starting up":"shutting down"].</span>")
+	to_chat(usr, "<span class='notice'>Engine [engine_online?"starting up":"shutting down"].</span>")
 	playsound(src, 'sound/items/flashlight_on.ogg', 50, 1)
