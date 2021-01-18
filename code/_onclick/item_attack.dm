@@ -231,7 +231,7 @@
 					if(istype(M, /mob/living/carbon/monkey))
 						var/mob/living/carbon/monkey/K = M
 						power = K.defense(power,def_zone)
-					M.take_organ_damage(power - M.attribute_constitution)
+					M.take_organ_damage(power - M.attribute_toughness)
 					if(prob(33) && I.force) // Added blood for whacking non-humans too
 						var/turf/location = M.loc
 						if(istype(location, /turf/simulated))
@@ -241,7 +241,7 @@
 					if(istype(M, /mob/living/carbon/monkey))
 						var/mob/living/carbon/monkey/K = M
 						power = K.defense(power,def_zone)
-					M.take_organ_damage(0, power - M.attribute_constitution)
+					M.take_organ_damage(0, power - M.attribute_toughness)
 					to_chat(M, "Aargh it burns!")
 		. = TRUE //The attack always lands
 		M.updatehealth()

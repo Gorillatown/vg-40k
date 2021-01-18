@@ -297,7 +297,7 @@ emp_act
 		if(M_HULK in L.mutations) //just like the mountain
 			amount += 8
 		
-		if(L.attribute_strength >= attribute_constitution)
+		if(L.attribute_strength >= attribute_toughness)
 			amount += 8
 
 	var/obj/item/stack/teeth/teeth = T.spawn_result(get_turf(src), src, amount)

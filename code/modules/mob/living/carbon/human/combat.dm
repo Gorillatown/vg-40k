@@ -172,7 +172,7 @@
 	if(mutations.Find(M_HULK))
 		base_chance += 12
 	
-	if(attribute_strength >= victim.attribute_constitution)
+	if(attribute_strength >= victim.attribute_toughness)
 		base_chance += 15
 
 	if(istype(gloves))
@@ -189,9 +189,9 @@
 /mob/living/carbon/human/after_unarmed_attack(mob/living/target, damage, damage_type, organ, armor)
 	var/knockout_chance = get_knockout_chance(target)
 
-	if(attribute_strength >= target.attribute_constitution)
-		knockout_chance += ((attribute_dexterity + attribute_strength) - (target.attribute_agility + target.attribute_constitution))
-		target.stat_increase(ATTR_CONSTITUTION,50)
+	if(attribute_strength >= target.attribute_toughness)
+		knockout_chance += ((attribute_dexterity + attribute_strength) - (target.attribute_agility + target.attribute_toughness))
+		target.stat_increase(ATTR_TOUGHNESS,50)
 
 	if(prob(knockout_chance))
 		visible_message("<span class='danger'>[src] has knocked down \the [target]!</span>")
@@ -200,9 +200,9 @@
 
 	//Hand transplants increase punch damage
 	//However, arm transplants are needed to send people flying through punches
-	if(attribute_strength >= target.attribute_constitution+7)
+	if(attribute_strength >= target.attribute_toughness+7)
 		target.visible_message("<span class='danger'>[target] is too weak to withstand the assault!</span>")
-		var/the_range = clamp((attribute_strength-(target.attribute_constitution)),1,5)
+		var/the_range = clamp((attribute_strength-(target.attribute_toughness)),1,5)
 		target.throw_at(get_edge_target_turf(src,dir),the_range,2)
 	
 /mob/living/carbon/human/unarmed_attacked(mob/living/attacker, damage, damage_type, zone)
@@ -210,7 +210,7 @@
 		var/chance = 0.5 * damage
 		if(attacker.mutations.Find(M_HULK))
 			chance += 50
-		if(attacker.attribute_strength >= attribute_constitution)
+		if(attacker.attribute_strength >= attribute_toughness)
 			chance += 50
 		if(prob(chance))
 			knock_out_teeth(attacker)

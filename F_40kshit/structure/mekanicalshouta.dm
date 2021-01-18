@@ -89,7 +89,7 @@
 	if(!message)
 		return
 	
-	var/msgsize = (30+(user.attribute_constitution+user.attribute_strength)) //70 was my starter val
+	var/msgsize = (30+(user.attribute_toughness+user.attribute_strength)) //70 was my starter val
 	to_chat(world,"<span style='color:green;font-size:[msgsize]px'>[message]</span>")
 	spark(src, 5)
 	playsound(loc,"sparks",50,1)

@@ -57,14 +57,14 @@
 					if(6)//Warp Surge. ITS TIME TO WITNESS A TRUE GOD.
 						user.visible_message("<span class='sinister'> [user] has their warp power violently surge!</span>")
 						user.attribute_strength += 15
-						user.attribute_constitution += 15
+						user.attribute_toughness += 15
 						user.attribute_agility += 15
 						user.attribute_dexterity += 15
 						user.warp_speed = TRUE
 						apply_highperf_perils_aura(user,12 SECONDS)
 						sleep(12 SECONDS)
 						user.attribute_strength -= 15
-						user.attribute_constitution -= 15
+						user.attribute_toughness -= 15
 						user.attribute_agility -= 15
 						user.attribute_dexterity -= 15
 						user.warp_speed = FALSE

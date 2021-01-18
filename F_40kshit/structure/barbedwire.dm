@@ -137,7 +137,7 @@
 //You return false when you want them to fail.
 //You return true when you want it to just end
 /obj/structure/barbed_wire/proc/barbwire_action(mob/living/user)
-	if(user.attribute_strength >= 18 && user.attribute_constitution >= 20)
+	if(user.attribute_strength >= 18 && user.attribute_toughness >= 20)
 		user.visible_message("<span class='warning'>[user] charges through [src] with their EXTREMELY muscled LITERALLY rock hard body!</span>")
 		qdel(src)
 		return 1
@@ -161,14 +161,14 @@
 					user.Knockdown(3)
 					user.Stun(3)
 					user.visible_message("<span class='warning'>[user] gets caught in [src] and collapses!</span>")
-					user.stat_increase(ATTR_CONSTITUTION, 25)
+					user.stat_increase(ATTR_TOUGHNESS, 25)
 					return 0
 			if(16 to 20)
 				if(prob(25))
 					user.apply_damage(5,BRUTE,(pick(LIMB_LEFT_LEG, LIMB_RIGHT_LEG)))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] but pushes through. DAMN!</span>")
 					return 1
-					user.stat_increase(ATTR_CONSTITUTION, 25)
+					user.stat_increase(ATTR_TOUGHNESS, 25)
 				else if(prob(10))
 					user.visible_message("<span class='warning'>[user] gets caught in [src] and trips!</span>")
 					user.Knockdown(3)

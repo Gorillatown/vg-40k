@@ -442,7 +442,7 @@ Overcharge action - overcharge		See: complexcombat.dm Line: 406
 					defender.stat_increase(ATTR_STRENGTH,25)
 				else
 					to_chat(defender, "<span class = 'danger'> You fail to block the [I]!</span>")
-					defender.stat_increase(ATTR_CONSTITUTION,50)
+					defender.stat_increase(ATTR_TOUGHNESS,50)
 					attacker.stat_increase(ATTR_STRENGTH,40)
 					return FALSE
 			if((assaultDIR == turn(defenseDIR,90)) || (assaultDIR == turn(defenseDIR,-90)))

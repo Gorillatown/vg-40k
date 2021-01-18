@@ -10,7 +10,7 @@
 #define ATTR_STRENGTH 		"strength"
 #define ATTR_AGILITY 		"agility"
 #define ATTR_DEXTERITY 		"dexterity"
-#define ATTR_CONSTITUTION 	"constitution"
+#define ATTR_TOUGHNESS 		"toughness"
 #define ATTR_WILLPOWER		"willpower"
 #define ATTR_SENSITIVITY	"sensitivity"
 
@@ -69,17 +69,17 @@
 	var/attribute_dexterity_natural_limit = 1
 	var/attribute_dexterity_trained_integer = 1
 /*
-	Constitution
+	Toughness
 				*/
-//Constitution is basically how durable something is
+//Toughness is basically how durable something is
 //It covers additions to our total health amount (+10 per lvl)
 //We train it by doing painful things, or recovering from injuries.
 /*Appends: 
 
 */
-	var/attribute_constitution = 1
-	var/attribute_constitution_natural_limit = 1
-	var/attribute_constitution_trained_integer = 1
+	var/attribute_toughness = 1
+	var/attribute_toughness_natural_limit = 1
+	var/attribute_toughness_trained_integer = 1
 
 /*
 	MAGIC SYSTEM SHIT

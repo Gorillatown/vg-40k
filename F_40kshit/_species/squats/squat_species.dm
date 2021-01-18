@@ -26,8 +26,8 @@
 	base_agility_natural_limit = 20
 	base_dexterity = 8
 	base_dexterity_natural_limit = 20
-	base_constitution = 12
-	base_constitution_natural_limit = 20
+	base_toughness = 12
+	base_toughness_natural_limit = 20
 	base_willpower = 8
 	base_willpower_natural_limit = 20
 	base_sensitivity = 300

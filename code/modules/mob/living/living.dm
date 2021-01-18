@@ -1319,7 +1319,7 @@ Thanks.
 				now_pushing = 0
 				return
 
-			if(tmob.attribute_constitution > attribute_strength)
+			if(tmob.attribute_toughness > attribute_strength)
 				now_pushing = 0
 				return
 

@@ -25,7 +25,7 @@
 /*
 	Relevant Species Max Table
 								*/
-/* Species		|Strength|Agility|Dexterity|Constitution|Willpower|Warp Sensitivity|Total:
+/* Species		|Strength|Agility|Dexterity|Toughness|Willpower|Warp Sensitivity|Total:
 
 	Ork Warboss		20		14		14			20			16		120					84
 	Ork Nob			16		13		11			17			12		50					68
@@ -127,33 +127,33 @@
 				return 1
 			else
 				return 0
-		if(ATTR_CONSTITUTION) //Maximum cap 20
-			attribute_constitution_trained_integer += attr_trained_value
-			if(attribute_constitution <= attribute_constitution_natural_limit) //If our stat is lesser than the natural limit
-				if(attribute_constitution_trained_integer >= 1000)
-					attribute_constitution += 1
+		if(ATTR_TOUGHNESS) //Maximum cap 20
+			attribute_toughness_trained_integer += attr_trained_value
+			if(attribute_toughness <= attribute_toughness_natural_limit) //If our stat is lesser than the natural limit
+				if(attribute_toughness_trained_integer >= 1000)
+					attribute_toughness += 1
 					to_chat(src,"<span class='good'><b>You feel tougher.</b></span>")
 					src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 					maxHealth += 10
 					health += 10
-					attribute_constitution_trained_integer = 0
+					attribute_toughness_trained_integer = 0
 					return 1
-				if(attribute_constitution <= attribute_constitution_natural_limit-4) //If we are still lesser than 4 away from cap
-					increase_probability = round(1+attribute_constitution_trained_integer/100) //increased probability + rounded number(amount we trained to 1000 divided by 100)
-				if(attribute_constitution <= attribute_constitution_natural_limit-10) //If we are still lesser than 10 away from cap
-					increase_probability = round(10+attribute_constitution_trained_integer/50)
+				if(attribute_toughness <= attribute_toughness_natural_limit-4) //If we are still lesser than 4 away from cap
+					increase_probability = round(1+attribute_toughness_trained_integer/100) //increased probability + rounded number(amount we trained to 1000 divided by 100)
+				if(attribute_toughness <= attribute_toughness_natural_limit-10) //If we are still lesser than 10 away from cap
+					increase_probability = round(10+attribute_toughness_trained_integer/50)
 			else
-				if(attribute_constitution_trained_integer >= 800) //If we have trained up greater than or equal to 800
+				if(attribute_toughness_trained_integer >= 800) //If we have trained up greater than or equal to 800
 					increase_probability = 2
-					if(attribute_constitution_trained_integer >= 1000) //If we are over 1000
+					if(attribute_toughness_trained_integer >= 1000) //If we are over 1000
 						increase_probability += 3 //Add another 2		
 			if(prob(increase_probability))
-				attribute_constitution += 1
+				attribute_toughness += 1
 				to_chat(src,"<span class='good'><b>You feel tougher.</b></span>")
 				src << sound('F_40kshit/sounds/misc_effects/levelup.ogg',volume = 60)
 				maxHealth += 10
 				health += 10
-				attribute_constitution_trained_integer = 0
+				attribute_toughness_trained_integer = 0
 				return 1
 			else
 				return 0
@@ -236,8 +236,8 @@
 	attribute_dexterity = species.base_dexterity
 	attribute_dexterity_natural_limit = species.base_dexterity_natural_limit
 		
-	attribute_constitution = species.base_constitution
-	attribute_constitution_natural_limit = species.base_constitution_natural_limit
+	attribute_toughness = species.base_toughness
+	attribute_toughness_natural_limit = species.base_toughness_natural_limit
 		
 	attribute_willpower = species.base_willpower
 	attribute_willpower_natural_limit = species.base_willpower_natural_limit
@@ -291,22 +291,22 @@
 		number_picked = rand(0,3)
 		attribute_dexterity -= number_picked
 
-// CONSTITUTION --------------------- Unlike normal con modifiers, this time they get the extra hp.
+// Toughness --------------------- Unlike normal con modifiers, this time they get the extra hp.
 	if(prob(positive_prob)) 
 		number_picked = rand(0,total_sum)
-		attribute_constitution += number_picked
+		attribute_toughness += number_picked
 		maxHealth += 10*number_picked
 		health += 10*number_picked
 		total_sum -= number_picked
 		if((number_picked == total_sum)&&(prob(extra_boost)))
 			var/extra_special_con = rand(0,6)
-			attribute_constitution += extra_special_con
+			attribute_toughness += extra_special_con
 			maxHealth += 10*extra_special_con
 			health += 10*extra_special_con
 			extra_boost -= extra_boost
 	else if(prob(negative_prob))
 		number_picked = rand(0,3)
-		attribute_constitution -= number_picked
+		attribute_toughness -= number_picked
 
 /mob/living/carbon/verb/check_attributes()
 	set name = "Check Attributes"
@@ -316,6 +316,6 @@
 	to_chat(src, "<span class='good'><b>Strength: [attribute_strength].</b></span>")
 	to_chat(src, "<span class='good'><b>Agility: [attribute_agility].</b></span>")
 	to_chat(src, "<span class='good'><b>Dexterity: [attribute_dexterity].</b></span>")
-	to_chat(src, "<span class='good'><b>Constitution: [attribute_constitution].</b></span>")
+	to_chat(src, "<span class='good'><b>Toughness: [attribute_toughness].</b></span>")
 	to_chat(src, "<span class='good'><b>Willpower: [attribute_willpower].</b></span>")
 	to_chat(src, "<span class='bad'><b>Warp Sensitivity: [attribute_sensitivity].</b></span>")

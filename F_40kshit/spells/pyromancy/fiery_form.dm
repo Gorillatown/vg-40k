@@ -19,7 +19,7 @@
 
 	for(var/mob/living/L in targets)
 		to_chat(L, "<span class='sinister'>Fire wreathes your form.</span>")
-		L.attribute_constitution += 10
+		L.attribute_toughness += 10
 		L.health += 20
 		L.soul_blaze_melee = TRUE
 		L.vis_contents += new /obj/effect/overlay/purple_flame(L,12 SECONDS)
@@ -27,7 +27,7 @@
 			to_chat(L, "<span class='sinister'>Warp energy fading, the fire dissipates.</span>")
 			L.soul_blaze_melee = FALSE
 			L.health -= 20
-			L.attribute_constitution -= 10
+			L.attribute_toughness -= 10
 			
 /spell/aoe_turf/fiery_form/choose_targets(var/mob/user = usr)
 	return list(user)

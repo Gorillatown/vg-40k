@@ -18,17 +18,17 @@
 /spell/aoe_turf/endurance/cast(list/targets, mob/user)
 
 	for(var/mob/living/L in targets)
-		to_chat(L, "<span class='sinister'>Warp Energy courses through you, increasing your constitution.</span>")
-		L.attribute_constitution += 15
+		to_chat(L, "<span class='sinister'>Warp Energy courses through you, increasing your toughness.</span>")
+		L.attribute_toughness += 15
 		L.maxHealth += 150
 		L.health += 150
 		L.vis_contents += new /obj/effect/overlay/weak_blue_circle(L,10)
 
 		spawn(12 SECONDS)
-			to_chat(L, "<span class='sinister'>Warp energy fading, your constitution returns to normal.</span>")
+			to_chat(L, "<span class='sinister'>Warp energy fading, your toughness returns to normal.</span>")
 			L.maxHealth -= 150
 			L.health -= 150
-			L.attribute_constitution -= 15
+			L.attribute_toughness -= 15
 			if(L.stat == DEAD)
 				L.visible_message("<span class='bad'> The Warp Energy keeping [L] alive dissipates from their body.</span>")
 

@@ -116,21 +116,21 @@
 /mob/living/carbon/human/Stun(amount)
 	if(M_HULK in mutations)
 		return
-	if(attribute_constitution >= 25)
+	if(attribute_toughness >= 25)
 		return
 	..()
 
 /mob/living/carbon/human/Knockdown(amount)
 	if(M_HULK in mutations)
 		return
-	if(attribute_constitution >= 25)
+	if(attribute_toughness >= 25)
 		return
 	..()
 
 /mob/living/carbon/human/Paralyse(amount)
 	if(M_HULK in mutations)
 		return
-	if(attribute_constitution >= 25)
+	if(attribute_toughness >= 25)
 		return
 	..()
 
@@ -387,7 +387,7 @@ This function restores all organs.
 			if(damage > 0)
 				damageoverlaytemp = 20
 				if(damage > 30)
-					stat_increase(ATTR_CONSTITUTION,50)
+					stat_increase(ATTR_TOUGHNESS,50)
 			if(organ.take_damage(damage, 0, sharp, edge, used_weapon))
 				UpdateDamageIcon(1)
 		if(BURN)	
@@ -395,7 +395,7 @@ This function restores all organs.
 			if(damage > 0)
 				damageoverlaytemp = 20
 				if(damage > 30)
-					stat_increase(ATTR_CONSTITUTION,50)
+					stat_increase(ATTR_TOUGHNESS,50)
 			if(organ.take_damage(0, damage, sharp, edge, used_weapon))
 				UpdateDamageIcon(1)
 

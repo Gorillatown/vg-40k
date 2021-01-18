@@ -43,7 +43,7 @@ Basically this is a assc list that handles cargo prices
 			if(ishuman(O))
 				var/mob/living/carbon/human/H = O
 				if(H.stat != DEAD)
-					slavery_payouts += H.attribute_constitution*25
+					slavery_payouts += H.attribute_toughness*25
 					slavery_payouts += H.attribute_strength*25
 					slavery_payouts -= H.age*5
 					slavery_payouts = clamp(slavery_payouts,100,1000)

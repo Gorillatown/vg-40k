@@ -58,7 +58,7 @@
 	switch(H.word_combo_chain)
 		if("blockknockbackknockback") //block knockback knockback
 			user.visible_message("<span class='danger'>[H] shieldbashes [T]!</span>")
-			if(T.attribute_constitution >= H.attribute_strength+3)
+			if(T.attribute_toughness >= H.attribute_strength+3)
 				var/turf/TT = get_edge_target_turf(src, H.dir)
 				T.adjustBruteLoss(15)
 				T.throw_at(TT,1,2)

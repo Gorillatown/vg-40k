@@ -1,6 +1,6 @@
 /spell/targeted/haemorrage
 	name = "Haemorrage"
-	desc = "Witchfire(Profileless) - Tests the targets constitution by boiling their blood, If they fail it will spread to another."
+	desc = "Witchfire(Profileless) - Tests the targets toughness by boiling their blood, If they fail it will spread to another."
 	override_icon = 'F_40kshit/icons/buttons/warpmagic.dmi' //Basically points us to a different dmi.
 	override_base = "ork"
 	abbreviation = "HMG"
@@ -32,7 +32,7 @@
 	while(nazty_loop == TRUE)
 		if(world.time >= ntime) //only do this every 2 seconds.
 			var/mob/living/C = pick(our_victims)
-			if(C.attribute_constitution >= 12)
+			if(C.attribute_toughness >= 12)
 				if(prob(16))
 					C.adjustBruteLoss(15)
 					to_chat(C, "<span class='danger'> Your blood is boiling inside of your flesh. </span>")
@@ -64,7 +64,7 @@
 					nazty_loop = FALSE
 					break
 			else
-				var/con_percent = abs((C.attribute_constitution*6) - 100)
+				var/con_percent = abs((C.attribute_toughness*6) - 100)
 				if(prob(con_percent))
 					C.adjustBruteLoss(15)
 					to_chat(C, "<span class='danger'> Your blood is boiling inside of your flesh. </span>")

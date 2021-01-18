@@ -387,8 +387,8 @@
 	var/local_damage = brute_dam + burn_dam + damage
 	if(type != BURN)
 		if(is_organic() && !(species && species.anatomy_flags & NO_BLOOD))
-			if(owner.attribute_constitution < 15)
-				var/IBprob = (30-(owner.attribute_constitution * 2))
+			if(owner.attribute_toughness < 15)
+				var/IBprob = (30-(owner.attribute_toughness * 2))
 				if(damage > 20 && local_damage > 20 && prob(damage))
 					if(prob(IBprob))
 						var/internal_bleeding = 0 
@@ -449,8 +449,8 @@
 		var/datum/species/species = src.species || owner.species
 		if(is_organic() && !(species.anatomy_flags & NO_BONES))
 			if(config.bones_can_break && brute_dam > min_broken_damage)
-				if(owner.attribute_constitution < 15)
-					var/breakprob = (30-(owner.attribute_constitution * 2))
+				if(owner.attribute_toughness < 15)
+					var/breakprob = (30-(owner.attribute_toughness * 2))
 					if(prob(breakprob))
 						src.fracture()
 

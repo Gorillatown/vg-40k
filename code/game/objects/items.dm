@@ -1205,7 +1205,7 @@ var/global/list/image/blood_overlays = list()
 /obj/item/kick_act(mob/living/carbon/human/H) //Kick items around!
 	if(anchored)
 		H.visible_message("<span class='danger'>[H] kicks \the [src] which is actually secured to the ground!</span>", "<span class='danger'>You kick \the [src] which is anchored retard!</span>")
-		if(H.attribute_constitution < 16)
+		if(H.attribute_toughness < 16)
 			to_chat(H, "<span class='danger'>IT HURTS.</span>")
 			H.apply_damage(rand(1,4), BRUTE, pick(LIMB_RIGHT_LEG, LIMB_LEFT_LEG, LIMB_RIGHT_FOOT, LIMB_LEFT_FOOT))
 			return
