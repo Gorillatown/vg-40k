@@ -52,7 +52,8 @@
 	engine_fire_loop
 **************************/
 /obj/com_vehicle/proc/engine_fire_loop()
-	while(speed)
+	set waitfor = 0
+	while(engine_online)
 		switch(speed)
 			if(-1000 to -700)
 				engine_fire_delay = 3
@@ -60,23 +61,16 @@
 				engine_fire_delay = 4
 			if(-400 to -200)
 				engine_fire_delay = 6
-				in_reverse = TRUE
 			if(-200 to -50)
 				engine_fire_delay = 8
-				in_reverse = TRUE
 			if(-50 to 0)
 				engine_fire_delay = 12
-				in_reverse = TRUE
-			//THE PIVOT POINT BETWEEN REVERSE AND NOT REVERSE
 			if(0 to 50)
 				engine_fire_delay = 12
-				in_reverse = FALSE
 			if(50 to 200)
 				engine_fire_delay = 8
-				in_reverse = FALSE
 			if(200 to 300)
 				engine_fire_delay = 4
-				in_reverse = FALSE
 			if(300 to 400)
 				engine_fire_delay = 3
 			if(400 to 500)
@@ -89,13 +83,26 @@
 				engine_fire_delay = 0.8
 			if(900 to 1000)
 				engine_fire_delay = 0.5
-
-		if(!in_reverse)
-			Move(get_step(src,dir), dir)
-		else
-			Move(get_step(src,turn(dir, -180)), dir)
-		if(movement_sounds)
-			playsound(src,pick(movement_sounds),50)
+		
+		switch(speed)
+			if(-1000 to -50)
+				Move(get_step(src,turn(dir, -180)), dir)
+				if(movement_sounds)
+					playsound(src,pick(movement_sounds),50)
+			if(-50 to 50)
+				if(idle_output)
+					if(speed >= 0)
+						Move(get_step(src,dir), dir)
+						if(movement_sounds)
+							playsound(src,pick(movement_sounds),50)
+					else
+						Move(get_step(src,turn(dir, -180)), dir)
+						if(movement_sounds)
+							playsound(src,pick(movement_sounds),50)
+			if(50 to 1000)
+				Move(get_step(src,dir), dir)
+				if(movement_sounds)
+					playsound(src,pick(movement_sounds),50)
 	
 		sleep(engine_fire_delay)
 
@@ -122,6 +129,10 @@ Just a generic engine part but for now
 Its a static object
 **************************/
 /obj/com_vehicle/proc/toggle_engine()
+	//set waitfor = 0
+	if(!engine_cooldown) //if engine cooldown is false
+		engine_cooldown = TRUE //Engine cooldown becomes true
+	
 	if(usr!=get_pilot())
 		to_chat(src.get_pilot(), "<span class='average'> [usr] reaches forward and flips the engine switch in front of you.")
 	
@@ -136,15 +147,14 @@ Its a static object
 		engine_online = FALSE
 	
 	if(engine_online) //If Engine toggle is true, and we are not on cooldown
-		if(!engine_cooldown) //if engine cooldown is false
-			engine_cooldown = TRUE //Engine cooldown becomes true
-			speed = 25
-			if(engine_startup_noise)
-				playsound(src,pick(engine_startup_noise),50)
-			spawn(30)
-				engine_cooldown = FALSE
+		speed = 25
+		if(engine_startup_noise)
+			playsound(src,pick(engine_startup_noise),50)
+		spawn(30)
+			engine_cooldown = FALSE
+		engine_fire_loop()
 	else
 		speed = 0 //We set acceleration back to neutral if the engine is turned off.
 	
 	to_chat(usr, "<span class='notice'>Engine [engine_online?"starting up":"shutting down"].</span>")
-	playsound(src, 'sound/items/flashlight_on.ogg', 50, 1)
+	playsound(src, 'sound/items/flashlight_on.ogg', 50, 1) 

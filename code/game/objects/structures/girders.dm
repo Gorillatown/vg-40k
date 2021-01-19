@@ -7,6 +7,12 @@
 	var/material = /obj/item/stack/sheet/metal
 	var/construction_length = 40
 
+/obj/structure/girder/proc/health_update(var/damage)
+	health -= damage
+	if(health >= 0)
+		ex_act(2)
+		visible_message("<span class='warning'>[src] breaks down!</span>")
+
 /obj/structure/girder/wood
 	icon_state = "girder_wood"
 	name = "wooden girder"
@@ -291,6 +297,10 @@
 			if(user.drop_item(P, src.loc))
 				user.visible_message("<span class='warning'>[user] fits \the [P] into \the [src]</span>", \
 				"<span class='notice'>You fit \the [P] into \the [src]</span>")
+	else if(W.armor_penetration > 5)
+		user.visible_message("<span class='warning'>[user] bashes \the [src] with \the [W].</span>", \
+			"<span class='notice'>You beat on the \the [src] with \the [W].</span>")
+		health_update(W.force/2)
 	else
 		..()
 
@@ -300,13 +310,9 @@
 		qdel(src)
 
 /obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
-	
 	if(Proj.damage)
-		src.health -= Proj.damage/2
-	if(health <= 0)
-		visible_message("<span class='warning'>[src] breaks down!</span>")
-		src.ex_act(2)
-	
+		health_update(Proj.damage/2)
+
 	if(Proj.destroy)
 		src.ex_act(2)
 	..()

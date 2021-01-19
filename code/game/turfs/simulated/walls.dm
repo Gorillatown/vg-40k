@@ -50,12 +50,15 @@
 	if(health <= (health/4))
 		to_chat(user, "<span class='danger'>It's falling apart!</span>")
 
-/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
-	if(Proj.damage)
-		src.health -= Proj.damage/2
+/turf/simulated/wall/proc/health_update(var/damage)
+	health -= damage
 	if(health <= 0)
 		visible_message("<span class='warning'>[src] breaks down!</span>")
-		src.ex_act(2)
+		ex_act(2)
+
+/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
+	if(Proj.damage)
+		health_update(Proj.damage/2)
 	..()
 
 /turf/simulated/wall/dismantle_wall(devastated = 0, explode = 0)
@@ -257,8 +260,7 @@
 					investigation_log(I_ATMOS, "with a pdiff of [pdiff] dismantled by [user.real_name] ([formatPlayerPanel(user, user.ckey)]) at [formatJumpTo(get_turf(src))]!")
 					message_admins("\The [src] with a pdiff of [pdiff] has been dismantled by [user.real_name] ([formatPlayerPanel(user, user.ckey)]) at [formatJumpTo(get_turf(src))]!")
 				dismantle_wall()
-		else
-			return
+
 
     //CUT_WALL will dismantle the wall
 	else if((W.sharpness_flags & (CUT_WALL)) && user.a_intent == I_HURT)
@@ -303,6 +305,11 @@
 
 	else if(istype(W, /obj/item/mounted)) //If we place it, we don't want to have a silly message
 		return
+
+	else if(W.armor_penetration > 5) //40k wall dmg
+		user.visible_message("<span class='warning'>[user] bashes \the [src] with \the [W].</span>", \
+			"<span class='notice'>You beat on the \the [src] with \the [W].</span>")
+		health_update(W.force/2)
 
 	else
 		return attack_hand(user)

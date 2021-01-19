@@ -113,7 +113,7 @@
 		var/obj/mecha/M = loc
 		return M.click_action(A,src)
 
-	if(istype(loc,/obj/complex_vehicle))
+	if(istype(loc,/obj/com_vehicle))
 		var/obj/com_vehicle/M = loc
 		return M.click_action_control(A,src)
 

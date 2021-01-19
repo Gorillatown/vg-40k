@@ -11,6 +11,7 @@
 // END_PREFERENCES
 // BEGIN_INCLUDE
 #include "__40kEARLYLoad\__RSCHOTLOAD.dm"
+#include "__40kEARLYLoad\_flavor_lists.dm"
 #include "__40kEARLYLoad\_roguelike_effects.dm"
 #include "__40kEARLYLoad\ATCHDEF.dm"
 #include "__40kEARLYLoad\CAMERANETS.dm"

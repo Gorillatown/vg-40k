@@ -1540,7 +1540,9 @@ Thanks.
 	remove_from_mob(item)
 
 	//actually throw it!
-	if (item)
+	if(item)
+		var/t_range = item.throw_range
+		var/t_speed = item.throw_speed
 		item.forceMove(get_turf(src))
 		if(!(item.flags & NO_THROW_MSG))
 			src.visible_message("<span class='warning'>[src] has thrown [item].</span>", \
@@ -1552,9 +1554,15 @@ Thanks.
 		if(istype(src,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H=src
 			throw_mult = H.species.throw_mult
-			throw_mult += H.attribute_strength/4 //For each level of strength above 1, add 0.5
-		item.throw_at(target, item.throw_range*throw_mult, item.throw_speed*throw_mult)
-		return THREW_SOMETHING
+			t_range = t_range*throw_mult
+			t_speed = t_speed*throw_mult
+		
+		t_range += round(attribute_strength/2)
+		t_speed += round(attribute_strength/5)
+		
+		playsound(src,pick(throw_sounds),70)
+		item.throw_at(target, t_range, t_speed)
+		return THREW_SOMETHING 
 
 /mob/living/send_to_past(var/duration)
 	..()

@@ -66,7 +66,7 @@ This one isn't so useful considering the regular processing furnace exists.
 	var/turf/out_T = get_step(src, dir)
 
 	flick("furnace_on",src)
-	playsound(src, 'F_40kshit/sounds/misc_effects/furnace.wav', 50, 1)
+	playsound(src, 'F_40kshit/sounds/misc_effects/furnace.ogg', 50, 1)
 	failure = FALSE
 	for(var/atom/movable/A in in_T)
 		if(A.anchored)

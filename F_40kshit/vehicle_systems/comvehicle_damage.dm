@@ -42,9 +42,17 @@
 		to_bump
 **************************/
 /obj/com_vehicle/to_bump(atom/A)
-	//var/random_sound = pick('F_40kshit/sounds/wallsmash1.ogg','F_40kshit/sounds/wallsmash2.ogg', 'F_40kshit/sounds/wallsmash3.ogg')
-	return
-
+	if(isliving(A))
+		var/mob/living/L = A
+		L.adjustBruteLoss(30)
+		L.Knockdown(10)
+		var/random_sound = pick('F_40kshit/sounds/wallsmash1.ogg','F_40kshit/sounds/wallsmash2.ogg', 'F_40kshit/sounds/wallsmash3.ogg')
+		playsound(src,random_sound,100)
+	else
+		if(A.density)
+			speed = 0
+			var/random_sound = pick('F_40kshit/sounds/wallsmash1.ogg','F_40kshit/sounds/wallsmash2.ogg', 'F_40kshit/sounds/wallsmash3.ogg')
+			playsound(src,random_sound,100)
 /**************************
 		ex_act
 **************************/

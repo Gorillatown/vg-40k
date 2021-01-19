@@ -34,6 +34,7 @@
 /obj/com_vehicle/proc/click_action_control(atom/target, mob/living/user)
 	if(mechanically_disabled || user.incapacitated() || src == target || !target)
 		return
+	
 	if(user != get_pilot()) //If user is not pilot return false
 		return
 
@@ -42,8 +43,9 @@
 		return
 	
 	if(Adjacent(target))
-		if(vehicle_melee(target))
-			return
+		if(world.time > next_melee_time)
+			if(vehicle_melee(target))
+				next_melee_time = world.time + melee_time
 	
 	if(comvehicle_parts.equipment_systems.len)
 		for(var/obj/item/vehicle_parts/vehicle_part in comvehicle_parts.equipment_systems)

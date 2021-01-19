@@ -62,6 +62,7 @@ Engine & Movement Procs -
 	var/pilot_zoom = FALSE //Mostly so we don't fuck this up and let zoomed out people go scott free
 	var/vehicle_zoom //So we can control how much vehicles zoom in and out without extra action code.
 	var/maint_hatch_open = FALSE //Is the maintenance hatch open?
+	var/next_melee_time = FALSE //Holder for the melee cooldown
 
 //Configuration Variables -----------------------------------------
 	var/passenger_limit = FALSE //Upper limit for how many passengers are allowed
@@ -69,6 +70,8 @@ Engine & Movement Procs -
 	var/maxHealth = 100 //The maximum health we can achieve, health is set to this in New()
 	//contains_occupants - Basically if the vehicle contains occupants, or lets them ride outside of the vehicle.
 	var/contains_occupants = FALSE
+	var/melee_time = 1 SECONDS //How often we can melee in a vehicle.
+	var/list/destroyable_obj = list(/obj/mecha, /obj/structure/window, /obj/structure/grille, /obj/com_vehicle)
 
 //-------Sounds--------
 	var/list/movement_sounds = null
@@ -81,7 +84,6 @@ Engine & Movement Procs -
 	var/engine_fire_delay = 0 //Delay until next engine movement fire.
 	var/engine_online = FALSE //Whether the engine is on or off
 	var/engine_cooldown = FALSE
-	var/in_reverse = FALSE //Are we currently in reverse?
 	var/speed = 0 //The current acceleration we are at a scale of -1000 to 1000
 	var/movement_warning_oncd = FALSE
 	var/datum/delay_controller/move_delayer = new(1, ARBITRARILY_LARGE_NUMBER) //See setup.dm, 12
@@ -91,9 +93,10 @@ Engine & Movement Procs -
 	var/max_reverse_speed = 0 //Max Reverse Speed we can go
 	var/speed_loss = 0 //Amount we tick down in loss
 	var/acceleration = 0 //Amount we gain when we use a keyboard input
-	var/movement_delay = 1 //Basically the speed of turning
+	var/movement_delay = 4 //Basically the speed of turning/direction inputs/gliding etc
 	var/inverse_handling = FALSE //Whether we have inverse handling or not
 	var/can_reverse = FALSE //Can we reverse or not, If its not then it turns into a brake
+	var/idle_output = FALSE //If during engine idle range we continue outputting movement.
 
 /***************************
 	Parts & Equipment Masters
@@ -261,43 +264,40 @@ Engine & Movement Procs -
 	enter_vehicle_actions
 **************************/
 /obj/com_vehicle/proc/enter_vehicle_actions(mob/user)
+	occupants += user
 	var/pilot = get_pilot()
-	occupants.Add(user)
 	for(var/datum/action/linked_parts_buttons/action in comvehicle_parts.action_storage)
 		if(user == pilot)
 			action.Grant(user)
-		else if(action.pilot_only)
-			continue
-		else
-			var/datum/action/newaction = new action.type(src)
-			comvehicle_parts.extra_actions += newaction
-			newaction.Grant(user)
+		else 
+			if(action.pilot_only)
+				continue
+			else
+				var/datum/action/newaction = new action.type(src)
+				comvehicle_parts.extra_actions += newaction
+				newaction.Grant(user)
 
 /**************************
 	leave_vehicle_actions
 **************************/
 /obj/com_vehicle/proc/leave_vehicle_actions(mob/user)
-	var/pilot = get_pilot()
-	occupants.Remove(user)
+	occupants -= user
+
+	for(var/datum/action/linked_parts_buttons/action in comvehicle_parts.action_storage)
+		action.Remove(user)
 	
-	if(user == pilot)
-		for(var/datum/action/complex_vehicle_equipment/action in comvehicle_parts.action_storage)
-			action.Remove(user)
-	else
-		for(var/datum/action/complex_vehicle_equipment/action in comvehicle_parts.extra_actions)
-			if(action.owner)
-				if(action.owner == user)
-					comvehicle_parts.extra_actions -= action
-					action.Remove(user)
-					qdel(action)
-			else
+	for(var/datum/action/linked_parts_buttons/action in comvehicle_parts.extra_actions)
+		if(action.owner)
+			if(action.owner == user)
 				comvehicle_parts.extra_actions -= action
+				action.Remove(user)
 				qdel(action)
-	
-	if(get_pilot() && pilot != get_pilot()) //In the scenario we have another pilot after the first pilot leaves.
+		else
+			comvehicle_parts.extra_actions -= action
+			qdel(action)
+
+	if(get_pilot()) //In the scenario we have another pilot after the first pilot leaves.
 		var/mob/living/new_pilot = get_pilot()
-		if(!new_pilot)
-			return
 		for(var/datum/action/linked_parts_buttons/action in comvehicle_parts.extra_actions)
 			if(action.owner)
 				if(action.owner == new_pilot)
@@ -307,6 +307,7 @@ Engine & Movement Procs -
 			else
 				comvehicle_parts.extra_actions -= action
 				qdel(action)
+		
 		for(var/datum/action/linked_parts_buttons/action in comvehicle_parts.action_storage)
 			action.Grant(new_pilot)
 
@@ -318,7 +319,7 @@ Engine & Movement Procs -
 	for(var/obj/item/vehicle_parts/parts in comvehicle_parts.equipment_systems)
 		if(parts.vis_con_overlay)
 			var/obj/effect/overlay/the_overlay = new parts.vis_con_overlay()
-			the_overlay.icon_state = "[icon_state]-[name]"
+			the_overlay.icon_state = "[the_overlay.icon_state]-[name]"
 			vis_contents += the_overlay
 
 /**************************

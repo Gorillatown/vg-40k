@@ -30,7 +30,7 @@ Proc call vars. - Attachment Master
 	if(equipment.tied_action) //If equipment has a tied action.
 		var/datum/action/linked_parts_buttons/equipment_action = new equipment.tied_action(my_atom) //new abstract construct spawned into massa obj.
 		action_storage += equipment_action
-
+ 
 		spawn(1)
 			equipment_action.id = equipment.id //The actions ID is now the objects ID, tying them together.
 

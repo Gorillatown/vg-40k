@@ -26,7 +26,7 @@
 /datum/action/linked_parts_buttons/toggle_engine/Trigger()
 	var/obj/com_vehicle/S = target
 	S.toggle_engine()
-	
+	 
 	if(S.engine_online)
 		button_icon_state = "engine_on"
 	else

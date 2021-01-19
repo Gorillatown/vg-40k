@@ -28,7 +28,7 @@
 		qdel(src)
 		return 1
 	if(istype(I, /obj/item/weapon))
-		playsound(loc, 'F_40kshit/sounds/misc_effects/bushhit.wav', 50, 1)
+		playsound(loc, 'F_40kshit/sounds/misc_effects/bushhit.ogg', 50, 1)
 		user.visible_message("[user] beats upon \the [src].",
 							"You have beat \the [src].",
 							"You hear the sound of foilage being ravaged.")
