@@ -16,9 +16,13 @@
 			if(i == 0)
 				for(var/mob/living/MUHDICK in occupants)
 					move_outside(MUHDICK, get_turf(src))
-					MUHDICK.throw_at(get_edge_target_turf(loc, pick(alldirs)), 7, 30)
+					MUHDICK.Knockdown(10)
+					MUHDICK.Stun(5)
 					to_chat(MUHDICK, "<span class='warning'>You are forcefully thrown from \the [src]!</span>")
+					spawn(1 SECONDS)
+						MUHDICK.throw_at(get_edge_target_turf(loc, pick(alldirs)), 3, 10)
 				explosion(loc, 2, 4, 8)
+				
 			sleep(1 SECONDS)
 		
 		breakdown()

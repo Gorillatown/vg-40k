@@ -1190,28 +1190,11 @@ Use this proc preferably at the end of an equipment loadout
 	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
 	var/deathtime = world.time - persist.time_ghosted
 	
-	/*if(istype(src,/mob/dead/observer))
-		var/mob/dead/observer/G = src
-		if(G.has_enabled_antagHUD == 1 && config.antag_hud_restricted)
-			to_chat(usr, "<span class='notice'> <B>Upon using the antagHUD you forfeighted the ability to join the round.</B></span>")
-			return*/
-	
-	/*var/deathtimeminutes = round(deathtime / 600)
-	var/pluralcheck = "minute"
-	if(deathtimeminutes == 0) 
-		pluralcheck = ""
-	else if(deathtimeminutes == 1)
-		pluralcheck = " [deathtimeminutes] minute and"
-	else if(deathtimeminutes > 1)
-		pluralcheck = " [deathtimeminutes] minutes and"
-	var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
-	to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")*/
-
-	var/minutes_remaining = round((persist.respawn_modifier+config.respawn_delay*600)-deathtime)
-	var/seconds_remaining = round((deathtime - minutes_remaining * 600) / 10,1)
+	var/time_chunk = round(round((persist.respawn_modifier+config.respawn_delay*600)-deathtime))
+	var/remaining_time = formatTimeDuration(time_chunk)
 
 	if(deathtime < persist.respawn_modifier+config.respawn_delay*600)
-		to_chat(usr, "You have [round(minutes_remaining/600)] minutes and [seconds_remaining] before you can respawn.")
+		to_chat(usr, "<span class='sinister'>RESPAWN TIMER:</span> <span class='bad'><b>[remaining_time]</b></span>")
 //		to_chat(usr, "You must wait [respawn_modifier+config.respawn_delay*600] minutes to respawn!")
 		return
 	else 

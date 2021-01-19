@@ -92,8 +92,8 @@ var/list/json_persistence = list()
 		potential -= value
 
 /datum/interactive_persistence/proc/handle_respawns(var/value)
-	if(!time_ghosted)
-		time_ghosted = value
+	time_ghosted = value
+	
 
 
 

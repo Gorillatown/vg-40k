@@ -34,6 +34,8 @@
 			return
 		if(user.drop_item(W, src))
 			mounted_head = W
+			mounted_head.transform = null
+			mounted_head.dir = SOUTH
 			if(isork(user))
 				var/mob/living/carbon/human/the_ork = user
 				if(!mounted_head.used)
