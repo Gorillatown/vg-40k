@@ -13,3 +13,6 @@
 /turf/unsimulated/outside/sumdirt/New()
 	..()
 
+/turf/unsimulated/outside/sumdirt/no_floragen
+	desc = "This dirt doesn't seem to have much flora on it."
+	floragen = FALSE

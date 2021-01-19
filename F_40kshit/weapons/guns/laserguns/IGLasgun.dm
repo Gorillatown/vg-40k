@@ -67,6 +67,11 @@
 			to_chat(user, "The [src] is pretty hot.")
 		if(121 to 151)
 			to_chat(user, "<span class='warning'>The [src] is VERY hot.</span>")
+	switch(degradation_state)
+		if(0 to 5)
+			to_chat(user, "The [src] looks fairly degraded, and in need of maintenance.")
+		if(6 to 50)
+			to_chat(user, "The [src] looks like its in okay-shape.")
 
 /*
 	RENAME GUN
@@ -102,15 +107,15 @@
 	var/chargestrength = input(user, "Adjust Power Settings (Warning: Mishandling can result in misfires)", "Lasgun Power Setting") in list("Low Power","Medium Power","Maximum Power")
 	if(chargestrength)
 		if(chargestrength == "Low Power")
-			src.lasgun_shot_strength = 1 //We set strength
-			src.charge_cost = 75	//And we set charge cost - 60 shots
+			lasgun_shot_strength = 1 //We set strength
+			charge_cost = 75	//And we set charge cost - 60 shots
 		if(chargestrength == "Medium Power")
-			src.lasgun_shot_strength = 2 //Med STR
-			src.charge_cost = 150 // 30 Shots
+			lasgun_shot_strength = 2 //Med STR
+			charge_cost = 150 // 30 Shots
 		if(chargestrength == "Maximum Power")
-			src.lasgun_shot_strength = 3 //High STR
-			src.charge_cost = 300 //15 shots
-		src.setprojtype() //The verb calls this, we can add arguments later once we know what we need.
+			lasgun_shot_strength = 3 //High STR
+			charge_cost = 300 //15 shots
+		setprojtype() //The verb calls this, we can add arguments later once we know what we need.
 
 /obj/item/weapon/gun/energy/lasgun/proc/setprojtype() // Yep
 //This proc/verb set can be made into a generic on guns later with a actual list of choices.
@@ -173,7 +178,8 @@
 /obj/item/weapon/gun/energy/lasgun/attackby(var/obj/item/A, mob/user) //Loading
 	if(A.is_screwdriver(user))
 		to_chat(user, "<span class='notice'>You adjust and repair the [src].</span>")
-		degradation_state = 10
+		degradation_state = 10 
+		fire_delay = 2
 		setprojtype()
 	if(istype(A, /obj/item/weapon/cell))
 		var/obj/item/weapon/cell/AM = A
@@ -193,10 +199,10 @@
 	if(user.get_active_hand() == src)
 		if(!wielded)
 			wield(user)
-			src.update_wield(user)
+			update_wield(user)
 		else
 			unwield(user)
-			src.update_wield(user)
+			update_wield(user)
 
 /obj/item/weapon/gun/energy/lasgun/update_wield(mob/user)
 	..()
@@ -260,7 +266,7 @@
 
 /obj/item/weapon/gun/energy/lasgun/proc/RemoveMag(var/mob/user)
 	if(power_supply)
-		power_supply.forceMove(get_turf(src.loc))
+		power_supply.forceMove(get_turf(loc))
 		if(user)
 			user.put_in_hands(power_supply)
 			to_chat(user, "<span class='notice'>You pull the magazine out of \the [src].</span>")

@@ -8,7 +8,7 @@
 //---Footprint vars-----------------	
 	var/footprints = TRUE //if false, do not set up a footprint parent, do not make footprints
 	var/obj/effect/footprint_holder/footprint_parent //null object holder
-	var/footprint_color = "#ff0808" //This sets the color of the footprints.
+	var/footprint_color = "#271a08"  //This sets the color of the footprints.
 
 	turf_speed_multiplier = 1
 	gender = PLURAL
