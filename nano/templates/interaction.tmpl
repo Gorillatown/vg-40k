@@ -1,0 +1,48 @@
+<!--
+Used In File(s): F_40kshit\systems\interactions\interaction_datum.dm
+TODO: a lot of shit
+-->
+
+<div class="item">
+	<div class="itemLabel">
+		Threshold Comparison:
+	</div>
+	<div class="itemContent">
+		{{:helper.displayBar(data.displayThreshold, 0, 100, data.funtime_barcolor ? 'good' : 'bad')}}
+		<div class="statusValue">
+			{{:helper.round(data.displayThreshold)}}%
+		</div>
+	</div>
+</div>
+<!--
+Feature Description
+-->
+<div class='item'>
+	<div class='statusDisplay'>
+		<u><b>They have</b></u>
+		{{for data.target_desc}}
+			<div class="line">
+				{{:value.target_feature}}
+			</div>
+		{{/for}}
+		<br><u><b>You have</b></u>
+		{{for data.source_desc}}
+			<div class="line">
+				{{:value.source_feature}}
+			</div>
+		{{/for}}
+	</div>
+</div>
+<!--
+Force Selection
+-->
+<div class="item">
+	<div class="itemLabel">
+		Force Used:
+	</div>
+	<div class="itemContent">
+		{{:helper.link('Violent', 'refresh', {'selected_force' : 'violent'}, data.effort_invested == 2 ? 'selected' : null)}}
+		{{:helper.link('Moderate', 'refresh', {'selected_force' : 'moderate'}, data.effort_invested == 1 ? 'selected' : null)}}
+		{{:helper.link('Relaxed', 'close', {'selected_force' : 'relaxed'}, data.effort_invested ? null : 'selected')}}
+	</div>
+</div>

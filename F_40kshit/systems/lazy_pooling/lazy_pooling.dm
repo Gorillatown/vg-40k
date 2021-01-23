@@ -3,7 +3,8 @@
 var/datum/market_economy/market_economy
 var/datum/flavortown/flavortown
 var/datum/lazy_pooler/lazy_pooler
-
+var/list/manufacturing_recipes = list()
+var/list/interaction_emotes = list()
 /*
 If things get laggy with all the effects, I'll append a pooling system for them.
 */
@@ -13,6 +14,7 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 /datum/lazy_pooler/New()
 	load_overlays()
 	load_manufacturing_recipes()
+	load_interaction_emotes()
 	load_single_datums()
 
 /datum/lazy_pooler/proc/load_single_datums()
@@ -33,6 +35,10 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 	for(var/recipes in typesof(/datum/manufacturing_recipe) - /datum/manufacturing_recipe)
 		var/datum/manufacturing_recipe/the_recipe = new recipes
 		manufacturing_recipes += the_recipe
+
+/datum/lazy_pooler/proc/load_interaction_emotes()
+	for(var/interactions in subtypesof(/datum/interaction_emotes) - /datum/interaction_emotes)
+		interaction_emotes += new interactions()
 
 /*
 	I don't feel like I need this one yet. Its about complete tho at a basis

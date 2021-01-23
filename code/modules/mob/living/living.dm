@@ -17,6 +17,7 @@
 		meat_amount = size
 
 	immune_system = new (src)
+	interactions = new (src)
 
 /mob/living/Destroy()
 	for(var/mob/living/silicon/robot/mommi/MoMMI in player_list)
@@ -41,6 +42,10 @@
 	if(immune_system)
 		qdel(immune_system)
 		immune_system = null
+
+	if(interactions)
+		qdel(interactions)
+		interactions = null
 
 	. = ..()
 

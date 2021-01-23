@@ -99,8 +99,6 @@ var/list/json_persistence = list()
 
 /*
 /mob/verb/read_my_datum_nigga()
-//	set name = "Gibself"
-//	set category = "Fun"
 	var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
 	to_chat(world,"potential: [persist.potential], ooc_color: [persist.ooc_color], money_saved: [persist.money_saved]")
 

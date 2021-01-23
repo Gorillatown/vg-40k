@@ -29,6 +29,7 @@
 	var/warp_charges = 0 //Casting CDR/Funtime effects handler. See life.dm Line:149
 	var/chaos_tainted = FALSE //Are we currently tainted by chaos?
 	var/bumpattacks = FALSE //We currently have bump attacks toggled on?
+	var/datum/interactions/interactions = null
 	
 	var/list/spelltree_unlocked_list = list(
 		BIOMANCY = 1,

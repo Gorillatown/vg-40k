@@ -14,8 +14,6 @@ var/global/list/barricadepool = list(1 = null,
 //Some overlays
 var/global/list/viscon_overlays = list(1 = null)
 
-var/global/list/manufacturing_recipes = list()
-
 //List of banners to check for ork distances
 var/global/list/ork_banners = list()
 

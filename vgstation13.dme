@@ -2907,6 +2907,7 @@
 #include "F_40kshit\systems\experimental\viscon_effects\water_effects.dm"
 #include "F_40kshit\systems\flavor_town\flavor_town.dm"
 #include "F_40kshit\systems\interactions\interaction_datum.dm"
+#include "F_40kshit\systems\interactions\interactive_emotes.dm"
 #include "F_40kshit\systems\lazy_pooling\lazy_pooling.dm"
 #include "F_40kshit\systems\manufactorio\autominer.dm"
 #include "F_40kshit\systems\manufactorio\furnace.dm"

@@ -30,6 +30,9 @@ Gretchin 	->	 Ork 	->	 Nob	 -> 	Warboss
 					regenerate_icons()
 					ork_growth = 0
 					persist.respawn_modifier = 4 MINUTES
+					drop_all()
+					var/datum/outfit/orkwarboss/ha = new()
+					ha.equip(src)
 			return 1
 		else if(isgretchin(src))
 			return 1
