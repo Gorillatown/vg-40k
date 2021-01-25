@@ -7,6 +7,7 @@
 
 /obj/item/vehicle_parts/weaponery/big_shoota
 	name = "Big Shoota"
+	icon_state = "bigshoota"
 	projectile_type = /obj/item/projectile/bullet/big_shoota_bullet
 	projectiles_per_shot = 3
 	tied_action = /datum/action/linked_parts_buttons/toggle_weapon

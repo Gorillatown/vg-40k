@@ -5,7 +5,7 @@
 	if(mechanically_disabled)
 		return
 	health = clamp(health-damage, 0, maxHealth)
-
+ 
 	if((health <= 0) && (!mechanically_disabled))
 		var/mob/pilot = get_pilot()
 		if(pilot)
@@ -26,6 +26,8 @@
 			sleep(1 SECONDS)
 		
 		breakdown()
+	
+	handle_damage_overlays()
 	update_icon()
 
 /**************************

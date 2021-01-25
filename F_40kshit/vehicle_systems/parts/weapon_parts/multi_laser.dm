@@ -4,6 +4,7 @@
 
 /obj/item/vehicle_parts/weaponery/multi_laser
 	name = "Multi Laser"
+	icon_state = "multilaser"
 	tied_action = /datum/action/linked_parts_buttons/toggle_weapon
 	projectile_type = /obj/item/projectile/beam/multi_laser
 	projectiles_per_shot = 5 //How many projectiles come out

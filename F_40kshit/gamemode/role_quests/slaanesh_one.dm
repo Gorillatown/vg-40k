@@ -56,6 +56,7 @@
 			to_chat(our_protagonist,"<span class='notice'>That was sweet but it's kind of lonely misbehaving by ourselves. Lets find some one else to get high with. And I know just the thing. WOOPS! Dropped it on the ground. Hope no one saw.</span>")
 			new /obj/item/weapon/lighter/zippo(our_protagonist.loc)
 			our_protagonist.equip_to_slot_or_drop(new /obj/item/clothing/mask/cigarette/celeb(our_protagonist), slot_l_hand)
+			our_protagonist.equip_to_slot_or_drop(new /obj/item/clothing/mask/cigarette/celeb(our_protagonist), slot_r_hand)
 			our_protagonist.visible_message(text("<span class='alert'>[our_protagonist] pulls out a cigarette and smiles at it.</span>"))
 			to_chat(our_protagonist,"<span class='notice'>I forgot we had this. This will do nicely. Lets find some one to share it with BEFORE we light it up.</span>")
 			our_protagonist.maxHealth = 200

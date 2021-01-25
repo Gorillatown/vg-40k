@@ -16,6 +16,7 @@
 //	hud_state = "mime_oath"
 //	override_base = "const"
 
+
 /spell/targeted/battle_dance/cast(list/targets)
 	for(var/mob/living/carbon/human/H in targets)
 		if(H.gender == MALE)
@@ -30,7 +31,7 @@
 		smoke.start()
 		H.dodging = TRUE
 		for(var/mob/living/O in viewers(world.view, H.loc))
-			if(O == H)
+			if(O == H || O.stat == DEAD)
 				continue
 			H.loc = O.loc
 			if(ishuman(O))
@@ -38,4 +39,4 @@
 				O.apply_effects(0,4)
 			sleep(10)
 		H.dodging = FALSE
-
+ 

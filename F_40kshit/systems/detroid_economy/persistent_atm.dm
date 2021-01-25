@@ -72,7 +72,7 @@
 		dat += "You currently have <b>[contained_card.req_holder.requisition] REQUISITION</b> on your identification.<br>"
 		dat += "In your sector record you currently have <b>[persist.money_saved] DETROID NUYEN</b>.<br>"
 		dat += "There is currently <b>[contained_nuyen] DETROID NUYEN</b> in the Machine.<br>"
-		dat += "The current conversion rate is <b>3 Requisition to 1 Detroid Nuyen.</b>"
+		dat += "The current conversion rate is <b>10 Requisition to 1 Detroid Nuyen.</b>"
 		dat += "<hr>"
 		dat += "Please Select your Option.<br><br>"
 		

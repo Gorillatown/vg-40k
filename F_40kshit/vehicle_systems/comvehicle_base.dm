@@ -63,6 +63,10 @@ Engine & Movement Procs -
 	var/vehicle_zoom //So we can control how much vehicles zoom in and out without extra action code.
 	var/maint_hatch_open = FALSE //Is the maintenance hatch open?
 	var/next_melee_time = FALSE //Holder for the melee cooldown
+	
+	var/list/parts_overlays = list() //Holder for parts overlays
+	var/list/damage_overlays = list("Damage" = null,
+									"Disabled" = null) //Holder for damage overlays
 
 //Configuration Variables -----------------------------------------
 	var/passenger_limit = FALSE //Upper limit for how many passengers are allowed
@@ -154,6 +158,7 @@ Engine & Movement Procs -
 		if(WT.do_weld(user, src, 30, 5))
 			to_chat(user, "<span class='notice'>You patch up \the [src].</span>")
 			adjust_health(-rand(15,30))
+			handle_damage_overlays()
 			return
 	if(istype(W, /obj/item/vehicle_parts))
 		if(!maint_hatch_open)
@@ -322,6 +327,27 @@ Engine & Movement Procs -
 			the_overlay.icon_state = "[the_overlay.icon_state]-[name]"
 			vis_contents += the_overlay
 
+/obj/com_vehicle/proc/handle_damage_overlays()
+	var/obj/effect/overlay/damaged_overlay/CHECK = damage_overlays["damaged"]
+	
+	if(health < maxHealth/2 && !CHECK)
+		var/obj/effect/overlay/damaged_overlay/DO = new()
+		damage_overlays["damaged"] = DO
+		DO.icon_state = "damaged-[name]"
+		vis_contents += DO
+	
+	if(health > maxHealth/2 && CHECK)
+		vis_contents -= damage_overlays["damaged"]
+		damage_overlays["damaged"] = null
+		qdel(CHECK)
+
+	if(health <= 0)
+		var/obj/effect/overlay/disabled_overlay/DISO = new()
+		damage_overlays["Disabled"] = DISO
+		DISO.icon_state = "fire-[name]"
+		vis_contents += DISO
+	
+
 /**************************
 		update_icon
 **************************/
@@ -344,3 +370,22 @@ Engine & Movement Procs -
 				parts.systems_online = FALSE
 				to_chat(get_pilot(), "<span class='notice'>[parts.name] switched off.</span>")
 				playsound(src, 'sound/items/flashlight_on.ogg', 50, 1)
+
+/**************************
+	Overlays
+**************************/
+/obj/effect/overlay/damaged_overlay
+	name = "damage"
+	icon = 'F_40kshit/icons/complex_vehicle/vehicle_overlays64x64.dmi'
+	plane = ABOVE_HUMAN_PLANE
+	layer = VEHICLE_LAYER
+
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+
+/obj/effect/overlay/disabled_overlay
+	name = "disabled"
+	icon = 'F_40kshit/icons/complex_vehicle/vehicle_overlays64x64.dmi'
+	plane = ABOVE_HUMAN_PLANE
+	layer = VEHICLE_LAYER
+
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR

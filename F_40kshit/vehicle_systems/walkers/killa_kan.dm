@@ -1,3 +1,13 @@
+/obj/effect/overlay/big_shoota_overlay
+	name = "Big Shoota"
+	icon = 'F_40kshit/icons/complex_vehicle/vehicle_overlays64x64.dmi'
+	icon_state = "big_shoota"
+	plane = ABOVE_HUMAN_PLANE
+	layer = VEHICLE_LAYER
+
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+
+
 /obj/com_vehicle/killa_kan
 	name = "Killa Kan"
 	icon = 'F_40kshit/icons/complex_vehicle/walkers64x64.dmi'
