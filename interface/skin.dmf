@@ -729,6 +729,8 @@ window "mainwindow"
 		icon = 'Display\\ss13_64.png'
 		macro = "macro"
 		menu = "menu"
+		statusbar = false
+		background-color = #282828
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 424,208
@@ -747,6 +749,8 @@ window "mainwindow"
 		text = "OOC"
 		command = ".winset \"oocbutton.is-checked=true?input.command=\"!ooc \\\"\" macrobutton.is-checked=false:input.command=\"\"oocbutton.is-checked=true?mebutton.is-checked=false\"\"oocbutton.is-checked=true?saybutton.is-checked=false\""
 		button-type = pushbox
+		background-color = #282828
+		text-color = #a4bad6
 	elem "mebutton"
 		type = BUTTON
 		pos = 480,420
@@ -757,6 +761,8 @@ window "mainwindow"
 		text = "Me"
 		command = ".winset \"mebutton.is-checked=true?input.command=\"!me \\\"\" macrobutton.is-checked=false:input.command=\"\"mebutton.is-checked=true?saybutton.is-checked=false\"\"mebutton.is-checked=true?oocbutton.is-checked=false\""
 		button-type = pushbox
+		background-color = #282828
+		text-color = #a4bad6
 	elem "hotkey_toggle"
 		type = BUTTON
 		pos = 560,420
@@ -767,10 +773,13 @@ window "mainwindow"
 		text = "Hotkey Toggle"
 		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
 		button-type = pushbox
+		background-color = #282828
+		text-color = #a4bad6
 	elem "mainvsplit"
 		type = CHILD
 		pos = 3,0
 		size = 634x416
+		background-color = #282828
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
@@ -797,6 +806,8 @@ window "mainwindow"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\"\"saybutton.is-checked=true?mebutton.is-checked=false\"\"saybutton.is-checked=true?oocbutton.is-checked=false\""
 		button-type = pushbox
+		background-color = #282828
+		text-color = #a4bad6
 	elem "tooltip"
 		type = BROWSER
 		pos = 0,0
@@ -823,7 +834,7 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
-	elem "map"
+	elem "map" 
 		type = MAP
 		pos = 0,0
 		size = 640x480
@@ -861,13 +872,16 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		background-color = #282828
+		text-color = #a4bad6
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #ffffff
+		background-color = #282828
+		text-color = #a4bad6
 		is-disabled = true
 		saved-params = ""
 		auto-format = false
@@ -898,6 +912,8 @@ window "rpane"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		background-color = #1d2021
+		text-color = #a4bad6
 	elem "round_end"
 		type = BUTTON
 		pos = 640,0
@@ -920,6 +936,8 @@ window "rpane"
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
+		background-color = #1d2021
+		text-color = #a4bad6
 	elem "special_button"
 		type = BUTTON
 		pos = 264,0
@@ -931,6 +949,8 @@ window "rpane"
 		command = ".winset \"rpanewindow.left=window1\""
 		group = "rpanemode"
 		button-type = pushbox
+		background-color = #32302f
+		text-color = #a4bad6
 	elem "hosttracker"
 		type = BROWSER
 		pos = 392,25
@@ -949,6 +969,8 @@ window "rpane"
 		text = "Rules"
 		command = "rules"
 		group = "rpanemode"
+		background-color = #32302f
+		text-color = #a4bad6
 	elem "changelog"
 		type = BUTTON
 		pos = 192,0
@@ -959,6 +981,8 @@ window "rpane"
 		text = "Changelog"
 		command = "Changelog"
 		group = "rpanemode"
+		background-color = #32302f
+		text-color = #a4bad6
 	elem "textb"
 		type = BUTTON
 		pos = 0,0
@@ -972,6 +996,8 @@ window "rpane"
 		is-checked = true
 		group = "rpanemode"
 		button-type = pushbox
+		background-color = #32302f
+		text-color = #a4bad6
 	elem "browseb"
 		type = BUTTON
 		pos = 328,0
@@ -996,6 +1022,8 @@ window "rpane"
 		command = ".winset \"rpanewindow.left=infowindow\""
 		group = "rpanemode"
 		button-type = pushbox
+		background-color = #32302f
+		text-color = #a4bad6
 
 window "browserwindow"
 	elem "browserwindow"
@@ -1029,6 +1057,8 @@ window "infowindow"
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "Info"
 		is-pane = true
+		background-color = #1d2021
+		text-color = #a4bad6
 	elem "info"
 		type = INFO
 		pos = 0,0
@@ -1039,6 +1069,12 @@ window "infowindow"
 		saved-params = ""
 		highlight-color = #00aa00
 		allow-html = false
+		background-color = #1d2021
+		tab-background-color = #282828
+		text-color = #a4bad6
+		tab-text-color = #a4bad6
+		prefix-color = #a4bad6
+		suffix-color = #a4bad6
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.browseb.is-visible=true?rpane.infob.pos=130,0:rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.browseb.is-visible=true?rpane.browseb.is-checked=true rpane.rpanewindow.left=browserwindow:rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
 

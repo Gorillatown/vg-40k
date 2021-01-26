@@ -7,6 +7,7 @@ var/global/obj/abstract/screen/clicker/catcher = new()
 
 /datum/hud
 	var/mob/mymob
+	var/obj/abstract/screen/statusbar_display = null
 
 	var/obj/abstract/screen/grab_intent
 	var/obj/abstract/screen/hurt_intent
@@ -58,6 +59,7 @@ var/global/obj/abstract/screen/clicker/catcher = new()
 	hand_hud_objects = null
 	action_intent = null
 	move_intent = null
+	statusbar_display = null
 //	powerwords_display = null
 	adding = null
 	other = null
@@ -263,6 +265,17 @@ var/global/obj/abstract/screen/clicker/catcher = new()
 	holomap_obj.alpha = 255
 
 	mymob.client.screen += src.holomap_obj
+	
+	statusbar_display = new()
+	statusbar_display.name = "Statusbar"
+	statusbar_display.icon = null
+	statusbar_display.icon_state = ""
+	//statusbar_display.screen_loc = "CENTER-1.5,NORTH-1:10"
+	statusbar_display.screen_loc = "CENTER-1:7,NORTH-1:18"
+	statusbar_display.mouse_opacity = 0
+	statusbar_display.maptext_width = 128
+	statusbar_display.maptext_height = 42
+	mymob.client.screen += statusbar_display
 
 	reload_fullscreen()
 	update_parallax_existence()

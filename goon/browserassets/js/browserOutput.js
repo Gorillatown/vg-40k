@@ -62,7 +62,7 @@ var opts = {
 	'macros': {},
 
 	// index in the color presets list.
-	'colorPreset': 0,
+	//'colorPreset': 0,
 
 	// Whether to combine consecutive repeated messages into one, showing a counter
 	'messageCombining': true
@@ -70,11 +70,12 @@ var opts = {
 
 // Array of names for colorblind presets.
 // If not set to normal, a CSS file `browserOutput_${name}.css` will be added to the head.
-var colorPresets = [
-	'normal',
-	'dark',
-	'colorblindv1'
-]
+//var colorPresets = [
+//	'normal',
+//	'dark',
+//	'colorblindv1'
+//]
+
 
 //Polyfill for fucking date now because of course IE8 and below don't support it
 if (!Date.now) {
@@ -89,12 +90,13 @@ if (typeof String.prototype.trim !== 'function') {
 	};
 }
 
+/*
 function updateColorPreset() {
 	var el = $("#colorPresetLink")[0];
 	el.href = "browserOutput_"+colorPresets[opts.colorPreset]+".css";
 	runByond('?_src_=chat&proc=colorPresetPost&preset='+colorPresets[opts.colorPreset]);
 }
-
+*/
 //Shit fucking piece of crap that doesn't work god fuckin damn it
 function linkify(text) {
 	var rex = /((?:<a|<iframe|<img)(?:.*?(?:src="|href=").*?))?(?:(?:https?:\/\/)|(?:www\.))+(?:[^ ]*?\.[^ ]*?)+[-A-Za-z0-9+&@#\/%?=~_|$!:,.;]+/ig;
@@ -507,7 +509,7 @@ $(function() {
 		'spingDisabled': getCookie('pingdisabled'),
 		'shighlightTerms': getCookie('highlightterms'),
 		'shighlightColor': getCookie('highlightcolor'),
-		'scolorPreset': getCookie('colorpreset'),
+		//'scolorPreset': getCookie('colorpreset'),
 		'smessageCombining': getCookie('messagecombining')
 	};
 
@@ -540,13 +542,13 @@ $(function() {
 		opts.highlightColor = savedConfig.shighlightColor;
 		internalOutput('<span class="internal boldnshit">Loaded highlight color of: '+savedConfig.shighlightColor+'</span>', 'internal');
 	}
-
+/*
 	if (savedConfig.scolorPreset) {
 		opts.colorPreset = Number(savedConfig.scolorPreset);
 		updateColorPreset();
 		internalOutput('<span class="internal boldnshit">Loaded color preset of: '+colorPresets[opts.colorPreset]+'</span>', 'internal');
 	}
-
+*/
 	if (savedConfig.smessageCombining) {
 		if (savedConfig.smessageCombining == 'false') {
 			opts.messageCombining = false;
@@ -898,13 +900,13 @@ $(function() {
 		opts.messageCount = 0;
 	});
 
-	$('#changeColorPreset').click(function() {
+/*	$('#changeColorPreset').click(function() {
 		opts.colorPreset = (opts.colorPreset+1) % colorPresets.length;
 		updateColorPreset();
 		setCookie('colorpreset', opts.colorPreset, 365);
 		internalOutput('<span class="internal boldnshit">Changed color preset to: '+colorPresets[opts.colorPreset]);
 	});
-
+*/
 	$('#toggleCombine').click(function(e) {
 		opts.messageCombining = !opts.messageCombining;
 		setCookie('messagecombining', opts.messageCombining, 365);

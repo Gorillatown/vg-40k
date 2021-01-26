@@ -2864,6 +2864,7 @@
 #include "F_40kshit\systems\actionbuttons.dm"
 #include "F_40kshit\systems\freerecruiter.dm"
 #include "F_40kshit\systems\genrelationships.dm"
+#include "F_40kshit\systems\name_hud.dm"
 #include "F_40kshit\systems\ork_rok.dm"
 #include "F_40kshit\systems\orkgrowth_helpers.dm"
 #include "F_40kshit\systems\statline_helpers.dm"
