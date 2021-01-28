@@ -2,47 +2,56 @@
 Used In File(s): F_40kshit\systems\interactions\interaction_datum.dm
 TODO: a lot of shit
 -->
-
+<!--Screen Selection
+-->
 <div class="item">
 	<div class="itemLabel">
-		Threshold Comparison:
+		Current Screen:
 	</div>
 	<div class="itemContent">
-		{{:helper.displayBar(data.displayThreshold, 0, 100, data.funtime_barcolor ? 'good' : 'bad')}}
+		{{:helper.link('Vulgarity', 'refresh', {'selected_screen' : 'lewd'}, data.current_screen == 1 ? 'selected' : null)}}
+		{{:helper.link('Wrestling', 'close', {'selected_screen' : 'wrestling'}, data.current_screen ? null : 'selected')}}
+	</div>
+</div>
+<!--
+Meter - Wrestling and Lewd Mode Conditionals
+-->
+<div class="item">
+	<div class="itemLabel">
+	{{if data.current_screen}}
+		Threshold:
+	{{else}}
+		Fatigue:
+	{{/if}}
+	</div>
+	<div class="itemContent">
+		{{:helper.displayBar(data.displayMeter, 0, 100, data.funtime_barcolor ? 'good' : 'bad')}}
 		<div class="statusValue">
-			{{:helper.round(data.displayThreshold)}}%
+			{{:helper.round(data.displayMeter)}}%
 		</div>
 	</div>
 </div>
 <!--
-Feature Description
+Feature Description - Shared Wrestling/Lewd Mode
 -->
 <div class='item'>
 	<div class='statusDisplay'>
-		<u><b>They have</b></u>
-		{{for data.target_desc}}
-			<div class="line">
-				{{:value.target_feature}}
-			</div>
-		{{/for}}
-		<br><u><b>You have</b></u>
-		{{for data.source_desc}}
-			<div class="line">
-				{{:value.source_feature}}
-			</div>
-		{{/for}}
+		<span class="average"><b>{{:data.source_desc}}</b></span>
+		<span class="good"><b>{{:data.target_desc}}</b></span>
 	</div>
 </div>
 <!--
-Force Selection
+Force Selection - Lewd Mode Only
 -->
-<div class="item">
-	<div class="itemLabel">
-		Force Used:
+{{if data.current_screen}}
+	<div class="item">
+		<div class="itemLabel">
+			Force Used:
+		</div>
+		<div class="itemContent">
+			{{:helper.link('Violent', 'refresh', {'selected_force' : 'violent'}, data.effort_invested == 2 ? 'selected' : null)}}
+			{{:helper.link('Moderate', 'refresh', {'selected_force' : 'moderate'}, data.effort_invested == 1 ? 'selected' : null)}}
+			{{:helper.link('Relaxed', 'close', {'selected_force' : 'relaxed'}, data.effort_invested ? null : 'selected')}}
+		</div>
 	</div>
-	<div class="itemContent">
-		{{:helper.link('Violent', 'refresh', {'selected_force' : 'violent'}, data.effort_invested == 2 ? 'selected' : null)}}
-		{{:helper.link('Moderate', 'refresh', {'selected_force' : 'moderate'}, data.effort_invested == 1 ? 'selected' : null)}}
-		{{:helper.link('Relaxed', 'close', {'selected_force' : 'relaxed'}, data.effort_invested ? null : 'selected')}}
-	</div>
-</div>
+{{/if}}

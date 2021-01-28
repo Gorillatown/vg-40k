@@ -782,7 +782,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	var/datum/species/species = src.species || owner.species
 	var/obj/item/organ/external/organ //Dropped limb object
-
+ 
 	if(override)
 		status |= ORGAN_DESTROYED
 	if(status & ORGAN_DESTROYED)
@@ -1552,7 +1552,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			   EXTERNAL ORGAN ITEMS
 ****************************************************/
 
-obj/item/organ/external
+/obj/item/organ/external
 	icon = 'icons/mob/human_races/r_human.dmi'
 	var/datum/organ/internal/organ_data
 	var/datum/dna/owner_dna
@@ -1578,7 +1578,7 @@ obj/item/organ/external
 	var/list/obj/item/organ/external/children = list()
 
 
-obj/item/organ/external/New(loc, mob/living/carbon/human/H, datum/organ/external/source)
+/obj/item/organ/external/New(loc, mob/living/carbon/human/H, datum/organ/external/source)
 	..(loc)
 	if(!istype(H))
 		return
@@ -1782,7 +1782,7 @@ obj/item/organ/external/r_leg/New(loc, mob/living/carbon/human/H)
 /obj/item/organ/external/head/ashtype()
 	return /obj/item/weapon/skull
 
-obj/item/organ/external/head/Destroy()
+/obj/item/organ/external/head/Destroy()
 	if(brainmob)
 		qdel(brainmob)
 		brainmob = null
@@ -1861,7 +1861,7 @@ obj/item/organ/external/head/New(loc, mob/living/carbon/human/H)
 					var/turf/T1 = get_turf(H)
 					make_tracker_effects(T1, L)
 
-obj/item/organ/external/head/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
+/obj/item/organ/external/head/proc/transfer_identity(var/mob/living/carbon/human/H)//Same deal as the regular brain proc. Used for human-->head
 	brainmob = new(src)
 	brainmob.name = H.real_name
 	brainmob.real_name = H.real_name
@@ -1872,7 +1872,7 @@ obj/item/organ/external/head/proc/transfer_identity(var/mob/living/carbon/human/
 	brainmob.default_language = H.default_language
 	brainmob.container = src
 
-obj/item/organ/external/head/attackby(obj/item/weapon/W, mob/user )
+/obj/item/organ/external/head/attackby(obj/item/weapon/W, mob/user )
 	if(istype(W,/obj/item/weapon/scalpel) || istype(W,/obj/item/weapon/shard) || (istype(W,/obj/item/weapon/kitchen/utensil/knife/large) && !istype(W,/obj/item/weapon/kitchen/utensil/knife/large/butch)))
 		if(organ_data)
 			switch(brain_op_stage)
@@ -1967,7 +1967,7 @@ obj/item/organ/external/head/attackby(obj/item/weapon/W, mob/user )
 	else
 		..()
 
-obj/item/organ/external/head/Destroy()
+/obj/item/organ/external/head/Destroy()
 	if(brainmob)
 		brainmob.ghostize()
 	if(origin_body)
