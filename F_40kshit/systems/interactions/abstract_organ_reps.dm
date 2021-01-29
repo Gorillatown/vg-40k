@@ -5,6 +5,8 @@
 	var/name = "ERROR"
 	var/desc = "eek eek ook ook its a parent"
 	var/lewd = FALSE
+	var/parent_datum = null
+
 	var/occupied = FALSE //Is it occupied by something else?
 	var/broken = FALSE
 

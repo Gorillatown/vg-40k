@@ -146,8 +146,8 @@ Proc Descriptions
 			var/datum/interactive_organ/EH
 			if(istype(E,/datum/organ/external/head))
 				EH = new /datum/interactive_organ/head()
-				EH = new /datum/interactive_organ/mouth()
-				EH = new /datum/interactive_organ/neck()
+				meme_organ_list += new /datum/interactive_organ/mouth()
+				meme_organ_list += new /datum/interactive_organ/neck()
 				goto Loop_Finish
 			if(istype(E,/datum/organ/external/chest))
 				EH = new /datum/interactive_organ/chest() 

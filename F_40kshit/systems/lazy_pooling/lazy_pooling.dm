@@ -37,7 +37,7 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 		manufacturing_recipes += the_recipe
 
 /datum/lazy_pooler/proc/load_interaction_emotes()
-	for(var/interactions in subtypesof(/datum/interaction_emotes) - /datum/interaction_emotes)
+	for(var/interactions in subtypesof(/datum/interactive_actions) - /datum/interactive_actions)
 		interaction_emotes += new interactions()
 
 /*
