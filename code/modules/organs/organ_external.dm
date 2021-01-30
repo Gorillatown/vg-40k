@@ -1460,7 +1460,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		if(!is_robotic())
 			current_organ = new /obj/item/organ/external/l_hand(owner.loc, owner, src)
 	return current_organ
-
+ 
 /datum/organ/external/head
 	icon_name = "head"
 	display_name = "head"

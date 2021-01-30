@@ -2,15 +2,14 @@
 Used In File(s): F_40kshit\systems\interactions\interaction_datum.dm
 TODO: a lot of shit
 -->
-<!--Screen Selection
+<!--Screen Selection and Action Perform
 -->
 <div class="item">
-	<div class="itemLabel">
-		Current Screen:
-	</div>
 	<div class="itemContent">
 		{{:helper.link('Vulgarity', 'refresh', {'selected_screen' : 'lewd'}, data.current_screen == 1 ? 'selected' : null)}}
 		{{:helper.link('Wrestling', 'close', {'selected_screen' : 'wrestling'}, data.current_screen ? null : 'selected')}}
+		{{:helper.link('Perform', 'key', {'perform' : '1'})}}
+		{{:helper.link('Let Free', 'key', {'let_free' : '1'})}}
 	</div>
 </div>
 <!--
@@ -32,14 +31,57 @@ Meter - Wrestling and Lewd Mode Conditionals
 	</div>
 </div>
 <!--
-Feature Description - Shared Wrestling/Lewd Mode
+Feature Description - Lewd Mode
 -->
-<div class='item'>
-	<div class='statusDisplay'>
-		<span class="average"><b>{{:data.source_desc}}</b></span>
-		<span class="good"><b>{{:data.target_desc}}</b></span>
+{{if data.current_screen}}
+	<div class='item'>
+		<div class='statusDisplay'>
+			<span class="average"><b>{{:data.source_desc}}</b></span>
+			<span class="good"><b>{{:data.target_desc}}</b></span>
+		</div>
+	</div>
+<!--
+Feature Description and Targeting Wrestling Menu Left Is User, Right is Target
+-->
+{{else}}
+<div class='statusDisplay'>
+	<div id="container" style="width:100%; height:100%; display:flex;">
+		<div style="float: left; width: 50%; height:auto;">
+			<div class="itemLabel">
+				<span class="good"><b>You:</b></span><br>
+			</div>
+			{{for data.user_wrestling_parts}}
+			<div class="line">
+				{{:helper.link(value.name, null, {'parts_interactions' : 'our_side', 'part_id' : value.unique_id}, data.selected_user_part_uid == value.unique_id ? 'selected' : null)}}
+			</div>
+			{{/for}}
+		</div>
+<!--
+Split, User is above, Target is below on parts listings.
+-->
+		<div style="float: right; width: 50%;">
+			<div class="itemLabel">
+			<span class="bad"><b>Them:</b></span><br>
+			</div>
+			{{for data.target_wrestling_parts}}
+			<div class="line">
+				{{:helper.link(value.name, null, {'parts_interactions' : 'target_side', 'part_id' : value.unique_id}, data.selected_target_part_uid == value.unique_id ? 'selected' : null)}}
+			</div>
+			{{/for}}
+		</div>
 	</div>
 </div>
+<!--
+Wrestling Mode Action Selection
+-->
+<div class="item">
+	<div class="itemContent">
+	{{for data.available_actions}}
+		{{:helper.link(value.name, null, {'action_interactions' : '1', 'action_unique_id' : value.action_unique_id, 'part_action_unique_id' : value.part_action_unique_id}, value.part_action_unique_id == value.action_unique_id ? 'selected' : null)}}
+	{{/for}}
+	</div>
+</div>
+{{/if}}
 <!--
 Force Selection - Lewd Mode Only
 -->

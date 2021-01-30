@@ -2,19 +2,29 @@
 	A category of ghetto organs for our system until I get motivated
 */
 /datum/interactive_organ
-	var/name = "ERROR"
-	var/desc = "eek eek ook ook its a parent"
-	var/lewd = FALSE
-	var/parent_datum = null
+	var/name = "ERROR" //What is its name?
+	var/lewd = FALSE //Is it fucking vulgar?
+	var/datum/interactions/parent_datum = null //The parent /datum/interaction
+	var/datum/interactive_actions/current_action = null //What current action are we performing?
+	var/organ_type = LIMB_MISC //What kind of organ is it for action sorting.
+	var/unique_id = null //A unique ID in a string so we can reference the correct organ
 
-	var/occupied = FALSE //Is it occupied by something else?
-	var/broken = FALSE
+	var/broken = FALSE //Is the organ broken?
+	
+	//Two lists of UIDS so we can check conditions.
+	var/list/part_grabbed_by = list() //List of things the part is grabbed by the bottom list is the opposite
+	var/datum/interactive_organ/part_act_on = null
+
+/datum/interactive_organ/New()
+	..()
+	unique_id = "[rand(1,10000)]"
 
 /datum/interactive_organ/Destroy()
+	parent_datum = null
 	..()
 
 /datum/interactive_organ/proc/meme_organ_desc(mob/living/L)
-	return
+	. += "A [name]"
 
 //Return TRUE if its obscured, FALSE if it is not
 /datum/interactive_organ/proc/check_obscured(mob/living/L)
@@ -23,34 +33,14 @@
 
 
 /*********************
-	Wrestling Parts
+	Wrestling Parts - We are going full generic where possible in this iteration.
 **********************/
-/*
-	Hands
-			*/
-/datum/interactive_organ/hand
-	name = "Hand"
-
-/datum/interactive_organ/hand/meme_organ_desc(mob/living/L)
-	. += "A hand"
-
-/*
-	Head
-			*/
-/datum/interactive_organ/head
-	name = "Head"
-
-/datum/interactive_organ/head/meme_organ_desc(mob/living/L)
-	. += "A Head"
-
 /*
 	Mouth
 			*/
 /datum/interactive_organ/mouth
 	name = "Mouth"
-
-/datum/interactive_organ/mouth/meme_organ_desc(mob/living/L)
-	. += "A mouth"
+	organ_type = TARGET_MOUTH
 
 /datum/interactive_organ/mouth/check_obscured(mob/living/L)
 	if(ishuman(L))
@@ -64,55 +54,7 @@
 						*/
 /datum/interactive_organ/neck
 	name = "Neck"
-
-/datum/interactive_organ/neck/meme_organ_desc(mob/living/L)
-	. += "A neck"
-	
-/*
-	Arms
-				*/
-/datum/interactive_organ/arm
-	name = "Arm"
-
-/datum/interactive_organ/arm/meme_organ_desc(mob/living/L)
-	. += "An Arm"
-
-/*
-	Legs
-				*/
-/datum/interactive_organ/leg
-	name = "Leg"
-
-/datum/interactive_organ/leg/meme_organ_desc(mob/living/L)
-	. += "A Leg"
-
-/*
-	Feet
-			*/
-/datum/interactive_organ/foot
-	name = "Foot"
-
-/datum/interactive_organ/foot/meme_organ_desc(mob/living/L)
-	. += "A Foot"
-
-/*
-	Chest
-			*/
-/datum/interactive_organ/chest
-	name = "Chest"
-
-/datum/interactive_organ/chest/meme_organ_desc(mob/living/L)
-	. += "A Chest"
-/*
-	Groin
-			*/
-/datum/interactive_organ/groin
-	name = "Groin"
-
-/datum/interactive_organ/groin/meme_organ_desc(mob/living/L)
-	. += "A Groin"
-
-
+	organ_type = LIMB_NECK
 
 /**********************
 		Lewd Parts

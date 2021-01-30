@@ -11,6 +11,9 @@
 #define LIMB_RIGHT_FOOT		"r_foot"
 #define TARGET_MOUTH		"mouth"
 
+#define LIMB_MISC			"misc_limb"
+#define LIMB_NECK			"neck"
+ 
 #define UNCUFF_LEGS			-1
 #define UNCUFF_BOTH			0
 #define UNCUFF_HANDS		1

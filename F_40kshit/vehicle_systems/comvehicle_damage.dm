@@ -67,9 +67,9 @@
 		return
 	switch(severity)
 		if(1)
-			adjust_health(200)
+			adjust_health(600)
 		if(2)
-			adjust_health(100)
+			adjust_health(300)
 		if(3)
 			if(prob(40))
-				adjust_health(50)
+				adjust_health(100)

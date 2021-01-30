@@ -420,8 +420,8 @@
 	name = "The Imperial Creed"
 	deity_name = "God-Emperor of Mankind"
 	bible_names = list("An Uplifting Primer", "Codex Astartes", "Codex Hereticus")
-	male_adept = "Confessor"
-	female_adept = "Prioress"
+	male_adept = "Preacher"
+	female_adept = "Preacher"
 	keys = list("The Imperial Creed")
 
 /datum/religion/retard/convertCeremony(var/mob/living/preacher, var/mob/living/subject)
