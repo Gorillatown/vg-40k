@@ -10,7 +10,7 @@
 	selection_color = "#E0D68B"
 	req_admin_notify = 1
 	wage_payout = 80
-	access = list(access_checkpoints) 
+	access = list(access_checkpoints,access_armory) 
 	minimal_player_age = 30
 	landmark_job_override = TRUE
 

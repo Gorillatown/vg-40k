@@ -8,7 +8,7 @@
 	supervisors = "The Ecclesiarchy"
 	wage_payout = 25
 	selection_color = "#E0D68B"
-	access = list()
+	access = list(access_armory,access_checkpoints)
 	var/datum/religion/chap_religion
 	landmark_job_override = TRUE
 	

@@ -5,6 +5,8 @@
 /var/const/access_enginseer = 3
 /var/const/access_seneschal = 4
 /var/const/access_checkpoints = 5
+/var/const/access_armory = 6
+/var/const/access_garage = 7
 
 /obj/var/list/req_access = null
 /obj/var/req_access_txt = "0"			// A user must have ALL of these accesses to use the object

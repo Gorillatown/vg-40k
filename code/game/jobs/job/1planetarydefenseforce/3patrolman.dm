@@ -13,7 +13,7 @@
 	outfit_datum = /datum/outfit/new_swamp_trooper
 	species_whitelist = list("Human","Squat")
 	alt_titles = list("PDF Trooper")
-	access = list(access_checkpoints)
+	access = list(access_checkpoints,access_armory)
 
 	landmark_job_override = TRUE
 	relationship_chance = HUMAN_COMMON

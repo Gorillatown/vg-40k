@@ -41,6 +41,7 @@ Proc Descriptions
 //Mob Level Verb
 
 //UNCOMMENT THIS WHEN ITS DONE.
+/*
 /mob/living/verb/improper_interactions()
 	set name = "Interact/Wrestle"
 	set category = null
@@ -50,7 +51,7 @@ Proc Descriptions
 	var/mob/living/L = usr
 	if(L)
 		L.interactions.display_the_ui(src)
-
+*/
 #define INTERACT_RELAXED		0
 #define INTERACT_MODERATE		1
 #define INTERACT_VIOLENT		2
@@ -326,14 +327,11 @@ Proc Descriptions
 			next_action_fire = world.time + 1 SECONDS 
 			for(var/datum/interactive_organ/aggressor in meme_organ_list) //loop thru our list
 				if(aggressor.current_action) //If it has a current action
-					if(aggressor.part_grabbing.len && aggressor != selected_part_user) //If it is currently grabbing something
-						to_chat(world,"ENTER FIRST HALF")
-						for(var/user_unique_ids in aggressor.part_grabbing) //loop thru unique ids of things its grabbing
-							for(var/datum/interactive_organ/victim_organ in target_idiot.interactions.meme_organ_list)
-								if(victim_organ.unique_id == user_unique_ids) //If the organ in targets list matches grabbed thing
-									aggressor.current_action.on_use(aggressor,victim_organ) //aggressor current action onuse found organ
+					if(aggressor.acted_on_part_uid && aggressor != selected_part_user) //If it is currently grabbing something
+						for(var/datum/interactive_organ/victim_organ in target_idiot.interactions.meme_organ_list)
+							if(victim_organ.unique_id == aggressor.acted_on_part_uid) //If the organ in targets list matches grabbed thing
+								aggressor.current_action.on_use(aggressor,victim_organ) //aggressor current action onuse found organ
 					else //If it is not currently grabbing something we have a conundrum
-						to_chat(world,"ENTER SECOND HALF")
 						aggressor.current_action.on_use(selected_part_user,selected_part_target)
 						
 
@@ -354,7 +352,6 @@ Proc Descriptions
 
 	if(href_list["action_interactions"])
 		var/selected_action_uid = href_list["action_unique_id"]
-		to_chat(world, "ACTION INTERACTIONS")
 		for(var/datum/interactive_actions/aaa in interaction_actions)
 			if(selected_action_uid == aaa.unique_id)
 				selected_part_user.current_action = aaa
@@ -372,16 +369,16 @@ Proc Descriptions
 	for(var/datum/interactive_organ/aaa in meme_organ_list)
 		aaa.current_action = null //Clean up ref of actions selected
 		
-		for(var/datum/interactive_organ/bbb in target_idiot.interactions.meme_organ_list) 
-			for(var/some_uids in aaa.part_grabbing) 
-				if(some_uids == bbb.unique_id) //We found bbb organ in our grabbing list
+		if(target_idiot)
+			for(var/datum/interactive_organ/bbb in target_idiot.interactions.meme_organ_list) 
+				if(aaa.acted_on_part_uid == bbb.unique_id) //We found bbb organ in our grabbing list
 					bbb.part_grabbed_by -= aaa.unique_id //Remove aaa from bbb grabbed by list
-					aaa.part_grabbing -= bbb.unique_id  //Remove bbb from aaa grabbing list
-	
-			for(var/more_uids in aaa.part_grabbed_by)
-				if(more_uids == bbb.unique_id) //We found bbb organ in our grabbed by list
-					bbb.part_grabbing -= aaa.unique_id //Remove aaa from bbb grabbing list
-					aaa.part_grabbed_by -= bbb.unique_id //Remove bbb from aaa grabbed by list
+					aaa.acted_on_part_uid = null
+		
+				for(var/more_uids in aaa.part_grabbed_by)
+					if(more_uids == bbb.unique_id) //We found bbb organ in our grabbed by list
+						bbb.acted_on_part_uid = null
+						aaa.part_grabbed_by -= bbb.unique_id //Remove bbb from aaa grabbed by list
 			
 	target_idiot = null //Clean up ref to other mob
 

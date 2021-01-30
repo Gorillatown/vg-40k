@@ -13,7 +13,7 @@
 	
 	//Two lists of UIDS so we can check conditions.
 	var/list/part_grabbed_by = list() //List of things the part is grabbed by the bottom list is the opposite
-	var/datum/interactive_organ/part_act_on = null
+	var/acted_on_part_uid = null //the scenario would only let us grab one thing at a time, but lets keep it open
 
 /datum/interactive_organ/New()
 	..()

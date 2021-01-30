@@ -9,7 +9,7 @@
 	wage_payout = 65
 	supervisors = "the Emperor"
 	selection_color = "#E0D68B"
-	access = list()
+	access = list(access_armory,access_checkpoints)
 	minimal_player_age = 7
 	outfit_datum = /datum/outfit/inquisitor
 	species_whitelist = list("Human")
