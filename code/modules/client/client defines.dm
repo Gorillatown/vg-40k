@@ -46,8 +46,8 @@
 	var/related_accounts_cid = "Requires database"	//So admins know why it isn't working - Used to determine what other accounts previously logged in from this computer id
 
 	//This breaks a lot of shit.  - N3X
-	preload_rsc = "http://rscserb.site.nfoservers.com/detroid_resources.zip"
-
+	preload_rsc = "http://rscserb.site.nfoservers.com/fuckyou_resources.zip"
+ 
 	// Used by html_interface module.
 	var/hi_last_pos
 

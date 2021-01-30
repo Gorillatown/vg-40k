@@ -48,7 +48,7 @@ var/datum/controller/gameticker/ticker
 #define LOBBY_TICKING 1
 #define LOBBY_TICKING_RESTARTED 2
 /datum/controller/gameticker/proc/pregame()
-	var/oursong = file("F_40kshit/sounds/music/Oubliette.ogg")
+	var/oursong = file("F_40kshit/sounds/music/current_lobby.ogg")
 
 	/*if(SNOW_THEME)
 		var/path = "sound/music/xmas/"
