@@ -258,9 +258,11 @@ emp_act
 		switch(hit_area)
 			if(LIMB_HEAD)//Harder to score a stun but if you do it lasts a bit longer
 				if(prob(final_force))
-					if(apply_effect(20, PARALYZE, armor))
-						new /obj/effect/overlay/critical_hit(src,20)
-						visible_message("<span class='danger'>[src] has been knocked unconscious!</span>")
+					//if(apply_effect(20, PARALYZE, armor))
+					confused = 7
+					knock_out_teeth(user)
+					new /obj/effect/overlay/critical_hit(src,20)
+					visible_message("<span class='danger'>[src] has been disoriented!</span>")
 
 				if(bloody)//Apply blood
 					if(wear_mask)
@@ -275,9 +277,10 @@ emp_act
 
 			if(LIMB_CHEST)//Easier to score a stun but lasts less time
 				if(prob((final_force + 10)))
-					apply_effect(5, WEAKEN, armor)
+					//apply_effect(5, WEAKEN, armor)
+					slowed = 7
 					new /obj/effect/overlay/critical_hit(src,20)
-					visible_message("<span class='danger'>[src] has been knocked down!</span>")
+					visible_message("<span class='danger'>[src] has been winded!</span>")
 
 				if(bloody)
 					bloody_body(src)

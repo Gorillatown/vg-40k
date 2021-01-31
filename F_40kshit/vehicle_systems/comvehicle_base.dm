@@ -88,6 +88,7 @@ Engine & Movement Procs -
 	var/engine_fire_delay = 0 //Delay until next engine movement fire.
 	var/engine_online = FALSE //Whether the engine is on or off
 	var/engine_cooldown = FALSE
+	var/engine_looping = FALSE //Safety Var
 	var/speed = 0 //The current acceleration we are at a scale of -1000 to 1000
 	var/movement_warning_oncd = FALSE
 	var/datum/delay_controller/move_delayer = new(1, ARBITRARILY_LARGE_NUMBER) //See setup.dm, 12
@@ -226,6 +227,20 @@ Engine & Movement Procs -
 	move_into_vehicle
 **************************/
 /obj/com_vehicle/proc/move_into_vehicle(mob/living/user)
+	var/was_zoomed = FALSE
+	for(var/obj/item/weapon/gun/G in user.contents)
+		if(G.currently_zoomed)
+			G.currently_zoomed = FALSE
+			was_zoomed = TRUE
+			for(var/obj/item/weapon/attachment/scope/ATCH in G.ATCHSYS.attachments)
+				if(ATCH.currently_zoomed)
+					was_zoomed = TRUE
+					ATCH.currently_zoomed = FALSE
+	if(was_zoomed)
+		user.regenerate_icons()
+		var/client/C = user.client
+		C.changeView()
+
 	if(user in range(1))
 		user.reset_view(src)
 		user.stop_pulling()

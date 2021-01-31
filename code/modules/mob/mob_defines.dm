@@ -138,6 +138,7 @@
 	var/paralysis = 0.0
 	var/stunned = 0.0
 	var/knockdown = 0.0
+	var/slowed = 0.0 //Carbon
 	var/losebreath = 0.0//Carbon
 	var/nobreath = 0.0//Carbon, but only used for humans so far
 	var/intent = null//Living

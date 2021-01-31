@@ -16,8 +16,9 @@
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
-	attacktext = "kicks"
+	attacktext = "bites into"
 	health = 200
+	maxHealth = 200
 	speed = 1
 	melee_damage_lower = 5
 	melee_damage_upper = 10 //Those tusk will maul you!
@@ -30,7 +31,7 @@
 	speak_override = TRUE
 	pass_flags = PASSTABLE | PASSMOB
 	
-	var/consumption_delay = 10 //Ticks down in life
+	var/consumption_delay = FALSE
 	var/current_nutrition = 0 //How much current growth we have undertaken
 	var/next_nutrition_level = 16
 	var/rolling_ticker = 1
@@ -51,7 +52,9 @@
 
 /mob/living/simple_animal/hostile/retaliate/growing_pig/proc/pig_growth(var/nutrition) //nutrition is a number
 	current_nutrition += nutrition
-	consumption_delay = 10
+	consumption_delay = TRUE
+	spawn(1 SECONDS)
+		consumption_delay = FALSE
 	adjustBruteLoss(-20)
 
 	if(current_nutrition >= next_nutrition_level)
@@ -102,8 +105,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/growing_pig/Life()
 	..()
-	if(consumption_delay)
-		consumption_delay--
+	if(health < maxHealth && stat != DEAD)
+		health += 7
 
 /mob/living/simple_animal/hostile/retaliate/growing_pig/death(var/gibbed = FALSE)
 	..(gibbed)

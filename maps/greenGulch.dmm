@@ -2620,7 +2620,7 @@
 "srO" = (/obj/effect/decal/mecha_wreckage/graveyard_clarke,/turf/simulated/floor/metalplating/metalplate/three,/area/warhammer/tunneltown)
 "ssn" = (/obj/effect/decal/ruinshit/rubble/rubbleedge/northwest,/turf/unsimulated/outside/imperial_rockcrete,/area/warhammer/ruinedcity)
 "sso" = (/obj/effect/decal/ruinshit/rubble/rubblefull,/obj/item/trash/bustanuts,/turf/unsimulated/outside/imperial_rockcrete,/area/warhammer/ruinedcity)
-"ssp" = (/obj/structure/table/woodentable,/obj/item/weapon/powersword/burning,/turf/simulated/floor/carpet,/area/warhammer/abandoned_complex)
+"ssp" = (/obj/structure/table/woodentable,/obj/item/weapon/powersword/activated,/turf/simulated/floor/carpet,/area/warhammer/abandoned_complex)
 "stE" = (/obj/effect/decal/cleanable/dirt,/turf/simulated/floor/woodruin/carpet/thirteen,/area/warhammer/ruinedcity)
 "sua" = (/turf/simulated/floor/plating,/area/warhammer/miningcomplex)
 "sux" = (/obj/effect/decal/ruinshit/rubble/rubblecorner/east,/obj/effect/decal/ruinshit/rubble/overlapcorner/south,/turf/unsimulated/outside/sumdirt,/area/warhammer/ruinedcity)

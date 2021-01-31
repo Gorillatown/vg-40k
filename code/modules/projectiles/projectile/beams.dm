@@ -66,7 +66,6 @@ var/list/beam_master = list()
 	damage = 30
 	damage_type = BURN
 	flag = "laser"
-	eyeblur = 4
 	fire_sound = 'sound/weapons/Laser.ogg'
 	var/frequency = 1
 	var/wait = 0

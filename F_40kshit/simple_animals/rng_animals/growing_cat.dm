@@ -17,15 +17,18 @@
 	turns_per_move = 5
 	see_in_dark = 6
 
-	health = 100
+	health = 200
+	maxHealth = 200
 	speed = 0.9
 	melee_damage_lower = 5
-	melee_damage_upper = 10 //Those tusk will maul you!
+	melee_damage_upper = 15 //Those tusk will maul you!
 
 	speak_override = TRUE
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
+	attacktext = "bites and claws"
+	
 	min_oxy = 0
 	max_oxy = 0
 	min_n2 = 0
@@ -33,7 +36,7 @@
 	density = FALSE
 	pass_flags = PASSTABLE | PASSMOB
 
-	var/consumption_delay = 10 //Ticks down in life
+	var/consumption_delay = FALSE
 	var/current_nutrition = 0 //How much current growth we have undertaken
 	var/next_nutrition_level = 16
 	var/rolling_ticker = 1
@@ -55,9 +58,11 @@
  
 /mob/living/simple_animal/hostile/growing_cat/proc/cat_growth(var/nutrition) //nutrition is a number
 	current_nutrition += nutrition
-	adjustBruteLoss(-20)
-	consumption_delay = 10
-
+	adjustBruteLoss(-5)
+	consumption_delay = TRUE
+	spawn(1 SECONDS)
+		consumption_delay = FALSE
+	
 	if(current_nutrition >= next_nutrition_level)
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")
 		health += 10
@@ -110,8 +115,8 @@
 
 /mob/living/simple_animal/hostile/growing_cat/Life()
 	..()
-	if(consumption_delay)
-		consumption_delay--
+	if(health < maxHealth && stat != DEAD)
+		health += 3
 
 /mob/living/simple_animal/hostile/growing_cat/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/food)) //Cats like FOOD

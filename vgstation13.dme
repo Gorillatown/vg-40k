@@ -12,6 +12,7 @@
 // BEGIN_INCLUDE
 #include "__40kEARLYLoad\__RSCHOTLOAD.dm"
 #include "__40kEARLYLoad\_flavor_lists.dm"
+#include "__40kEARLYLoad\_misc_defs.dm"
 #include "__40kEARLYLoad\_roguelike_effects.dm"
 #include "__40kEARLYLoad\ATCHDEF.dm"
 #include "__40kEARLYLoad\CAMERANETS.dm"
@@ -2815,6 +2816,7 @@
 #include "F_40kshit\spells\harlequin\shrieker_cannon.dm"
 #include "F_40kshit\spells\harlequin\stealth.dm"
 #include "F_40kshit\spells\lord\dwell.dm"
+#include "F_40kshit\spells\ork\racial_gretchinbuild.dm"
 #include "F_40kshit\spells\ork\racial_mekbuild.dm"
 #include "F_40kshit\spells\ork\racial_standardbuild.dm"
 #include "F_40kshit\spells\ork\racial_waagh.dm"

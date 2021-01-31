@@ -68,6 +68,7 @@
 			
 		if(9 to 10) //Gretchin
 			H.set_species("Ork Gretchin")
+			H.add_spell(new /spell/aoe_turf/mekbuild/gretchin_build, "ork_spell_ready", /obj/abstract/screen/movable/spell_master/ork_racial)
 			spawn(2 SECONDS)
 				to_chat(H,"<span class='bad'>Such is life, you were born a gretchin. You are doomed to suffer until your very last breath.</span>")
 		if(11) //Mek

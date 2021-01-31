@@ -17,6 +17,6 @@
 	if(currently_zoomed && my_atom.currently_zoomed)
 		user.regenerate_icons()
 		var/client/C = user.client
-		C.changeView(C.view - scope_zoom_amount)
+		C.changeView()
 		my_atom.currently_zoomed = FALSE
 		currently_zoomed = FALSE

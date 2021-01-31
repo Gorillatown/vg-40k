@@ -21,7 +21,7 @@
 					to_chat(MUHDICK, "<span class='warning'>You are forcefully thrown from \the [src]!</span>")
 					spawn(1 SECONDS)
 						MUHDICK.throw_at(get_edge_target_turf(loc, pick(alldirs)), 3, 10)
-				explosion(loc, 2, 4, 8)
+				explosion(loc, 1, 1, 2, 3)
 				
 			sleep(1 SECONDS)
 		

@@ -5,18 +5,18 @@
 	icon_living = "deer"
 	icon_dead = "deer_dead"
 	faction = "deer"
-	health = 50
-	maxHealth = 50
+	health = 150
+	maxHealth = 150
 	size = SIZE_NORMAL
 	response_help  = "pets"
 
-	attacktext = "kicks"
+	attacktext = "gores"
 	melee_damage_lower = 5
-	melee_damage_upper = 10
+	melee_damage_upper = 15
 
 	minbodytemp = 200
 
-	var/consumption_delay = 10 //Ticks down in life
+	var/consumption_delay = FALSE
 
 	var/current_nutrition = 0 //How much current growth we have undertaken
 	var/next_nutrition_level = 16
@@ -33,14 +33,16 @@
 
 /mob/living/simple_animal/hostile/growing_deer/Life()
 	..()
-	if(consumption_delay)
-		consumption_delay--
+	if(health < maxHealth && stat != DEAD)
+		health += 2
 
 /mob/living/simple_animal/hostile/growing_deer/proc/deer_growth(var/nutrition) //nutrition is a number
 	current_nutrition += nutrition
-	consumption_delay = 10
+	consumption_delay = TRUE
+	spawn(3 SECONDS)
+		consumption_delay = FALSE
 
-	adjustBruteLoss(-10)
+	adjustBruteLoss(-5)
 
 	if(current_nutrition >= next_nutrition_level)
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")

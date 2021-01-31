@@ -53,7 +53,10 @@
 **************************/
 /obj/com_vehicle/proc/engine_fire_loop()
 	set waitfor = 0
+	if(engine_looping)
+		return
 	while(engine_online)
+		engine_looping = TRUE
 		switch(speed)
 			if(-1000 to -700)
 				engine_fire_delay = 3
@@ -105,6 +108,8 @@
 					playsound(src,pick(movement_sounds),50)
 	
 		sleep(engine_fire_delay)
+	
+	engine_looping = FALSE
 
 /**************************
 		Process
@@ -129,9 +134,12 @@ Just a generic engine part but for now
 Its a static object
 **************************/
 /obj/com_vehicle/proc/toggle_engine()
-	//set waitfor = 0
 	if(!engine_cooldown) //if engine cooldown is false
 		engine_cooldown = TRUE //Engine cooldown becomes true
+		spawn(2 SECONDS)
+			engine_cooldown = FALSE
+	else
+		return
 	
 	if(usr!=get_pilot())
 		to_chat(src.get_pilot(), "<span class='average'> [usr] reaches forward and flips the engine switch in front of you.")
@@ -145,13 +153,12 @@ Its a static object
 	
 	if(mechanically_disabled)
 		engine_online = FALSE
+		return
 	
 	if(engine_online) //If Engine toggle is true, and we are not on cooldown
 		speed = 25
 		if(engine_startup_noise)
 			playsound(src,pick(engine_startup_noise),50)
-		spawn(30)
-			engine_cooldown = FALSE
 		engine_fire_loop()
 	else
 		speed = 0 //We set acceleration back to neutral if the engine is turned off.

@@ -405,8 +405,8 @@ var/global/list/animal_count = list() //Stores types, and amount of animals of t
 					emote("me", MESSAGE_SEE, "[pick(emote_see)].")
 
 /mob/living/simple_animal/attack_animal(mob/living/simple_animal/M)
-	if(M.stat == DEAD) //ANIMAL BUTCHERIN
-		butcher() 
+	if(stat == DEAD) //ANIMAL BUTCHERIN
+		butcher()
 	M.unarmed_attack_mob(src)
 
 /mob/living/simple_animal/bullet_act(var/obj/item/projectile/Proj)

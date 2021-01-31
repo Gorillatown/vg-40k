@@ -5,8 +5,8 @@
 	icon_living = "lizard"
 	icon_dead = "lizard_dead"
 	speak_emote = list("hisses")
-	health = 50
-	maxHealth = 50
+	health = 100
+	maxHealth = 100
 	speed = 0.9
 	attacktext = "bites"
 	melee_damage_lower = 2
@@ -29,7 +29,7 @@
 	idle_vision_range = 6
 	search_objects = 1
 
-	var/consumption_delay = 10 //Ticks down in life
+	var/consumption_delay = FALSE
 	var/current_nutrition = 0 //How much current growth we have undertaken
 	var/next_nutrition_level = 16
 	var/rolling_ticker = 1
@@ -43,11 +43,12 @@
 
 //Growth Mechanics
 /mob/living/simple_animal/hostile/growing_lizard/animal_food_act(var/obj/item/weapon/reagent_containers/food/food)
-	var/nutrition = food.reagents.get_reagent_amount(NUTRIMENT)
-	playsound(src,'sound/items/eatfood.ogg', rand(10,50), 1)
-	src.visible_message("[src] consumes [food].", "You eat [food].", "You hear crunching.")
-	lizard_growth(nutrition)
-	qdel(food)
+	if(!consumption_delay)
+		var/nutrition = food.reagents.get_reagent_amount(NUTRIMENT)
+		playsound(src,'sound/items/eatfood.ogg', rand(10,50), 1)
+		src.visible_message("[src] consumes [food].", "You eat [food].", "You hear crunching.")
+		lizard_growth(nutrition)
+		qdel(food)
 
 /mob/living/simple_animal/hostile/growing_lizard/New()
 	..()
@@ -55,9 +56,10 @@
 
 /mob/living/simple_animal/hostile/growing_lizard/proc/lizard_growth(var/nutrition) //nutrition is a number
 	current_nutrition += nutrition
-	adjustBruteLoss(-20)
-	consumption_delay = 10
-
+	adjustBruteLoss(-5)
+	consumption_delay = TRUE
+	spawn(1 SECONDS)
+		consumption_delay = FALSE
 	if(current_nutrition >= next_nutrition_level)
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")
 		health += 10
@@ -122,8 +124,8 @@
 
 /mob/living/simple_animal/hostile/growing_lizard/Life()
 	..()
-	if(consumption_delay)
-		consumption_delay--
+	if(health < maxHealth && stat != DEAD)
+		health += 2
 
 /mob/living/simple_animal/hostile/growing_lizard/CanAttack(var/atom/the_target)//Can we actually attack a possible target?
 	if(see_invisible < the_target.invisibility)//Target's invisible to us, forget it

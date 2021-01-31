@@ -662,7 +662,7 @@
 
 		for(var/obj/item/I in held_items)
 			if(I.flags & SLOWDOWN_WHEN_CARRIED)
-				. *= I.slowdown
+				. *= I.slowdown 
 
 		if(. > 1 && reagents.has_any_reagents(HYPERZINES))
 			. = max(1, .*0.4)//we don't hyperzine to make us move faster than the base speed, unless we were already faster.
@@ -680,6 +680,9 @@
 		var/health_deficiency = (maxHealth - health - halloss)
 		if(health_deficiency >= (maxHealth * 0.4))
 			. += (health_deficiency / (maxHealth * 0.25))
+	
+	if(slowed)
+		. += SLOWDOWN_STATUS_EFFECT
 
 /mob/living/carbon/make_invisible(var/source_define, var/time, var/include_clothing)
 	if(invisibility || alpha <= 1 || !source_define)

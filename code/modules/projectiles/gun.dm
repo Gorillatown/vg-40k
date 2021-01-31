@@ -65,7 +65,7 @@
 			if(ATCH.currently_zoomed)
 				user.regenerate_icons()
 				var/client/C = user.client
-				C.changeView(C.view - ATCH.scope_zoom_amount)
+				C.changeView()
 
 /obj/item/weapon/gun/throw_impact(atom/hit_atom, mob/user)
 	..()
@@ -75,7 +75,7 @@
 			if(ATCH.currently_zoomed)
 				user.regenerate_icons()
 				var/client/C = user.client
-				C.changeView(C.view - ATCH.scope_zoom_amount)
+				C.changeView()
 
 /obj/item/weapon/gun/unequipped(mob/user)
 	..()
@@ -85,7 +85,7 @@
 			if(ATCH.currently_zoomed)
 				user.regenerate_icons()
 				var/client/C = user.client
-				C.changeView(C.view - ATCH.scope_zoom_amount)
+				C.changeView()
 
 /obj/item/weapon/gun/proc/ready_to_fire()
 	if(world.time >= last_fired + fire_delay)

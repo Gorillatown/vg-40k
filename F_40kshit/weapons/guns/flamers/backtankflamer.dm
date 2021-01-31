@@ -185,8 +185,14 @@
 		if(my_pack.get_fuel() > 0)
 			my_pack.reagents.remove_reagent(FUEL, 50)
 			playsound(src, 'F_40kshit/sounds/flamer.ogg', 60, 1)
-			in_chamber = new /obj/item/projectile/fire_breath(src, P = 500, T = 700, F_Dur = 6)
+			in_chamber = new /obj/item/projectile/fire_breath/ork_flamer(src, F_dam = 15, P = 500, T = 700, F_Dur = 6)
 			return 1
 		else
 			return
 	return 0
+
+/obj/item/projectile/fire_breath/ork_flamer
+	fire_blast_type = /obj/effect/fire_blast/blue
+	max_range = 10
+
+	

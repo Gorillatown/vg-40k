@@ -13,17 +13,19 @@
 	UpdateButtonIcon()
 
 /obj/item/weapon/attachment/scope/attack_self(var/mob/user)
+	if(istype(loc,/obj/com_vehicle))
+		return
 	if(!my_atom.currently_zoomed)
 		if(user && user.client) 
 			usr.regenerate_icons()
 			var/client/C = user.client
-			C.changeView(C.view + scope_zoom_amount)
+			C.changeView(world.view + scope_zoom_amount)
 			my_atom.currently_zoomed = TRUE
 			currently_zoomed = TRUE
 	else
 		if(user && user.client) 
 			user.regenerate_icons()
 			var/client/C = user.client
-			C.changeView(C.view - scope_zoom_amount)
+			C.changeView()
 			my_atom.currently_zoomed = FALSE
 			currently_zoomed = TRUE

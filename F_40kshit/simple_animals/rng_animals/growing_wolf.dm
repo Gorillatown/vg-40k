@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/retaliate/growing_wolf
 	name = "Detroid Wolf"
-	desc = "Some say this species was brought from somewhere by a ancestor of the Mannheim lineage, you are pretty sure you shouldn't thank them for that."
+	desc = "Some say this species was brought from somewhere from soneone into wolves, you are pretty sure you shouldn't thank them for that."
 	icon_state = "wolf"
 	icon_living = "wolf"
 	icon_dead = "wolf_dead"
@@ -12,12 +12,13 @@
 	response_harm = "hits"
 	harm_intent_damage = 8
 	melee_damage_lower = 10
-	melee_damage_upper = 10
+	melee_damage_upper = 20
 	attacktext = "bites"
 	attack_sound = 'sound/weapons/bite.ogg'
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/box
-	attacktext = "kicks"
+	attacktext = "sinks its fangs into"
 	health = 200
+	maxHealth = 200
 	speed = 0.9
 	size = SIZE_SMALL
 	min_oxy = 0
@@ -27,7 +28,7 @@
 	treadmill_speed = 1.5
 	speak_override = TRUE
 	
-	var/consumption_delay = 10 //Ticks down in life
+	var/consumption_delay = FALSE
 	var/current_nutrition = 0 //How much current growth we have undertaken
 	var/next_nutrition_level = 16
 	var/rolling_ticker = 1
@@ -48,8 +49,10 @@
 
 /mob/living/simple_animal/hostile/retaliate/growing_wolf/proc/wolf_growth(var/nutrition) //nutrition is a number
 	current_nutrition += nutrition
-	adjustBruteLoss(-20)
-	consumption_delay = 10
+	adjustBruteLoss(-10)
+	consumption_delay = TRUE
+	spawn(1 SECONDS)
+		consumption_delay = FALSE
 
 	if(current_nutrition >= next_nutrition_level)
 		to_chat(src, "<span class='notice'>You grow a bit.</span>")
@@ -98,8 +101,8 @@
 
 /mob/living/simple_animal/hostile/retaliate/growing_wolf/Life()
 	..()
-	if(consumption_delay)
-		consumption_delay--
+	if(health < maxHealth && stat != DEAD)
+		health += 5
 
 /mob/living/simple_animal/hostile/retaliate/growing_wolf/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/weapon/reagent_containers/food)) //wolves like FOOD

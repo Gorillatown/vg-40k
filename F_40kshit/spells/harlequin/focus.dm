@@ -35,4 +35,4 @@
 						C.changeView(C.view + 1)
 				sleep(100)
 				if(H) 
-					C.changeView(C.view - 7)
+					C.changeView()

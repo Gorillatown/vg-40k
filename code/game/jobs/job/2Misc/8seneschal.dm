@@ -9,7 +9,7 @@
 	wage_payout = 65
 	supervisors = "the lord"
 	selection_color = "#E0D68B"
-	access = list(access_seneschal)
+	access = list(access_seneschal,access_armory,access_checkpoints,access_garage)
 	minimal_player_age = 7
 	outfit_datum = /datum/outfit/seneschal
 	species_whitelist = list("Human","Squat")
