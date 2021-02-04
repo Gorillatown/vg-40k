@@ -8,7 +8,7 @@ var/list/json_persistence = list()
 /datum/interactive_persistence
 	var/ckey_ref // a reference to the ckey
 	var/potential = 0 // Our rewards points
-	var/ooc_color = "#002eb8" //OOC color
+	var/ooc_color = "#e30518" //OOC color
 	var/money_saved = 0 // The amount of money currently held in the datum
 	
 	//RESPAWN TRACKING

@@ -20,6 +20,8 @@
 				new/datum/crafting_recipes/trophy_banner,
 				new/datum/crafting_recipes/ork_slugga_mag,
 				new/datum/crafting_recipes/stikkbombs,
+				new/datum/crafting_recipes/rokkits,
+				new/datum/crafting_recipes/tankhammer,
 				new/datum/crafting_recipes/flashlight,
 				new/datum/crafting_recipes/ork_clothes
 				)

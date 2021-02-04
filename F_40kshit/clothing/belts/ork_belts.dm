@@ -35,16 +35,6 @@
 	new /obj/item/weapon/grenade/stikkbomb(src)
 	new /obj/item/weapon/grenade/stikkbomb(src)
 
-/obj/item/weapon/storage/belt/basicbelt/rokkitbelt/New()
-	..()
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-	new /obj/item/ammo_casing/rocket_rpg/rokkit(src)
-
 /obj/item/weapon/storage/belt/armorbelt
 	name = "Belt with Plates"
 	desc = "A belt with armored plates attached to it."

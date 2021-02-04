@@ -1,6 +1,6 @@
 
 #define ORKSCRAPBULLET "scrapbullet" 
-#define ORKROKKIT "rokkit"
+#define DETROID_ROCKET "detroidrocket"
 
 #define STANDARDBOLTER "bolts"
 

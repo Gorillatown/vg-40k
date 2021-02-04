@@ -47,9 +47,8 @@
 	title = "Rokkitlauncha"
 	result_type = /obj/item/weapon/gun/projectile/rocketlauncher/rokkitlauncha
 	time = 4 SECONDS
-	build_desc = "(2 stacks) of 40 Metal Sheets, 1 Welding Fuel Tank, 1 Canister"
+	build_desc = "(2 stacks) of 40 Metal Sheets, 1 Gas Canister"
 	obj_desc = "It fire rokkits."
 	sheet_types = list(/obj/item/stack/sheet/metal = 40,
 						/obj/item/stack/sheet/metal = 40)
-	other_objects = list(/obj/structure/reagent_dispensers/fueltank = 1,
-						/obj/machinery/portable_atmospherics/canister = 1)
+	other_objects = list(/obj/machinery/portable_atmospherics/canister = 1)

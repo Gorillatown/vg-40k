@@ -96,7 +96,7 @@
 		f2 = user.filters[start+i]
 		animate(f2, offset=f2:offset, time=0, loop=-1, flags=ANIMATION_PARALLEL)
 		animate(offset=f2:offset-1, time=rand()*20+10)
-		spawn(effect_duration)
-			user.filters -= f1
-			user.filters -= f2
-			user.filters -= f3
+	spawn(effect_duration)
+		user.filters -= f1
+		user.filters -= f2
+		user.filters -= f3

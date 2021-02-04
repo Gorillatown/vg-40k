@@ -62,4 +62,12 @@
 	obj_desc = "A tool for if ya have a kustom ya git."
 	sheet_types = list(/obj/item/stack/sheet/metal = 1)
 
-
+/datum/crafting_recipes/tankhammer
+	title = "Tankhammer"
+	result_type = /obj/item/weapon/tankhammer
+	time = 2 SECONDS
+	skip_qual_boost = TRUE
+	build_desc = "4 Rods, 1 Rocket"
+	obj_desc = "A rocket on a hammer, for old-fashioned orks who don't want to deal with a launcher failing."
+	sheet_types = list(/obj/item/stack/rods = 4)
+	other_objects = list(/obj/item/ammo_casing/rocket_rpg/d_rocket = 1)

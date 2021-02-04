@@ -18,8 +18,10 @@
 				new/datum/crafting_recipes/slugga,
 				new/datum/crafting_recipes/shotta,
 				new/datum/crafting_recipes/shoota,
+				new/datum/crafting_recipes/tankhammer,
 				new/datum/crafting_recipes/ork_slugga_mag,
 				new/datum/crafting_recipes/ork_shotta_mag,
+				new/datum/crafting_recipes/rokkits,
 				new/datum/crafting_recipes/mekanical_shouta,
 				new/datum/crafting_recipes/scrapbullets,
 				new/datum/crafting_recipes/buckshot,
@@ -28,5 +30,7 @@
 				new/datum/crafting_recipes/ork_slugga_mag,
 				new/datum/crafting_recipes/stikkbombs,
 				new/datum/crafting_recipes/flashlight,
-				new/datum/crafting_recipes/ork_clothes
+				new/datum/crafting_recipes/ork_clothes,
+								
+
 				)

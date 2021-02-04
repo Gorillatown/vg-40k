@@ -30,7 +30,7 @@
 
 /datum/crafting_recipes/rokkits
 	title = "Rokkits"
-	result_type = /obj/item/ammo_casing/rocket_rpg/rokkit
+	result_type = /obj/item/ammo_casing/rocket_rpg/d_rocket
 	time = 2 SECONDS
 	skip_qual_boost = TRUE
 	build_desc = "20 Metal Sheets, 4 Metal Rods, 4 Standard Metal Floortiles"
