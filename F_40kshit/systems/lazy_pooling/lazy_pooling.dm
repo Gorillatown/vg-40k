@@ -14,7 +14,7 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 /datum/lazy_pooler/New()
 	load_overlays()
 	load_manufacturing_recipes()
-	load_interaction_actions()
+//_get_dir	load_interaction_actions()
 	load_single_datums()
 
 /datum/lazy_pooler/proc/load_single_datums()
@@ -35,7 +35,7 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 	for(var/recipes in typesof(/datum/manufacturing_recipe) - /datum/manufacturing_recipe)
 		var/datum/manufacturing_recipe/the_recipe = new recipes
 		manufacturing_recipes += the_recipe
-
+/*
 /datum/lazy_pooler/proc/load_interaction_actions()
 	var/id_counter = 1 //If this ever manages to be the same it will be a shitty bug
 	for(var/interactions in subtypesof(/datum/interactive_actions) - /datum/interactive_actions)
@@ -43,7 +43,7 @@ If things get laggy with all the effects, I'll append a pooling system for them.
 		N.unique_id = "[id_counter]"
 		interaction_actions += N
 		id_counter++
-
+*/
 /*
 	I don't feel like I need this one yet. Its about complete tho at a basis
 /datum/lazy_pooler/proc/handle_pooled_effects(atom/target)

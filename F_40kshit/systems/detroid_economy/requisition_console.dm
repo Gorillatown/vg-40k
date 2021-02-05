@@ -29,6 +29,19 @@ var/obj/machinery/requisition_console/req_con
 	//Or let them hit purchase to move it into the list, so they can have a shopping cart.
 	//var/list/current_datums = list() //We jam datums in, and move them out when necessary. Aka purchase holder.
 
+/obj/machinery/requisition_console/verb/remove_id()
+	set name = "Remove ID"
+	set category = "Object"
+	set desc = "Removes the ID, If the screen doesn't work for some reason."
+
+	var/mob/living/carbon/human/H = usr
+	if(!H.mind)
+		return 0
+	if(contained_card)
+		H.put_in_hands(contained_card)
+		contained_card = null
+		verbs -= /obj/machinery/requisition_console/verb/remove_id
+
 /obj/machinery/requisition_console/ex_act(severity)
 	return
 
@@ -72,6 +85,7 @@ var/obj/machinery/requisition_console/req_con
 		var/obj/item/weapon/card/id/id_card = W
 		if(user.drop_item(id_card,src)) //If we can drop the card in
 			say("*Beep*")
+			verbs += /obj/machinery/requisition_console/verb/remove_id
 			if(contained_card) //If there is already a contained card
 				user.put_in_hands(contained_card) //Put it in our hands
 				contained_card = id_card //Change the contained card to ours
@@ -116,6 +130,7 @@ var/obj/machinery/requisition_console/req_con
 			var/mob/living/M = usr
 			M.put_in_hands(contained_card)
 			contained_card = null
+			verbs -= /obj/machinery/requisition_console/verb/remove_id
 
 	if(href_list["withdraw_cargo_req"])
 		if(contained_card)
