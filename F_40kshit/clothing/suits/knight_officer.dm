@@ -7,7 +7,7 @@
 	item_state = "knight_officer"//Check: Its there
 	body_parts_covered = UPPER_TORSO
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
-	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 70, bio = 100, rad = 50)
+	armor = list(melee = 25, bullet = 40, laser = 40, energy = 25, bomb = 70, bio = 100, rad = 50)
 	allowed = list(/obj/item/weapon) 
 	var/icon/jersey_overlays = 'icons/mob/uniform_overlays.dmi'
 

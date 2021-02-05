@@ -2,7 +2,7 @@
 
 /obj/item/projectile/bullet/orkscrapbullet
 	name = "\improper Ork Scrap Bullet"
-	damage = 8
+	damage = 22
 	bounce_type = PROJREACT_WALLS //Yeah I want it to bounce off walls.
 
 /obj/item/ammo_casing/orkbullet

@@ -5,4 +5,5 @@
 	icon_state = "kriegcoat" //Check: Its there
 	item_state = "kriegcoat"//Check: Its there
 	body_parts_covered = FULL_TORSO|LEGS|FEET|ARMS|HANDS
+	allowed = list(/obj/item/weapon)
 	armor = list(melee = 30, bullet = 35, laser = 55, energy = 15, bomb = 25, bio = 90, rad = 90)

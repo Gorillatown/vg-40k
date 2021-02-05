@@ -17,7 +17,7 @@
 	item_state = "cadia_flak_armor" //Check: Its there
 	body_parts_covered = FULL_TORSO
 	armor = list(melee = 25, bullet = 35, laser = 35,energy = 10, bomb = 25, bio = 0, rad = 0)
-	allowed = list(/obj/item/weapon/gun/energy/lasgun)
+	allowed = list(/obj/item/weapon)
 
 /obj/item/clothing/suit/armor/IG_cadian_medic_armor
 	name = "Flak Armor"
@@ -27,7 +27,7 @@
 	item_state = "cadia_flak_armor_medic"//Check: Its there
 	body_parts_covered = FULL_TORSO
 	armor = list(melee = 25, bullet = 35, laser = 25,energy = 10, bomb = 15, bio = 25, rad = 0) //In case of... Nurgle?
-	allowed = list(/obj/item/weapon/gun/energy/lasgun)
+	allowed = list(/obj/item/weapon)
 
 /obj/item/clothing/head/stormtrooper
 	name = "Flak Armor"
@@ -46,8 +46,5 @@
 	item_state = "commanderarmor"//Check: Its there
 	body_parts_covered = UPPER_TORSO
 	heat_conductivity = SNOWGEAR_HEAT_CONDUCTIVITY
-	allowed = list(/obj/item/weapon/gun/projectile/automatic/boltpistol,
-				/obj/item/weapon/chainsword,
-				/obj/item/weapon/powersword
-				)
+	allowed = list(/obj/item/weapon)
 	armor = list(melee = 65, bullet = 50, laser = 50,energy = 25, bomb = 50, bio = 100, rad = 50)
