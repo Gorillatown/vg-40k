@@ -106,3 +106,20 @@
 	icon_state = "3metaltile"
 /turf/simulated/floor/metalplating/metaltile/four
 	icon_state = "4metaltile"
+
+//Metal Horizontals
+/turf/simulated/floor/metalplating/metalhorizontal
+	name = "Horizontal Metal Plating"
+	desc = "Some madman decided to lay two plates horizontal instead of vertical."
+	icon_state = "1metalhorizontal"
+/turf/simulated/floor/metalplating/metalhorizontal/two
+	icon_state = "2metalhorizontal"
+/turf/simulated/floor/metalplating/metalhorizontal/three
+	icon_state = "3metalhorizontal"
+
+//Metal Vert Mix
+/turf/simulated/floor/metalplating/vertmix
+	name = "Mixed Metal Plating"
+	desc = "A new take on the standard metal plating. Complete with one vertical, and some regular squares."
+	icon_state = "2vertmix"
+	
