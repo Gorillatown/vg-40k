@@ -372,8 +372,8 @@ Works together with spawning an observer, noted above.
 		var/mob/dead/observer/ghost = new ghostype(src, flags)	//Transfer safety to observer spawning proc.
 		ghost.attack_log += src.attack_log // Keep our attack logs.
 		var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
-		persist.handle_respawns(ghost.timeofdeath)
-		//ghost.timeofdeath = src.timeofdeath //BS12 EDIT
+		persist.handle_respawns(world.time)
+		ghost.timeofdeath = src.timeofdeath //BS12 EDIT
 		ghost.key = key
 		if(ghost.client && !ghost.client.holder && !config.antag_hud_allowed)		// For new ghosts we remove the verb from even showing up if it's not allowed.
 			ghost.verbs -= /mob/dead/observer/verb/toggle_antagHUD	// Poor guys, don't know what they are missing!
@@ -407,11 +407,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			return	//didn't want to ghost after-all
 		resting = 1
 		if(client && key)
-			var/mob/dead/observer/ghost = ghostize(0)//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
-			ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
 			var/datum/interactive_persistence/persist = json_persistence["[ckey]"]
 			persist.handle_respawns(world.time)
-
+			var/mob/dead/observer/ghost = ghostize(0)//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
+			ghost.timeofdeath = world.time // Because the living mob won't have a time of death and we want the respawn timer to work properly.
 			if(ghost.client)
 				ghost.client.time_died_as_mouse = world.time //We don't want people spawning infinite mice on the station
 
