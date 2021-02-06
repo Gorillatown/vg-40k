@@ -17,10 +17,13 @@
 		L.interactions.display_the_ui(src)
 */
 
+#define SCREEN_WRESTLING 1
+
 //interactions definition
 /datum/interactions
 	var/mob/living/our_idiot = null //The person 
 	var/mob/living/target_idiot = null
+	var/current_screen = SCREEN_WRESTLING
 
 //Created in living.dm Line 20: we pass the source mob in as a param.
 /datum/interactions/New(var/mob/living/L)
@@ -39,7 +42,32 @@
 /*
 	This is called when the verb is used on a mob
 */
-/datum/interactions/proc/display_the_ui(mob/living/the_target)
+/datum/interactions/proc/display_the_ui(mob/living/user)
+	var/dat
+	//SCREEN SELECTION
+	dat += {"<head><title> Wrestling Menu </title></head>
+		<body style="color:#2ae012" bgcolor="#181818"><ul>"}
+	
+	dat += {"
+			<b>Menus Available:
+			<a href='?src=\ref[src];current_screen=wrestling'>Wrestling</a>
+			<hr>
+			"}
+	if(current_screen == SCREEN_WRESTLING)
+		dat += "<div id=\"part_segment\" style=\"width:100%; height:100%; display:flex;\">"
+		dat +=	"<div id=\"userside\" style=\"float: left; width: 50%\";background-color:#1f1c1c; border-style:solid; border-color: #999797\">"
+		//FOR LOOP HERE
+		dat += "</div>"	
+
+					
+		dat += "<div id=\"targetside\" style=\"float:right; width:50%; background-color:#1f1c1c; border-style:solid; border-color: #999797\">"
+		dat += "</div></div>"
+
+	
+	dat += "</body>"
+	
+	user << browse(dat, "window=wrestle_menu;size=550x600")
+	onclose(user, "wrestle_menu")
 
 /*
 	Create the parts
@@ -87,3 +115,4 @@
 	return 1
 
 
+#undef SCREEN_WRESTLING
