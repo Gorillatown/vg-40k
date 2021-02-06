@@ -20,6 +20,6 @@
 	damage = 40
 	weaken = 10
 	exdev 	= 1
-	exheavy = 1
-	exlight = 3
+	exheavy = 2
+	exlight = 4
 	exflash = 8

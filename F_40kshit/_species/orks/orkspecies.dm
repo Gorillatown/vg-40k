@@ -13,8 +13,8 @@
 
 	eyes = "bald_s"
 
-	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | NO_SKIN | NO_BLOOD | IS_PREF_SELECTABLE
-	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS
+	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | IS_PREF_SELECTABLE
+	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS | NO_BLOOD | NO_SKIN
 
 	cold_level_1 = -1  // Cold damage level 1 below this point.
 	cold_level_2 = -1  // Cold damage level 2 below this point.
@@ -114,8 +114,8 @@
 
 	eyes = "bald_s"
 
-	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | NO_SKIN | NO_BLOOD
-	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS
+	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN
+	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS | NO_BLOOD | NO_SKIN
 
 	cold_level_1 = -1  // Cold damage level 1 below this point.
 	cold_level_2 = -1  // Cold damage level 2 below this point.
@@ -202,8 +202,8 @@
 
 	eyes = "bald_s"
 
-	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | NO_SKIN
-	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS
+	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN
+	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS | NO_BLOOD | NO_SKIN
 
 	cold_level_1 = -1  // Cold damage level 1 below this point.
 	cold_level_2 = -1  // Cold damage level 2 below this point.
@@ -302,8 +302,8 @@
 
 	eyes = "bald_s"
 
-	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN | NO_SKIN
-	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS
+	flags = NO_PAIN | HYPOTHERMIA_IMMUNE | NO_SCAN
+	anatomy_flags = HAS_LIPS | HAS_SWEAT_GLANDS | NO_BLOOD | NO_SKIN
 
 	cold_level_1 = -1  // Cold damage level 1 below this point.
 	cold_level_2 = -1  // Cold damage level 2 below this point.

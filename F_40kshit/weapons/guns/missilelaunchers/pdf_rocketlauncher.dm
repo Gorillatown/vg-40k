@@ -81,7 +81,7 @@
 		item_state = "rocketlauncher[wielded ? "-wielded" : "-unwielded"]-e"
 	else
 		icon_state = "rocketlauncher"
-		item_state = "rocketlaunchera[wielded ? "-wielded" : "-unwielded"]"
+		item_state = "rocketlauncher[wielded ? "-wielded" : "-unwielded"]"
 	var/mob/living/carbon/human/H = loc
 	if(istype(loc,/mob/living/carbon/human))
 		H.update_inv_hands()
