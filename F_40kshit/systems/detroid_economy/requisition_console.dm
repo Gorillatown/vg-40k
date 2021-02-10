@@ -174,4 +174,4 @@ var/obj/machinery/requisition_console/req_con
 		ui.set_initial_data(data)
 		// open the new ui window
 		ui.open()
-	ui.set_auto_update(1)
+	//ui.set_auto_update(1)
