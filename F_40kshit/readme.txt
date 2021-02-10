@@ -1,3 +1,0 @@
-One may ask, why there is so much shit in here that has already been coded. Etc
-I literally just do things for fun, so you'll see me try to recode something that already exists...
-For fun in a worse way, maybe a better way, either way, I'm gonna do it (my way).
