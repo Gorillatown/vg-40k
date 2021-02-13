@@ -10,7 +10,7 @@
 	speed = 0.9
 	attacktext = "bites"
 	melee_damage_lower = 2
-	melee_damage_upper = 4
+	melee_damage_upper = 4    //those teeth will hurt you!
 	response_help  	= "pets"
 	response_disarm = "shoos"
 	response_harm 	= "stomps on"
@@ -23,7 +23,7 @@
 	stop_automated_movement_when_pulled = TRUE
 	environment_smash_flags = 0
 	density = FALSE
-	pass_flags = PASSTABLE | PASSMOB
+	pass_flags = PASSTABLE | PASSMOB			//INDEV
 	vision_range = 6
 	aggro_vision_range = 6
 	idle_vision_range = 6
@@ -71,6 +71,7 @@
 		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
 			sprite_scales++ //Time for a sprite scale
 			rolling_ticker = 0 //I could prob use a modulo but I'm tired
+			melee_damage_lower += 1
 			melee_damage_upper += 2
 		
 			if(sprite_scales <= 5)

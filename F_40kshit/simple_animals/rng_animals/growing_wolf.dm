@@ -12,7 +12,7 @@
 	response_harm = "hits"
 	harm_intent_damage = 8
 	melee_damage_lower = 10
-	melee_damage_upper = 20
+	melee_damage_upper = 20       //that bite will hurt you!
 	attacktext = "bites"
 	attack_sound = 'sound/weapons/bite.ogg'
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat/box
@@ -65,7 +65,8 @@
 		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
 			sprite_scales++ //Time for a sprite scale
 			rolling_ticker = 0 //I could prob use a modulo but I'm tired
-			melee_damage_upper += 2
+			melee_damage_lower += 5
+			melee_damage_upper += 10
 		
 			if(sprite_scales <= 5)
 				src.transform = src.transform.Scale(1.1)
