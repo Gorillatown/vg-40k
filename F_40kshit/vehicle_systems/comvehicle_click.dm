@@ -13,6 +13,11 @@
 	if(!over || !Adjacent(usr) || !Adjacent(over))
 		return
 	
+	if(istype(usr.loc,/obj/com_vehicle))
+		var/mob/pilot = get_pilot()
+		if(usr != pilot)
+			return
+
 	var/turf/T = get_turf(over)
 	if(!occupants.Find(usr))
 		var/mob/pilot = get_pilot()

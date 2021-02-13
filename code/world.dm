@@ -351,9 +351,9 @@ var/datum/early_init/early_init_datum = new
 	//	s += "<b>[config.server_name]</b> &#8212; " //SORRY CONFIG-KUN -JTGSZ
 
 
-	s += "<b>>Tales of Detroid II: <i> Overhaul 6.7!</i></b><br>"
-	s += "A loose wh40k-universe free roleplay planetserver<br>"
-	s += "Fueled by extensive bizarre <b>NEW</b> shitcode and poor ideas!<br>"
+	s += "<b>>Tales of Detroid II</b><br>"
+	s += "A free-rp industrial-future planetserver that makes people angry.<br>"
+	s += "Only up a few hours every saturday.<br>"
 	s += " \[<a href=\"https://discord.gg/5F9sQDF\">Discord</a><br>"
 	
 /*	var/list/features = list()
