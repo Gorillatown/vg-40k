@@ -20,10 +20,12 @@
 /obj/item/weapon/tankhammer/prepickup(mob/living/user)
 	to_chat(user,"<span class='bad'>You realize that you probably aren't going to be in good shape if you hit anything with this.</span>")
 
-/obj/item/weapon/tankhammer/afterattack(atom/target, mob/living/user, proximity_flag, click_parameters)
+/obj/item/weapon/tankhammer/afterattack(atom/target, mob/living/user, proximity, click_parameters)
 	..()
-	user.visible_message("<span class='danger'>[user] lands a tankhammer hit into \the [target]!</span>", "<span class='danger'>As your tankhammer hits [target] you see a bright flash of glorious light!</span>")
-	explosion(target.loc, 1, 1, 3, 8)
-	user.adjustBruteLoss(30)
-	explosion(user.loc, 1, 1, 3, 8)
-	qdel(src)
+
+	if(proximity)
+		user.visible_message("<span class='danger'>[user] lands a tankhammer hit into \the [target]!</span>", "<span class='danger'>As your tankhammer hits [target] you see a bright flash of glorious light!</span>")
+		explosion(target.loc, 1, 1, 3, 8)
+		user.adjustBruteLoss(30)
+		explosion(user.loc, 1, 1, 3, 8)
+		qdel(src)

@@ -66,3 +66,6 @@ cfg
 # Thumbs.db (windows image caching)
 Thumbs.db
 
+*.json
+fuckyou/majormiketyson.json
+fuckyou/tomacatx1.json
