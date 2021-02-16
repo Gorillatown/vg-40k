@@ -48,7 +48,7 @@
 
 /obj/effect/overlay/viscons/detroid_teller_overlay
 	name = "Detroid Teller Light"
-	desc = "Ayep"
+	desc = "Ayup"
 	icon = 'F_40kshit/icons/obj/64x64machines.dmi'
 	icon_state = "atm_on"
 	plane = LIGHTING_PLANE

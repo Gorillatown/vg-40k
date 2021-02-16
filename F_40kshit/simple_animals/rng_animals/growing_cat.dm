@@ -20,8 +20,8 @@
 	health = 200
 	maxHealth = 200
 	speed = 0.9
-	melee_damage_lower = 5
-	melee_damage_upper = 15 //Those tusk will maul you!
+	melee_damage_lower = 2
+	melee_damage_upper = 7 //Those fangs will maul you!
 
 	speak_override = TRUE
 	response_help  = "pets"
@@ -34,7 +34,7 @@
 	min_n2 = 0
 	max_n2 = 0
 	density = FALSE
-	pass_flags = PASSTABLE | PASSMOB
+	pass_flags = PASSTABLE               //INDEV
 
 	var/consumption_delay = FALSE
 	var/current_nutrition = 0 //How much current growth we have undertaken
@@ -69,12 +69,14 @@
 		maxHealth += 10
 		rolling_ticker++
 		current_nutrition = 0
+		
 		next_nutrition_level += round(next_nutrition_level/2) //raise the max for the next one
 
 		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
 			sprite_scales++ //Time for a sprite scale
 			rolling_ticker = 0 //I could prob use a modulo but I'm tired
-			melee_damage_upper += 1
+			melee_damage_lower += 2
+			melee_damage_upper += 5
 		
 			if(sprite_scales <= 5)
 				src.transform = src.transform.Scale(1.1)

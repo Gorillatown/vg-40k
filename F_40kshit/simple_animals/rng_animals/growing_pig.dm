@@ -21,7 +21,7 @@
 	maxHealth = 200
 	speed = 1
 	melee_damage_lower = 5
-	melee_damage_upper = 10 //Those tusk will maul you!
+	melee_damage_upper = 10 //Those tusks will maul you!
 	size = SIZE_SMALL
 	min_oxy = 0
 	max_oxy = 0
@@ -29,7 +29,8 @@
 	max_n2 = 0
 	treadmill_speed = 1.5
 	speak_override = TRUE
-	pass_flags = PASSTABLE | PASSMOB
+	pass_flags = PASSTABLE 
+	density = FALSE		//INDEV
 	
 	var/consumption_delay = FALSE
 	var/current_nutrition = 0 //How much current growth we have undertaken
@@ -68,7 +69,8 @@
 		if(rolling_ticker >= 3) //if the rolling ticker hits 3 or errors higher
 			sprite_scales++ //Time for a sprite scale
 			rolling_ticker = 0 //I could prob use a modulo but I'm tired
-			melee_damage_upper += 1
+			melee_damage_lower += 2
+			melee_damage_upper += 5
 		
 			if(sprite_scales <= 5)
 				src.transform = src.transform.Scale(1.1)
@@ -79,6 +81,7 @@
 					if(3)
 						pass_flags = 0
 						size = SIZE_NORMAL
+						density = TRUE
 					if(4)
 						size = SIZE_BIG
 					if(5)
